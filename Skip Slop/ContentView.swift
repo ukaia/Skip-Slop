@@ -1,24 +1,32 @@
-//
-//  ContentView.swift
-//  Skip Slop
-//
-//  Created by Ukaia Rogers on 4/12/26.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+    @State private var selectedTab = 0
 
-#Preview {
-    ContentView()
+    var body: some View {
+        TabView(selection: $selectedTab) {
+            Tab("Map", systemImage: "map.fill", value: 0) {
+                NavigationStack {
+                    MapContainerView()
+                        .navigationTitle("Skip Slop")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+            }
+
+            Tab("List", systemImage: "list.bullet", value: 1) {
+                NavigationStack {
+                    RestaurantListView()
+                        .navigationTitle("Restaurants")
+                }
+            }
+
+            Tab("Settings", systemImage: "gearshape.fill", value: 2) {
+                NavigationStack {
+                    SettingsView()
+                        .navigationTitle("Settings")
+                }
+            }
+        }
+        .tint(.slopGreen)
+    }
 }
