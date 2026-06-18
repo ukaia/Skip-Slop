@@ -1,5 +1,8 @@
 import CoreLocation
 import Observation
+import os
+
+private let locationLogger = Logger(subsystem: "alpha.Skip-Slop", category: "Location")
 
 @Observable
 final class LocationManager: NSObject, CLLocationManagerDelegate {
@@ -19,7 +22,12 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
 
     func requestPermission() {
-        manager.requestWhenInUseAuthorization()
+        let status = manager.authorizationStatus
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            manager.startUpdatingLocation()
+        } else {
+            manager.requestWhenInUseAuthorization()
+        }
     }
 
     func startUpdating() {
@@ -51,6 +59,6 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
 
     nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         // Location errors are non-fatal — just log for debugging
-        print("Location error: \(error.localizedDescription)")
+        locationLogger.error("Location error: \(error.localizedDescription)")
     }
 }

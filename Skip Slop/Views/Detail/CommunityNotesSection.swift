@@ -8,6 +8,7 @@ struct CommunityNotesSection: View {
     @Query private var allNotes: [CommunityNote]
     @State private var cloudNotes: [CloudNote] = []
     @State private var isLoadingCloud = false
+    @State private var hasLoadedCloud = false
 
     private var localNotes: [CommunityNote] {
         allNotes.filter { note in
@@ -76,20 +77,42 @@ struct CommunityNotesSection: View {
                 }
             }
         }
+        .onChange(of: restaurant?.id) { _, _ in
+            if !hasLoadedCloud {
+                Task { await loadCloudNotes() }
+            }
+        }
+        .onChange(of: chainSlug) { _, _ in
+            if !hasLoadedCloud {
+                Task { await loadCloudNotes() }
+            }
+        }
         .task { await loadCloudNotes() }
     }
 
     private func loadCloudNotes() async {
+        // Need at least one identifier to query
+        guard restaurant != nil || chainSlug != nil else { return }
+
         isLoadingCloud = true
-        defer { isLoadingCloud = false }
+        defer {
+            isLoadingCloud = false
+            hasLoadedCloud = true
+        }
 
         let service = CloudKitService.shared
+        var notes: [CloudNote] = []
 
         if let chainSlug {
-            cloudNotes = await service.fetchNotes(forChainSlug: chainSlug)
-        } else if let restaurant {
-            cloudNotes = await service.fetchNotes(forRestaurantID: restaurant.id)
+            notes = await service.fetchNotes(forChainSlug: chainSlug)
         }
+
+        if notes.isEmpty, let restaurant {
+            let restaurantNotes = await service.fetchNotes(forRestaurantID: restaurant.id)
+            notes.append(contentsOf: restaurantNotes)
+        }
+
+        cloudNotes = notes
     }
 
     private var emptyState: some View {

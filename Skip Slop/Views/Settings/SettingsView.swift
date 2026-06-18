@@ -22,7 +22,7 @@ struct SettingsView: View {
             }
 
             Section("About") {
-                LabeledContent("Version", value: "1.0.0")
+                LabeledContent("Version", value: "2.0.0")
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Skip Slop")
@@ -34,11 +34,9 @@ struct SettingsView: View {
                 .padding(.vertical, 4)
             }
 
-            Section("Coming Soon") {
+            Section("In Development") {
                 Label("Green+ Verification for Restaurants", systemImage: "checkmark.seal.fill")
                     .foregroundStyle(.slopGreenPlus)
-                Label("Cloud Sync for Community Notes", systemImage: "icloud.fill")
-                    .foregroundStyle(.blue)
                 Label("Photo Evidence Support", systemImage: "camera.fill")
                     .foregroundStyle(.purple)
             }

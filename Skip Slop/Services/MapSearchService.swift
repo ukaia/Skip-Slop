@@ -19,7 +19,7 @@ enum MapSearchService {
         return .restaurants(results)
     }
 
-    static func search(query: String, region: MKCoordinateRegion) async throws -> [MKMapItem] {
+    private static func search(query: String, region: MKCoordinateRegion) async throws -> [MKMapItem] {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
         request.region = region

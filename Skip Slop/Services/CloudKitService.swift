@@ -1,11 +1,13 @@
 import CloudKit
 import SwiftData
 import Observation
+import os
 
 @Observable
 final class CloudKitService {
     private let container: CKContainer
     private let publicDB: CKDatabase
+    private let logger = Logger(subsystem: "alpha.Skip-Slop", category: "CloudKit")
     var isSyncing = false
     var lastSyncError: String?
 
@@ -33,7 +35,7 @@ final class CloudKitService {
             try await publicDB.save(record)
         } catch {
             lastSyncError = error.localizedDescription
-            print("CloudKit upload failed: \(error.localizedDescription)")
+            logger.error("CloudKit upload failed: \(error.localizedDescription, privacy: .public)")
         }
     }
 
@@ -52,7 +54,7 @@ final class CloudKitService {
             }
         } catch {
             lastSyncError = error.localizedDescription
-            print("CloudKit fetch failed: \(error.localizedDescription)")
+            logger.error("CloudKit fetch failed: \(error.localizedDescription, privacy: .public)")
             return []
         }
     }
@@ -87,18 +89,7 @@ final class CloudKitService {
             try await publicDB.save(record)
         } catch {
             lastSyncError = error.localizedDescription
-            print("CloudKit vote failed: \(error.localizedDescription)")
-        }
-    }
-
-    // MARK: - Check Account Status
-
-    func checkAccountStatus() async -> Bool {
-        do {
-            let status = try await container.accountStatus()
-            return status == .available
-        } catch {
-            return false
+            logger.error("CloudKit vote failed: \(error.localizedDescription, privacy: .public)")
         }
     }
 
@@ -125,51 +116,13 @@ final class CloudKitService {
             // Delete the seed record immediately
             try await publicDB.deleteRecord(withID: saved.recordID)
             UserDefaults.standard.set(true, forKey: key)
-            print("CloudKit schema initialized successfully")
+            logger.info("CloudKit schema initialized successfully")
         } catch {
-            print("CloudKit schema init: \(error.localizedDescription)")
+            logger.error("CloudKit schema init: \(error.localizedDescription, privacy: .public)")
             // Non-fatal — schema may already exist or user not signed into iCloud
         }
     }
 
-    // MARK: - Upload Restaurant Rating
-
-    func uploadRestaurantRating(_ restaurant: Restaurant) async {
-        let record = CKRecord(recordType: "RestaurantRating")
-        record["restaurantID"] = restaurant.id as CKRecordValue
-        record["name"] = restaurant.name as CKRecordValue
-        record["chainSlug"] = restaurant.chainSlug as CKRecordValue?
-        record["slopRating"] = restaurant.slopRatingRaw as CKRecordValue
-        record["ratingSource"] = restaurant.ratingSourceRaw as CKRecordValue
-        record["latitude"] = restaurant.latitude as CKRecordValue
-        record["longitude"] = restaurant.longitude as CKRecordValue
-        record["address"] = restaurant.address as CKRecordValue
-        record["updatedAt"] = Date() as CKRecordValue
-
-        do {
-            try await publicDB.save(record)
-        } catch {
-            print("CloudKit restaurant upload failed: \(error.localizedDescription)")
-        }
-    }
-
-    // MARK: - Fetch Chain Rating (community consensus)
-
-    func fetchChainRating(slug: String) async -> String? {
-        let predicate = NSPredicate(format: "chainSlug == %@", slug)
-        let query = CKQuery(recordType: "RestaurantRating", predicate: predicate)
-
-        do {
-            let (results, _) = try await publicDB.records(matching: query, resultsLimit: 1)
-            if let (_, result) = results.first,
-               let record = try? result.get() {
-                return record["slopRating"] as? String
-            }
-        } catch {
-            print("CloudKit chain fetch failed: \(error.localizedDescription)")
-        }
-        return nil
-    }
 }
 
 // MARK: - CloudNote (lightweight struct for cloud data)

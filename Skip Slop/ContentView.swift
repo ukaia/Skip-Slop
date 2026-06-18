@@ -1,23 +1,18 @@
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
     @State private var selectedTab = 0
+    @State private var mapResults: [MKMapItem] = []
 
     var body: some View {
         TabView(selection: $selectedTab) {
             Tab("Map", systemImage: "map.fill", value: 0) {
-                NavigationStack {
-                    MapContainerView()
-                        .navigationTitle("Skip Slop")
-                        .navigationBarTitleDisplayMode(.inline)
-                }
+                MapContainerView(mapResults: $mapResults)
             }
 
             Tab("List", systemImage: "list.bullet", value: 1) {
-                NavigationStack {
-                    RestaurantListView()
-                        .navigationTitle("Restaurants")
-                }
+                RestaurantListView(mapResults: mapResults)
             }
 
             Tab("Settings", systemImage: "gearshape.fill", value: 2) {

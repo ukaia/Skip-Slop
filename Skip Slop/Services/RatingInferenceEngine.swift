@@ -17,6 +17,15 @@ enum RatingInferenceEngine {
             case high      = "Likely"      // strong signals
             case medium    = "Estimated"   // moderate signals
             case low       = "Guess"       // weak signals
+
+            var sortOrder: Int {
+                switch self {
+                case .known:  0
+                case .high:   1
+                case .medium: 2
+                case .low:    3
+                }
+            }
         }
     }
 
@@ -259,8 +268,7 @@ enum RatingInferenceEngine {
         }
 
         // Possessive names like "Joe's" "Maria's" — usually independent
-        let possessivePattern = try? NSRegularExpression(pattern: "^[a-z]+'s\\b", options: .caseInsensitive)
-        if let possessivePattern {
+        if let possessivePattern = Self.possessivePattern {
             let range = NSRange(lower.startIndex..., in: lower)
             if possessivePattern.firstMatch(in: lower, range: range) != nil {
                 return InferenceResult(
@@ -275,6 +283,10 @@ enum RatingInferenceEngine {
     }
 
     // MARK: - Helpers
+
+    private static let possessivePattern: NSRegularExpression? = try? NSRegularExpression(
+        pattern: "^[a-z]+'s\\b", options: .caseInsensitive
+    )
 
     /// Checks if a name looks like an independent local restaurant vs a chain.
     private static func looksIndependent(name: String) -> Bool {

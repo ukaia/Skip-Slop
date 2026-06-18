@@ -1,13 +1,16 @@
 import SwiftUI
 import SwiftData
 import MapKit
+import os
 
 struct MapContainerView: View {
     @Environment(ChainDatabase.self) private var chainDB
     @Environment(\.modelContext) private var modelContext
+    @Binding var mapResults: [MKMapItem]
+
+    private let logger = Logger(subsystem: "alpha.Skip-Slop", category: "Map")
 
     @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
-    @State private var searchResults: [MKMapItem] = []
     @State private var selectedItem: MKMapItem?
     @State private var searchText = ""
     @State private var showDetail = false
@@ -18,41 +21,39 @@ struct MapContainerView: View {
     private let locationManager = LocationManager()
 
     var body: some View {
-        ZStack(alignment: .top) {
-            Map(position: $position, selection: $selectedItem) {
-                UserAnnotation()
+        Map(position: $position, selection: $selectedItem) {
+            UserAnnotation()
 
-                ForEach(searchResults, id: \.self) { item in
-                    let chainMatch = ChainMatcher.match(mapItem: item, using: chainDB)
-                    let inference = RatingInferenceEngine.infer(mapItem: item, chainMatch: chainMatch)
+            ForEach(mapResults, id: \.self) { item in
+                let chainMatch = ChainMatcher.match(mapItem: item, using: chainDB)
+                let inference = RatingInferenceEngine.infer(mapItem: item, chainMatch: chainMatch)
 
-                    Annotation(item.name ?? "Restaurant", coordinate: ChainMatcher.coordinate(for: item)) {
-                        RestaurantAnnotationView(
-                            rating: inference.rating,
-                            confidence: inference.confidence,
-                            name: item.name ?? "?"
-                        )
-                    }
-                    .tag(item)
+                Annotation(item.name ?? "Restaurant", coordinate: ChainMatcher.coordinate(for: item)) {
+                    RestaurantAnnotationView(
+                        rating: inference.rating,
+                        confidence: inference.confidence,
+                        name: item.name ?? "?"
+                    )
                 }
+                .tag(item)
             }
-            .mapControls {
-                MapUserLocationButton()
-                MapCompass()
-                MapScaleView()
+        }
+        .mapControls {
+            MapCompass()
+            MapScaleView()
+        }
+        .onMapCameraChange(frequency: .onEnd) { context in
+            visibleRegion = context.region
+            if hasLoadedInitial {
+                loadNearbyRestaurants()
             }
-            .onMapCameraChange(frequency: .onEnd) { context in
-                visibleRegion = context.region
-                if hasLoadedInitial {
-                    loadNearbyRestaurants()
-                }
+        }
+        .onChange(of: selectedItem) { _, newValue in
+            if newValue != nil {
+                showDetail = true
             }
-            .onChange(of: selectedItem) { _, newValue in
-                if newValue != nil {
-                    showDetail = true
-                }
-            }
-
+        }
+        .safeAreaInset(edge: .top) {
             VStack(spacing: 8) {
                 MapSearchBar(text: $searchText) {
                     performSearch()
@@ -74,6 +75,7 @@ struct MapContainerView: View {
                 }
             }
             .padding(.top, 8)
+            .padding(.bottom, 4)
         }
         .sheet(isPresented: $showDetail, onDismiss: { selectedItem = nil }) {
             if let item = selectedItem {
@@ -114,24 +116,22 @@ struct MapContainerView: View {
 
                 switch result {
                 case .restaurants(let items):
-                    searchResults = items
+                    mapResults = items
                 case .region(let newRegion):
-                    // Navigate to location, then load restaurants there
                     withAnimation(.easeInOut(duration: 0.5)) {
                         position = .region(newRegion)
                     }
-                    // Brief pause for map to settle, then load nearby
                     try? await Task.sleep(for: .seconds(1.0))
                     if !Task.isCancelled {
                         let nearby = try await MapSearchService.searchNearby(region: newRegion)
                         if !Task.isCancelled {
-                            searchResults = nearby
+                            mapResults = nearby
                         }
                     }
                 }
             } catch {
                 if !Task.isCancelled {
-                    print("Search failed: \(error.localizedDescription)")
+                    logger.error("Search failed: \(error.localizedDescription, privacy: .public)")
                 }
             }
         }
@@ -144,11 +144,11 @@ struct MapContainerView: View {
             do {
                 let results = try await MapSearchService.searchNearby(region: region)
                 if !Task.isCancelled {
-                    searchResults = results
+                    mapResults = results
                 }
             } catch {
                 if !Task.isCancelled {
-                    print("Nearby search failed: \(error.localizedDescription)")
+                    logger.error("Nearby search failed: \(error.localizedDescription, privacy: .public)")
                 }
             }
         }

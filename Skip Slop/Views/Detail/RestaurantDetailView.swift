@@ -11,6 +11,7 @@ struct RestaurantDetailView: View {
     @Environment(ChainDatabase.self) private var chainDB
     @State private var restaurant: Restaurant?
     @State private var showAddNote = false
+    @State private var didLoad = false
 
     private var rating: SlopRating {
         restaurant?.slopRating ?? inference.rating
@@ -32,12 +33,15 @@ struct RestaurantDetailView: View {
                 badgeSection
                 confidenceSection
                 infoSection
-                communityNotesSection
-                addNoteButton
+
+                if didLoad {
+                    communityNotesSection
+                    addNoteButton
+                }
             }
             .padding()
         }
-        .onAppear { loadOrCreateRestaurant() }
+        .task { loadOrCreateRestaurant() }
     }
 
     // MARK: - Sections
@@ -158,20 +162,22 @@ struct RestaurantDetailView: View {
     }
 
     private var addNoteButton: some View {
-        Button {
-            showAddNote = true
-        } label: {
-            Label("Add Community Note", systemImage: "square.and.pencil")
-                .font(.headline)
-                .foregroundStyle(.white)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 14)
-                .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 12))
-        }
-        .sheet(isPresented: $showAddNote) {
+        Group {
             if let restaurant {
-                AddNoteView(restaurant: restaurant, chainSlug: chainMatch?.chainSlug)
-                    .presentationDetents([.medium])
+                Button {
+                    showAddNote = true
+                } label: {
+                    Label("Add Community Note", systemImage: "square.and.pencil")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 12))
+                }
+                .sheet(isPresented: $showAddNote) {
+                    AddNoteView(restaurant: restaurant, chainSlug: chainMatch?.chainSlug)
+                        .presentationDetents([.medium])
+                }
             }
         }
     }
@@ -186,6 +192,7 @@ struct RestaurantDetailView: View {
 
         if let existing = try? modelContext.fetch(descriptor).first {
             restaurant = existing
+            didLoad = true
             return
         }
 
@@ -204,5 +211,6 @@ struct RestaurantDetailView: View {
         modelContext.insert(newRestaurant)
         try? modelContext.save()
         restaurant = newRestaurant
+        didLoad = true
     }
 }
