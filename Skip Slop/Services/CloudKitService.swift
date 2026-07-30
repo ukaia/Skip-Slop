@@ -5,22 +5,39 @@ import os
 
 @Observable
 final class CloudKitService {
-    private let container: CKContainer
-    private let publicDB: CKDatabase
+    /// Must match `com.apple.developer.icloud-container-identifiers` in the entitlements.
+    static let containerIdentifier = "iCloud.alpha.Skip-Slop"
+
+    private let container: CKContainer?
+    private let publicDB: CKDatabase?
     private let logger = Logger(subsystem: "alpha.Skip-Slop", category: "CloudKit")
     var isSyncing = false
     var lastSyncError: String?
 
     static let shared = CloudKitService()
 
+    /// `CKContainer` raises an Objective-C `CKException` — which Swift cannot catch —
+    /// when the binary has no iCloud entitlement. This runs from `@main` on the first
+    /// frame, so it used to be an unrecoverable launch crash rather than a missing
+    /// feature. `SSMakeCloudKitContainer` catches it and hands back nil; every call
+    /// below then degrades to a local-only no-op.
     private init() {
-        container = CKContainer.default()
-        publicDB = container.publicCloudDatabase
+        container = SSMakeCloudKitContainer(Self.containerIdentifier)
+        publicDB = container?.publicCloudDatabase
+
+        if container == nil {
+            logger.warning("CloudKit unavailable — community notes are local-only.")
+        }
     }
+
+    /// True when community notes can sync. Local notes work either way.
+    var isAvailable: Bool { publicDB != nil }
 
     // MARK: - Upload Note
 
     func uploadNote(_ note: CommunityNote) async {
+        guard let publicDB else { return }
+
         let record = CKRecord(recordType: "CommunityNote")
         record["noteID"] = note.id.uuidString as CKRecordValue
         record["restaurantID"] = note.restaurant?.id as CKRecordValue?
@@ -42,6 +59,8 @@ final class CloudKitService {
     // MARK: - Fetch Notes for Chain
 
     func fetchNotes(forChainSlug slug: String) async -> [CloudNote] {
+        guard let publicDB else { return [] }
+
         let predicate = NSPredicate(format: "chainSlug == %@", slug)
         let query = CKQuery(recordType: "CommunityNote", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
@@ -62,6 +81,8 @@ final class CloudKitService {
     // MARK: - Fetch Notes for Restaurant
 
     func fetchNotes(forRestaurantID id: String) async -> [CloudNote] {
+        guard let publicDB else { return [] }
+
         let predicate = NSPredicate(format: "restaurantID == %@", id)
         let query = CKQuery(recordType: "CommunityNote", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
@@ -81,6 +102,8 @@ final class CloudKitService {
     // MARK: - Vote
 
     func vote(noteRecordID: CKRecord.ID, isUpvote: Bool) async {
+        guard let publicDB else { return }
+
         do {
             let record = try await publicDB.record(for: noteRecordID)
             let key = isUpvote ? "upvotes" : "downvotes"
@@ -99,7 +122,7 @@ final class CloudKitService {
     /// record type in the development CloudKit environment. Only needed once.
     func initializeSchemaIfNeeded() async {
         let key = "cloudkit_schema_initialized_v1"
-        guard !UserDefaults.standard.bool(forKey: key) else { return }
+        guard let publicDB, !UserDefaults.standard.bool(forKey: key) else { return }
 
         let record = CKRecord(recordType: "CommunityNote")
         record["noteID"] = "__schema_seed__" as CKRecordValue

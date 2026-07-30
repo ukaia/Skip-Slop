@@ -29,10 +29,10 @@ struct RestaurantDetailView: View {
         ScrollView {
             VStack(spacing: 20) {
                 headerSection
+                heroSection
                 meterSection
-                badgeSection
                 confidenceSection
-                infoSection
+                sourceSection
 
                 if didLoad {
                     communityNotesSection
@@ -75,8 +75,8 @@ struct RestaurantDetailView: View {
             .padding(.horizontal, 8)
     }
 
-    private var badgeSection: some View {
-        SlopRatingBadge(rating: rating, size: .large)
+    private var heroSection: some View {
+        SlopRatingHeroView(rating: rating)
     }
 
     private var confidenceSection: some View {
@@ -90,7 +90,6 @@ struct RestaurantDetailView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("\(inference.confidence.rawValue) Rating")
                             .font(.caption.weight(.semibold))
-                            .foregroundStyle(confidenceColor)
 
                         Text(inference.reason)
                             .font(.caption2)
@@ -100,11 +99,9 @@ struct RestaurantDetailView: View {
                     Spacer()
                 }
                 .padding(10)
-                .background(confidenceColor.opacity(0.08), in: RoundedRectangle(cornerRadius: 8))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .strokeBorder(confidenceColor.opacity(0.2), lineWidth: 1)
-                )
+                // Neutral surface. Coloured text on a tint of the same colour was
+                // unreadable — the orange-on-orange "Estimated" case especially.
+                .background(.fill.tertiary, in: RoundedRectangle(cornerRadius: 10))
             }
         }
     }
@@ -127,17 +124,11 @@ struct RestaurantDetailView: View {
         }
     }
 
-    private var infoSection: some View {
+    /// The rating's meaning now lives in `SlopRatingHeroView`, so this section carries
+    /// only provenance — where the rating came from.
+    private var sourceSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Divider()
-
-            Label {
-                Text(rating.description)
-                    .font(.subheadline)
-            } icon: {
-                Image(systemName: rating.icon)
-                    .foregroundStyle(rating.color)
-            }
 
             if let source = restaurant?.ratingSource {
                 Label {
@@ -169,10 +160,12 @@ struct RestaurantDetailView: View {
                 } label: {
                     Label("Add Community Note", systemImage: "square.and.pencil")
                         .font(.headline)
-                        .foregroundStyle(.white)
+                        // Monochrome on purpose: colour in this app means a rating, and a
+                        // system-blue CTA was the loudest thing on a screen about food.
+                        .foregroundStyle(Color(.systemBackground))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 14)
-                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 12))
+                        .background(.primary, in: RoundedRectangle(cornerRadius: 12))
                 }
                 .sheet(isPresented: $showAddNote) {
                     AddNoteView(restaurant: restaurant, chainSlug: chainMatch?.chainSlug)

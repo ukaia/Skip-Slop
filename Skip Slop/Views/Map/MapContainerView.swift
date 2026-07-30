@@ -17,6 +17,9 @@ struct MapContainerView: View {
     @State private var searchTask: Task<Void, Never>?
     @State private var visibleRegion: MKCoordinateRegion?
     @State private var hasLoadedInitial = false
+    /// True while the pins on screen came from an explicit search rather than a nearby
+    /// sweep. Panning used to silently replace those results with whatever was nearby.
+    @State private var isShowingSearchResults = false
 
     private let locationManager = LocationManager()
 
@@ -38,13 +41,23 @@ struct MapContainerView: View {
                 .tag(item)
             }
         }
+        // Without a filter Apple draws Target, T.J.Maxx, Regal Cinemas and every other
+        // POI on top of our pins. Our annotations should be the only marks on this map.
+        .mapStyle(.standard(pointsOfInterest: .excludingAll))
         .mapControls {
             MapCompass()
             MapScaleView()
         }
         .onMapCameraChange(frequency: .onEnd) { context in
             visibleRegion = context.region
-            if hasLoadedInitial {
+            if hasLoadedInitial && !isShowingSearchResults {
+                loadNearbyRestaurants()
+            }
+        }
+        .onChange(of: searchText) { _, newValue in
+            // Clearing the field hands the map back to the nearby sweep.
+            if newValue.isEmpty && isShowingSearchResults {
+                isShowingSearchResults = false
                 loadNearbyRestaurants()
             }
         }
@@ -66,10 +79,10 @@ struct MapContainerView: View {
                     } label: {
                         Image(systemName: "location.fill")
                             .font(.system(size: 16, weight: .semibold))
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(.primary)
                             .frame(width: 40, height: 40)
-                            .background(.ultraThinMaterial, in: Circle())
-                            .shadow(color: .black.opacity(0.1), radius: 4, y: 2)
+                            .background(.regularMaterial, in: Circle())
+                            .shadow(color: .black.opacity(0.18), radius: 8, y: 3)
                     }
                     .padding(.trailing, 16)
                 }
@@ -117,6 +130,7 @@ struct MapContainerView: View {
                 switch result {
                 case .restaurants(let items):
                     mapResults = items
+                    isShowingSearchResults = true
                 case .region(let newRegion):
                     withAnimation(.easeInOut(duration: 0.5)) {
                         position = .region(newRegion)

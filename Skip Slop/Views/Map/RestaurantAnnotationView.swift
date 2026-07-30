@@ -5,45 +5,45 @@ struct RestaurantAnnotationView: View {
     let confidence: RatingInferenceEngine.InferenceResult.Confidence
     let name: String
 
+    /// Verified ratings get a solid fill, inferred ones a hollow ring, guesses a dashed
+    /// one. Confidence reads from the shape of the pin instead of the grey "?" badge that
+    /// used to hang off nearly every restaurant and looked like an error state.
+    private var isVerified: Bool {
+        confidence == .known || confidence == .high
+    }
+
     var body: some View {
         ZStack {
             Circle()
-                .fill(rating.color)
-                .frame(width: 32, height: 32)
-                .shadow(color: rating.color.opacity(0.4), radius: 4, y: 2)
-                .opacity(confidenceOpacity)
+                .fill(isVerified ? AnyShapeStyle(rating.color) : AnyShapeStyle(.background))
+                .frame(width: 30, height: 30)
 
-            if rating != .grey {
-                Image(systemName: rating.icon)
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(.white)
-            } else {
-                Text(String(name.prefix(1)).uppercased())
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(.white)
-            }
+            Circle()
+                .strokeBorder(
+                    isVerified ? Color.white : rating.color,
+                    style: StrokeStyle(
+                        lineWidth: isVerified ? 2 : 2.5,
+                        dash: confidence == .low ? [3, 2.5] : []
+                    )
+                )
+                .frame(width: 30, height: 30)
 
-            // Show "?" for low confidence guesses
-            if confidence == .low {
-                Circle()
-                    .fill(.ultraThinMaterial)
-                    .frame(width: 14, height: 14)
-                    .overlay {
-                        Text("?")
-                            .font(.system(size: 9, weight: .heavy))
-                            .foregroundStyle(.secondary)
-                    }
-                    .offset(x: 12, y: -12)
-            }
+            symbol
         }
+        .shadow(color: .black.opacity(0.25), radius: 3, y: 1.5)
+        .accessibilityLabel("\(name), \(rating.subtitle), \(confidence.rawValue)")
     }
 
-    private var confidenceOpacity: Double {
-        switch confidence {
-        case .known: 1.0
-        case .high:  0.95
-        case .medium: 0.8
-        case .low:   0.65
+    @ViewBuilder
+    private var symbol: some View {
+        if rating == .grey {
+            Text(String(name.prefix(1)).uppercased())
+                .font(.system(size: 13, weight: .heavy, design: .rounded))
+                .foregroundStyle(isVerified ? Color.white : rating.color)
+        } else {
+            Image(systemName: rating.icon)
+                .font(.system(size: 13, weight: .bold))
+                .foregroundStyle(isVerified ? Color.white : rating.color)
         }
     }
 }
