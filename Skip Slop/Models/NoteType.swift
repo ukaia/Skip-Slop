@@ -58,7 +58,10 @@ enum NoteType: String, Codable, CaseIterable, Identifiable {
         case .syscoVerified:      .slopRed
         case .expensiveConfirmed: .slopOrange
         case .stupidTipOptions:   .slopYellow
-        case .syscoContested:     .blue
+        // Contesting a slop claim is evidence in the restaurant's favour, so it sits
+        // on the green end of the scale. It was system blue — the only colour in the
+        // app that meant nothing on the rating scale.
+        case .syscoContested:     .slopGreen
         }
     }
 }
