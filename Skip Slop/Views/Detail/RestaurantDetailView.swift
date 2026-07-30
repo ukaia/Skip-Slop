@@ -126,11 +126,16 @@ struct RestaurantDetailView: View {
 
     /// The rating's meaning now lives in `SlopRatingHeroView`, so this section carries
     /// only provenance — where the rating came from.
+    @ViewBuilder
     private var sourceSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Divider()
+        // Gated on the source, not wrapped around it. This section used to carry the
+        // rating description too, so it always had content; now that it is provenance
+        // only, an unconditional VStack renders two stacked Dividers and nothing
+        // between them for every restaurant that has not loaded yet.
+        if let source = restaurant?.ratingSource {
+            VStack(alignment: .leading, spacing: 8) {
+                Divider()
 
-            if let source = restaurant?.ratingSource {
                 Label {
                     Text("Source: \(source.rawValue.capitalized)")
                         .font(.caption)
@@ -139,9 +144,9 @@ struct RestaurantDetailView: View {
                     Image(systemName: "info.circle")
                         .foregroundStyle(.secondary)
                 }
-            }
 
-            Divider()
+                Divider()
+            }
         }
     }
 

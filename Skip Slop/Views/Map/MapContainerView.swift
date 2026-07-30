@@ -132,6 +132,10 @@ struct MapContainerView: View {
                     mapResults = items
                     isShowingSearchResults = true
                 case .region(let newRegion):
+                    // A place search hands the map back to the nearby sweep, so panning
+                    // around the new city keeps refreshing rather than freezing on the
+                    // results of whatever restaurant search came before it.
+                    isShowingSearchResults = false
                     withAnimation(.easeInOut(duration: 0.5)) {
                         position = .region(newRegion)
                     }
