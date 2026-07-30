@@ -11,6 +11,7 @@ struct AddNoteView: View {
     @State private var selectedType: NoteType = .syscoVerified
     @State private var noteBody = ""
     @State private var showFilterWarning = false
+    @State private var rejection: ContentFilter.Rejection?
 
     var body: some View {
         NavigationStack {
@@ -69,10 +70,14 @@ struct AddNoteView: View {
                     .disabled(selectedType.requiresBody && noteBody.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
             }
-            .alert("Inappropriate Content", isPresented: $showFilterWarning) {
+            .alert(
+                rejection?.title ?? "",
+                isPresented: $showFilterWarning,
+                presenting: rejection
+            ) { _ in
                 Button("OK", role: .cancel) {}
-            } message: {
-                Text("Your note contains language that isn't allowed. Please keep notes factual and relevant to food quality.")
+            } message: { rejection in
+                Text(rejection.message)
             }
         }
     }
@@ -80,7 +85,8 @@ struct AddNoteView: View {
     private func attemptSubmit() {
         let cleaned = noteBody.trimmingCharacters(in: .whitespaces)
 
-        if ContentFilter.containsInappropriateContent(cleaned) {
+        if let reason = ContentFilter.rejectionReason(for: cleaned) {
+            rejection = reason
             showFilterWarning = true
             return
         }
