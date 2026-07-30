@@ -1,16 +1,19 @@
 import Foundation
 import SwiftData
 
+/// See `Restaurant` for why there are no unique constraints and why every
+/// attribute carries a default: CloudKit-backed SwiftData requires it.
+/// `id` is a freshly generated UUID per note, so collisions are not a concern.
 @Model
 final class CommunityNote {
-    @Attribute(.unique) var id: UUID
+    var id: UUID = UUID()
     var restaurant: Restaurant?
     var chainSlug: String?
-    var noteTypeRaw: String
-    var body: String
-    var upvotes: Int
-    var downvotes: Int
-    var createdAt: Date
+    var noteTypeRaw: String = NoteType.syscoVerified.rawValue
+    var body: String = ""
+    var upvotes: Int = 0
+    var downvotes: Int = 0
+    var createdAt: Date = Date.now
 
     var noteType: NoteType {
         get { NoteType(rawValue: noteTypeRaw) ?? .syscoVerified }
