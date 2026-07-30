@@ -11,6 +11,20 @@ enum SlopRating: String, Codable, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
+    /// Whether this rating makes a negative factual claim about a named business.
+    ///
+    /// These are the ratings that assert something specific and damaging — a
+    /// distributor relationship, or poor quality. Weak matching evidence is
+    /// never allowed to assign one; see `ChainDatabase.match(name:)`.
+    /// `grey` is excluded: it describes a category (fast food) rather than
+    /// making an accusation.
+    var isAccusatory: Bool {
+        switch self {
+        case .orange, .red, .redMinus: true
+        case .greenPlus, .green, .yellow, .grey: false
+        }
+    }
+
     var label: String {
         switch self {
         case .greenPlus: "Green+"
