@@ -1,21 +1,26 @@
 import Foundation
 import SwiftData
 
+/// CloudKit-backed SwiftData requires every attribute to be optional or carry a
+/// default value, and does not support unique constraints. `id` is therefore a
+/// plain attribute — uniqueness is enforced by fetching on `id` before inserting
+/// (see `RestaurantDetailView.loadOrCreateRestaurant`).
 @Model
 final class Restaurant {
-    @Attribute(.unique) var id: String
-    var name: String
+    var id: String = ""
+    var name: String = ""
     var chainSlug: String?
-    var latitude: Double
-    var longitude: Double
-    var address: String
-    var slopRatingRaw: String
-    var ratingSourceRaw: String
-    var createdAt: Date
-    var updatedAt: Date
+    var latitude: Double = 0
+    var longitude: Double = 0
+    var address: String = ""
+    var slopRatingRaw: String = SlopRating.grey.rawValue
+    var ratingSourceRaw: String = RatingSource.seeded.rawValue
+    var createdAt: Date = Date.now
+    var updatedAt: Date = Date.now
 
+    /// Optional because CloudKit-backed SwiftData rejects non-optional relationships.
     @Relationship(deleteRule: .cascade, inverse: \CommunityNote.restaurant)
-    var communityNotes: [CommunityNote] = []
+    var communityNotes: [CommunityNote]?
 
     var slopRating: SlopRating {
         get { SlopRating(rawValue: slopRatingRaw) ?? .grey }

@@ -8,6 +8,7 @@
 
 /* Begin PBXFileReference section */
 		AE7D56192F8C543A0023475C /* Skip Slop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skip Slop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		TB01000000000000000001 /* Skip SlopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Skip SlopTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +17,22 @@
 			path = "Skip Slop";
 			sourceTree = "<group>";
 		};
+		TB01000000000000000002 /* Skip SlopTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Skip SlopTests";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AE7D56162F8C543A0023475C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		TB01000000000000000003 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +46,7 @@
 			isa = PBXGroup;
 			children = (
 				AE7D561B2F8C543A0023475C /* Skip Slop */,
+				TB01000000000000000002 /* Skip SlopTests */,
 				AE7D561A2F8C543A0023475C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				AE7D56192F8C543A0023475C /* Skip Slop.app */,
+				TB01000000000000000001 /* Skip SlopTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,7 +85,47 @@
 			productReference = AE7D56192F8C543A0023475C /* Skip Slop.app */;
 			productType = "com.apple.product-type.application";
 		};
+		TB01000000000000000004 /* Skip SlopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = TB01000000000000000005 /* Build configuration list for PBXNativeTarget "Skip SlopTests" */;
+			buildPhases = (
+				TB01000000000000000006 /* Sources */,
+				TB01000000000000000003 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				TB01000000000000000007 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				TB01000000000000000002 /* Skip SlopTests */,
+			);
+			name = "Skip SlopTests";
+			packageProductDependencies = (
+			);
+			productName = "Skip SlopTests";
+			productReference = TB01000000000000000001 /* Skip SlopTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
+
+/* Begin PBXTargetDependency section */
+		TB01000000000000000007 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE7D56182F8C543A0023475C /* Skip Slop */;
+			targetProxy = TB01000000000000000008 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXContainerItemProxy section */
+		TB01000000000000000008 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE7D56112F8C543A0023475C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE7D56182F8C543A0023475C;
+			remoteInfo = "Skip Slop";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXProject section */
 		AE7D56112F8C543A0023475C /* Project object */ = {
@@ -82,6 +137,10 @@
 				TargetAttributes = {
 					AE7D56182F8C543A0023475C = {
 						CreatedOnToolsVersion = 26.4;
+					};
+					TB01000000000000000004 = {
+						CreatedOnToolsVersion = 26.4;
+						TestTargetID = AE7D56182F8C543A0023475C;
 					};
 				};
 			};
@@ -100,6 +159,7 @@
 			projectRoot = "";
 			targets = (
 				AE7D56182F8C543A0023475C /* Skip Slop */,
+				TB01000000000000000004 /* Skip SlopTests */,
 			);
 		};
 /* End PBXProject section */
@@ -116,6 +176,13 @@
 
 /* Begin PBXSourcesBuildPhase section */
 		AE7D56152F8C543A0023475C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		TB01000000000000000006 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -316,6 +383,46 @@
 			};
 			name = Release;
 		};
+		TB01000000000000000009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = XK665P3866;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "alpha.Skip-SlopTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skip Slop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Skip Slop";
+			};
+			name = Debug;
+		};
+		TB01000000000000000010 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = XK665P3866;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "alpha.Skip-SlopTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skip Slop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Skip Slop";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -324,6 +431,15 @@
 			buildConfigurations = (
 				AE7D56222F8C543B0023475C /* Debug */,
 				AE7D56232F8C543B0023475C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		TB01000000000000000005 /* Build configuration list for PBXNativeTarget "Skip SlopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				TB01000000000000000009 /* Debug */,
+				TB01000000000000000010 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
