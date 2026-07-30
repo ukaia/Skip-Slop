@@ -22,7 +22,7 @@ struct SettingsView: View {
             }
 
             Section("About") {
-                LabeledContent("Version", value: "2.0.0")
+                LabeledContent("Version", value: Self.appVersion)
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Skip Slop")
@@ -35,12 +35,21 @@ struct SettingsView: View {
             }
 
             Section("In Development") {
-                Label("Green+ Verification for Restaurants", systemImage: "checkmark.seal.fill")
-                    .foregroundStyle(.slopGreenPlus)
-                Label("Photo Evidence Support", systemImage: "camera.fill")
-                    .foregroundStyle(.purple)
+                Label("Green+ Verification for Restaurants", systemImage: "checkmark.seal")
+                Label("Photo Evidence Support", systemImage: "camera")
             }
             .font(.subheadline)
+            .foregroundStyle(.secondary)
         }
+    }
+
+    /// Read from the bundle. This was hardcoded, so it drifted from the real build.
+    private static var appVersion: String {
+        let info = Bundle.main.infoDictionary
+        let short = info?["CFBundleShortVersionString"] as? String ?? "—"
+        guard let build = info?["CFBundleVersion"] as? String, build != short else {
+            return short
+        }
+        return "\(short) (\(build))"
     }
 }

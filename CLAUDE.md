@@ -8,8 +8,8 @@ Skip Slop is an iOS SwiftUI app that helps users avoid "sloppy" (bad quality) ch
 - **Scheme:** `Skip Slop`
 - **Bundle ID:** `alpha.Skip-Slop`
 - **Team:** `XK665P3866` (Nordic Tug LLC)
-- **Deployment target:** iOS 26.4
-- **Current version:** 1.0 (build 1)
+- **Deployment target:** iOS 26.0
+- **Current version:** 2.0 (build 3)
 
 ```bash
 # Build
@@ -51,8 +51,9 @@ xcodebuild -project "Skip Slop.xcodeproj" -scheme "Skip Slop" \
 - Settings: `SettingsView`
 
 ### App Store Connect
-- **API Key:** `AuthKey_W24PNJH2N2.p8` — Key ID `W24PNJH2N2`, Issuer ID `c785a6e2-e439-404f-9662-172ba89c4fb3`
-- **Key location:** `~/.appstoreconnect/private_keys/AuthKey_W24PNJH2N2.p8`
+- **API Key:** kept at `~/.appstoreconnect/private_keys/`. Key ID and Issuer ID are
+  deliberately not recorded here — this repo is public. Read them from the key filename
+  and App Store Connect → Users and Access → Integrations.
 - **Signing:** Automatic, "Apple Distribution: Nordic Tug LLC (XK665P3866)"
 
 ## Code Standards

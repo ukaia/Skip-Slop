@@ -220,7 +220,9 @@ struct NoteCardLayout: View {
                 if isCloud {
                     Image(systemName: "icloud.fill")
                         .font(.caption2)
-                        .foregroundStyle(.blue.opacity(0.5))
+                        // Chrome, not evidence — stays neutral so the note-type colour
+                        // beside it is the only thing on the row carrying meaning.
+                        .foregroundStyle(.tertiary)
                 }
 
                 Spacer()

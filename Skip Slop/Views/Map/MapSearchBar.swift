@@ -12,7 +12,7 @@ struct MapSearchBar: View {
                 .foregroundStyle(.secondary)
                 .font(.system(size: 16, weight: .medium))
 
-            TextField("Search restaurants, cities, zip codes...", text: $text)
+            TextField("Restaurants, cities, ZIP", text: $text)
                 .focused($isFocused)
                 .textFieldStyle(.plain)
                 .autocorrectionDisabled()
@@ -30,8 +30,10 @@ struct MapSearchBar: View {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 10)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
-        .shadow(color: .black.opacity(0.1), radius: 8, y: 4)
+        // `.ultraThinMaterial` let the beige map bleed through and the placeholder was
+        // barely legible. `.regularMaterial` gives the field an actual surface.
+        .background(.regularMaterial, in: Capsule())
+        .shadow(color: .black.opacity(0.18), radius: 10, y: 4)
         .padding(.horizontal, 16)
     }
 }
