@@ -43,16 +43,22 @@ final class ChainDatabase {
     private(set) var chains: [String: ChainInfo] = [:]
     private var normalizedLookup: [String: ChainInfo] = [:]
 
-    /// All known alternate names mapping to a canonical slug
+    /// All known alternate names mapping to a canonical slug, keyed on joined tokens
     private var aliases: [String: String] = [:]
 
-    init() {
-        loadChains()
+    /// The same aliases retaining word boundaries, for contiguous-run matching.
+    /// Sorted by slug so iteration order is stable.
+    private var aliasTokens: [(tokens: [String], slug: String)] = []
+
+    /// - Parameter seedURL: Overrides the bundled `SeedChains.json`. Only used by
+    ///   tests, which run outside an app bundle.
+    init(seedURL: URL? = nil) {
+        loadChains(from: seedURL)
         buildAliases()
     }
 
-    private func loadChains() {
-        guard let url = Bundle.main.url(forResource: "SeedChains", withExtension: "json"),
+    private func loadChains(from seedURL: URL?) {
+        guard let url = seedURL ?? Bundle.main.url(forResource: "SeedChains", withExtension: "json"),
               let data = try? Data(contentsOf: url),
               let items = try? JSONDecoder().decode([ChainInfo].self, from: data) else {
             return
@@ -60,8 +66,8 @@ final class ChainDatabase {
 
         for item in items {
             chains[item.slug] = item
-            let normalized = Self.normalize(item.name)
-            normalizedLookup[normalized] = item
+            // Keyed with `tokenize` so exact lookups agree with `match`.
+            normalizedLookup[Self.tokenize(item.name).joined()] = item
         }
     }
 
@@ -92,45 +98,115 @@ final class ChainDatabase {
 
         for (slug, names) in aliasMap {
             for name in names {
-                aliases[Self.normalize(name)] = slug
+                let tokens = Self.tokenize(name)
+                aliases[tokens.joined()] = slug
+                aliasTokens.append((tokens, slug))
             }
         }
+        aliasTokens.sort { $0.slug < $1.slug }
     }
 
     func lookup(slug: String) -> ChainInfo? {
         chains[slug]
     }
 
+    /// Matches a MapKit place name against the chain database.
+    ///
+    /// Matching is token-based rather than substring-based. The previous
+    /// implementation compared names with all separators stripped, so
+    /// "Longhorn Cafe" normalised to `longhorncafe`, which *contains*
+    /// `longhorn`, and an independent restaurant was stamped with LongHorn
+    /// Steakhouse's red rating. "Outback" and "Fridays" failed the same way.
+    /// It was also non-deterministic: the alias fallback iterated a Swift
+    /// `Dictionary`, so when two aliases matched, the winner varied between
+    /// launches and the same restaurant could show a different rating.
+    ///
+    /// Evidence strength now gates what a match is allowed to assert:
+    ///
+    /// - **Exact** name or alias, or a **multi-token** run ("Olive Garden" inside
+    ///   "Olive Garden Italian Restaurant") — trusted for any rating.
+    /// - **Single-token** run ("longhorn" inside "Longhorn Cafe") — weak evidence.
+    ///   Allowed to assign a neutral or positive rating, never an accusatory one.
+    ///   A weak match against a negative chain returns `nil` so the caller falls
+    ///   through to `RatingInferenceEngine`, which treats it as an unknown
+    ///   independent rather than asserting a supply chain we cannot support.
+    ///
+    /// A wrong red on a local restaurant is the failure that destroys trust in
+    /// the app, so weak evidence is never allowed to produce one.
     func match(name: String) -> ChainInfo? {
-        let normalized = Self.normalize(name)
+        let queryTokens = Self.tokenize(name)
+        guard !queryTokens.isEmpty else { return nil }
+        let queryKey = queryTokens.joined()
 
-        // Exact normalized match
-        if let info = normalizedLookup[normalized] {
+        // Tier 1 — exact name, then exact alias. Strongest evidence.
+        if let info = normalizedLookup[queryKey] {
+            return info
+        }
+        if let slug = aliases[queryKey], let info = chains[slug] {
             return info
         }
 
-        // Alias match
-        if let slug = aliases[normalized], let info = chains[slug] {
-            return info
-        }
+        // Tier 2/3 — the candidate's tokens appear as a contiguous run inside
+        // the query. Collect every candidate, then pick deterministically:
+        // most tokens matched wins, slug breaks ties alphabetically.
+        var candidates: [(info: ChainInfo, matchedTokens: Int)] = []
 
-        // Contains match — chain name in search or vice versa
-        // Sort by key length descending to prefer longer (more specific) matches
-        let sortedKeys = normalizedLookup.keys.sorted { $0.count > $1.count }
-        for key in sortedKeys {
-            if key.count >= 4 && (normalized.contains(key) || key.contains(normalized)) {
-                return normalizedLookup[key]
+        for (_, info) in chains {
+            let chainTokens = Self.tokenize(info.name)
+            if Self.tokens(chainTokens, formContiguousRunIn: queryTokens) {
+                candidates.append((info, chainTokens.count))
+            }
+        }
+        for entry in aliasTokens {
+            guard let info = chains[entry.slug] else { continue }
+            if Self.tokens(entry.tokens, formContiguousRunIn: queryTokens) {
+                candidates.append((info, entry.tokens.count))
             }
         }
 
-        // Alias contains match
-        for (aliasNorm, slug) in aliases {
-            if aliasNorm.count >= 4 && (normalized.contains(aliasNorm) || aliasNorm.contains(normalized)) {
-                return chains[slug]
+        let best = candidates
+            .sorted { lhs, rhs in
+                lhs.matchedTokens != rhs.matchedTokens
+                    ? lhs.matchedTokens > rhs.matchedTokens
+                    : lhs.info.slug < rhs.info.slug
+            }
+            .first
+
+        guard let best else { return nil }
+
+        // Weak evidence may not assert an accusatory rating.
+        if best.matchedTokens < 2 && best.info.slopRating.isAccusatory {
+            return nil
+        }
+        return best.info
+    }
+
+    /// True when `needle` appears as a contiguous run of whole tokens in `haystack`.
+    /// Empty needles never match.
+    static func tokens(_ needle: [String], formContiguousRunIn haystack: [String]) -> Bool {
+        guard !needle.isEmpty, needle.count <= haystack.count else { return false }
+        for start in 0...(haystack.count - needle.count) {
+            if Array(haystack[start..<(start + needle.count)]) == needle {
+                return true
             }
         }
+        return false
+    }
 
-        return nil
+    /// Splits a name into comparable lowercase word tokens, folding possessives
+    /// and dropping corporate suffixes. Unlike `normalize` this preserves word
+    /// boundaries, which is what stops `longhorncafe` matching `longhorn`.
+    static func tokenize(_ name: String) -> [String] {
+        let folded = name
+            .lowercased()
+            .replacingOccurrences(of: "'s", with: "s")
+            .replacingOccurrences(of: "\u{2019}s", with: "s")
+
+        let dropped: Set<String> = ["the", "inc", "llc", "corp"]
+
+        return folded
+            .components(separatedBy: CharacterSet.alphanumerics.inverted)
+            .filter { !$0.isEmpty && !dropped.contains($0) }
     }
 
     static func normalize(_ name: String) -> String {
