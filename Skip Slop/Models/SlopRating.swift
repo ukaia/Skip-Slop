@@ -11,52 +11,70 @@ nonisolated enum SlopRating: String, Codable, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    var label: String {
+    /// Inspection-style letter grade. Never the only signal: always paired with
+    /// `symbol` (a unique shape) and `name`.
+    var grade: String {
         switch self {
-        case .greenPlus: "Green+"
-        case .green:     "Green"
-        case .yellow:    "Yellow"
-        case .orange:    "Orange"
-        case .red:       "Red"
-        case .redMinus:  "Red -"
-        case .grey:      "Grey"
+        case .greenPlus: "A+"
+        case .green:     "A"
+        case .yellow:    "B"
+        case .orange:    "C"
+        case .red:       "F"
+        case .redMinus:  "F−"
+        case .grey:      "N/A"
         }
     }
 
-    var subtitle: String {
+    /// Grade as VoiceOver should speak it.
+    var spokenGrade: String {
         switch self {
-        case .greenPlus: "Real Local Food"
+        case .greenPlus: "A plus"
+        case .redMinus:  "F minus"
+        case .grey:      "not graded"
+        default:         grade
+        }
+    }
+
+    var name: String {
+        switch self {
+        case .greenPlus: "Real & Local"
         case .green:     "Real Food"
         case .yellow:    "Some Slop"
-        case .orange:    "Low Quality"
+        case .orange:    "Low Grade"
         case .red:       "Sysco Slop"
-        case .redMinus:  "Sysco Slop & Expensive"
-        case .grey:      "Not Applicable"
+        case .redMinus:  "Pricey Slop"
+        case .grey:      "Fast Food"
         }
     }
 
     var description: String {
         switch self {
-        case .greenPlus: "Verified locally sourced, real ingredients"
-        case .green:     "Real food — not frozen/reheated mass-produced stuff"
-        case .yellow:    "Some items are real, but sides and extras are slop"
-        case .orange:    "Not Sysco, but still low quality processed food"
-        case .red:       "Sysco/US Foods supplied — microwaved slop"
-        case .redMinus:  "Sysco slop AND they charge premium prices for it"
-        case .grey:      "Fast food / not applicable — it is what it is"
+        case .greenPlus: "Locally sourced, cooked from real ingredients."
+        case .green:     "Real food, not frozen and reheated."
+        case .yellow:    "The mains are real. The sides came off a truck."
+        case .orange:    "Not Sysco, but still processed and forgettable."
+        case .red:       "Sysco or US Foods supplied. Microwaved slop."
+        case .redMinus:  "Sysco slop at steakhouse prices."
+        case .grey:      "Fast food. It is what it is, so we don't grade it."
         }
     }
 
-    var icon: String {
+    /// SF Symbol with a shape unique to this rating, so ratings stay distinguishable without color.
+    var symbol: String {
         switch self {
         case .greenPlus: "leaf.fill"
         case .green:     "checkmark.seal.fill"
         case .yellow:    "exclamationmark.triangle.fill"
-        case .orange:    "arrow.down.circle.fill"
+        case .orange:    "hand.thumbsdown.fill"
         case .red:       "xmark.octagon.fill"
-        case .redMinus:  "dollarsign.arrow.trianglehead.counterclockwise.rotate.90"
-        case .grey:      "minus.circle.fill"
+        case .redMinus:  "dollarsign.circle.fill"
+        case .grey:      "takeoutbag.and.cup.and.straw.fill"
         }
+    }
+
+    /// e.g. "Grade F, Sysco Slop".
+    var accessibilityLabel: String {
+        self == .grey ? "Not graded, \(name)" : "Grade \(spokenGrade), \(name)"
     }
 
     var color: Color {

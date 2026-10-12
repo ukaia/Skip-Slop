@@ -58,7 +58,7 @@ nonisolated enum NoteType: String, Codable, CaseIterable, Identifiable {
         case .syscoVerified:      .slopRed
         case .expensiveConfirmed: .slopOrange
         case .stupidTipOptions:   .slopYellow
-        case .syscoContested:     .blue
+        case .syscoContested:     DS.contested
         }
     }
 }

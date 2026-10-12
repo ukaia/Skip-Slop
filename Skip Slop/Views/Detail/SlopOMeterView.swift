@@ -1,105 +1,62 @@
 import SwiftUI
 
+/// Six-step scale from F− to A+. Every segment carries its grade, so the
+/// position reads without color; the active one is filled and lifted.
 struct SlopOMeterView: View {
-    let rating: SlopRating?
-    var height: CGFloat = 28
+    let rating: SlopRating
+
+    @ScaledMetric(relativeTo: .caption) private var height: CGFloat = 30
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private let segments = SlopRating.meterCases
 
     var body: some View {
-        if let rating, rating == .grey {
-            greyMeter
-        } else {
-            activeMeter
-        }
-    }
-
-    private var activeMeter: some View {
-        VStack(spacing: 6) {
-            GeometryReader { geo in
-                let segmentWidth = geo.size.width / CGFloat(segments.count)
-
-                ZStack(alignment: .leading) {
-                    // Background segments
-                    HStack(spacing: 1.5) {
-                        ForEach(Array(segments.enumerated()), id: \.element) { index, segment in
-                            let isActive = segment == rating
-
-                            RoundedRectangle(cornerRadius: cornerRadius(for: index))
-                                .fill(segment.color.opacity(isActive ? 1.0 : 0.3))
-                                .overlay {
-                                    if isActive {
-                                        RoundedRectangle(cornerRadius: cornerRadius(for: index))
-                                            .fill(segment.color)
-                                            .shadow(color: segment.color.opacity(0.6), radius: 6)
-                                    }
-                                }
-                        }
-                    }
-
-                    // Marker triangle
-                    if let rating, let idx = rating.meterIndex {
-                        let xPos = segmentWidth * (CGFloat(idx) + 0.5)
-                        Triangle()
-                            .fill(rating.color)
-                            .frame(width: 12, height: 8)
-                            .offset(x: xPos - 6, y: height + 2)
-                            .animation(.spring(duration: 0.5), value: rating)
+        Group {
+            if rating == .grey {
+                Text("Fast food isn't graded")
+                    .font(DS.Typeface.caption)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, minHeight: height)
+                    .background(.quaternary, in: .capsule)
+            } else {
+                HStack(spacing: DS.Spacing.xs) {
+                    ForEach(segments) { segment in
+                        let isActive = segment == rating
+                        Text(segment.grade)
+                            .font(.system(.caption, design: .rounded, weight: .black))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
+                            .foregroundStyle(isActive ? AnyShapeStyle(DS.Palette.ink) : AnyShapeStyle(.secondary))
+                            .frame(maxWidth: .infinity, minHeight: height)
+                            .background(
+                                isActive ? AnyShapeStyle(segment.color) : AnyShapeStyle(segment.color.opacity(0.18)),
+                                in: .capsule
+                            )
+                            .scaleEffect(isActive ? 1.12 : 1)
+                            .zIndex(isActive ? 1 : 0)
                     }
                 }
+                .animation(reduceMotion ? nil : .snappySlop, value: rating)
             }
-            .frame(height: height)
-            .clipShape(Capsule())
-
-            // Labels
-            HStack {
-                Text("R-")
-                    .font(.system(size: 9, weight: .bold))
-                    .foregroundStyle(.slopRedMinus)
-                Spacer()
-                if let rating {
-                    Text(rating.subtitle)
-                        .font(.system(size: 11, weight: .semibold))
-                        .foregroundStyle(rating.color)
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityRepresentation {
+            if let index = rating.meterIndex {
+                Gauge(value: Double(index), in: 0...Double(segments.count - 1)) {
+                    Text("Slop-o-meter")
+                } currentValueLabel: {
+                    Text(rating.accessibilityLabel)
                 }
-                Spacer()
-                Text("G+")
-                    .font(.system(size: 9, weight: .bold))
-                    .foregroundStyle(.slopGreenPlus)
+            } else {
+                Text("Slop-o-meter, not graded")
             }
         }
-    }
-
-    private var greyMeter: some View {
-        VStack(spacing: 6) {
-            ZStack {
-                Capsule()
-                    .fill(Color.slopGrey.opacity(0.2))
-                    .frame(height: height)
-
-                Text("N/A")
-                    .font(.system(size: 12, weight: .bold))
-                    .foregroundStyle(.slopGrey)
-            }
-
-            Text("Not Applicable — Fast Food")
-                .font(.system(size: 11, weight: .medium))
-                .foregroundStyle(.secondary)
-        }
-    }
-
-    private func cornerRadius(for index: Int) -> CGFloat {
-        height / 2
     }
 }
 
-nonisolated struct Triangle: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-        path.closeSubpath()
-        return path
+#Preview {
+    VStack(spacing: 20) {
+        ForEach(SlopRating.allCases) { SlopOMeterView(rating: $0) }
     }
+    .padding()
 }
