@@ -44,11 +44,19 @@ xcodebuild -project "Skip Slop.xcodeproj" -scheme "Skip Slop" \
 - `CommunityNote` — text, noteType, upvotes/downvotes, restaurant link
 
 ### UI Structure
-- `ContentView` — Tab view: Map tab + List tab + Settings tab
-- Map tab: `MapContainerView` with `MapSearchBar`, annotations, detail sheet
-- List tab: `RestaurantListView` with filter chips
-- Detail: `RestaurantDetailView` with `SlopOMeterView`, `CommunityNotesSection`, `AddNoteView`
-- Settings: `SettingsView`
+- `ContentView` — `OnboardingView` until seen (`@AppStorage("hasSeenOnboarding")`), then `MapContainerView`
+- `MapContainerView` — full-screen map, `RatingPin` annotations, floating Liquid Glass controls (settings, location, grade filter, legend), persistent bottom sheet (`.peek`/`.medium`/`.large`)
+- `ExploreSheet` + `ExploreModel` — search, grade chips, results list; selecting a pin or row pushes `RestaurantDetailView` inside the sheet (zoom transition)
+- Detail: `RestaurantDetailView` with `InspectionCard` (stamp reveal), `SlopOMeterView`, `CommunityNotesSection`, `AddNoteView`
+- Settings: `SettingsView` (presented from the sheet via `model.showSettings`)
+
+### Design System
+- `DesignSystem.swift` (`DS`) — condiment palette with light/dark/increased-contrast variants, Dynamic Type text styles (SF Rounded heavy for brand), spacing, radii
+- Ratings are inspection-style grades (A+ … F−, N/A) with a unique SF Symbol each; never rely on color alone
+- Glass only for controls floating over the map; inside sheets use fills
+
+### Screenshot launch arguments (DEBUG only, `LaunchOptions`)
+`-UITestScreenshots YES` (= `-skipOnboarding YES -mockData YES`), `-showOnboarding YES`, `-openDetail YES`, `-openSettings YES`
 
 ### App Store Connect
 - **API Key:** `AuthKey_W24PNJH2N2.p8` — Key ID `W24PNJH2N2`, Issuer ID `c785a6e2-e439-404f-9662-172ba89c4fb3`

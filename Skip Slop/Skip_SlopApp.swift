@@ -11,12 +11,21 @@ struct Skip_SlopApp: App {
         ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
 
+    init() {
+        // Screenshot/UI-test launch arguments (DEBUG only; see LaunchOptions).
+        if LaunchOptions.showOnboarding {
+            UserDefaults.standard.set(false, forKey: OnboardingView.seenKey)
+        } else if LaunchOptions.skipOnboarding {
+            UserDefaults.standard.set(true, forKey: OnboardingView.seenKey)
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(chainDatabase)
                 .task {
-                    guard !Self.isHostingTests else { return }
+                    guard !Self.isHostingTests, !LaunchOptions.mockData else { return }
                     await CloudKitService.shared.initializeSchemaIfNeeded()
                 }
         }
