@@ -5,8 +5,10 @@ import os
 
 @Observable
 final class CloudKitService {
-    private let container: CKContainer
-    private let publicDB: CKDatabase
+    /// Created on first use: touching `CKContainer` in a build without the iCloud
+    /// entitlement (unsigned simulator test builds) raises an exception.
+    @ObservationIgnored private lazy var container = CKContainer.default()
+    private var publicDB: CKDatabase { container.publicCloudDatabase }
     private let logger = Logger(subsystem: "alpha.Skip-Slop", category: "CloudKit")
     var isSyncing = false
     var lastSyncError: String?
@@ -14,14 +16,16 @@ final class CloudKitService {
 
     static let shared = CloudKitService()
 
-    private init() {
-        container = CKContainer.default()
-        publicDB = container.publicCloudDatabase
-    }
+    /// Sample-data mode (DEBUG only) keeps notes and votes on the device, so
+    /// screenshots and UI tests never need iCloud.
+    private var isOffline: Bool { LaunchOptions.noCloudKit }
+
+    private init() {}
 
     // MARK: - Upload Note
 
     func uploadNote(_ note: CommunityNote) async {
+        guard !isOffline else { return }
         // Deterministic record name so a retried upload can't create a duplicate note.
         let record = CKRecord(
             recordType: "CommunityNote",
@@ -61,6 +65,7 @@ final class CloudKitService {
     }
 
     private func fetchNotes(matching predicate: NSPredicate) async -> [CloudNote] {
+        guard !isOffline else { return [] }
         let query = CKQuery(recordType: "CommunityNote", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
 
@@ -114,6 +119,7 @@ final class CloudKitService {
 
     /// Sets (or clears, when `direction` is nil) the current user's vote on a note.
     func setVote(_ direction: VoteDirection?, noteID: String) async throws {
+        guard !isOffline else { return }
         let userName = try await currentUserRecordName()
         let recordID = CKRecord.ID(recordName: Self.voteRecordName(noteID: noteID, userRecordName: userName))
 
@@ -236,6 +242,7 @@ final class CloudKitService {
     /// Seeds dummy records then deletes them to auto-create the CommunityNote and
     /// NoteVote record types in the development CloudKit environment. Only needed once.
     func initializeSchemaIfNeeded() async {
+        guard !isOffline else { return }
         let key = "cloudkit_schema_initialized_v2"
         guard !UserDefaults.standard.bool(forKey: key) else { return }
 
