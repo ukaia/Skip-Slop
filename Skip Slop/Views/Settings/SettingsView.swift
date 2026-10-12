@@ -37,7 +37,7 @@ struct SettingsView: View {
                     }
                 }
             } footer: {
-                Text("What A+ through F− mean, and why fast food isn't graded.")
+                Text("What A+ through F− mean, and where grades come from.")
             }
 
             Section("Your Notes") {
@@ -92,7 +92,8 @@ struct AcknowledgementsView: View {
                 credit("Symbols", "SF Symbols by Apple.")
             }
             Section {
-                credit("Chain grades", "Compiled from public reporting on foodservice distributors such as Sysco and US Foods, plus community notes. Grades are opinions, not inspection results.")
+                credit("Grades", "Chain grades come from cited public evidence on how each chain prepares its food: company filings and websites, news and trade reporting, and former employees' accounts. Community grades come from diner reports. Grades are opinions, not inspection results.")
+                credit("Chain names", "OpenStreetMap name-suggestion-index and Wikipedia.")
             }
         }
         .navigationTitle("Acknowledgements")

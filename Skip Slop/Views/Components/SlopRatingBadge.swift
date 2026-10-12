@@ -1,12 +1,42 @@
 import SwiftUI
 
+/// How a placard is drawn for where its grade came from: a solid outline for a
+/// cited grade, dashed for a community grade, dotted for not graded yet.
+enum PlacardStyle {
+    case cited, community, notGraded
+
+    init(_ assessment: GradeAssessment) {
+        switch assessment.kind {
+        case .cited: self = .cited
+        case .community: self = .community
+        case .notGraded: self = .notGraded
+        }
+    }
+
+    var dash: [CGFloat] {
+        switch self {
+        case .cited: []
+        case .community: [3, 2.5]
+        case .notGraded: [1, 3]
+        }
+    }
+
+    /// Spoken after the grade, e.g. "Grade A, Scratch Kitchen, community grade".
+    var accessibilitySuffix: String {
+        switch self {
+        case .cited: ""
+        case .community: ", community grade"
+        case .notGraded: ""
+        }
+    }
+}
+
 /// The inspection placard: letter grade + unique symbol on a condiment fill.
 /// Readable without color (grade text + symbol shape), sized with Dynamic Type.
 struct SlopRatingBadge: View {
     let rating: SlopRating
     var size: BadgeSize = .regular
-    /// Unverified ratings get a dashed outline instead of a solid one.
-    var isEstimate = false
+    var style: PlacardStyle = .cited
 
     enum BadgeSize {
         /// Inline capsule: symbol + grade + name.
@@ -21,7 +51,7 @@ struct SlopRatingBadge: View {
         content
             .foregroundStyle(DS.Palette.ink)
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel(rating.accessibilityLabel + (isEstimate ? ", estimated" : ""))
+            .accessibilityLabel(rating.accessibilityLabel + style.accessibilitySuffix)
     }
 
     @ViewBuilder
@@ -29,7 +59,7 @@ struct SlopRatingBadge: View {
         switch size {
         case .regular:
             Label {
-                Text("\(rating.grade) \(rating.name)")
+                Text(rating.isGraded ? "\(rating.grade) \(rating.name)" : rating.name)
             } icon: {
                 Image(systemName: rating.symbol)
             }
@@ -42,7 +72,7 @@ struct SlopRatingBadge: View {
             .overlay { outline(Capsule()) }
         case .tile:
             VStack(spacing: 0) {
-                Image(systemName: rating.symbol)
+                Image(systemName: style == .community ? "person.2.fill" : rating.symbol)
                     .font(.caption2.weight(.bold))
                 Text(rating.grade)
                     .font(DS.Typeface.grade)
@@ -60,7 +90,7 @@ struct SlopRatingBadge: View {
             .inset(by: 2)
             .strokeBorder(
                 DS.Palette.ink.opacity(0.55),
-                style: StrokeStyle(lineWidth: 1.5, dash: isEstimate ? [3, 2.5] : [])
+                style: StrokeStyle(lineWidth: 1.5, lineCap: .round, dash: style.dash)
             )
     }
 }
@@ -68,7 +98,7 @@ struct SlopRatingBadge: View {
 /// Map pin version of the placard: compact capsule with a pointer.
 struct RatingPin: View {
     let rating: SlopRating
-    var isEstimate = false
+    var style: PlacardStyle = .cited
     var isSelected = false
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -76,7 +106,7 @@ struct RatingPin: View {
     var body: some View {
         VStack(spacing: -1) {
             HStack(spacing: DS.Spacing.xxs) {
-                Image(systemName: rating.symbol)
+                Image(systemName: style == .community ? "person.2.fill" : rating.symbol)
                     .font(.caption2.weight(.black))
                 Text(rating.grade)
                     .font(.system(.subheadline, design: .rounded, weight: .black))
@@ -92,9 +122,11 @@ struct RatingPin: View {
                     .inset(by: 1.5)
                     .strokeBorder(
                         DS.Palette.ink.opacity(0.6),
-                        style: StrokeStyle(lineWidth: 1.5, dash: isEstimate ? [3, 2.5] : [])
+                        style: StrokeStyle(lineWidth: 1.5, lineCap: .round, dash: style.dash)
                     )
             }
+            // Ungraded pins step back so graded ones stand out.
+            .opacity(style == .notGraded && !isSelected ? 0.85 : 1)
 
             Triangle()
                 .rotation(.degrees(180))
@@ -102,7 +134,7 @@ struct RatingPin: View {
                 .frame(width: 10, height: 6)
         }
         .shadow(color: .black.opacity(0.25), radius: 3, y: 2)
-        .scaleEffect(isSelected ? 1.25 : 1, anchor: .bottom)
+        .scaleEffect(isSelected ? 1.25 : (style == .notGraded ? 0.85 : 1), anchor: .bottom)
         .animation(reduceMotion ? nil : .snappySlop, value: isSelected)
     }
 }
@@ -122,9 +154,10 @@ nonisolated struct Triangle: Shape {
     VStack(alignment: .leading, spacing: 12) {
         ForEach(SlopRating.allCases) { rating in
             HStack {
-                SlopRatingBadge(rating: rating, size: .tile)
-                SlopRatingBadge(rating: rating, isEstimate: rating == .yellow)
-                RatingPin(rating: rating)
+                SlopRatingBadge(rating: rating, size: .tile, style: rating.isGraded ? .cited : .notGraded)
+                SlopRatingBadge(rating: rating, size: .tile, style: .community)
+                SlopRatingBadge(rating: rating)
+                RatingPin(rating: rating, style: rating.isGraded ? .cited : .notGraded)
             }
         }
     }

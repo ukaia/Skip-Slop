@@ -12,8 +12,8 @@ struct SlopOMeterView: View {
 
     var body: some View {
         Group {
-            if rating == .grey {
-                Text("Fast food isn't graded")
+            if !rating.isGraded {
+                Text("Not graded yet")
                     .font(DS.Typeface.caption)
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, minHeight: height)

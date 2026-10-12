@@ -28,9 +28,7 @@ struct ExploreSheet: View {
             .navigationDestination(item: $model.selectedItem) { item in
                 if let entry = model.selectedEntry {
                     RestaurantDetailView(
-                        mapItem: entry.item,
-                        chainMatch: entry.chainMatch,
-                        inference: entry.inference,
+                        entry: entry,
                         distance: model.distanceText(to: entry.item)
                     )
                     .navigationTransition(.zoom(sourceID: item, in: zoom))
@@ -105,7 +103,7 @@ struct ExploreSheet: View {
                     searchFocused = false
                     model.selectedItem = entry.item
                 } label: {
-                    RestaurantRow(entry: entry, distance: model.distanceText(to: entry.item))
+                    RestaurantRow(entry: entry, assessment: model.assessment(for: entry), distance: model.distanceText(to: entry.item))
                 }
                 .buttonStyle(.plain)
                 .matchedTransitionSource(id: entry.item, in: zoom)
@@ -170,17 +168,18 @@ struct ExploreSheet: View {
 
 struct RestaurantRow: View {
     let entry: RatedMapItem
+    let assessment: GradeAssessment
     var distance: String?
 
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
-    private var rating: SlopRating { entry.inference.rating }
+    private var rating: SlopRating { assessment.rating }
     private var name: String { entry.item.name ?? "Unnamed restaurant" }
 
     private var details: String {
         var parts: [String] = []
         if let distance { parts.append(distance) }
-        parts.append(entry.inference.confidence.displayName)
+        if assessment.isGraded { parts.append(assessment.label) }
         if let address = entry.item.address?.shortAddress, !address.isEmpty {
             parts.append(address)
         }
@@ -194,7 +193,7 @@ struct RestaurantRow: View {
             : AnyLayout(HStackLayout(alignment: .center, spacing: DS.Spacing.m))
 
         layout {
-            SlopRatingBadge(rating: rating, size: .tile, isEstimate: entry.inference.confidence.isEstimate)
+            SlopRatingBadge(rating: rating, size: .tile, style: PlacardStyle(assessment))
 
             VStack(alignment: .leading, spacing: DS.Spacing.xxs) {
                 Text(name)
@@ -203,7 +202,7 @@ struct RestaurantRow: View {
                     .lineLimit(isLarge ? nil : 2)
                 Text(rating.name)
                     .font(DS.Typeface.callout.weight(.semibold))
-                    .foregroundStyle(rating.color)
+                    .foregroundStyle(rating.isGraded ? AnyShapeStyle(rating.color) : AnyShapeStyle(.secondary))
                 Text(details)
                     .font(DS.Typeface.meta)
                     .foregroundStyle(.secondary)
@@ -215,7 +214,7 @@ struct RestaurantRow: View {
         .frame(minHeight: DS.minHitTarget)
         .contentShape(.rect)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(name), \(rating.accessibilityLabel)")
+        .accessibilityLabel("\(name), \(rating.accessibilityLabel)\(PlacardStyle(assessment).accessibilitySuffix)")
         .accessibilityValue(details)
         .accessibilityAddTraits(.isButton)
     }

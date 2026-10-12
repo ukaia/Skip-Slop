@@ -3,18 +3,22 @@ import SwiftData
 import MapKit
 
 struct RestaurantDetailView: View {
-    let mapItem: MKMapItem
-    let chainMatch: ChainMatchResult?
-    let inference: RatingInferenceEngine.InferenceResult
+    let entry: RatedMapItem
     var distance: String?
 
     @Environment(\.modelContext) private var modelContext
     @State private var restaurant: Restaurant?
     @State private var showAddNote = false
+    @State private var showWhy = false
+    @State private var reportVerdict: PrepVerdict?
     @State private var didLoad = false
 
-    private var rating: SlopRating {
-        restaurant?.slopRating ?? inference.rating
+    private var prepReports: PrepReportStore { .shared }
+    private var mapItem: MKMapItem { entry.item }
+    private var chainMatch: ChainMatchResult? { entry.chainMatch }
+
+    private var assessment: GradeAssessment {
+        GradeResolver.resolve(cited: entry.cited, community: prepReports.rollup(for: entry.placeKey))
     }
 
     private var restaurantName: String {
@@ -30,13 +34,23 @@ struct RestaurantDetailView: View {
     }
 
     var body: some View {
+        let assessment = assessment
         ScrollView {
             VStack(alignment: .leading, spacing: DS.Spacing.xl) {
                 header
-                InspectionCard(rating: rating, isEstimate: inference.confidence.isEstimate)
-                    .id(restaurantID)
-                SlopOMeterView(rating: rating)
-                gradingNotes
+                VStack(alignment: .leading, spacing: DS.Spacing.m) {
+                    InspectionCard(assessment: assessment)
+                        .id(restaurantID)
+                    gradeProvenance(assessment)
+                }
+                if assessment.isGraded {
+                    SlopOMeterView(rating: assessment.rating)
+                }
+                PrepReportSection(
+                    placeKey: entry.placeKey,
+                    isGraded: assessment.isGraded,
+                    onReport: { reportVerdict = $0 }
+                )
 
                 if didLoad {
                     CommunityNotesSection(restaurantID: restaurantID, chainSlug: chainMatch?.chainSlug)
@@ -60,7 +74,23 @@ struct RestaurantDetailView: View {
             AddNoteView(chainSlug: chainMatch?.chainSlug, resolveRestaurant: persistRestaurant)
                 .presentationDetents([.medium, .large])
         }
-        .task(id: restaurantID) { loadRestaurant() }
+        .sheet(isPresented: $showWhy) {
+            WhyThisGradeView(placeName: restaurantName, assessment: assessment)
+                .presentationDetents([.medium, .large])
+        }
+        .sheet(item: $reportVerdict) { verdict in
+            ReportPrepView(
+                placeName: restaurantName,
+                placeKey: entry.placeKey,
+                chainSlug: chainMatch?.chainSlug,
+                initialVerdict: verdict
+            )
+            .presentationDetents([.large])
+        }
+        .task(id: restaurantID) {
+            loadRestaurant()
+            await prepReports.load(placeKey: entry.placeKey)
+        }
     }
 
     // MARK: - Sections
@@ -72,12 +102,10 @@ struct RestaurantDetailView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .accessibilityAddTraits(.isHeader)
 
-            let facts = [chainMatch != nil ? "Chain" : nil, distance].compactMap { $0 }
-            if !facts.isEmpty {
-                Text(facts.joined(separator: ", "))
-                    .font(DS.Typeface.callout.weight(.semibold))
-                    .foregroundStyle(.secondary)
-            }
+            let facts = [chainMatch.map { "\($0.chainInfo.name) chain" } ?? "Independent", distance].compactMap { $0 }
+            Text(facts.joined(separator: ", "))
+                .font(DS.Typeface.callout.weight(.semibold))
+                .foregroundStyle(.secondary)
 
             if !address.isEmpty {
                 Text(address)
@@ -89,55 +117,53 @@ struct RestaurantDetailView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    /// Why we gave this grade, and how sure we are.
-    private var gradingNotes: some View {
-        VStack(alignment: .leading, spacing: DS.Spacing.m) {
-            Text("How we graded it")
-                .font(DS.Typeface.headline)
-                .accessibilityAddTraits(.isHeader)
-
-            Label {
-                VStack(alignment: .leading, spacing: DS.Spacing.xxs) {
-                    Text(inference.confidence.displayName)
-                        .font(DS.Typeface.callout.weight(.semibold))
-                    Text(chainMatch?.chainInfo.ratingReason ?? inference.reason)
-                        .font(DS.Typeface.callout)
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
+    /// Where the grade came from, with a way to see the evidence.
+    @ViewBuilder
+    private func gradeProvenance(_ assessment: GradeAssessment) -> some View {
+        switch assessment.kind {
+        case .cited, .community:
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: DS.Spacing.m) {
+                    provenanceLabel(assessment)
+                    Spacer(minLength: 0)
+                    whyButton
                 }
-            } icon: {
-                Image(systemName: confidenceSymbol)
-                    .foregroundStyle(inference.confidence.isEstimate ? DS.Palette.fryer : DS.Palette.pickle)
-            }
-            .accessibilityElement(children: .combine)
-
-            if inference.confidence.isEstimate {
-                Label {
-                    Text(inference.confidence == .category
-                        ? "We haven't graded this chain by hand yet, so its grade comes from the kind of place it is. Notes from people who've eaten here make it better."
-                        : "This is a guess from the name and type of place. Notes from people who've eaten here make it better.")
-                        .font(DS.Typeface.callout)
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                } icon: {
-                    Image(systemName: "person.2.fill")
-                        .foregroundStyle(.secondary)
+                VStack(alignment: .leading, spacing: DS.Spacing.s) {
+                    provenanceLabel(assessment)
+                    whyButton
                 }
             }
+        case .notGraded:
+            Text(entry.chainMatch == nil
+                 ? "We don't guess grades for independent restaurants. Been here? Tell us how the food is made below."
+                 : "We haven't found evidence on how this chain makes its food yet. Been here? Tell us below.")
+                .font(DS.Typeface.callout)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
         }
-        .padding(DS.Spacing.l)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.fill.quaternary, in: .rect(cornerRadius: DS.Radius.card))
     }
 
-    private var confidenceSymbol: String {
-        switch inference.confidence {
-        case .known:    "checkmark.seal.fill"
-        case .category: "square.stack.3d.up.fill"
-        case .high:     "checkmark.circle.fill"
-        case .medium:   "questionmark.circle.fill"
-        case .low:      "questionmark.diamond.fill"
+    private func provenanceLabel(_ assessment: GradeAssessment) -> some View {
+        Label {
+            Text(assessment.label)
+                .font(DS.Typeface.callout.weight(.semibold))
+        } icon: {
+            Image(systemName: assessment.isCommunity ? "person.2.fill" : "doc.text.magnifyingglass")
+                .foregroundStyle(.secondary)
         }
+    }
+
+    private var whyButton: some View {
+        Button {
+            showWhy = true
+        } label: {
+            Label("Why this grade", systemImage: "info.circle")
+                .font(DS.Typeface.callout.weight(.semibold))
+                .frame(minHeight: DS.minHitTarget)
+        }
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.capsule)
+        .accessibilityHint("Shows the evidence and sources behind this grade")
     }
 
     private var addNoteButton: some View {
@@ -152,13 +178,13 @@ struct RestaurantDetailView: View {
         .buttonStyle(.borderedProminent)
         .buttonBorderShape(.capsule)
         .controlSize(.large)
-        .accessibilityHint("Report Sysco deliveries, prices, or tip screens")
+        .accessibilityHint("Share prices, tipping, or anything else about this place")
     }
 
     // MARK: - Data
 
-    /// Loads a previously saved record, if any. Inferred ratings stay transient
-    /// until the user contributes (see `persistRestaurant`).
+    /// Loads a previously saved record, if any. Records stay transient until the
+    /// user contributes (see `persistRestaurant`).
     private func loadRestaurant() {
         let id = restaurantID
         let descriptor = FetchDescriptor(predicate: #Predicate<Restaurant> { $0.id == id })
@@ -178,8 +204,8 @@ struct RestaurantDetailView: View {
             latitude: coord.latitude,
             longitude: coord.longitude,
             address: address,
-            slopRating: inference.rating,
-            ratingSource: chainMatch != nil ? .seeded : .community
+            slopRating: assessment.rating,
+            ratingSource: assessment.isCommunity ? .community : .seeded
         )
 
         modelContext.insert(newRestaurant)
@@ -193,13 +219,23 @@ struct RestaurantDetailView: View {
 /// The hero placard. The grade gets rubber-stamped on when the card appears;
 /// with Reduce Motion it fades in instead.
 struct InspectionCard: View {
-    let rating: SlopRating
-    var isEstimate = false
+    let assessment: GradeAssessment
 
     @ScaledMetric(relativeTo: .largeTitle) private var gradeSize: CGFloat = 76
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var stamped = false
+
+    private var rating: SlopRating { assessment.rating }
+    private var style: PlacardStyle { PlacardStyle(assessment) }
+
+    private var tag: String? {
+        switch assessment.kind {
+        case .cited: nil
+        case .community: "Community grade"
+        case .notGraded: "Not graded yet"
+        }
+    }
 
     var body: some View {
         let layout = dynamicTypeSize.isAccessibilitySize
@@ -222,13 +258,13 @@ struct InspectionCard: View {
                 Text(rating.description)
                     .font(DS.Typeface.callout.weight(.medium))
                     .fixedSize(horizontal: false, vertical: true)
-                if isEstimate {
-                    Text("Estimated")
+                if let tag {
+                    Text(tag)
                         .font(DS.Typeface.caption.weight(.bold))
                         .padding(.horizontal, DS.Spacing.s)
                         .padding(.vertical, DS.Spacing.xxs)
                         .overlay {
-                            Capsule().strokeBorder(style: StrokeStyle(lineWidth: 1.5, dash: [3, 2.5]))
+                            Capsule().strokeBorder(style: StrokeStyle(lineWidth: 1.5, lineCap: .round, dash: style.dash))
                         }
                         .padding(.top, DS.Spacing.xxs)
                 }
@@ -244,11 +280,11 @@ struct InspectionCard: View {
                 .inset(by: 6)
                 .strokeBorder(
                     DS.Palette.ink.opacity(0.45),
-                    style: StrokeStyle(lineWidth: 2, dash: isEstimate ? [6, 4] : [])
+                    style: StrokeStyle(lineWidth: 2, lineCap: .round, dash: style.dash.map { $0 * 2 })
                 )
         }
         .sensoryFeedback(trigger: stamped) { _, new in
-            guard new else { return nil }
+            guard new, rating.isGraded else { return nil }
             return rating.meterIndex.map { $0 >= 3 } == true ? .success : .impact(weight: .heavy)
         }
         .task {
@@ -259,7 +295,7 @@ struct InspectionCard: View {
             }
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(rating.accessibilityLabel)
-        .accessibilityValue(rating.description + (isEstimate ? " Estimated." : ""))
+        .accessibilityLabel(rating.accessibilityLabel + style.accessibilitySuffix)
+        .accessibilityValue(rating.description)
     }
 }

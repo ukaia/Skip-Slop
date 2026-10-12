@@ -54,7 +54,7 @@ struct OnboardingView: View {
     private var gradesPage: some View {
         OnboardingPage(
             title: "Grade the slop before you eat it",
-            message: "Every restaurant gets a grade. A means real food. F means Sysco trucks and microwaves. F− means you also paid steakhouse prices for it."
+            message: "A means cooked from scratch. F means reheated from bags and boxes. Every grade shows its evidence, and we never guess: no evidence means Not Graded Yet."
         ) {
             PlacardFan(isActive: page == .grades)
         }
@@ -78,7 +78,7 @@ struct OnboardingView: View {
     private var notesPage: some View {
         OnboardingPage(
             title: "Snitch on the slop",
-            message: "Saw a Sysco truck out back? Paid $30 for a burger? Leave a note. Notes go public once the community upvotes them."
+            message: "Tell us how the food is made: from scratch, or reheated. Five reports make a community grade. Saw a Sysco truck out back? Leave a note too."
         ) {
             VStack(alignment: .leading, spacing: DS.Spacing.s) {
                 Label("Sysco Verified", systemImage: NoteType.syscoVerified.icon)
@@ -232,7 +232,7 @@ private struct PlacardFan: View {
             }
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Example grades: A, Real Food. B, Some Slop. F, Sysco Slop.")
+        .accessibilityLabel("Example grades: \(cards.map { "\($0.rating.spokenGrade), \($0.rating.name)" }.joined(separator: ". ")).")
         .onChange(of: isActive, initial: true) { _, active in
             guard active, !dealt else { return }
             withAnimation(reduceMotion ? .easeIn(duration: 0.2) : .spring(duration: 0.6, bounce: 0.35).delay(0.15)) {

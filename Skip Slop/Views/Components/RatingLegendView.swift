@@ -20,7 +20,7 @@ struct RatingLegendRow: View {
 
     var body: some View {
         HStack(alignment: showsDescription ? .top : .center, spacing: DS.Spacing.m) {
-            SlopRatingBadge(rating: rating, size: .tile)
+            SlopRatingBadge(rating: rating, size: .tile, style: rating.isGraded ? .cited : .notGraded)
             VStack(alignment: .leading, spacing: DS.Spacing.xxs) {
                 Text(rating.name)
                     .font(DS.Typeface.headline)
@@ -44,10 +44,20 @@ struct RatingGuideScreen: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: DS.Spacing.l) {
-                Text("Grades work like the health inspection card in a restaurant window, except we're grading where the food comes from.")
+                Text("Grades work like the health inspection card in a restaurant window, except we're grading how the food is made: cooked from scratch, or reheated from bags and boxes.")
                     .font(DS.Typeface.callout)
                     .foregroundStyle(.secondary)
                 RatingLegendView()
+                VStack(alignment: .leading, spacing: DS.Spacing.s) {
+                    Text("Where grades come from")
+                        .font(DS.Typeface.headline)
+                        .accessibilityAddTraits(.isHeader)
+                    Label("Chains: researched evidence such as company filings, menus, news reports and former employees, each with sources and a confidence level.", systemImage: "doc.text.magnifyingglass")
+                    Label("Community: five or more diner reports on whether the food is made from scratch or reheated.", systemImage: "person.2.fill")
+                    Label("Everything else is Not Graded Yet. We never guess, especially for independents.", systemImage: "questionmark.circle")
+                }
+                .font(DS.Typeface.callout)
+                .padding(.top, DS.Spacing.s)
             }
             .padding(DS.Spacing.l)
         }

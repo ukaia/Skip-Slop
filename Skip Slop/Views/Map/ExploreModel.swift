@@ -40,22 +40,31 @@ final class ExploreModel {
         locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .restricted
     }
 
-    /// Results after the grade filter and the live text filter, best-known first.
+    let prepReports = PrepReportStore.shared
+
+    /// The grade to show for a place: its cited grade combined with any community reports loaded so far.
+    func assessment(for entry: RatedMapItem) -> GradeAssessment {
+        GradeResolver.resolve(cited: entry.cited, community: prepReports.rollup(for: entry.placeKey))
+    }
+
+    /// Results after the grade filter and the live text filter: graded places
+    /// first (best evidence first), then by grade.
     var displayedResults: [RatedMapItem] {
-        var result = ratedResults
+        var result = ratedResults.map { ($0, assessment(for: $0)) }
         if let filter {
-            result = result.filter { $0.inference.rating == filter }
+            result = result.filter { $0.1.rating == filter }
         }
         let text = query.trimmingCharacters(in: .whitespaces)
         if !text.isEmpty {
-            result = result.filter { ($0.item.name ?? "").localizedCaseInsensitiveContains(text) }
+            result = result.filter { ($0.0.item.name ?? "").localizedCaseInsensitiveContains(text) }
         }
         return result.sorted { a, b in
-            if a.inference.confidence != b.inference.confidence {
-                return a.inference.confidence.sortOrder < b.inference.confidence.sortOrder
+            if a.1.sortOrder != b.1.sortOrder {
+                return a.1.sortOrder < b.1.sortOrder
             }
-            return a.inference.rating.sortOrder < b.inference.rating.sortOrder
+            return a.1.rating.sortOrder < b.1.rating.sortOrder
         }
+        .map(\.0)
     }
 
     func entry(for item: MKMapItem) -> RatedMapItem? {
@@ -83,6 +92,9 @@ final class ExploreModel {
             position = .region(MockData.region)
             visibleRegion = MockData.region
             setResults(MockData.mapItems())
+            for entry in ratedResults {
+                await prepReports.load(placeKey: entry.placeKey)
+            }
             hasLoadedInitial = true
             // Wait for the explore sheet to finish presenting before stacking on it.
             try? await Task.sleep(for: .milliseconds(800))
@@ -227,22 +239,6 @@ final class ExploreModel {
             withAnimation {
                 if searchMessage == message { searchMessage = nil }
             }
-        }
-    }
-}
-
-extension RatingInferenceEngine.InferenceResult.Confidence {
-    /// Anything not graded by hand, shown with dashed placard outlines and "Estimated".
-    var isEstimate: Bool { self != .known }
-
-    /// User-facing description of how sure we are.
-    var displayName: String {
-        switch self {
-        case .known:    "Known chain"
-        case .category: "Chain, estimated grade"
-        case .high:     "Estimated, likely"
-        case .medium:   "Estimated"
-        case .low:      "Estimated, rough guess"
         }
     }
 }

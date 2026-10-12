@@ -19,15 +19,16 @@ struct MapContainerView: View {
 
             ForEach(model.displayedResults) { entry in
                 let isSelected = model.selectedItem == entry.item
+                let assessment = model.assessment(for: entry)
                 Annotation(entry.item.name ?? "Restaurant", coordinate: entry.item.location.coordinate, anchor: .bottom) {
                     RatingPin(
-                        rating: entry.inference.rating,
-                        isEstimate: entry.inference.confidence.isEstimate,
+                        rating: assessment.rating,
+                        style: PlacardStyle(assessment),
                         isSelected: isSelected
                     )
                     .accessibilityElement(children: .ignore)
-                    .accessibilityLabel("\(entry.item.name ?? "Restaurant"), \(entry.inference.rating.accessibilityLabel)")
-                    .accessibilityValue(entry.inference.confidence.isEstimate ? "Estimated" : "")
+                    .accessibilityLabel("\(entry.item.name ?? "Restaurant"), \(assessment.rating.accessibilityLabel)")
+                    .accessibilityValue(assessment.isGraded ? assessment.label : "")
                     .accessibilityHint("Shows details")
                     .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
                 }
