@@ -2,45 +2,111 @@ import SwiftUI
 import SwiftData
 
 struct SettingsView: View {
-    @Query private var restaurants: [Restaurant]
+    static let privacyPolicyURL = URL(string: "https://github.com/ukaia/Skip-Slop/blob/main/PRIVACY.md")!
+
+    @Environment(\.dismiss) private var dismiss
+    @AppStorage(OnboardingView.seenKey) private var hasSeenOnboarding = true
     @Query private var notes: [CommunityNote]
+
+    private var versionString: String {
+        let info = Bundle.main.infoDictionary
+        let version = info?["CFBundleShortVersionString"] as? String ?? "–"
+        let build = info?["CFBundleVersion"] as? String ?? "–"
+        return "\(version) (\(build))"
+    }
 
     var body: some View {
         List {
-            Section("Rating Legend") {
+            Section {
                 NavigationLink {
-                    RatingLegendView()
-                        .navigationTitle("Rating Guide")
+                    RatingGuideScreen()
                 } label: {
-                    Label("What do the colors mean?", systemImage: "paintpalette.fill")
+                    HStack(spacing: DS.Spacing.m) {
+                        Label("Rating Guide", systemImage: "list.bullet.rectangle.portrait")
+                        Spacer(minLength: 0)
+                        HStack(spacing: -6) {
+                            ForEach([SlopRating.green, .yellow, .red], id: \.self) { rating in
+                                Image(systemName: rating.symbol)
+                                    .font(.caption.weight(.bold))
+                                    .foregroundStyle(DS.Palette.ink)
+                                    .frame(width: 26, height: 26)
+                                    .background(rating.color, in: .circle)
+                            }
+                        }
+                        .accessibilityHidden(true)
+                    }
+                }
+            } footer: {
+                Text("What A+ through F− mean, and why fast food isn't graded.")
+            }
+
+            Section("Your Notes") {
+                LabeledContent("Notes posted", value: notes.count, format: .number)
+            }
+
+            Section {
+                Button {
+                    hasSeenOnboarding = false
+                    dismiss()
+                } label: {
+                    Label("Replay Intro", systemImage: "play.circle")
                 }
             }
 
-            Section("Your Stats") {
-                LabeledContent("Restaurants Visited", value: "\(restaurants.count)")
-                LabeledContent("Community Notes", value: "\(notes.count)")
-            }
-
-            Section("About") {
-                LabeledContent("Version", value: "2.0.0")
-
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Skip Slop")
-                        .font(.headline)
-                    Text("Tired of paying $30 for a microwaved Sysco meal? So are we. This app helps you find restaurants that serve real food — not frozen slop with fancy plating.")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+            Section {
+                Link(destination: Self.privacyPolicyURL) {
+                    Label("Privacy Policy", systemImage: "hand.raised")
                 }
-                .padding(.vertical, 4)
-            }
+                .accessibilityHint("Opens in Safari")
 
-            Section("In Development") {
-                Label("Green+ Verification for Restaurants", systemImage: "checkmark.seal.fill")
-                    .foregroundStyle(.slopGreenPlus)
-                Label("Photo Evidence Support", systemImage: "camera.fill")
-                    .foregroundStyle(.purple)
+                NavigationLink {
+                    AcknowledgementsView()
+                } label: {
+                    Label("Acknowledgements", systemImage: "heart.text.square")
+                }
+
+                LabeledContent("Version", value: versionString)
+            } header: {
+                Text("About")
+            } footer: {
+                Text("Tired of paying $30 for a microwaved Sysco meal? So are we. Skip Slop points you to restaurants that cook real food.")
+                    .padding(.top, DS.Spacing.xs)
             }
-            .font(.subheadline)
         }
+        .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Done") { dismiss() }
+            }
+        }
+    }
+}
+
+struct AcknowledgementsView: View {
+    var body: some View {
+        List {
+            Section {
+                credit("Maps and places", "Apple MapKit. Map data © Apple and its data providers.")
+                credit("Community notes", "Stored in Apple CloudKit. No accounts, no tracking.")
+                credit("Symbols", "SF Symbols by Apple.")
+            }
+            Section {
+                credit("Chain grades", "Compiled from public reporting on foodservice distributors such as Sysco and US Foods, plus community notes. Grades are opinions, not inspection results.")
+            }
+        }
+        .navigationTitle("Acknowledgements")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func credit(_ title: String, _ detail: String) -> some View {
+        VStack(alignment: .leading, spacing: DS.Spacing.xxs) {
+            Text(title).font(DS.Typeface.headline)
+            Text(detail)
+                .font(DS.Typeface.callout)
+                .foregroundStyle(.secondary)
+        }
+        .padding(.vertical, DS.Spacing.xxs)
+        .accessibilityElement(children: .combine)
     }
 }
