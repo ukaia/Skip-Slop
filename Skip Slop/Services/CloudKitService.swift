@@ -22,16 +22,28 @@ final class CloudKitService {
     // MARK: - Upload Note
 
     func uploadNote(_ note: CommunityNote) async {
-        let record = CKRecord(recordType: "CommunityNote")
-        record["noteID"] = note.id.uuidString as CKRecordValue
-        record["restaurantID"] = note.restaurant?.id as CKRecordValue?
-        record["chainSlug"] = note.chainSlug as CKRecordValue?
-        record["noteType"] = note.noteTypeRaw as CKRecordValue
-        record["body"] = note.body as CKRecordValue
-        record["createdAt"] = note.createdAt as CKRecordValue
+        // Deterministic record name so a retried upload can't create a duplicate note.
+        let record = CKRecord(
+            recordType: "CommunityNote",
+            recordID: CKRecord.ID(recordName: "note_\(note.id.uuidString)")
+        )
+        let noteID = note.id.uuidString
+        let restaurantID = note.restaurant?.id
+        let chainSlug = note.chainSlug
+        let noteType = note.noteTypeRaw
+        let body = note.body
+        let createdAt = note.createdAt
 
         do {
-            try await publicDB.save(record)
+            let saved = try await save(record) { record in
+                record["noteID"] = noteID as CKRecordValue
+                record["restaurantID"] = restaurantID as CKRecordValue?
+                record["chainSlug"] = chainSlug as CKRecordValue?
+                record["noteType"] = noteType as CKRecordValue
+                record["body"] = body as CKRecordValue
+                record["createdAt"] = createdAt as CKRecordValue
+            }
+            logger.info("Uploaded note \(saved.recordID.recordName, privacy: .public)")
         } catch {
             lastSyncError = error.localizedDescription
             logger.error("CloudKit upload failed: \(error.localizedDescription, privacy: .public)")
@@ -106,22 +118,79 @@ final class CloudKitService {
         let recordID = CKRecord.ID(recordName: Self.voteRecordName(noteID: noteID, userRecordName: userName))
 
         guard let direction else {
-            do {
-                try await publicDB.deleteRecord(withID: recordID)
-            } catch let error as CKError where error.code == .unknownItem {
-                // Already gone — nothing to undo.
+            for attempt in 1...Self.maxSaveAttempts {
+                do {
+                    try await publicDB.deleteRecord(withID: recordID)
+                    return
+                } catch let error as CKError where error.code == .unknownItem {
+                    return // Already gone — nothing to undo.
+                } catch let error as CKError where Self.isTransient(error) && attempt < Self.maxSaveAttempts {
+                    try await Task.sleep(for: .seconds(error.retryAfterSeconds ?? Double(attempt)))
+                }
             }
             return
         }
 
         let record = CKRecord(recordType: "NoteVote", recordID: recordID)
-        record["noteID"] = noteID as CKRecordValue
-        record["direction"] = direction.rawValue as CKRecordValue
-        // Blind write of only our keys: the record belongs to this user alone.
-        let (saveResults, _) = try await publicDB.modifyRecords(
-            saving: [record], deleting: [], savePolicy: .changedKeys
-        )
-        _ = try saveResults[recordID]?.get()
+        // Blind write of only our keys: the record belongs to this user alone, so the
+        // last write wins. If the server still reports a conflict, the fields are
+        // re-applied to the server's copy and saved again.
+        try await save(record, savePolicy: .changedKeys) { record in
+            record["noteID"] = noteID as CKRecordValue
+            record["direction"] = direction.rawValue as CKRecordValue
+        }
+    }
+
+    // MARK: - Saving
+
+    static let maxSaveAttempts = 3
+
+    /// Saves a single record, checking its per-record result. On `serverRecordChanged`
+    /// the changes are re-applied to the server's record and retried; transient errors
+    /// are retried after the server-suggested delay. Bounded to `maxSaveAttempts`.
+    @discardableResult
+    private func save(
+        _ record: CKRecord,
+        savePolicy: CKModifyRecordsOperation.RecordSavePolicy = .ifServerRecordUnchanged,
+        applyChanges: (CKRecord) -> Void
+    ) async throws -> CKRecord {
+        var record = record
+        var policy = savePolicy
+        applyChanges(record)
+
+        for attempt in 1...Self.maxSaveAttempts {
+            do {
+                let (saveResults, _) = try await publicDB.modifyRecords(
+                    saving: [record], deleting: [], savePolicy: policy
+                )
+                guard let result = saveResults[record.recordID] else {
+                    throw CKError(.internalError)
+                }
+                return try result.get()
+            } catch let error as CKError where attempt < Self.maxSaveAttempts {
+                if error.code == .serverRecordChanged, let serverRecord = error.serverRecord {
+                    logger.info("Conflict saving \(record.recordType, privacy: .public); re-applying to server record")
+                    applyChanges(serverRecord)
+                    record = serverRecord
+                    policy = .ifServerRecordUnchanged
+                } else if Self.isTransient(error) {
+                    try await Task.sleep(for: .seconds(error.retryAfterSeconds ?? Double(attempt)))
+                } else {
+                    throw error
+                }
+            }
+        }
+        throw CKError(.internalError)
+    }
+
+    nonisolated static func isTransient(_ error: CKError) -> Bool {
+        switch error.code {
+        case .networkUnavailable, .networkFailure, .serviceUnavailable,
+             .requestRateLimited, .zoneBusy:
+            true
+        default:
+            false
+        }
     }
 
     private struct FetchedVote {
