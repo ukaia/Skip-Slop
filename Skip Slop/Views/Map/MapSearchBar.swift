@@ -1,37 +1,45 @@
 import SwiftUI
 
+/// Glass search field pinned to the top of the explore sheet.
 struct MapSearchBar: View {
     @Binding var text: String
+    var isSearching: Bool
+    var focus: FocusState<Bool>.Binding
     var onCommit: () -> Void
 
-    @FocusState private var isFocused: Bool
-
     var body: some View {
-        HStack(spacing: 8) {
+        HStack(spacing: DS.Spacing.s) {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(.secondary)
-                .font(.system(size: 16, weight: .medium))
+                .accessibilityHidden(true)
 
-            TextField("Search restaurants, cities, zip codes...", text: $text)
-                .focused($isFocused)
+            TextField("Search places, cities, or zip codes", text: $text)
+                .focused(focus)
                 .textFieldStyle(.plain)
                 .autocorrectionDisabled()
-                .onSubmit { onCommit() }
+                .submitLabel(.search)
+                .onSubmit(onCommit)
+                .accessibilityHint("Filters the list as you type. Search looks beyond this area.")
 
-            if !text.isEmpty {
+            if isSearching {
+                ProgressView()
+                    .accessibilityLabel("Searching")
+            } else if !text.isEmpty {
                 Button {
                     text = ""
-                    isFocused = false
                 } label: {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundStyle(.secondary)
+                        .frame(width: DS.minHitTarget, height: DS.minHitTarget)
+                        .contentShape(.rect)
                 }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Clear search")
             }
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 10)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
-        .shadow(color: .black.opacity(0.1), radius: 8, y: 4)
-        .padding(.horizontal, 16)
+        .padding(.leading, DS.Spacing.m)
+        .frame(minHeight: DS.minHitTarget + 4)
+        // The sheet is already glass; a fill (not more glass) keeps layers legible.
+        .background(.fill.tertiary, in: .capsule)
     }
 }

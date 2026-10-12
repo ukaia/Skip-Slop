@@ -1,251 +1,180 @@
 import SwiftUI
-import SwiftData
 import MapKit
-import os
 
+/// Full-screen map with floating glass controls and a persistent explore sheet.
 struct MapContainerView: View {
-    @Environment(\.openURL) private var openURL
-    @Binding var mapResults: [MKMapItem]
-    let ratedResults: [RatedMapItem]
+    @Environment(ChainDatabase.self) private var chainDB
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var model = ExploreModel()
+    @State private var showLegend = false
+    @Namespace private var glassNamespace
 
-    private let logger = Logger(subsystem: "alpha.Skip-Slop", category: "Map")
-
-    @State private var locationManager = LocationManager()
-    @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
-    @State private var selectedItem: MKMapItem?
-    @State private var searchText = ""
-    @State private var showDetail = false
-    @State private var searchTask: Task<Void, Never>?
-    @State private var visibleRegion: MKCoordinateRegion?
-    @State private var hasLoadedInitial = false
-    @State private var isSearching = false
-    @State private var searchMessage: String?
-    @State private var dismissedLocationPrompt = false
-
-    private var isLocationBlocked: Bool {
-        locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .restricted
-    }
+    @ScaledMetric(relativeTo: .body) private var controlSize: CGFloat = 46
 
     var body: some View {
-        Map(position: $position, selection: $selectedItem) {
+        // No rotation: the compass would collide with the floating controls, and
+        // north-up is what you want when hunting for dinner.
+        Map(position: $model.position, interactionModes: [.pan, .zoom], selection: $model.selectedItem) {
             UserAnnotation()
 
-            ForEach(ratedResults) { entry in
-                Annotation(entry.item.name ?? "Restaurant", coordinate: ChainMatcher.coordinate(for: entry.item)) {
-                    RestaurantAnnotationView(
+            ForEach(model.displayedResults) { entry in
+                let isSelected = model.selectedItem == entry.item
+                Annotation(entry.item.name ?? "Restaurant", coordinate: entry.item.location.coordinate, anchor: .bottom) {
+                    RatingPin(
                         rating: entry.inference.rating,
-                        confidence: entry.inference.confidence,
-                        name: entry.item.name ?? "?"
+                        isEstimate: entry.inference.confidence.isEstimate,
+                        isSelected: isSelected
                     )
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel("\(entry.item.name ?? "Restaurant"), \(entry.inference.rating.accessibilityLabel)")
+                    .accessibilityValue(entry.inference.confidence.isEstimate ? "Estimated" : "")
+                    .accessibilityHint("Shows details")
+                    .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
                 }
                 .tag(entry.item)
             }
         }
+        .mapStyle(.standard(pointsOfInterest: .excludingAll))
         .mapControls {
-            MapCompass()
             MapScaleView()
         }
         .onMapCameraChange(frequency: .onEnd) { context in
-            visibleRegion = context.region
-            if hasLoadedInitial {
-                loadNearbyRestaurants(debounce: true)
-            }
+            model.cameraChanged(to: context.region)
         }
-        .onChange(of: selectedItem) { _, newValue in
-            if newValue != nil {
-                showDetail = true
-            }
+        .overlay(alignment: .topTrailing) {
+            floatingControls
+                .padding(.trailing, DS.Spacing.l)
+                .padding(.top, DS.Spacing.s)
         }
-        .safeAreaInset(edge: .top) {
-            VStack(spacing: 8) {
-                MapSearchBar(text: $searchText) {
-                    performSearch()
-                }
-
-                if let searchMessage {
-                    Text(searchMessage)
-                        .font(.footnote)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(.ultraThinMaterial, in: Capsule())
-                        .transition(.opacity)
-                }
-
-                HStack {
-                    Spacer()
-                    Button {
-                        centerOnUser()
-                    } label: {
-                        Image(systemName: "location.fill")
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundStyle(.blue)
-                            .frame(width: 40, height: 40)
-                            .background(.ultraThinMaterial, in: Circle())
-                            .shadow(color: .black.opacity(0.1), radius: 4, y: 2)
-                    }
-                    .padding(.trailing, 16)
-                }
-            }
-            .padding(.top, 8)
-            .padding(.bottom, 4)
-        }
-        .overlay {
-            if isLocationBlocked && !dismissedLocationPrompt {
-                locationDeniedView
-            } else if isSearching && mapResults.isEmpty {
-                ProgressView("Finding restaurants…")
-                    .padding()
-                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
-            }
-        }
-        .sheet(isPresented: $showDetail, onDismiss: { selectedItem = nil }) {
-            if let entry = ratedResults.first(where: { $0.item == selectedItem }) {
-                RestaurantDetailView(
-                    mapItem: entry.item,
-                    chainMatch: entry.chainMatch,
-                    inference: entry.inference
-                )
-                .presentationDetents([.medium, .large])
+        .sheet(isPresented: .constant(true)) {
+            ExploreSheet(model: model)
+                .presentationDetents([.peek, .medium, .large], selection: $model.detent)
+                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
                 .presentationDragIndicator(.visible)
-            }
+                .interactiveDismissDisabled()
+                .sensoryFeedback(.selection, trigger: model.detent)
         }
-        .task {
-            locationManager.requestPermission()
-            await loadInitialRestaurants()
-        }
+        .sensoryFeedback(.selection, trigger: model.selectedItem) { _, new in new != nil }
+        .task { await model.start(using: chainDB) }
     }
 
-    private var locationDeniedView: some View {
-        ContentUnavailableView {
-            Label("Location Access Off", systemImage: "location.slash.fill")
-        } description: {
-            Text("Skip Slop needs your location to show nearby restaurants. You can still search for a city or zip code.")
-        } actions: {
-            Button("Open Settings") {
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    openURL(url)
+    // MARK: - Floating controls
+
+    private var floatingControls: some View {
+        GlassEffectContainer(spacing: DS.Spacing.m) {
+            VStack(alignment: .trailing, spacing: DS.Spacing.m) {
+                Button {
+                    model.showSettings = true
+                } label: {
+                    controlIcon("gearshape.fill")
                 }
-            }
-            .buttonStyle(.borderedProminent)
+                .buttonStyle(.plain)
+                .glassEffect(.regular.interactive(), in: .circle)
+                .accessibilityLabel("Settings")
 
-            Button("Continue Without Location") {
-                dismissedLocationPrompt = true
-            }
-        }
-        .background(.regularMaterial)
-    }
+                VStack(spacing: 0) {
+                    locationButton
+                    Divider().frame(width: controlSize * 0.6)
+                    filterMenu
+                }
+                .glassEffect(.regular.interactive(), in: .capsule)
 
-    /// Waits briefly for the first location fix (or a denial), then runs the first search.
-    private func loadInitialRestaurants() async {
-        isSearching = true
-        let deadline = ContinuousClock.now + .seconds(5)
-        while locationManager.location == nil,
-              !isLocationBlocked,
-              ContinuousClock.now < deadline {
-            try? await Task.sleep(for: .milliseconds(200))
-            if Task.isCancelled { return }
-        }
-
-        if let location = locationManager.location {
-            let region = MKCoordinateRegion(
-                center: location.coordinate,
-                latitudinalMeters: 3000,
-                longitudinalMeters: 3000
-            )
-            visibleRegion = region
-            position = .region(region)
-        }
-        hasLoadedInitial = true
-        loadNearbyRestaurants()
-    }
-
-    private func centerOnUser() {
-        if isLocationBlocked {
-            dismissedLocationPrompt = false
-            return
-        }
-        withAnimation(.easeInOut(duration: 0.5)) {
-            position = .userLocation(fallback: .automatic)
-        }
-    }
-
-    private func showSearchMessage(_ message: String) {
-        withAnimation { searchMessage = message }
-        Task {
-            try? await Task.sleep(for: .seconds(3))
-            withAnimation {
-                if searchMessage == message { searchMessage = nil }
-            }
-        }
-    }
-
-    private func performSearch() {
-        let query = searchText.trimmingCharacters(in: .whitespaces)
-        guard !query.isEmpty else { return }
-        searchTask?.cancel()
-        searchTask = Task {
-            guard let region = visibleRegion else { return }
-            isSearching = true
-            defer { if !Task.isCancelled { isSearching = false } }
-            do {
-                let result = try await MapSearchService.smartSearch(query: query, region: region)
-                if Task.isCancelled { return }
-
-                switch result {
-                case .restaurants(let items):
-                    if items.isEmpty {
-                        showSearchMessage("No restaurants found for “\(query)”")
-                    } else {
-                        mapResults = items
+                if showLegend {
+                    MapLegendCard { toggleLegend() }
+                        .glassEffect(.regular, in: .rect(cornerRadius: DS.Radius.card))
+                        .glassEffectID("legend", in: glassNamespace)
+                } else {
+                    Button(action: toggleLegend) {
+                        controlIcon("questionmark")
                     }
-                case .region(let newRegion):
-                    withAnimation(.easeInOut(duration: 0.5)) {
-                        position = .region(newRegion)
-                    }
-                    try? await Task.sleep(for: .seconds(1.0))
-                    if !Task.isCancelled {
-                        let nearby = try await MapSearchService.searchNearby(region: newRegion)
-                        if !Task.isCancelled {
-                            mapResults = nearby
-                            if nearby.isEmpty {
-                                showSearchMessage("No restaurants found near “\(query)”")
-                            }
-                        }
-                    }
-                }
-            } catch {
-                if !Task.isCancelled {
-                    logger.error("Search failed: \(error.localizedDescription, privacy: .public)")
-                    showSearchMessage("No results for “\(query)”")
+                    .buttonStyle(.plain)
+                    .glassEffect(.regular.interactive(), in: .circle)
+                    .glassEffectID("legend", in: glassNamespace)
+                    .accessibilityLabel("Rating guide")
+                    .accessibilityHint("Shows what each grade means")
                 }
             }
         }
     }
 
-    private func loadNearbyRestaurants(debounce: Bool = false) {
-        searchTask?.cancel()
-        searchTask = Task {
-            if debounce {
-                // Coalesce rapid pans: a newer camera change cancels this task.
-                try? await Task.sleep(for: .milliseconds(500))
-                if Task.isCancelled { return }
+    private var locationButton: some View {
+        Button {
+            if model.isLocationBlocked {
+                model.detent = .medium
+            } else {
+                model.centerOnUser(reduceMotion: reduceMotion)
             }
-            guard let region = visibleRegion else {
-                isSearching = false
-                return
-            }
-            isSearching = true
-            defer { if !Task.isCancelled { isSearching = false } }
-            do {
-                let results = try await MapSearchService.searchNearby(region: region)
-                if !Task.isCancelled {
-                    mapResults = results
-                }
-            } catch {
-                if !Task.isCancelled {
-                    logger.error("Nearby search failed: \(error.localizedDescription, privacy: .public)")
-                }
-            }
+        } label: {
+            controlIcon(model.isLocationBlocked ? "location.slash" : "location.fill")
         }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Show my location")
+        .accessibilityHint(model.isLocationBlocked ? "Location access is off" : "Centers the map on you")
+    }
+
+    private var filterMenu: some View {
+        Menu {
+            Picker("Filter by grade", selection: $model.filter) {
+                Label("All grades", systemImage: "square.grid.2x2").tag(SlopRating?.none)
+                ForEach(SlopRating.allCases) { rating in
+                    Label("\(rating.grade)  \(rating.name)", systemImage: rating.symbol)
+                        .tag(SlopRating?.some(rating))
+                }
+            }
+        } label: {
+            controlIcon(model.filter == nil
+                ? "line.3.horizontal.decrease"
+                : "line.3.horizontal.decrease.circle.fill")
+        }
+        .accessibilityLabel("Filter by grade")
+        .accessibilityValue(model.filter.map { $0.accessibilityLabel } ?? "All grades")
+        .sensoryFeedback(.selection, trigger: model.filter)
+    }
+
+    private func controlIcon(_ systemName: String) -> some View {
+        Image(systemName: systemName)
+            .font(.body.weight(.semibold))
+            .foregroundStyle(.primary)
+            .contentTransition(.symbolEffect(.replace))
+            .frame(width: max(controlSize, DS.minHitTarget), height: max(controlSize, DS.minHitTarget))
+            .contentShape(.rect)
+    }
+
+    private func toggleLegend() {
+        withAnimation(reduceMotion ? .easeInOut(duration: 0.2) : .snappySlop) {
+            showLegend.toggle()
+        }
+    }
+}
+
+/// Compact grade key that morphs out of the map's "?" button.
+private struct MapLegendCard: View {
+    let onClose: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: DS.Spacing.s) {
+            HStack {
+                Text("Grades")
+                    .font(DS.Typeface.headline)
+                    .accessibilityAddTraits(.isHeader)
+                Spacer(minLength: DS.Spacing.l)
+                Button(action: onClose) {
+                    Image(systemName: "xmark")
+                        .font(.body.weight(.semibold))
+                        .frame(width: DS.minHitTarget, height: DS.minHitTarget)
+                        .contentShape(.rect)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Close rating guide")
+            }
+            ScrollView {
+                RatingLegendView(showsDescriptions: false)
+            }
+            .scrollBounceBehavior(.basedOnSize)
+            .frame(maxHeight: 360)
+        }
+        .padding(.leading, DS.Spacing.l)
+        .padding([.trailing, .bottom], DS.Spacing.s)
+        .frame(maxWidth: 260)
     }
 }

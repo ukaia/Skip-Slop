@@ -1,33 +1,21 @@
 import SwiftUI
-import MapKit
 
+/// Root: onboarding until it's been seen, then the map-first explore screen.
 struct ContentView: View {
-    @Environment(ChainDatabase.self) private var chainDB
-    @State private var selectedTab = 0
-    @State private var mapResults: [MKMapItem] = []
-    @State private var ratedResults: [RatedMapItem] = []
-    @State private var ratingCache = RatingCache()
+    @AppStorage(OnboardingView.seenKey) private var hasSeenOnboarding = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            Tab("Map", systemImage: "map.fill", value: 0) {
-                MapContainerView(mapResults: $mapResults, ratedResults: ratedResults)
-            }
-
-            Tab("List", systemImage: "list.bullet", value: 1) {
-                RestaurantListView(ratedResults: ratedResults)
-            }
-
-            Tab("Settings", systemImage: "gearshape.fill", value: 2) {
-                NavigationStack {
-                    SettingsView()
-                        .navigationTitle("Settings")
-                }
+        ZStack {
+            if hasSeenOnboarding {
+                MapContainerView()
+                    .transition(.opacity)
+            } else {
+                OnboardingView { hasSeenOnboarding = true }
+                    .transition(reduceMotion ? .opacity : .opacity.combined(with: .scale(scale: 1.04)))
             }
         }
-        .tint(.slopGreen)
-        .onChange(of: mapResults) { _, newValue in
-            ratedResults = ratingCache.rate(newValue, using: chainDB)
-        }
+        .animation(.easeInOut(duration: 0.35), value: hasSeenOnboarding)
+        .tint(DS.accent)
     }
 }
