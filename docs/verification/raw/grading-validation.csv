@@ -1,0 +1,48 @@
+name,expected,app_grade,label,matched,agrees
+Chez Panisse,A+,A+,High confidence,independent:chez-panisse,yes
+Blue Hill,A+,A+,Medium confidence,independent:blue-hill-nyc,yes
+Le Pigeon,A,A,High confidence,independent:le-pigeon,yes
+Ava Gene's,A+,A+,High confidence,independent:ava-genes,yes
+Screen Door,A,B,High confidence,independent:screen-door-eastside,no
+Husk,A+,A+,High confidence,independent:husk-charleston,yes
+Zuni Café,A+,A+,High confidence,independent:zuni-cafe,yes
+Franklin Barbecue,A,B,High confidence,independent:franklin-barbecue,no
+Pine State Biscuits,–,–,Not graded yet,,yes
+Joe's Pizza,–,–,Not graded yet,joes-pizza,yes
+Veracruz All Natural,–,–,Not graded yet,,yes
+The Cheesecake Factory,A,A,Medium confidence,cheesecake-factory,yes
+Applebee's Grill + Bar,F,F,Medium confidence,applebees,yes
+Chili's Grill & Bar,F,F,Medium confidence,chilis,yes
+Olive Garden Italian Restaurant,C,C,Medium confidence,olive-garden,yes
+Texas Roadhouse,A,A,High confidence,texas-roadhouse,yes
+Red Lobster,F,F,Medium confidence,red-lobster,yes
+Outback Steakhouse,B,B,High confidence,outback-steakhouse,yes
+Cracker Barrel Old Country Store,A,A,High confidence,cracker-barrel,yes
+Denny's,F,F,Medium confidence,dennys,yes
+IHOP,B,B,Medium confidence,ihop,yes
+P.F. Chang's,A,A,High confidence,pf-changs,yes
+TGI Fridays,F,F,Medium confidence,tgi-fridays,yes
+Waffle House,B,B,Low confidence,waffle-house,yes
+McDonald's,F,F,High confidence,mcdonalds,yes
+In-N-Out Burger,A,A,Medium confidence,in-n-out,yes
+Chipotle Mexican Grill,B,B,High confidence,chipotle,yes
+Panera Bread,F,C,Low confidence,panera-bread,no
+Subway,F,F,High confidence,subway,yes
+Taco Bell,F,F,High confidence,taco-bell,yes
+Wendy's,C,C,High confidence,wendys,yes
+Burger King,F,F,Medium confidence,burger-king,yes
+Chick-fil-A,B,B,High confidence,chick-fil-a,yes
+Starbucks Coffee Company,F,F,Medium confidence,starbucks,yes
+Domino's Pizza,C,C,High confidence,dominos,yes
+Five Guys,A,A,Medium confidence,five-guys,yes
+Shake Shack,B,B,Medium confidence,shake-shack,yes
+sweetgreen,A+,A+,High confidence,sweetgreen,yes
+CAVA,B,B,Medium confidence,cava,yes
+Popeyes Louisiana Kitchen,B,B,Medium confidence,popeyes,yes
+KFC,B,B,Low confidence,kfc,yes
+Raising Cane's Chicken Fingers,B,B,Medium confidence,raising-canes,yes
+Dunkin',F,F,Low confidence,dunkin,yes
+Jersey Mike's Subs,C,C,High confidence,jersey-mikes,yes
+Panda Express,B,B,Medium confidence,panda-express,yes
+Buffalo Wild Wings,F,F,Medium confidence,buffalo-wild-wings,yes
+Dutch Bros Coffee,–,–,Not graded yet,dutch-bros,yes

@@ -7,8 +7,7 @@ import Testing
 /// compares the result with the grade a reviewer assigned by reading the
 /// cited evidence (docs/verification/grading-validation.md).
 ///
-/// Set TEST_RUNNER_SKIPSLOP_VALIDATION=<dir> to also write the results to
-/// <dir>/grading-validation.csv.
+/// Results are written to docs/verification/raw/grading-validation.csv.
 @Suite("Grading validation")
 struct GradingValidationTests {
     nonisolated struct Case: Sendable, CustomStringConvertible {
@@ -97,10 +96,12 @@ struct GradingValidationTests {
             rows.append([c.name, c.expected, result.grade, result.label, result.matched, ok ? "yes" : "no"]
                 .map(PlaceVerificationTests.csvField).joined(separator: ","))
         }
-        if let dir = ProcessInfo.processInfo.environment["SKIPSLOP_VALIDATION"] {
-            let url = URL(filePath: dir, directoryHint: .isDirectory)
-            try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
-            try rows.joined(separator: "\n").write(to: url.appending(path: "grading-validation.csv"), atomically: true, encoding: .utf8)
+        // Simulator tests can reach the Mac's file system, so the results land
+        // next to the write-up (docs/verification/raw/grading-validation.csv).
+        let repo = URL(filePath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
+        let dir = repo.appending(path: "docs/verification/raw", directoryHint: .isDirectory)
+        if FileManager.default.fileExists(atPath: dir.path()) {
+            try (rows.joined(separator: "\n") + "\n").write(to: dir.appending(path: "grading-validation.csv"), atomically: true, encoding: .utf8)
         }
         let accuracy = Double(agree) / Double(Self.cases.count)
         #expect(accuracy >= 0.85, "Agreement \(agree)/\(Self.cases.count)")

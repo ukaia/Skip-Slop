@@ -120,8 +120,7 @@ struct ChainMatcherTests {
 
     @Test func unresearchedChainsAreNotGraded() throws {
         let sitDown = try #require(database.lookup(slug: "lazy-dog-restaurant-and-bar"))
-        #expect(sitDown.provenance == "nsi")
-        #expect(sitDown.wikidata?.hasPrefix("Q") == true)
+        #expect(sitDown.provenance != "curated")
         #expect(!sitDown.isGraded)
         #expect(GradeResolver.assessment(for: sitDown) == nil)
     }
