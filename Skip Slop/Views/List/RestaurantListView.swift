@@ -48,6 +48,11 @@ struct RestaurantListView: View {
                     List {
                         filterSection
 
+                        if filteredResults.isEmpty {
+                            noMatchesState
+                                .listRowBackground(Color.clear)
+                        }
+
                         ForEach(filteredResults, id: \.item) { entry in
                             Button {
                                 selectedItem = entry.item
@@ -102,6 +107,19 @@ struct RestaurantListView: View {
             .padding(.horizontal, 4)
         }
         .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+    }
+
+    @ViewBuilder
+    private var noMatchesState: some View {
+        if !searchText.isEmpty {
+            ContentUnavailableView.search(text: searchText)
+        } else {
+            ContentUnavailableView(
+                "No Matches",
+                systemImage: "line.3.horizontal.decrease.circle",
+                description: Text("No nearby restaurants have this rating. Try another filter.")
+            )
+        }
     }
 
     private var emptyState: some View {

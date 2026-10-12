@@ -21,12 +21,17 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         authorizationStatus = manager.authorizationStatus
     }
 
+    /// Starts updates immediately if already authorized (no delegate callback fires
+    /// in that case); otherwise prompts when the status is still undetermined.
     func requestPermission() {
-        let status = manager.authorizationStatus
-        if status == .authorizedWhenInUse || status == .authorizedAlways {
+        authorizationStatus = manager.authorizationStatus
+        switch authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways:
             manager.startUpdatingLocation()
-        } else {
+        case .notDetermined:
             manager.requestWhenInUseAuthorization()
+        default:
+            break // denied/restricted — UI offers a link to Settings
         }
     }
 
@@ -51,8 +56,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         let status = manager.authorizationStatus
         Task { @MainActor in
             self.authorizationStatus = status
-            if status == .authorizedWhenInUse || status == .authorizedAlways {
-                manager.startUpdatingLocation()
+            if self.isAuthorized {
+                self.manager.startUpdatingLocation()
+            } else {
+                self.manager.stopUpdatingLocation()
             }
         }
     }
