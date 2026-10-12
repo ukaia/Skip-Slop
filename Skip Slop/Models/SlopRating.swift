@@ -1,13 +1,16 @@
 import SwiftUI
 
-nonisolated enum SlopRating: String, Codable, CaseIterable, Identifiable {
+/// How a restaurant's food is made, from A+ (local, from scratch) to F−
+/// (distributor meals reheated). See docs/data/RATING_METHOD.md.
+nonisolated enum SlopRating: String, Codable, CaseIterable, Identifiable, Sendable {
     case greenPlus  = "green_plus"
     case green      = "green"
     case yellow     = "yellow"
     case orange     = "orange"
     case red        = "red"
     case redMinus   = "red_minus"
-    case grey       = "grey"
+    /// No evidence yet. Raw value kept from the old "N/A" grade so saved data still decodes.
+    case notGraded  = "grey"
 
     var id: String { rawValue }
 
@@ -21,7 +24,7 @@ nonisolated enum SlopRating: String, Codable, CaseIterable, Identifiable {
         case .orange:    "C"
         case .red:       "F"
         case .redMinus:  "F−"
-        case .grey:      "N/A"
+        case .notGraded: "?"
         }
     }
 
@@ -30,32 +33,32 @@ nonisolated enum SlopRating: String, Codable, CaseIterable, Identifiable {
         switch self {
         case .greenPlus: "A plus"
         case .redMinus:  "F minus"
-        case .grey:      "not graded"
+        case .notGraded: "not graded yet"
         default:         grade
         }
     }
 
     var name: String {
         switch self {
-        case .greenPlus: "Real & Local"
-        case .green:     "Real Food"
-        case .yellow:    "Some Slop"
-        case .orange:    "Low Grade"
-        case .red:       "Sysco Slop"
-        case .redMinus:  "Pricey Slop"
-        case .grey:      "Fast Food"
+        case .greenPlus: "Local & Scratch"
+        case .green:     "Scratch Kitchen"
+        case .yellow:    "Mostly Scratch"
+        case .orange:    "Assembled"
+        case .red:       "Reheated"
+        case .redMinus:  "Truck to Table"
+        case .notGraded: "Not Graded Yet"
         }
     }
 
     var description: String {
         switch self {
-        case .greenPlus: "Locally sourced, cooked from real ingredients."
-        case .green:     "Real food, not frozen and reheated."
-        case .yellow:    "The mains are real. The sides came off a truck."
-        case .orange:    "Not Sysco, but still processed and forgettable."
-        case .red:       "Sysco or US Foods supplied. Microwaved slop."
-        case .redMinus:  "Sysco slop at steakhouse prices."
-        case .grey:      "Fast food. It is what it is, so we don't grade it."
+        case .greenPlus: "Cooked from scratch with ingredients from named local farms."
+        case .green:     "Cooked from scratch on site, mostly from fresh ingredients."
+        case .yellow:    "Mostly cooked on site. Some parts arrive pre-made."
+        case .orange:    "Part cooked, part assembled from pre-made and frozen parts."
+        case .red:       "Mostly pre-made or frozen, reheated or fried on site."
+        case .redMinus:  "Whole meals off a Sysco-style truck, reheated."
+        case .notGraded: "No evidence yet. Tell us how the food is made."
         }
     }
 
@@ -64,17 +67,19 @@ nonisolated enum SlopRating: String, Codable, CaseIterable, Identifiable {
         switch self {
         case .greenPlus: "leaf.fill"
         case .green:     "checkmark.seal.fill"
-        case .yellow:    "exclamationmark.triangle.fill"
-        case .orange:    "hand.thumbsdown.fill"
-        case .red:       "xmark.octagon.fill"
-        case .redMinus:  "dollarsign.circle.fill"
-        case .grey:      "takeoutbag.and.cup.and.straw.fill"
+        case .yellow:    "frying.pan.fill"
+        case .orange:    "square.stack.3d.up.fill"
+        case .red:       "microwave.fill"
+        case .redMinus:  "box.truck.fill"
+        case .notGraded: "questionmark.circle"
         }
     }
 
-    /// e.g. "Grade F, Sysco Slop".
+    var isGraded: Bool { self != .notGraded }
+
+    /// e.g. "Grade F, Reheated".
     var accessibilityLabel: String {
-        self == .grey ? "Not graded, \(name)" : "Grade \(spokenGrade), \(name)"
+        isGraded ? "Grade \(spokenGrade), \(name)" : name
     }
 
     var color: Color {
@@ -85,7 +90,7 @@ nonisolated enum SlopRating: String, Codable, CaseIterable, Identifiable {
         case .orange:    .slopOrange
         case .red:       .slopRed
         case .redMinus:  .slopRedMinus
-        case .grey:      .slopGrey
+        case .notGraded: .slopGrey
         }
     }
 
@@ -97,11 +102,11 @@ nonisolated enum SlopRating: String, Codable, CaseIterable, Identifiable {
         case .orange:    3
         case .red:       4
         case .redMinus:  5
-        case .grey:      6
+        case .notGraded: 6
         }
     }
 
-    /// Segment index for the slop-o-meter (excludes grey)
+    /// Segment index for the slop-o-meter (excludes not graded)
     var meterIndex: Int? {
         switch self {
         case .redMinus:  0
@@ -110,12 +115,19 @@ nonisolated enum SlopRating: String, Codable, CaseIterable, Identifiable {
         case .yellow:    3
         case .green:     4
         case .greenPlus: 5
-        case .grey:      nil
+        case .notGraded: nil
         }
     }
 
     static var meterCases: [SlopRating] {
         [.redMinus, .red, .orange, .yellow, .green, .greenPlus]
+    }
+
+    /// Parses a letter grade ("A+", "F-", "F−").
+    init?(letter: String) {
+        let normalized = letter.replacingOccurrences(of: "-", with: "−")
+        guard let match = Self.allCases.first(where: { $0.isGraded && $0.grade == normalized }) else { return nil }
+        self = match
     }
 }
 

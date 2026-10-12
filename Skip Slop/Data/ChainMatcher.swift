@@ -2,7 +2,6 @@ import MapKit
 
 struct ChainMatchResult {
     let chainInfo: ChainInfo
-    let slopRating: SlopRating
     let chainSlug: String
 }
 
@@ -18,11 +17,7 @@ enum ChainMatcher {
         let allowPrefix = mapItem.pointOfInterestCategory.map(foodCategories.contains) ?? true
 
         if let info = database.match(name: name, allowPrefix: allowPrefix) {
-            return ChainMatchResult(
-                chainInfo: info,
-                slopRating: info.slopRating,
-                chainSlug: info.slug
-            )
+            return ChainMatchResult(chainInfo: info, chainSlug: info.slug)
         }
 
         return nil
@@ -30,6 +25,12 @@ enum ChainMatcher {
 
     static func coordinate(for mapItem: MKMapItem) -> CLLocationCoordinate2D {
         mapItem.location.coordinate
+    }
+
+    /// Stable key for a place, used for community prep reports: MapKit's place
+    /// identifier when there is one, otherwise the same key as `restaurantID`.
+    static func placeKey(for mapItem: MKMapItem, chainSlug: String?) -> String {
+        mapItem.identifier?.rawValue ?? restaurantID(for: mapItem, chainSlug: chainSlug)
     }
 
     static func restaurantID(for mapItem: MKMapItem, chainSlug: String?) -> String {

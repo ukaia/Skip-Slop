@@ -18,7 +18,7 @@ final class Restaurant {
     var communityNotes: [CommunityNote] = []
 
     var slopRating: SlopRating {
-        get { SlopRating(rawValue: slopRatingRaw) ?? .grey }
+        get { SlopRating(rawValue: slopRatingRaw) ?? .notGraded }
         set { slopRatingRaw = newValue.rawValue }
     }
 

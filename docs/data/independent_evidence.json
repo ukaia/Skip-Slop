@@ -1,0 +1,69 @@
+[
+{"id": "chez-panisse", "name": "Chez Panisse", "city": "Berkeley, CA", "address": "1517 Shattuck Avenue, Berkeley, CA",
+ "latitude": 37.8795958, "longitude": -122.2689700,
+ "signals": {"entree": "scratch", "sides": "na", "sourcing": "local"},
+ "basis": "A fixed menu that changes daily with the season, cooked from ingredients bought directly from a long-standing network of local farmers, ranchers and dairies. Founder Alice Waters started the farm-to-table movement here in 1971.",
+ "sources": [
+  {"url": "https://www.npr.org/2011/08/22/139707078/alice-waters-40-years-of-sustainable-food", "title": "Alice Waters: 40 Years Of Sustainable Food (NPR)", "tier": 2, "supports": ["entree", "sourcing"]},
+  {"url": "https://www.fsrmagazine.com/research/legacy-alice-waters-and-farm-table-dining-50-years-later", "title": "The legacy of Alice Waters and farm-to-table dining 50 years later (FSR Magazine)", "tier": 2, "supports": ["entree", "sourcing"]}
+ ]},
+{"id": "blue-hill-nyc", "name": "Blue Hill", "city": "New York, NY", "address": "75 Washington Place, New York, NY",
+ "latitude": 40.7320396, "longitude": -73.9995703,
+ "signals": {"entree": "scratch", "sides": "na", "sourcing": "local"},
+ "basis": "Dan Barber's original restaurant cooks with produce, meat and grains from the Stone Barns farm and other Hudson Valley farms.",
+ "sources": [
+  {"url": "https://www.nrn.com/restaurant-segments/blue-hill", "title": "Blue Hill (Nation's Restaurant News)", "tier": 2, "supports": ["entree", "sourcing"]},
+  {"url": "https://archive.jamesbeard.org/blog/interview-dan-barber-oustanding-restaurant-nominee-blue-hill-stone-barns", "title": "Interview: Dan Barber (James Beard Foundation)", "tier": 2, "supports": ["sourcing"]}
+ ]},
+{"id": "le-pigeon", "name": "Le Pigeon", "city": "Portland, OR", "address": "738 East Burnside Street, Portland, OR",
+ "latitude": 45.5228048, "longitude": -122.6578377,
+ "signals": {"entree": "scratch", "sides": "na"},
+ "basis": "Gabriel Rucker's nose-to-tail French bistro serves seasonal tasting menus cooked in house; the menu 'evolves with the seasons'.",
+ "sources": [
+  {"url": "https://www.lepigeon.com/", "title": "Le Pigeon", "tier": 1, "supports": ["entree"]},
+  {"url": "https://foodgps.com/le-pigeon-portland", "title": "Le Pigeon: Leading the West Coast, Nose-To-Tail Charge (Food GPS)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"id": "ava-genes", "name": "Ava Gene's", "city": "Portland, OR", "address": "3377 Southeast Division Street, Portland, OR",
+ "latitude": 45.5050190, "longitude": -122.6298877,
+ "signals": {"entree": "scratch", "sides": "scratch", "sourcing": "local"},
+ "basis": "An 'aggressively seasonal' Roman-inspired menu built on produce and meat from Pacific Northwest farmers and ranchers; pasta is milled, extruded and rolled in house.",
+ "sources": [
+  {"url": "https://www.avagenes.com/", "title": "Ava Gene's", "tier": 1, "supports": ["entree", "sides", "sourcing"]},
+  {"url": "https://www.pdxmonthly.com/articles/the-10-best-restaurants-of-2013", "title": "The 10 Best Restaurants of 2013 (Portland Monthly)", "tier": 2, "supports": ["entree", "sourcing"]}
+ ]},
+{"id": "screen-door-eastside", "name": "Screen Door", "aliases": ["Screen Door Eastside"], "city": "Portland, OR", "address": "2337 East Burnside Street, Portland, OR",
+ "latitude": 45.5230343, "longitude": -122.6416820,
+ "signals": {"entree": "scratch", "sides": "mixed", "sourcing": "local"},
+ "basis": "Southern comfort food made with local, fresh, organic produce and poultry; chicken is battered and fried in house and biscuits are baked fresh.",
+ "sources": [
+  {"url": "https://www.thedailymeal.com/screen-door-bringing-southern-dining-north", "title": "Screen Door Bringing Southern Dining Up North (The Daily Meal)", "tier": 3, "supports": ["entree", "sourcing"]},
+  {"url": "https://opentable.com/r/screen-door-eastside-portland", "title": "Screen Door Eastside (restaurant's own description on OpenTable)", "tier": 1, "supports": ["entree", "sourcing"]},
+  {"url": "https://www.pdxmonthly.com/eat-and-drink/2012/02/best-fried-chicken-and-waffles-march-2012", "title": "Best fried chicken and waffles (Portland Monthly)", "tier": 2, "supports": ["entree"]}
+ ]},
+{"id": "husk-charleston", "name": "Husk", "city": "Charleston, SC", "address": "76 Queen Street, Charleston, SC",
+ "latitude": 32.7780172, "longitude": -79.9321415,
+ "signals": {"entree": "scratch", "sides": "scratch", "sourcing": "local"},
+ "basis": "'If it doesn't come from the South, it's not coming through the door': every ingredient is Southern, and a chalkboard lists the farms and purveyors used that day.",
+ "sources": [
+  {"url": "https://www.chowhound.com/1865315/husk-restaurant-ingredients-rules-south-carolina-local", "title": "This South Carolina Restaurant Has Some Pretty Strict Rules About The Ingredients It Uses (Chowhound)", "tier": 3, "supports": ["entree", "sides", "sourcing"]},
+  {"url": "https://www.nrn.com/chef-trends/chef-sean-brock-on-breeding-pigs-and-celebrating-southern-food", "title": "Chef Sean Brock on breeding pigs and celebrating Southern food (Nation's Restaurant News)", "tier": 2, "supports": ["entree", "sourcing"]},
+  {"url": "https://charlestoncitypaper.com/2025/11/07/husk-celebrates-15-years/", "title": "Husk celebrates 15 years (Charleston City Paper)", "tier": 2, "supports": ["sourcing"]}
+ ]},
+{"id": "franklin-barbecue", "name": "Franklin Barbecue", "city": "Austin, TX", "address": "900 East 11th Street, Austin, TX",
+ "latitude": 30.2701463, "longitude": -97.7312847,
+ "signals": {"entree": "scratch"},
+ "basis": "Whole briskets are seasoned with salt and pepper and smoked for 14+ hours over post oak in the smokehouse behind the restaurant. We found nothing on how the sides are made.",
+ "sources": [
+  {"url": "https://www.austinchronicle.com/food/2010-05-28/franklin-barbecue/", "title": "Franklin Barbecue review (Austin Chronicle)", "tier": 2, "supports": ["entree"]},
+  {"url": "https://www.thedailymeal.com/what-eat-austin-brisket-0/", "title": "What To Eat In Austin: Brisket (The Daily Meal)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"id": "zuni-cafe", "name": "Zuni Café", "aliases": ["Zuni Cafe"], "city": "San Francisco, CA", "address": "1658 Market Street, San Francisco, CA",
+ "latitude": 37.7735636, "longitude": -122.4216460,
+ "signals": {"entree": "scratch", "sides": "na", "sourcing": "local"},
+ "basis": "Slow-cooked, locally sourced food from a wood-fired brick oven; chickens are dry-brined for days in house, and the menu changes with what local farms are growing.",
+ "sources": [
+  {"url": "https://stanfordmag.org/contents/beloved-chef-and-restaurateur", "title": "Beloved chef and restaurateur (Stanford Magazine)", "tier": 2, "supports": ["entree", "sourcing"]},
+  {"url": "https://www.theworlds50best.com/discovery/Establishments/US/San-Francisco/Zuni-Cafe.html", "title": "Zuni Café (The World's 50 Best Discovery)", "tier": 2, "supports": ["entree", "sourcing"]},
+  {"url": "https://www.wineandspiritsmagazine.com/news/the-zuni-chicken-hotline", "title": "The Zuni Chicken Hotline (Wine & Spirits)", "tier": 2, "supports": ["entree"]}
+ ]}
+]

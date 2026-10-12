@@ -140,8 +140,11 @@ def company_only(entry):
     return all(s["tier"] == 1 for s in sources_for(entry, "entree"))
 
 
-def grade_chain(entry):
+def grade_chain(entry, require_independent=True):
     """Returns (letter, confidence, score) or None when there is no evidence.
+
+    `require_independent=False` is used for independent restaurants, whose own
+    menu or website is first-hand evidence about a single kitchen.
 
     - F-: entrées arrive as complete meals from a broadline distributor.
     - A+: scratch entrées and sides (or none), score >= 85, and local sourcing
@@ -164,8 +167,9 @@ def grade_chain(entry):
     score = prep_score(signals)
     confidence = confidence_for(entry)
     scratch_core = signals["entree"] == "scratch" and signals.get("sides") in ("scratch", "na")
-    independent = not company_only(entry)
-    local = signals.get("sourcing") == "local" and any(s["tier"] in (2, 3) for s in sources_for(entry, "sourcing"))
+    independent = not company_only(entry) or not require_independent
+    local = signals.get("sourcing") == "local" and (
+        not require_independent or any(s["tier"] in (2, 3) for s in sources_for(entry, "sourcing")))
 
     if signals["entree"] == "broadline_meals":
         letter = "F-"
@@ -179,7 +183,7 @@ def grade_chain(entry):
         letter = "C"
     else:
         letter = "F"
-    if not independent and confidence == "high":
+    if company_only(entry) and confidence == "high":
         confidence = "medium"
     return letter, confidence, round(score, 1)
 

@@ -34,5 +34,44 @@ enum MockData {
             return item
         }
     }
+
+    /// Place key the app computes for a sample place (no MapKit identifier, so
+    /// it's the chain slug or "independent" plus coordinates).
+    static func placeKey(_ name: String, chainSlug: String? = nil) -> String {
+        guard let place = places.first(where: { $0.name == name }) else { return name }
+        return Restaurant.makeID(chainSlug: chainSlug, latitude: place.lat, longitude: place.lon)
+    }
+
+    /// Community prep reports so the sample places show every grade state:
+    /// Veracruz Taqueria has a community grade, Mama Fern's needs more reports,
+    /// and Applebee's has reports that sit under its cited grade.
+    static func prepReports() -> [PrepReport] {
+        let weekAgo = Date.now.addingTimeInterval(-7 * 24 * 60 * 60)
+        func report(_ place: String, slug: String? = nil, _ n: Int, _ verdict: PrepVerdict,
+                    _ evidence: PrepEvidence?, _ note: String = "") -> PrepReport {
+            let key = placeKey(place, chainSlug: slug)
+            let reporter = "sample-reporter-\(n)"
+            return PrepReport(
+                id: PrepReport.recordName(placeKey: key, reporterID: reporter),
+                placeKey: key, reporterID: reporter, chainSlug: slug,
+                verdict: verdict, evidence: evidence, note: note,
+                createdAt: weekAgo, updatedAt: weekAgo.addingTimeInterval(Double(n) * 3600),
+                dayStamp: PrepReport.dayStamp(for: weekAgo), dailyCount: 1, reporterSince: weekAgo
+            )
+        }
+        return [
+            report("Veracruz Taqueria", 1, .scratch, .sawPrep, "Tortillas pressed to order on the truck's flat-top."),
+            report("Veracruz Taqueria", 2, .scratch, .sawPrep),
+            report("Veracruz Taqueria", 3, .scratch, .staffTold, "Cook said the salsas are made every morning."),
+            report("Veracruz Taqueria", 4, .scratch, .menuSays),
+            report("Veracruz Taqueria", 5, .scratch, .impression),
+            report("Veracruz Taqueria", 6, .scratch, .sawPrep),
+            report("Veracruz Taqueria", 7, .reheated, .impression),
+            report("Mama Fern's Homestyle", 1, .scratch, .staffTold),
+            report("Mama Fern's Homestyle", 2, .unsure, nil),
+            report("Applebee's", slug: "applebees", 1, .reheated, .frozenBoxes, "Riblets came out of a bag in the microwave."),
+            report("Applebee's", slug: "applebees", 2, .reheated, .workedHere),
+        ]
+    }
 }
 #endif
