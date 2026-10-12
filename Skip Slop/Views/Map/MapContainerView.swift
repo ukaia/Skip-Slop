@@ -4,10 +4,9 @@ import MapKit
 import os
 
 struct MapContainerView: View {
-    @Environment(ChainDatabase.self) private var chainDB
-    @Environment(\.modelContext) private var modelContext
     @Environment(\.openURL) private var openURL
     @Binding var mapResults: [MKMapItem]
+    let ratedResults: [RatedMapItem]
 
     private let logger = Logger(subsystem: "alpha.Skip-Slop", category: "Map")
 
@@ -31,18 +30,15 @@ struct MapContainerView: View {
         Map(position: $position, selection: $selectedItem) {
             UserAnnotation()
 
-            ForEach(mapResults, id: \.self) { item in
-                let chainMatch = ChainMatcher.match(mapItem: item, using: chainDB)
-                let inference = RatingInferenceEngine.infer(mapItem: item, chainMatch: chainMatch)
-
-                Annotation(item.name ?? "Restaurant", coordinate: ChainMatcher.coordinate(for: item)) {
+            ForEach(ratedResults) { entry in
+                Annotation(entry.item.name ?? "Restaurant", coordinate: ChainMatcher.coordinate(for: entry.item)) {
                     RestaurantAnnotationView(
-                        rating: inference.rating,
-                        confidence: inference.confidence,
-                        name: item.name ?? "?"
+                        rating: entry.inference.rating,
+                        confidence: entry.inference.confidence,
+                        name: entry.item.name ?? "?"
                     )
                 }
-                .tag(item)
+                .tag(entry.item)
             }
         }
         .mapControls {
@@ -52,7 +48,7 @@ struct MapContainerView: View {
         .onMapCameraChange(frequency: .onEnd) { context in
             visibleRegion = context.region
             if hasLoadedInitial {
-                loadNearbyRestaurants()
+                loadNearbyRestaurants(debounce: true)
             }
         }
         .onChange(of: selectedItem) { _, newValue in
@@ -103,12 +99,11 @@ struct MapContainerView: View {
             }
         }
         .sheet(isPresented: $showDetail, onDismiss: { selectedItem = nil }) {
-            if let item = selectedItem {
-                let chainMatch = ChainMatcher.match(mapItem: item, using: chainDB)
+            if let entry = ratedResults.first(where: { $0.item == selectedItem }) {
                 RestaurantDetailView(
-                    mapItem: item,
-                    chainMatch: chainMatch,
-                    inference: RatingInferenceEngine.infer(mapItem: item, chainMatch: chainMatch)
+                    mapItem: entry.item,
+                    chainMatch: entry.chainMatch,
+                    inference: entry.inference
                 )
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
@@ -227,9 +222,14 @@ struct MapContainerView: View {
         }
     }
 
-    private func loadNearbyRestaurants() {
+    private func loadNearbyRestaurants(debounce: Bool = false) {
         searchTask?.cancel()
         searchTask = Task {
+            if debounce {
+                // Coalesce rapid pans: a newer camera change cancels this task.
+                try? await Task.sleep(for: .milliseconds(500))
+                if Task.isCancelled { return }
+            }
             guard let region = visibleRegion else {
                 isSearching = false
                 return

@@ -2,22 +2,13 @@ import SwiftUI
 import MapKit
 
 struct RestaurantListView: View {
-    let mapResults: [MKMapItem]
-    @Environment(ChainDatabase.self) private var chainDB
+    let ratedResults: [RatedMapItem]
     @State private var searchText = ""
     @State private var filterRating: SlopRating?
-    @State private var selectedItem: MKMapItem?
+    @State private var selectedEntry: RatedMapItem?
     @State private var showDetail = false
 
-    private var ratedResults: [(item: MKMapItem, chain: ChainMatchResult?, inference: RatingInferenceEngine.InferenceResult)] {
-        mapResults.map { item in
-            let chain = ChainMatcher.match(mapItem: item, using: chainDB)
-            let inference = RatingInferenceEngine.infer(mapItem: item, chainMatch: chain)
-            return (item, chain, inference)
-        }
-    }
-
-    private var filteredResults: [(item: MKMapItem, chain: ChainMatchResult?, inference: RatingInferenceEngine.InferenceResult)] {
+    private var filteredResults: [RatedMapItem] {
         var result = ratedResults
 
         if !searchText.isEmpty {
@@ -42,7 +33,7 @@ struct RestaurantListView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if mapResults.isEmpty {
+                if ratedResults.isEmpty {
                     emptyState
                 } else {
                     List {
@@ -53,16 +44,16 @@ struct RestaurantListView: View {
                                 .listRowBackground(Color.clear)
                         }
 
-                        ForEach(filteredResults, id: \.item) { entry in
+                        ForEach(filteredResults) { entry in
                             Button {
-                                selectedItem = entry.item
+                                selectedEntry = entry
                                 showDetail = true
                             } label: {
                                 MapItemRowView(
                                     item: entry.item,
                                     rating: entry.inference.rating,
                                     confidence: entry.inference.confidence,
-                                    isChain: entry.chain != nil
+                                    isChain: entry.chainMatch != nil
                                 )
                             }
                             .buttonStyle(.plain)
@@ -72,13 +63,12 @@ struct RestaurantListView: View {
                 }
             }
             .navigationTitle("Nearby")
-            .sheet(isPresented: $showDetail, onDismiss: { selectedItem = nil }) {
-                if let item = selectedItem {
-                    let chainMatch = ChainMatcher.match(mapItem: item, using: chainDB)
+            .sheet(isPresented: $showDetail, onDismiss: { selectedEntry = nil }) {
+                if let entry = selectedEntry {
                     RestaurantDetailView(
-                        mapItem: item,
-                        chainMatch: chainMatch,
-                        inference: RatingInferenceEngine.infer(mapItem: item, chainMatch: chainMatch)
+                        mapItem: entry.item,
+                        chainMatch: entry.chainMatch,
+                        inference: entry.inference
                     )
                     .presentationDetents([.medium, .large])
                     .presentationDragIndicator(.visible)

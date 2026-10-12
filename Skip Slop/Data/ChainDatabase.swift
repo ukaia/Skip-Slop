@@ -42,6 +42,7 @@ struct ChainInfo: Codable {
 final class ChainDatabase {
     private(set) var chains: [String: ChainInfo] = [:]
     private var normalizedLookup: [String: ChainInfo] = [:]
+    private var keysByLength: [String] = []
 
     /// All known alternate names mapping to a canonical slug
     private var aliases: [String: String] = [:]
@@ -63,6 +64,7 @@ final class ChainDatabase {
             let normalized = Self.normalize(item.name)
             normalizedLookup[normalized] = item
         }
+        keysByLength = normalizedLookup.keys.sorted { $0.count > $1.count }
     }
 
     /// Build common aliases — MapKit often returns different names than we store
@@ -115,9 +117,8 @@ final class ChainDatabase {
         }
 
         // Contains match — chain name in search or vice versa
-        // Sort by key length descending to prefer longer (more specific) matches
-        let sortedKeys = normalizedLookup.keys.sorted { $0.count > $1.count }
-        for key in sortedKeys {
+        // Keys are sorted by length descending to prefer longer (more specific) matches
+        for key in keysByLength {
             if key.count >= 4 && (normalized.contains(key) || key.contains(normalized)) {
                 return normalizedLookup[key]
             }

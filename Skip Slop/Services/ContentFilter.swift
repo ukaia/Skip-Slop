@@ -42,10 +42,16 @@ enum ContentFilter {
     // Precompiled repeated-character pattern
     private static let repeatedPattern: NSRegularExpression? = try? NSRegularExpression(pattern: "(.)\\1{4,}")
 
-    // Currency pattern to exclude from all-caps check (legitimate price notes like "I PAID $30")
-    private static let currencyPattern: NSRegularExpression? = try? NSRegularExpression(pattern: "\\$\\d+")
-
     private static let maxLength = 500
+    private static let screamingMinLetters = 20
+    private static let screamingUppercaseRatio = 0.95
+
+    static func isScreaming(_ text: String) -> Bool {
+        let letters = text.filter(\.isLetter)
+        guard letters.count >= screamingMinLetters else { return false }
+        let uppercase = letters.filter(\.isUppercase).count
+        return Double(uppercase) / Double(letters.count) > screamingUppercaseRatio
+    }
 
     static func containsInappropriateContent(_ text: String) -> Bool {
         let lowered = text.lowercased()
@@ -68,16 +74,11 @@ enum ContentFilter {
             }
         }
 
-        // All caps screaming (more than 95% uppercase with 20+ chars, excluding currency notes)
-        if text.count >= 20 {
-            let hasCurrency = currencyPattern?.firstMatch(in: text, range: NSRange(text.startIndex..., in: text)) != nil
-            if !hasCurrency {
-                let uppercaseCount = text.filter(\.isUppercase).count
-                let letterCount = text.filter(\.isLetter).count
-                if letterCount > 0 && Double(uppercaseCount) / Double(letterCount) > 0.95 {
-                    return true
-                }
-            }
+        // All caps screaming: 20+ letters and more than 95% of them uppercase.
+        // Digits, currency, spaces, and punctuation are ignored, so short shouty
+        // notes like "I PAID $30 FOR A BURGER" pass.
+        if isScreaming(text) {
+            return true
         }
 
         // Excessive repeated characters (like "nooooooo" or "!!!!!!")
