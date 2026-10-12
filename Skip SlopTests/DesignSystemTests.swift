@@ -42,7 +42,21 @@ struct DesignSystemTests {
 
     @Test func meterCoversEveryGradedRating() {
         #expect(SlopRating.meterCases.count == SlopRating.allCases.count - 1)
-        #expect(SlopRating.grey.meterIndex == nil)
+        #expect(SlopRating.notGraded.meterIndex == nil)
+    }
+
+    /// Saved restaurants from older builds stored "grey" for N/A.
+    @Test func notGradedKeepsTheOldRawValue() {
+        #expect(SlopRating(rawValue: "grey") == .notGraded)
+    }
+
+    @Test func reportSymbolsExist() {
+        for verdict in PrepVerdict.allCases {
+            #expect(UIImage(systemName: verdict.symbol) != nil, "\(verdict.symbol)")
+        }
+        for evidence in PrepEvidence.allCases {
+            #expect(UIImage(systemName: evidence.symbol) != nil, "\(evidence.symbol)")
+        }
     }
 
     @Test func launchOptionsAreOffByDefault() {

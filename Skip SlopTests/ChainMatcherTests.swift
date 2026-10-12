@@ -110,35 +110,26 @@ struct ChainMatcherTests {
         #expect(ChainDatabase.normalize("Noodles & Company") == "noodles and company")
     }
 
-    @Test func curatedGradesWinOverCategoryEstimates() throws {
+    @Test func researchedChainCarriesCitedGrade() throws {
         let olive = try #require(database.lookup(slug: "olive-garden"))
-        #expect(olive.slopRating == .red)
-        #expect(!olive.isCategoryEstimate)
+        #expect(olive.citedRating == .orange)
         #expect(olive.provenance == "curated")
+        #expect(olive.confidence != nil)
+        #expect(olive.sources?.isEmpty == false)
     }
 
-    @Test func newChainsCarryCategoryEstimates() throws {
-        let smash = try #require(database.lookup(slug: "smashburger"))
-        #expect(smash.isCategoryEstimate)
-        #expect(smash.provenance == "nsi")
-        #expect(smash.wikidata?.hasPrefix("Q") == true)
-        #expect(smash.slopRating == .grey)
-
+    @Test func unresearchedChainsAreNotGraded() throws {
         let sitDown = try #require(database.lookup(slug: "lazy-dog-restaurant-and-bar"))
-        #expect(sitDown.isCategoryEstimate)
-        #expect(sitDown.slopRating == .orange)
+        #expect(sitDown.provenance == "nsi")
+        #expect(sitDown.wikidata?.hasPrefix("Q") == true)
+        #expect(!sitDown.isGraded)
+        #expect(GradeResolver.assessment(for: sitDown) == nil)
     }
 
-    @Test func categoryEstimatesOnlyUseRuleGrades() {
-        for chain in database.chains.values where chain.isCategoryEstimate {
-            #expect([.grey, .orange].contains(chain.slopRating), "\(chain.slug)")
-        }
-    }
-
-    @Test func matchCarriesChainRating() throws {
+    @Test func matchCarriesChainInfo() throws {
         let result = try #require(ChainMatcher.match(mapItem: makeMapItem("Olive Garden"), using: database))
-        #expect(result.slopRating == .red)
-        #expect(result.slopRating == result.chainInfo.slopRating)
+        #expect(result.chainInfo.slug == "olive-garden")
+        #expect(GradeResolver.assessment(for: result.chainInfo)?.rating == .orange)
     }
 
     @Test func unknownRestaurantDoesNotMatch() {

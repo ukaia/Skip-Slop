@@ -94,7 +94,7 @@ final class CoreFlowUITests: XCTestCase {
         XCTAssertTrue(field.waitForExistence(timeout: timeout))
         field.tap() // focusing search expands the sheet
 
-        let chip = app.switches["Grade F, Sysco Slop"].firstMatch
+        let chip = app.switches["Grade C, Assembled"].firstMatch
         XCTAssertTrue(chip.waitForExistence(timeout: timeout))
         chip.tap()
 
@@ -103,23 +103,83 @@ final class CoreFlowUITests: XCTestCase {
         XCTAssertFalse(button(in: app, labelPrefix: "Shake Shack").exists)
     }
 
+    /// Opens a sample place's detail card by searching for it and tapping its row.
     @MainActor
-    func testDetailShowsGradeAndHowItWasGraded() {
-        let app = launch(["-UITestScreenshots", "YES"])
+    private func openDetail(_ name: String, in app: XCUIApplication) {
         let field = app.textFields["Search places, cities, or zip codes"]
         XCTAssertTrue(field.waitForExistence(timeout: timeout))
         field.tap()
-        field.typeText("Olive")
+        field.typeText(name)
         // The map pin has the same label; tap the list row.
-        let rows = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Olive Garden"))
+        let rows = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", name))
         XCTAssertTrue(rows.firstMatch.waitForExistence(timeout: timeout))
         let row = rows.allElementsBoundByIndex.first { $0.isHittable } ?? rows.firstMatch
         row.tap()
+    }
 
-        XCTAssertTrue(app.staticTexts["How we graded it"].waitForExistence(timeout: timeout))
+    @MainActor
+    func testDetailShowsCitedGradeAndWhy() {
+        let app = launch(["-UITestScreenshots", "YES"])
+        openDetail("Olive Garden", in: app)
+
+        let why = app.buttons["Why this grade"]
+        XCTAssertTrue(why.waitForExistence(timeout: timeout))
         let any = app.descendants(matching: .any)
-        XCTAssertTrue(any.matching(NSPredicate(format: "label CONTAINS %@", "Known chain")).firstMatch.exists)
-        XCTAssertTrue(any.matching(NSPredicate(format: "label CONTAINS %@", "Sysco Slop")).firstMatch.exists)
+        XCTAssertTrue(any.matching(NSPredicate(format: "label CONTAINS %@", "Grade C, Assembled")).firstMatch.exists)
+        XCTAssertTrue(any.matching(NSPredicate(format: "label CONTAINS %@", "confidence")).firstMatch.exists)
+
+        why.tap()
+        XCTAssertTrue(app.navigationBars["Why this grade"].waitForExistence(timeout: timeout))
+        XCTAssertTrue(app.staticTexts["What we found"].exists || any.matching(NSPredicate(format: "label CONTAINS[c] %@", "What we found")).firstMatch.exists)
+        XCTAssertTrue(any.matching(NSPredicate(format: "label CONTAINS %@", "Sources")).firstMatch.exists)
+        app.buttons["Done"].tap()
+    }
+
+    // MARK: - Prep reports
+
+    @MainActor
+    func testReportHowFoodIsMade() {
+        let app = launch(["-UITestScreenshots", "YES"])
+        openDetail("Lamar Bar", in: app)
+
+        let any = app.descendants(matching: .any)
+        XCTAssertTrue(any.matching(NSPredicate(format: "label CONTAINS %@", "Not Graded Yet")).firstMatch.waitForExistence(timeout: timeout))
+        XCTAssertFalse(app.buttons["Why this grade"].exists)
+
+        let scratch = app.buttons["Made from scratch"].firstMatch
+        XCTAssertTrue(scratch.waitForExistence(timeout: timeout))
+        scratch.tap()
+
+        XCTAssertTrue(app.navigationBars["Report"].waitForExistence(timeout: timeout))
+        let evidence = app.buttons["Menu or website says house-made"].firstMatch
+        if evidence.waitForExistence(timeout: 3) {
+            evidence.tap()
+        } else {
+            app.staticTexts["Menu or website says house-made"].firstMatch.tap()
+        }
+        app.buttons["Submit Report"].tap()
+        XCTAssertTrue(app.navigationBars["Report"].waitForNonExistence(timeout: timeout))
+
+        XCTAssertTrue(any.matching(NSPredicate(format: "label CONTAINS %@", "Your report: Made from scratch")).firstMatch.waitForExistence(timeout: timeout))
+        XCTAssertTrue(any.matching(NSPredicate(format: "label CONTAINS %@", "1 report")).firstMatch.exists)
+        XCTAssertTrue(any.matching(NSPredicate(format: "label CONTAINS %@", "4 more reports needed")).firstMatch.exists)
+    }
+
+    @MainActor
+    func testCommunityGradeAndReportingANote() {
+        let app = launch(["-UITestScreenshots", "YES"])
+        openDetail("Veracruz", in: app)
+
+        let any = app.descendants(matching: .any)
+        XCTAssertTrue(any.matching(NSPredicate(format: "label CONTAINS %@", "Community grade · 7 reports")).firstMatch.waitForExistence(timeout: timeout))
+
+        let report = app.buttons["Report note"].firstMatch
+        XCTAssertTrue(report.waitForExistence(timeout: timeout))
+        report.tap()
+        let confirm = app.buttons["Report Note"].firstMatch
+        XCTAssertTrue(confirm.waitForExistence(timeout: timeout))
+        confirm.tap()
+        XCTAssertTrue(any.matching(NSPredicate(format: "label CONTAINS %@", "Reported")).firstMatch.waitForExistence(timeout: timeout))
     }
 
     // MARK: - Notes and votes

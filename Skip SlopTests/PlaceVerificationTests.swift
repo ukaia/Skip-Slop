@@ -119,20 +119,19 @@ struct PlaceVerificationTests {
         return item
     }
 
-    static let header = "city,name,lat,lon,category,sources,chain_slug,chain_name,grade,confidence,estimated,reason"
+    static let header = "city,name,lat,lon,category,sources,chain_slug,chain_name,grade,kind,basis"
 
     static func row(city: String, item: MKMapItem, sources: String, database: ChainDatabase) -> String {
-        let match = ChainMatcher.match(mapItem: item, using: database)
-        let inference = RatingInferenceEngine.infer(mapItem: item, chainMatch: match)
+        let rated = RatedMapItem.rate(item, database: database, independents: .shared)
+        let assessment = GradeResolver.resolve(cited: rated.cited, community: nil)
         let coord = item.location.coordinate
         let category = item.pointOfInterestCategory?.rawValue.replacingOccurrences(of: "MKPOICategory", with: "") ?? ""
         return [
             city, item.name ?? "",
             String(format: "%.5f", coord.latitude), String(format: "%.5f", coord.longitude),
             category, sources,
-            match?.chainSlug ?? "", match?.chainInfo.name ?? "",
-            inference.rating.grade, inference.confidence.rawValue,
-            inference.confidence.isEstimate ? "yes" : "no", inference.reason,
+            rated.chainMatch?.chainSlug ?? "", rated.chainMatch?.chainInfo.name ?? "",
+            assessment.rating.grade, assessment.label, assessment.basis ?? "",
         ].map(csvField).joined(separator: ",")
     }
 
