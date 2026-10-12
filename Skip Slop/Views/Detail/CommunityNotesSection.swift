@@ -48,16 +48,18 @@ struct CommunityNotesSection: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: DS.Spacing.m) {
             HStack {
-                Label("Community Notes", systemImage: "person.2.fill")
-                    .font(.headline)
+                Text("Community Notes")
+                    .font(DS.Typeface.headline)
+                    .accessibilityAddTraits(.isHeader)
 
                 Spacer()
 
                 if isLoadingCloud {
                     ProgressView()
-                        .scaleEffect(0.7)
+                        .controlSize(.small)
+                        .accessibilityLabel("Loading notes")
                 }
             }
 
@@ -78,10 +80,11 @@ struct CommunityNotesSection: View {
 
                 // Pending cloud notes
                 if !pendingCloudNotes.isEmpty {
-                    Text("Pending")
-                        .font(.caption.weight(.semibold))
+                    Text("Waiting for votes")
+                        .font(DS.Typeface.meta.weight(.semibold))
                         .foregroundStyle(.secondary)
-                        .padding(.top, 4)
+                        .padding(.top, DS.Spacing.xs)
+                        .accessibilityAddTraits(.isHeader)
 
                     ForEach(pendingCloudNotes) { note in
                         CloudNoteCardView(note: note, isPending: true)
@@ -93,6 +96,8 @@ struct CommunityNotesSection: View {
     }
 
     private func loadCloudNotes() async {
+        // Sample data has no CloudKit records (and screenshot builds may be unsigned).
+        guard !LaunchOptions.mockData else { return }
         isLoadingCloud = true
         defer { isLoadingCloud = false }
 
@@ -112,19 +117,18 @@ struct CommunityNotesSection: View {
     }
 
     private var emptyState: some View {
-        VStack(spacing: 8) {
-            Image(systemName: "text.bubble")
-                .font(.title2)
+        VStack(alignment: .leading, spacing: DS.Spacing.xs) {
+            Label("No notes yet", systemImage: "text.bubble")
+                .font(DS.Typeface.callout.weight(.semibold))
+            Text("Spotted a Sysco truck out back, or a tip screen starting at 25%? Tell everyone.")
+                .font(DS.Typeface.callout)
                 .foregroundStyle(.secondary)
-            Text("No community notes yet")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-            Text("Be the first to report!")
-                .font(.caption)
-                .foregroundStyle(.tertiary)
+                .fixedSize(horizontal: false, vertical: true)
         }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 20)
+        .padding(DS.Spacing.l)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.fill.quaternary, in: .rect(cornerRadius: DS.Radius.card))
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -213,83 +217,107 @@ struct NoteCardLayout: View {
     let isVoting: Bool
     let onVote: (VoteDirection) -> Void
 
-    var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack {
-                Image(systemName: icon)
-                    .foregroundStyle(color)
-                    .font(.system(size: 14, weight: .semibold))
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-                Text(displayName)
-                    .font(.subheadline.weight(.semibold))
+    var body: some View {
+        VStack(alignment: .leading, spacing: DS.Spacing.s) {
+            HStack(alignment: .firstTextBaseline, spacing: DS.Spacing.s) {
+                Label {
+                    Text(displayName)
+                        .font(DS.Typeface.callout.weight(.bold))
+                } icon: {
+                    Image(systemName: icon)
+                        .foregroundStyle(color)
+                }
+
+                Spacer(minLength: 0)
 
                 if isCloud {
                     Image(systemName: "icloud.fill")
-                        .font(.caption2)
-                        .foregroundStyle(.blue.opacity(0.5))
-                }
-
-                Spacer()
-
-                if isPending {
-                    Text("\(votesNeeded) more needed")
-                        .font(.caption2)
-                        .foregroundStyle(.orange)
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 2)
-                        .background(.orange.opacity(0.1), in: Capsule())
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .accessibilityLabel("Synced")
                 }
             }
 
             if !noteBody.isEmpty {
                 Text(noteBody)
-                    .font(.subheadline)
-                    .foregroundStyle(isPending ? .secondary : .primary)
+                    .font(DS.Typeface.body)
+                    .fixedSize(horizontal: false, vertical: true)
             }
 
-            HStack {
-                Text(createdAt, style: .relative)
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
+            if isPending {
+                Text(votesNeeded == 1 ? "Needs 1 more vote to go public" : "Needs \(votesNeeded) more votes to go public")
+                    .font(DS.Typeface.meta.weight(.semibold))
+                    .foregroundStyle(.secondary)
+            }
 
-                Spacer()
-
-                HStack(spacing: 12) {
-                    Button {
-                        onVote(.up)
-                    } label: {
-                        Label("\(upvotes)", systemImage: myVote == .up ? "arrow.up.circle.fill" : "arrow.up")
-                            .font(.caption)
-                            .foregroundStyle(myVote == .up ? AnyShapeStyle(Color.slopGreen) : AnyShapeStyle(.secondary))
-                    }
-                    .accessibilityLabel(myVote == .up ? "Remove upvote" : "Upvote")
-
-                    Button {
-                        onVote(.down)
-                    } label: {
-                        Label("\(downvotes)", systemImage: myVote == .down ? "arrow.down.circle.fill" : "arrow.down")
-                            .font(.caption)
-                            .foregroundStyle(myVote == .down ? AnyShapeStyle(Color.slopRed) : AnyShapeStyle(.secondary))
-                    }
-                    .accessibilityLabel(myVote == .down ? "Remove downvote" : "Downvote")
+            ViewThatFits(in: .horizontal) {
+                HStack {
+                    timestamp
+                    Spacer()
+                    voteButtons
                 }
-                .buttonStyle(.plain)
-                .disabled(isVoting)
-                .sensoryFeedback(.selection, trigger: myVote)
+                VStack(alignment: .leading, spacing: DS.Spacing.xs) {
+                    timestamp
+                    voteButtons
+                }
             }
         }
-        .padding(12)
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(isPending ? .secondary.opacity(0.05) : color.opacity(0.08))
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
+        .padding(DS.Spacing.l)
+        .background(color.opacity(isPending ? 0.04 : 0.10), in: .rect(cornerRadius: DS.Radius.card))
+        .overlay {
+            RoundedRectangle(cornerRadius: DS.Radius.card)
                 .strokeBorder(
-                    isPending ? .secondary.opacity(0.15) : color.opacity(0.2),
-                    lineWidth: 1
+                    isPending ? AnyShapeStyle(.secondary) : AnyShapeStyle(color.opacity(0.35)),
+                    style: StrokeStyle(lineWidth: 1, dash: isPending ? [4, 3] : [])
                 )
-        )
-        .opacity(isPending ? 0.7 : 1.0)
+        }
+        .accessibilityElement(children: .contain)
+    }
+
+    private var timestamp: some View {
+        Text(createdAt, style: .relative)
+            .font(DS.Typeface.meta)
+            .foregroundStyle(.secondary)
+    }
+
+    private var voteButtons: some View {
+        HStack(spacing: DS.Spacing.xs) {
+            voteButton(.up, count: upvotes, symbol: "arrow.up", tint: DS.Palette.pickle, name: "Upvote")
+            voteButton(.down, count: downvotes, symbol: "arrow.down", tint: DS.Palette.ketchup, name: "Downvote")
+        }
+        .disabled(isVoting)
+        .sensoryFeedback(trigger: myVote) { _, new in
+            new == .up ? .success : .selection
+        }
+    }
+
+    private func voteButton(_ direction: VoteDirection, count: Int, symbol: String, tint: Color, name: String) -> some View {
+        let isOn = myVote == direction
+        return Button {
+            onVote(direction)
+        } label: {
+            HStack(spacing: DS.Spacing.xs) {
+                Image(systemName: isOn ? "\(symbol).circle.fill" : symbol)
+                    .symbolEffect(.bounce, value: reduceMotion ? false : isOn)
+                    .contentTransition(.symbolEffect(.replace))
+                Text(count, format: .number)
+                    .monospacedDigit()
+                    .contentTransition(.numericText(value: Double(count)))
+            }
+            .font(DS.Typeface.callout.weight(.semibold))
+            .foregroundStyle(isOn ? AnyShapeStyle(tint) : AnyShapeStyle(.secondary))
+            .padding(.horizontal, DS.Spacing.s)
+            .frame(minWidth: DS.minHitTarget, minHeight: DS.minHitTarget)
+            .background(isOn ? AnyShapeStyle(tint.opacity(0.15)) : AnyShapeStyle(.clear), in: .capsule)
+            .contentShape(.capsule)
+        }
+        .buttonStyle(.plain)
+        .animation(reduceMotion ? nil : .snappySlop, value: count)
+        .accessibilityLabel(name)
+        .accessibilityValue(count == 1 ? "1 vote" : "\(count) votes")
+        .accessibilityHint(isOn ? "Removes your vote" : "")
+        .accessibilityAddTraits(isOn ? .isSelected : [])
     }
 }

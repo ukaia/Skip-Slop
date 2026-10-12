@@ -12,11 +12,12 @@ struct AddNoteView: View {
     @State private var selectedType: NoteType = .syscoVerified
     @State private var noteBody = ""
     @State private var showFilterWarning = false
+    @State private var didPost = false
 
     var body: some View {
         NavigationStack {
             Form {
-                Section("What did you notice?") {
+                Section("What did you spot?") {
                     Picker("Note Type", selection: $selectedType) {
                         ForEach(NoteType.allCases) { type in
                             Label(type.displayName, systemImage: type.icon)
@@ -39,23 +40,23 @@ struct AddNoteView: View {
                 } header: {
                     Text("Details")
                 } footer: {
-                    Text("Notes become visible after \(selectedType.thresholdToPublish) community votes.")
-                        .font(.caption)
+                    Text("Your note goes public once it gets \(selectedType.thresholdToPublish) net upvotes.")
                 }
 
                 Section {
                     if chainSlug != nil {
-                        Label("This note applies to all locations of this chain", systemImage: "link")
+                        Label("Applies to every location of this chain", systemImage: "link")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
 
-                    Label("Notes are shared with the community and moderated for appropriate content.", systemImage: "shield.checkered")
+                    Label("Notes are public and filtered for abuse. Stick to the food.", systemImage: "shield.checkered")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
             }
-            .navigationTitle("Add Note")
+            .sensoryFeedback(.success, trigger: didPost)
+            .navigationTitle("New Note")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -63,17 +64,17 @@ struct AddNoteView: View {
                 }
 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Submit") {
+                    Button("Post") {
                         attemptSubmit()
                     }
                     .fontWeight(.semibold)
-                    .disabled(selectedType.requiresBody && noteBody.trimmingCharacters(in: .whitespaces).isEmpty)
+                    .disabled(didPost || (selectedType.requiresBody && noteBody.trimmingCharacters(in: .whitespaces).isEmpty))
                 }
             }
-            .alert("Inappropriate Content", isPresented: $showFilterWarning) {
+            .alert("Note Not Posted", isPresented: $showFilterWarning) {
                 Button("OK", role: .cancel) {}
             } message: {
-                Text("Your note contains language that isn't allowed. Please keep notes factual and relevant to food quality.")
+                Text("It contains language we don't allow. Edit it to stick to facts about the food, price, or tipping.")
             }
         }
     }
@@ -87,7 +88,12 @@ struct AddNoteView: View {
         }
 
         submitNote(body: cleaned)
-        dismiss()
+        didPost = true
+        Task {
+            // Give the success haptic a beat before the sheet goes away.
+            try? await Task.sleep(for: .milliseconds(150))
+            dismiss()
+        }
     }
 
     private func submitNote(body: String) {
