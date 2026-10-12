@@ -34,6 +34,20 @@ struct Skip_SlopApp: App {
                 }
                 #endif
         }
-        .modelContainer(for: [Restaurant.self, CommunityNote.self])
+        .modelContainer(Self.modelContainer)
     }
+
+    /// Local store only. Notes and votes sync through `CloudKitService`'s public
+    /// database; without `.none`, SwiftData turns on private-database sync because
+    /// the app has the iCloud entitlement, and the store fails to load (CloudKit
+    /// sync requires every attribute to be optional).
+    private static let modelContainer: ModelContainer = {
+        let configuration = ModelConfiguration(cloudKitDatabase: .none)
+        if let container = try? ModelContainer(for: Restaurant.self, CommunityNote.self, configurations: configuration) {
+            return container
+        }
+        // Last resort: keep the app usable with an in-memory store.
+        let memory = ModelConfiguration(isStoredInMemoryOnly: true, cloudKitDatabase: .none)
+        return try! ModelContainer(for: Restaurant.self, CommunityNote.self, configurations: memory)
+    }()
 }
