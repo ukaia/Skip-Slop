@@ -18,13 +18,16 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         super.init()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        authorizationStatus = manager.authorizationStatus
+        // The current status arrives in `locationManagerDidChangeAuthorization`,
+        // which fires right after the delegate is set. Reading
+        // `manager.authorizationStatus` here would block the main thread.
     }
 
-    /// Starts updates immediately if already authorized (no delegate callback fires
-    /// in that case); otherwise prompts when the status is still undetermined.
+    /// Starts updates if already authorized; otherwise prompts while the status is
+    /// still undetermined. Before the first authorization callback the status reads
+    /// as undetermined, and asking again is harmless: the system only prompts once,
+    /// and the callback starts updates when access is granted.
     func requestPermission() {
-        authorizationStatus = manager.authorizationStatus
         switch authorizationStatus {
         case .authorizedWhenInUse, .authorizedAlways:
             manager.startUpdatingLocation()
