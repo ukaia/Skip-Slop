@@ -6,8 +6,12 @@ import MapKit
 struct ChainMatcherTests {
     let database = ChainDatabase()
 
+    private func slug(_ name: String, category: MKPointOfInterestCategory? = .restaurant) -> String? {
+        ChainMatcher.match(mapItem: makeMapItem(name, category: category), using: database)?.chainSlug
+    }
+
     @Test func databaseLoadsSeedChains() {
-        #expect(database.chains.count > 100)
+        #expect(database.chains.count > 900)
     }
 
     @Test(arguments: [
@@ -20,8 +24,115 @@ struct ChainMatcherTests {
         ("BDubs", "buffalo-wild-wings"),
     ])
     func matchesKnownChains(name: String, expectedSlug: String) {
-        let result = ChainMatcher.match(mapItem: makeMapItem(name), using: database)
-        #expect(result?.chainSlug == expectedSlug)
+        #expect(slug(name, category: nil) == expectedSlug)
+    }
+
+    /// Names as MapKit returned them in the verification run (docs/verification).
+    @Test(arguments: [
+        ("Starbucks Coffee Company", "starbucks"),
+        ("Taco Bell Cantina", "taco-bell"),
+        ("Shake Shack West End Portland", "shake-shack"),
+        ("Popeyes Louisiana Kitchen", "popeyes"),
+        ("Raising Cane's Chicken Fingers", "raising-canes"),
+        ("Jersey Mike's Subs", "jersey-mikes"),
+        ("Lou Malnati's Pizzeria", "lou-malnatis"),
+        ("Dunkin'", "dunkin"),
+        ("Krispy Kreme Doughnuts", "krispy-kreme"),
+        ("Smashburger", "smashburger"),
+        ("Paris Baguette", "paris-baguette"),
+        ("Insomnia Cookies", "insomnia-cookies"),
+        ("Cinnabon", "cinnabon"),
+        ("Dickey's Barbecue Pit", "dickeys-barbecue-pit"),
+        ("Le Pain Quotidien", "le-pain-quotidien"),
+        ("Tous Les Jours", "tous-les-jours"),
+        ("Xi'an Famous Foods", "xian-famous-foods"),
+        ("Intelligentsia", "intelligentsia-coffee-and-tea"),
+        ("La Colombe Coffee Roasters", "la-colombe-coffee-roasters"),
+        ("Pizza Patrón", "pizza-patron"),
+        ("Gino’s East", "ginos-east"),
+    ])
+    func matchesRealWorldVariants(name: String, expectedSlug: String) {
+        #expect(slug(name) == expectedSlug)
+    }
+
+    @Test(arguments: [
+        ("Wendy's #4512", "wendys"),
+        ("Chipotle Mexican Grill - Downtown", "chipotle"),
+        ("Subway (Inside Walmart)", "subway"),
+        ("KFC/Taco Bell", "kfc"),
+        ("Sonic Drive-In", "sonic"),
+        ("PIZZA HUT EXPRESS", "pizza-hut"),
+        ("Café Rio Mexican Grill", "cafe-rio"),
+        ("McDonald's Restaurant", "mcdonalds"),
+        ("Jack's", "jacks"),
+    ])
+    func stripsSuffixesStoreNumbersAndCombos(name: String, expectedSlug: String) {
+        #expect(slug(name) == expectedSlug)
+    }
+
+    /// The old substring matcher matched all of these (see docs/verification).
+    @Test(arguments: [
+        "Palmer House",          // was The Palm
+        "Palmieri Cafe",         // was The Palm
+        "The Star",              // was Starbucks
+        "Ca Va Marche",          // was CAVA
+        "The Village",           // was Village Inn
+        "Taqueria El Torito",    // was El Torito
+        "Pizza",
+        "Burger Bar",
+        "Coffee Shop",
+        "Joe's",
+        "Paul Martin's American Grill",
+        "Moe's Original BBQ",
+        "Longhorn Cafe",
+        "Dig Deep Cafe",
+        "Wing Squad",
+        "Subs & Suds",
+        "Jack's Pizza",            // matched Jack's (burger chain) in the verification run
+        "La Salsa Verde Taqueria", // matched La Salsa
+    ])
+    func doesNotMatchLookalikes(name: String) {
+        #expect(slug(name) == nil)
+    }
+
+    @Test func prefixMatchesOnlyFoodCategories() {
+        #expect(slug("Shake Shack West End", category: .restaurant) == "shake-shack")
+        #expect(slug("Shake Shack West End", category: .hotel) == nil)
+        // Exact names still match whatever MapKit filed them under.
+        #expect(slug("Starbucks", category: .store) == "starbucks")
+    }
+
+    @Test func normalizeFoldsCaseDiacriticsAndPunctuation() {
+        #expect(ChainDatabase.normalize("Café Rio") == "cafe rio")
+        #expect(ChainDatabase.normalize("McDonald’s") == "mcdonalds")
+        #expect(ChainDatabase.normalize("P.F. Chang's") == "p f changs")
+        #expect(ChainDatabase.normalize("The Cheesecake Factory") == "cheesecake factory")
+        #expect(ChainDatabase.normalize("Noodles & Company") == "noodles and company")
+    }
+
+    @Test func curatedGradesWinOverCategoryEstimates() throws {
+        let olive = try #require(database.lookup(slug: "olive-garden"))
+        #expect(olive.slopRating == .red)
+        #expect(!olive.isCategoryEstimate)
+        #expect(olive.provenance == "curated")
+    }
+
+    @Test func newChainsCarryCategoryEstimates() throws {
+        let smash = try #require(database.lookup(slug: "smashburger"))
+        #expect(smash.isCategoryEstimate)
+        #expect(smash.provenance == "nsi")
+        #expect(smash.wikidata?.hasPrefix("Q") == true)
+        #expect(smash.slopRating == .grey)
+
+        let sitDown = try #require(database.lookup(slug: "lazy-dog-restaurant-and-bar"))
+        #expect(sitDown.isCategoryEstimate)
+        #expect(sitDown.slopRating == .orange)
+    }
+
+    @Test func categoryEstimatesOnlyUseRuleGrades() {
+        for chain in database.chains.values where chain.isCategoryEstimate {
+            #expect([.grey, .orange].contains(chain.slopRating), "\(chain.slug)")
+        }
     }
 
     @Test func matchCarriesChainRating() throws {
