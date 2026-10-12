@@ -13,17 +13,19 @@ enum RatingInferenceEngine {
         let reason: String
 
         enum Confidence: String {
-            case known     = "Known"       // matched in chain DB
+            case known     = "Known"       // hand-graded chain in the DB
+            case category  = "Category"    // chain in the DB, grade from its category
             case high      = "Likely"      // strong signals
             case medium    = "Estimated"   // moderate signals
             case low       = "Guess"       // weak signals
 
             var sortOrder: Int {
                 switch self {
-                case .known:  0
-                case .high:   1
-                case .medium: 2
-                case .low:    3
+                case .known:    0
+                case .category: 1
+                case .high:     2
+                case .medium:   3
+                case .low:      4
                 }
             }
         }
@@ -32,16 +34,18 @@ enum RatingInferenceEngine {
     // MARK: - Main Entry Point
 
     static func infer(mapItem: MKMapItem, chainMatch: ChainMatchResult?) -> InferenceResult {
-        // 1. Known chain — highest confidence
+        // 1. Known chain — highest confidence, unless its grade is a category estimate
         if let match = chainMatch {
             return InferenceResult(
                 rating: match.slopRating,
-                confidence: .known,
-                reason: "Known chain: \(match.chainInfo.name)"
+                confidence: match.chainInfo.isCategoryEstimate ? .category : .known,
+                reason: match.chainInfo.isCategoryEstimate
+                    ? "Chain: \(match.chainInfo.name). Grade estimated from its category."
+                    : "Known chain: \(match.chainInfo.name)"
             )
         }
 
-        let name = mapItem.name ?? ""
+        let name = Words(mapItem.name ?? "")
         let category = mapItem.pointOfInterestCategory
 
         // 2. Check if it's likely a chain we don't have in our DB
@@ -116,8 +120,7 @@ enum RatingInferenceEngine {
 
     /// Detects patterns that suggest this is a chain even if not in our DB.
     /// Chains tend to have specific naming patterns.
-    private static func detectUnknownChain(name: String) -> InferenceResult? {
-        let lower = name.lowercased()
+    private static func detectUnknownChain(name: Words) -> InferenceResult? {
 
         // Franchise suffixes/patterns
         let chainPatterns = [
@@ -141,7 +144,7 @@ enum RatingInferenceEngine {
 
         // Local/ethnic food patterns → likely real food (Green)
         for pattern in localFoodPatterns {
-            if lower.contains(pattern) {
+            if name.contains(pattern) {
                 return InferenceResult(
                     rating: .green,
                     confidence: .medium,
@@ -152,7 +155,7 @@ enum RatingInferenceEngine {
 
         // Generic chain-style names with "& bar/grill" → suspicious (Orange)
         for pattern in chainPatterns {
-            if lower.contains(pattern) && !looksIndependent(name: lower) {
+            if name.contains(pattern) && !looksIndependent(name: name) {
                 return InferenceResult(
                     rating: .orange,
                     confidence: .low,
@@ -166,8 +169,7 @@ enum RatingInferenceEngine {
 
     // MARK: - Fast Food Detection
 
-    private static func isFastFood(name: String, category: MKPointOfInterestCategory?) -> Bool {
-        let lower = name.lowercased()
+    private static func isFastFood(name: Words, category: MKPointOfInterestCategory?) -> Bool {
 
         let fastFoodKeywords = [
             "drive-thru", "drive thru", "drive-through",
@@ -178,7 +180,7 @@ enum RatingInferenceEngine {
         // MapKit doesn't have a fast food category — it's all .restaurant
         // So we rely on name patterns
         for keyword in fastFoodKeywords {
-            if lower.contains(keyword) { return true }
+            if name.contains(keyword) { return true }
         }
 
         return false
@@ -186,10 +188,9 @@ enum RatingInferenceEngine {
 
     // MARK: - Coffee / Drinks
 
-    private static func isCoffeeOrDrinks(name: String, category: MKPointOfInterestCategory?) -> Bool {
+    private static func isCoffeeOrDrinks(name: Words, category: MKPointOfInterestCategory?) -> Bool {
         if category == .cafe { return true }
 
-        let lower = name.lowercased()
         let drinkKeywords = [
             "coffee", "espresso", "cafe", "café",
             "tea house", "tea room", "boba", "bubble tea",
@@ -198,23 +199,22 @@ enum RatingInferenceEngine {
             "donut", "doughnut"
         ]
 
-        return drinkKeywords.contains { lower.contains($0) }
+        return drinkKeywords.contains { name.contains($0) }
     }
 
     // MARK: - Upscale Signals
 
-    private static func checkUpscaleSignals(name: String) -> InferenceResult? {
-        let lower = name.lowercased()
+    private static func checkUpscaleSignals(name: Words) -> InferenceResult? {
 
         // High-end independent indicators — these places usually cook real food
         let fineIndependentKeywords = [
             "farm to table", "farm-to-table", "farm to fork",
             "locally sourced", "organic",
-            "chef", "kitchen & ", "& kitchen"
+            "chef", "kitchen &", "& kitchen"
         ]
 
         for keyword in fineIndependentKeywords {
-            if lower.contains(keyword) {
+            if name.contains(keyword) {
                 return InferenceResult(
                     rating: .green,
                     confidence: .medium,
@@ -230,7 +230,7 @@ enum RatingInferenceEngine {
         ]
 
         for keyword in suspiciousUpscale {
-            if lower.contains(keyword) {
+            if name.contains(keyword) {
                 return InferenceResult(
                     rating: .orange,
                     confidence: .low,
@@ -244,8 +244,7 @@ enum RatingInferenceEngine {
 
     // MARK: - Independent Restaurant Signals
 
-    private static func checkIndependentSignals(name: String, category: MKPointOfInterestCategory?) -> InferenceResult? {
-        let lower = name.lowercased()
+    private static func checkIndependentSignals(name: Words, category: MKPointOfInterestCategory?) -> InferenceResult? {
 
         // Strong independent signals — personal names, ethnic cuisines, family-style
         let independentKeywords = [
@@ -258,7 +257,7 @@ enum RatingInferenceEngine {
         ]
 
         for keyword in independentKeywords {
-            if lower.contains(keyword) {
+            if name.contains(keyword) {
                 return InferenceResult(
                     rating: .green,
                     confidence: .medium,
@@ -269,6 +268,7 @@ enum RatingInferenceEngine {
 
         // Possessive names like "Joe's" "Maria's" — usually independent
         if let possessivePattern = Self.possessivePattern {
+            let lower = name.raw.lowercased()
             let range = NSRange(lower.startIndex..., in: lower)
             if possessivePattern.firstMatch(in: lower, range: range) != nil {
                 return InferenceResult(
@@ -285,11 +285,38 @@ enum RatingInferenceEngine {
     // MARK: - Helpers
 
     private static let possessivePattern: NSRegularExpression? = try? NSRegularExpression(
-        pattern: "^[a-z]+'s\\b", options: .caseInsensitive
+        pattern: "^[a-z]+['\u{2019}]s\\b", options: .caseInsensitive
     )
 
+    /// A name split into normalized words, so keywords match whole words:
+    /// "Breakfast Club" isn't "fast" food and "Deschutes Brewing" has no "wing".
+    struct Words {
+        let raw: String
+        let tokens: [String]
+
+        init(_ name: String) {
+            raw = name
+            tokens = ChainDatabase.tokens(name)
+        }
+
+        /// True when the phrase's words appear consecutively. The last word may
+        /// also appear in plural ("taco" matches "Tacos").
+        func contains(_ phrase: String) -> Bool {
+            let words = ChainDatabase.tokens(phrase)
+            guard let lastWord = words.last, words.count <= tokens.count else { return false }
+            for start in 0...(tokens.count - words.count) {
+                let window = tokens[start..<(start + words.count)]
+                let matches = zip(window, words).enumerated().allSatisfy { index, pair in
+                    pair.0 == pair.1 || (index == words.count - 1 && pair.0 == lastWord + "s")
+                }
+                if matches { return true }
+            }
+            return false
+        }
+    }
+
     /// Checks if a name looks like an independent local restaurant vs a chain.
-    private static func looksIndependent(name: String) -> Bool {
+    private static func looksIndependent(name: Words) -> Bool {
         // Names with a city/neighborhood reference are often local
         let localPatterns = [
             "downtown", "uptown", "neighborhood", "corner",

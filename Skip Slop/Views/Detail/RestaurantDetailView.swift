@@ -113,7 +113,9 @@ struct RestaurantDetailView: View {
 
             if inference.confidence.isEstimate {
                 Label {
-                    Text("This is a guess from the name and type of place. Notes from people who've eaten here make it better.")
+                    Text(inference.confidence == .category
+                        ? "We haven't graded this chain by hand yet, so its grade comes from the kind of place it is. Notes from people who've eaten here make it better."
+                        : "This is a guess from the name and type of place. Notes from people who've eaten here make it better.")
                         .font(DS.Typeface.callout)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -130,10 +132,11 @@ struct RestaurantDetailView: View {
 
     private var confidenceSymbol: String {
         switch inference.confidence {
-        case .known:  "checkmark.seal.fill"
-        case .high:   "checkmark.circle.fill"
-        case .medium: "questionmark.circle.fill"
-        case .low:    "questionmark.diamond.fill"
+        case .known:    "checkmark.seal.fill"
+        case .category: "square.stack.3d.up.fill"
+        case .high:     "checkmark.circle.fill"
+        case .medium:   "questionmark.circle.fill"
+        case .low:      "questionmark.diamond.fill"
         }
     }
 

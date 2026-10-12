@@ -62,7 +62,48 @@ struct RatingInferenceEngineTests {
     }
 
     @Test func confidenceSortOrderIsAscending() {
-        let ordered: [Confidence] = [.known, .high, .medium, .low]
-        #expect(ordered.map(\.sortOrder) == [0, 1, 2, 3])
+        let ordered: [Confidence] = [.known, .category, .high, .medium, .low]
+        #expect(ordered.map(\.sortOrder) == [0, 1, 2, 3, 4])
+    }
+
+    @Test func categoryEstimatedChainIsLabeledEstimated() throws {
+        let database = ChainDatabase()
+        let item = makeMapItem("Lazy Dog Restaurant & Bar", category: .restaurant)
+        let match = try #require(ChainMatcher.match(mapItem: item, using: database))
+        let result = RatingInferenceEngine.infer(mapItem: item, chainMatch: match)
+        #expect(result.rating == .orange)
+        #expect(result.confidence == .category)
+        #expect(result.confidence.isEstimate)
+    }
+
+    @Test func onlyHandGradedChainsAreNotEstimates() {
+        #expect(!Confidence.known.isEstimate)
+        for confidence in [Confidence.category, .high, .medium, .low] {
+            #expect(confidence.isEstimate)
+        }
+    }
+
+    /// Keywords used to match inside words: "Breakfast" contained "fast",
+    /// "Brewing" contained "wing", "Sacramento" contained "ramen".
+    @Test(arguments: [
+        ("The Breakfast Club", SlopRating.yellow),
+        ("Deschutes Brewing", .yellow),
+        ("Sacramento Street Grill", .yellow),
+        ("Delicious Bites", .yellow),
+        ("Phoenix Lounge", .yellow),
+        ("Suburban Social", .yellow),
+    ])
+    func keywordsMatchWholeWordsOnly(name: String, rating: SlopRating) {
+        #expect(infer(name).rating == rating)
+    }
+
+    @Test(arguments: [
+        ("Pho Hoa", SlopRating.green),
+        ("Best Tacos", .orange),
+        ("Wings Over", .orange),
+        ("Speedy Drive-Thru", .grey),
+    ])
+    func keywordsStillMatchWholeWordsAndPlurals(name: String, rating: SlopRating) {
+        #expect(infer(name).rating == rating)
     }
 }

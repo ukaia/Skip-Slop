@@ -30,6 +30,7 @@ final class ExploreModel {
     private(set) var isMock = false
 
     private var visibleRegion: MKCoordinateRegion?
+    private var lastSearchedRegion: MKCoordinateRegion?
     private var searchTask: Task<Void, Never>?
     private let ratingCache = RatingCache()
     private var chainDB: ChainDatabase?
@@ -115,7 +116,18 @@ final class ExploreModel {
     func cameraChanged(to region: MKCoordinateRegion) {
         visibleRegion = region
         guard hasLoadedInitial, !isMock else { return }
+        // Small nudges don't need a new search (each one is several MapKit requests,
+        // and MapKit throttles apps that search too often).
+        if let last = lastSearchedRegion, Self.isNearlySame(region, as: last) { return }
         loadNearby(debounce: true)
+    }
+
+    /// True when `region` is centered within a quarter-span of `other` at about the same zoom.
+    nonisolated static func isNearlySame(_ region: MKCoordinateRegion, as other: MKCoordinateRegion) -> Bool {
+        let latShift = abs(region.center.latitude - other.center.latitude) / other.span.latitudeDelta
+        let lonShift = abs(region.center.longitude - other.center.longitude) / other.span.longitudeDelta
+        let zoom = region.span.latitudeDelta / other.span.latitudeDelta
+        return latShift < 0.25 && lonShift < 0.25 && zoom > 0.67 && zoom < 1.5
     }
 
     func centerOnUser(reduceMotion: Bool) {
@@ -155,7 +167,10 @@ final class ExploreModel {
             defer { if !Task.isCancelled { isSearching = false } }
             do {
                 let results = try await MapSearchService.searchNearby(region: region)
-                if !Task.isCancelled { setResults(results) }
+                if !Task.isCancelled {
+                    lastSearchedRegion = region
+                    setResults(results)
+                }
             } catch {
                 if !Task.isCancelled {
                     logger.error("Nearby search failed: \(error.localizedDescription, privacy: .public)")
@@ -192,6 +207,7 @@ final class ExploreModel {
                     guard !Task.isCancelled else { return }
                     let nearby = try await MapSearchService.searchNearby(region: newRegion)
                     guard !Task.isCancelled else { return }
+                    lastSearchedRegion = newRegion
                     setResults(nearby)
                     if nearby.isEmpty { showMessage("No restaurants found near “\(text)”.") }
                 }
@@ -216,16 +232,17 @@ final class ExploreModel {
 }
 
 extension RatingInferenceEngine.InferenceResult.Confidence {
-    /// Heuristic guesses, shown with dashed placard outlines.
-    var isEstimate: Bool { self == .medium || self == .low }
+    /// Anything not graded by hand, shown with dashed placard outlines and "Estimated".
+    var isEstimate: Bool { self != .known }
 
     /// User-facing description of how sure we are.
     var displayName: String {
         switch self {
-        case .known:  "Known chain"
-        case .high:   "Likely"
-        case .medium: "Estimate"
-        case .low:    "Rough guess"
+        case .known:    "Known chain"
+        case .category: "Chain, estimated grade"
+        case .high:     "Estimated, likely"
+        case .medium:   "Estimated"
+        case .low:      "Estimated, rough guess"
         }
     }
 }
