@@ -2,13 +2,13 @@ import Foundation
 import Observation
 import os
 
-enum VoteDirection: Int, Codable, Sendable {
+nonisolated enum VoteDirection: Int, Codable, Sendable {
     case up = 1
     case down = -1
 }
 
 /// Up/down counts for a note, with helpers for swapping one user's vote.
-struct VoteTally: Equatable, Sendable {
+nonisolated struct VoteTally: Equatable, Sendable {
     var upvotes = 0
     var downvotes = 0
 

@@ -2,7 +2,7 @@ import CoreLocation
 import Observation
 import os
 
-private let locationLogger = Logger(subsystem: "alpha.Skip-Slop", category: "Location")
+nonisolated private let locationLogger = Logger(subsystem: "alpha.Skip-Slop", category: "Location")
 
 @Observable
 final class LocationManager: NSObject, CLLocationManagerDelegate {

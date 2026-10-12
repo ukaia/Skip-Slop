@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension ShapeStyle where Self == Color {
+nonisolated extension ShapeStyle where Self == Color {
     static var slopGreenPlus: Color {
         Color(red: 0.18, green: 0.49, blue: 0.20)
     }

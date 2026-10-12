@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum SlopRating: String, Codable, CaseIterable, Identifiable {
+nonisolated enum SlopRating: String, Codable, CaseIterable, Identifiable {
     case greenPlus  = "green_plus"
     case green      = "green"
     case yellow     = "yellow"
@@ -101,7 +101,7 @@ enum SlopRating: String, Codable, CaseIterable, Identifiable {
     }
 }
 
-enum RatingSource: String, Codable {
+nonisolated enum RatingSource: String, Codable {
     case seeded    = "seeded"
     case community = "community"
     case verified  = "verified"

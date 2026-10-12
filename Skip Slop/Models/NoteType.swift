@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum NoteType: String, Codable, CaseIterable, Identifiable {
+nonisolated enum NoteType: String, Codable, CaseIterable, Identifiable {
     case syscoVerified      = "sysco_verified"
     case expensiveConfirmed = "expensive_confirmed"
     case stupidTipOptions   = "stupid_tip_options"
