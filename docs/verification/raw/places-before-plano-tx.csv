@@ -1,0 +1,150 @@
+city,name,lat,lon,category,sources,chain_slug,chain_name,grade,confidence,estimated,reason
+Plano TX,1418 Coffee,33.01923,-96.69907,Cafe,poi:Cafe q:cafe q:coffee q:food,,,N/A,Likely,no,Coffee / drinks
+Plano TX,14th Street Discount Store,33.01793,-96.69186,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Plano TX,2 Cousins and a Plate,33.01827,-96.70299,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,32 Degrees,33.01949,-96.70013,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Plano TX,American Chef,33.02373,-96.70373,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Farm-to-table / chef-driven indicators
+Plano TX,American Legion Post 321,33.01662,-96.70037,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Plano TX,Andrew's American Pizza Kitchen,33.01812,-96.79599,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Angie's,33.01962,-96.71382,Restaurant,q:fast food q:food,,,A,Guess,yes,Appears to be independently owned
+Plano TX,Aroma Breakfast & Lunch,33.01553,-96.70966,Restaurant,app q:food q:restaurant,,,N/A,Likely,no,Fast food / quick service
+Plano TX,BJ's Restaurant & Brewhouse,33.01737,-96.70952,Restaurant,app q:pizza q:restaurant,bjs-restaurant,BJ's Restaurant & Brewhouse,F,Known,no,Known chain: BJ's Restaurant & Brewhouse
+Plano TX,Better Than Sex - A Dessert Restaurant,33.01944,-96.69998,Bakery,poi:Bakery q:food,,,A,Estimated,yes,Bakery / food market — likely real food
+Plano TX,Black Rifle Coffee Company,33.01200,-96.70922,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Black Rock Coffee Bar,33.04059,-96.70962,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Blendedbar,33.01819,-96.69862,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Bloom Cafe,32.97589,-96.65500,Cafe,q:cafe,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Bread Street Boys,33.01494,-96.67721,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Bruncheon Breakfast & Lunch,32.99832,-96.69668,Restaurant,q:pizza,,,N/A,Likely,no,Fast food / quick service
+Plano TX,Burger Street,33.04134,-96.71449,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Byrds Drive In,33.02430,-96.70525,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Plano TX,Cafe Gecko,33.01890,-96.69911,Restaurant,app poi:Restaurant q:cafe q:restaurant,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Chick-fil-A,33.00844,-96.71070,Restaurant,q:fast food,chick-fil-a,Chick-fil-A,N/A,Known,no,Known chain: Chick-fil-A
+Plano TX,Chipotle Mexican Grill,33.01568,-96.70918,Restaurant,q:fast food,chipotle,Chipotle Mexican Grill,B,Known,no,Known chain: Chipotle Mexican Grill
+Plano TX,Cliff Coffee,33.05795,-96.68812,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Coco Beach Plano,33.01945,-96.69937,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Coffee Del Rey,33.02781,-96.71136,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Conceptxn.Kitchen,33.01349,-96.69955,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Corazon Latino restaurant,33.02540,-96.69848,Restaurant,poi:Restaurant q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Country Burger,33.04170,-96.75405,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Country Burger,33.01771,-96.68783,Restaurant,q:burger q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Curry Tei & Bar,33.01871,-96.70032,Restaurant,app poi:Restaurant q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Dairy Queen,33.03078,-96.69939,Restaurant,q:fast food,dairy-queen,Dairy Queen,N/A,Known,no,Known chain: Dairy Queen
+Plano TX,Del's Charcoal Burgers,32.94818,-96.73136,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Diamond Shamrock,33.02423,-96.69880,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Plano TX,Dickey's Barbecue Pit,33.01866,-96.69670,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,EBESU Robata & Sushi,33.01983,-96.70062,Restaurant,app poi:Restaurant q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,Eddy's Pizza Restaurant,33.01902,-96.73456,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Edmond's Burgers & More,33.02062,-96.75132,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Eiland Coffee at Canyon Creek,32.99228,-96.72740,Cafe,q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,El Taco Loco al Vapor,33.02116,-96.70719,Restaurant,app q:fast food q:food q:restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Elevated Coffee & Tea,33.00168,-96.70094,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Ellie's Café & Tea Room,33.01127,-96.70628,Restaurant,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Fifthteen Street & Bakery,33.01962,-96.69860,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Freddy's Frozen Custard & Steakburgers,32.99746,-96.66720,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Georgias Farmers Market,33.01946,-96.70216,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Plano TX,Golden Chick,33.01782,-96.68746,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Good Hand Tacos and Pupusas,33.04058,-96.71785,Restaurant,q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Green Vine Market,33.02439,-96.69798,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Plano TX,Grimaldi's Coal Brick-Oven Pizzeria,33.08889,-96.68378,Restaurant,q:pizza,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,Gufo's Pizza,32.99809,-96.66773,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Hat Creek Burger Company,32.98095,-96.71456,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Heirloom Pizza,33.01992,-96.73561,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Honey Berry Pancakes and Cafe,33.00195,-96.68722,Restaurant,app q:cafe q:restaurant,,,N/A,Likely,no,Coffee / drinks
+Plano TX,In-N-Out Burger,33.03476,-96.70511,Restaurant,q:burger q:fast food,in-n-out,In-N-Out Burger,A,Known,no,Known chain: In-N-Out Burger
+Plano TX,JS International Grill,33.02962,-96.70978,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Jack in the Box,33.01597,-96.68286,Restaurant,q:fast food,jack-in-the-box,Jack in the Box,N/A,Known,no,Known chain: Jack in the Box
+Plano TX,Jersey Mike's Subs,33.02671,-96.71052,Restaurant,q:fast food,jersey-mikes,Jersey Mike's,B,Known,no,Known chain: Jersey Mike's
+Plano TX,Joe's Pasta N Pizza,33.05983,-96.73163,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,John's Cafe,33.00766,-96.70063,Restaurant,q:cafe,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Jörg's Cafe Vienna,33.01991,-96.69955,Restaurant,app poi:Restaurant q:cafe q:food q:restaurant,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Kalamaki Greek Eatery,33.01943,-96.69982,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Kenny's Burger Joint,33.05359,-96.79512,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,King Buffet,33.02659,-96.70833,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,LA Burger,32.97605,-96.69883,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,La La Land,32.97586,-96.72117,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,La Paloma Taqueria,33.02183,-96.69958,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,La Penita Restaurant,33.01852,-96.69406,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,La Salsa Verde Taqueria,33.03686,-96.69962,Restaurant,q:fast food,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,La Salsa Verde Taqueria,33.03793,-96.69842,Restaurant,q:fast food,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,Lazy Dog Restaurant & Bar,32.96500,-96.63873,Restaurant,q:burger,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Lemma Coffee Co,33.01977,-96.69999,Cafe,app poi:Cafe q:cafe q:coffee q:food q:restaurant,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Liberty Burger,33.00190,-96.68674,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Liquid Courage Spirits and More,33.01945,-96.70175,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Plano TX,Little Caesars,33.03798,-96.69784,Restaurant,q:pizza,little-caesars,Little Caesars,N/A,Known,no,Known chain: Little Caesars
+Plano TX,Little Rome,33.02010,-96.74610,Restaurant,q:pizza,,,A,Estimated,yes,Independent restaurant indicators
+Plano TX,Local Good Coffee Co.,33.06876,-96.69365,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Lockhart Smokehouse,33.01956,-96.69954,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,Luna Coffee,32.96172,-96.69836,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,MOTW Coffee and Pastries,33.01526,-96.65642,Cafe,q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Mama Vicky's Pupusas y Mas,33.01961,-96.69861,Restaurant,app poi:Restaurant q:fast food q:food q:restaurant,,,A,Estimated,yes,Independent restaurant indicators
+Plano TX,Mama's Pizza,33.04069,-96.73571,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Mangia Bistro,33.01838,-96.70779,Restaurant,app q:restaurant,,,A,Estimated,yes,Independent restaurant indicators
+Plano TX,Marinara Pizza,33.02789,-96.71108,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,McDonald's,33.02006,-96.70718,Restaurant,q:burger q:fast food,mcdonalds,McDonald's,N/A,Known,no,Known chain: McDonald's
+Plano TX,McNeal's Tavern & Eatery,33.01941,-96.69909,Nightlife,app poi:Nightlife q:food q:restaurant,,,A,Estimated,yes,Independent restaurant indicators
+Plano TX,Meltie Cafe,33.01937,-96.70165,Cafe,poi:Cafe q:cafe q:coffee q:food,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Milk + Tea,32.97695,-96.73963,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Mountain Mike's Pizza,33.01212,-96.60092,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Mo’s Fiery Chicken & BBQ,33.02346,-96.69897,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,Mudleaf Coffee,33.04074,-96.75083,Cafe,q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Nest Burger,33.00571,-96.68179,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Odd Muse Craft & Kitchen,33.01870,-96.70042,Brewery,app poi:Brewery q:food q:restaurant,,,A,Estimated,yes,Farm-to-table / chef-driven indicators
+Plano TX,On The Rocks,33.01830,-96.70044,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Plano TX,Palmieri Cafe,33.01890,-96.73319,Cafe,q:cafe q:coffee,the-palm,The Palm,F−,Known,no,Known chain: The Palm
+Plano TX,Papa Johns Pizza,33.01677,-96.68304,Restaurant,q:pizza,papa-johns,Papa John's,N/A,Known,no,Known chain: Papa John's
+Plano TX,Pappalecco,33.01858,-96.69996,Cafe,app poi:Cafe q:cafe q:coffee q:fast food q:food q:restaurant,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Paris Baguette,33.03853,-96.69636,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Partenope Ristorante,32.94788,-96.73057,Restaurant,q:pizza,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,Patty Lou’s Smashburgers,33.01831,-96.70043,Restaurant,poi:Restaurant q:burger q:fast food q:food,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Pax & Beneficia Coffee,33.00814,-96.71712,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Piada Italian Street Food,32.99802,-96.69654,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Pizza Patrón,33.03107,-96.69831,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Plano Tortilla Factory,33.02404,-96.70004,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Preston’s Cafe,33.02151,-96.69960,Cafe,poi:Cafe q:cafe q:coffee q:food,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Prime Doner Restaurant,33.01964,-96.71241,Restaurant,app q:restaurant,,,C,Guess,yes,Upscale — could be real or expensive slop
+Plano TX,Quick Pak,33.02541,-96.69885,FoodMarket,poi:FoodMarket,,,N/A,Likely,no,Fast food / quick service
+Plano TX,Rainbow Donuts,33.02367,-96.69895,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Red Seven Convenience Store,33.01804,-96.69608,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Plano TX,Red Truck Cafe,33.04057,-96.71506,Cafe,q:cafe,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Rodeo Goat,33.00754,-96.71798,Restaurant,q:burger q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Russo's Coal Fired Italian Kitchen,32.97491,-96.71528,Restaurant,q:pizza,,,A,Guess,yes,Appears to be independently owned
+Plano TX,Sabor Boricua,33.01461,-96.69463,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Seapot,33.02724,-96.70876,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Shady's Burgers & Brewhaha,32.99214,-96.72734,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Sindbad Burger,33.02944,-96.69875,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Sky Rocket Burger,32.99815,-96.76885,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Smashburger,32.99764,-96.69743,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Starbucks Coffee Company,33.01892,-96.71004,Cafe,q:cafe q:coffee,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Plano TX,Sunny Food Mart,33.01805,-96.69601,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Sweetwaters Coffee & Tea,33.00206,-96.68764,Cafe,q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Taqueria El Torito,33.02431,-96.70561,Restaurant,poi:Restaurant,el-torito,El Torito,F,Known,no,Known chain: El Torito
+Plano TX,Taqueria Morelos,33.02484,-96.69776,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,Texaco Food Mart,33.02414,-96.69963,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Plano TX,Texapolitan Pizza,33.04309,-96.73384,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,The Boiling Crab,33.02094,-96.71074,Restaurant,app q:food q:restaurant,boiling-crab,The Boiling Crab,B,Known,no,Known chain: The Boiling Crab
+Plano TX,The Fillmore Pub,33.01953,-96.70038,Nightlife,poi:Nightlife q:food,,,B,Guess,yes,Not enough information — needs community input
+Plano TX,The Gelato Cone,33.01980,-96.70066,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,The Meltdown,33.02586,-96.70902,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,The Wooden Spoon,33.02255,-96.69959,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Plano TX,Third Bean Coffee,33.05981,-96.73198,Restaurant,q:coffee,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Tortas Gigantes Perez,33.00766,-96.68310,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Turbo Coffee & Cocktails,33.00717,-96.76870,Cafe,q:coffee q:pizza,,,N/A,Likely,no,Coffee / drinks
+Plano TX,Twisted Root Burger Co.,33.01818,-96.69662,Restaurant,poi:Restaurant q:burger q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Uni Sushi,33.01891,-96.69903,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,Urban Crust,33.01956,-96.70021,Restaurant,app poi:Restaurant q:food q:pizza q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Urban Rio Cantina & Grill,33.01831,-96.70036,Restaurant,app poi:Restaurant q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Plano TX,Urban Seafood Company,33.01810,-96.69860,Restaurant,app poi:Restaurant q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Urban Value Corner Store,33.01866,-96.69871,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Plano TX,Valerie’s Taco Shop,33.01497,-96.70743,Restaurant,app q:food q:restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Vickery Park,33.01991,-96.70040,Restaurant,app poi:Restaurant q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Vicky Cakes Pancake Mix,33.01463,-96.69464,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Plano TX,Whataburger,32.99813,-96.67010,Restaurant,q:burger,whataburger,Whataburger,B,Known,no,Known chain: Whataburger
+Plano TX,Whataburger,33.04487,-96.70155,Restaurant,q:burger,whataburger,Whataburger,B,Known,no,Known chain: Whataburger
+Plano TX,Whataburger,33.03251,-96.69868,Restaurant,q:burger q:fast food,whataburger,Whataburger,B,Known,no,Known chain: Whataburger
+Plano TX,Wu Wei Din Chinese Cuisine,33.01996,-96.71144,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Plano TX,Ye Ole Butcher Shop,33.02029,-96.70441,FoodMarket,app poi:FoodMarket q:burger q:fast food q:food q:restaurant,,,A,Estimated,yes,Bakery / food market — likely real food
+Plano TX,Zalat Pizza,32.99818,-96.69668,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Zio Al's Pizza & Pasta,32.94991,-96.73289,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Zio Al's Pizza & Pasta,33.00720,-96.79580,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Plano TX,Zio Al's Signature,33.09950,-96.67951,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified

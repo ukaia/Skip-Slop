@@ -1,0 +1,304 @@
+city,name,lat,lon,category,sources,chain_slug,chain_name,grade,confidence,estimated,reason
+Chicago IL,135 S LaSalle - Cafeteria,41.87959,-87.63098,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,231 Cafe,41.87844,-87.63203,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,2Twenty2 Tavern,41.87887,-87.62628,Nightlife,poi:Nightlife,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,7-Eleven,41.87442,-87.62946,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,7-Eleven,41.87927,-87.63359,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,7-Eleven,41.88186,-87.63198,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,7-Eleven,41.87945,-87.63610,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,7-Eleven,41.87942,-87.62635,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,7-Eleven,41.87841,-87.62626,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,82 Kimbap,41.87997,-87.63053,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,90th Meridian Kitchen & Bar,41.87868,-87.63197,Restaurant,app poi:Restaurant,,,A,Estimated,yes,Farm-to-table / chef-driven indicators
+Chicago IL,AB Food and Drinks,41.87975,-87.62474,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Acanto,41.88148,-87.62465,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Accent Chicago - Sears Tower,41.87866,-87.63587,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Access Speakeasy,41.87652,-87.63404,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Adams Street Brewery,41.87929,-87.62841,Brewery,app poi:Brewery,,,B,Guess,yes,Brewery — food quality varies
+Chicago IL,Aduanaba,41.87712,-87.62744,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,AgPura,41.87734,-87.62477,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Ahuevo,41.87455,-87.64035,Restaurant,q:burger,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Aire Rooftop Bar,41.88084,-87.63126,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Aloha Poke Co,41.87996,-87.63054,Restaurant,app poi:Restaurant,aloha-poke-co,Aloha Pokē Co,N/A,Category,yes,Chain: Aloha Pokē Co. Grade estimated from its category.
+Chicago IL,Americana Submarine,41.87679,-87.63093,Restaurant,app poi:Restaurant q:fast_food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Amorino,41.87900,-87.63206,Restaurant,app poi:Restaurant,amorino,Amorino,N/A,Category,yes,Chain: Amorino. Grade estimated from its category.
+Chicago IL,Avi Foods,41.88043,-87.63027,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,BSC CAFE 5,41.87744,-87.63556,Cafe,poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Bagel & Bean,41.87787,-87.63132,Restaurant,app poi:Restaurant q:cafe q:coffee q:fast_food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Baker Robbins & Co.,41.88217,-87.62908,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Baki Shop,41.88051,-87.63260,Bakery,app poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Bamahomemade,41.87866,-87.63587,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Bar Sotto,41.88036,-87.63008,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Barangaroos Aussie Pies,41.88334,-87.63351,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Basement Grillz,41.87785,-87.63130,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Bau Bao Treats,41.87414,-87.62937,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Beggars Pizza,41.87767,-87.64120,Restaurant,q:pizza,beggars-pizza,Beggars Pizza,C,Category,yes,Chain: Beggars Pizza. Grade estimated from its category.
+Chicago IL,Big Shoulders Coffee,41.87778,-87.63227,Cafe,app poi:Cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Big Shoulders Coffee,41.87746,-87.63557,Cafe,poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Billy Goat,41.89032,-87.62471,Restaurant,q:burger,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Bistro Monadnock,41.87757,-87.62964,Restaurant,app poi:Restaurant,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,Blaze Pizza,41.88113,-87.64134,Restaurant,q:pizza,blaze-pizza,Blaze Pizza,B,Known,no,Known chain: Blaze Pizza
+Chicago IL,Brewlée Coffee,41.87950,-87.63395,Cafe,app poi:Cafe q:cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Broadway Cafe,41.87972,-87.62684,Cafe,app poi:Cafe q:cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Bru Chicago,41.88345,-87.63350,Cafe,app q:cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Buddy Guy's Legends,41.87302,-87.62617,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Burger Alley Chicago,41.87102,-87.62564,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Burger Bar Chicago,41.86788,-87.62433,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,CIBC Theatre - Chicago Concessions,41.88089,-87.62854,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Cafe Ceres,41.87799,-87.63206,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Cafe Deko,41.87294,-87.62888,Cafe,app q:cafe q:coffee q:food,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Cafe Tabeeb,41.87250,-87.63374,Cafe,app q:cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Café 37,41.88168,-87.62869,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Café Pisolino,41.88039,-87.63014,Cafe,app poi:Cafe q:cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Capital One Café,41.88054,-87.62808,Cafe,app poi:Cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Cardozo's,41.88342,-87.63321,Nightlife,poi:Nightlife,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Casa Bonita,41.88268,-87.62330,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Cellars Market,41.87789,-87.63234,Restaurant,app poi:Restaurant,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,Chase Place,41.88163,-87.62976,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Chengdu Bistro,41.87260,-87.62892,Restaurant,app q:restaurant,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,Chicago Burger Company,41.88914,-87.61934,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Chicago Cozy Comforts,41.88309,-87.62511,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Chicago Prohibition Tours,41.88278,-87.63634,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Chick-fil-A,41.87999,-87.62465,Restaurant,q:fast_food,chick-fil-a,Chick-fil-A,N/A,Known,no,Known chain: Chick-fil-A
+Chicago IL,Chipotle Mexican Grill,41.87832,-87.62720,Restaurant,app poi:Restaurant,chipotle,Chipotle Mexican Grill,B,Known,no,Known chain: Chipotle Mexican Grill
+Chicago IL,Chitown Food & Deli,41.87969,-87.62608,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,Cindy's,41.88167,-87.62491,Restaurant,app q:food q:restaurant,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Cinnabon,41.88329,-87.62296,Bakery,poi:Bakery,cinnabon,Cinnabon,N/A,Category,yes,Chain: Cinnabon. Grade estimated from its category.
+Chicago IL,Circle K - Convenience Store,41.87902,-87.63449,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,City Deli,41.88182,-87.63109,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,Club X Speakeasy,41.87864,-87.62651,Nightlife,poi:Nightlife q:burger,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Con Azucar Cafe,41.87173,-87.63257,Cafe,app q:cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Congress Lounge,41.87521,-87.62471,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Convene Cafe,41.88037,-87.63553,Cafe,app q:cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Corner Bakery Cafe,41.88002,-87.62949,Cafe,app poi:Cafe,corner-bakery,Corner Bakery Cafe,C,Known,no,Known chain: Corner Bakery Cafe
+Chicago IL,Corner Bakery Cafe,41.88039,-87.63254,Cafe,app poi:Cafe,corner-bakery,Corner Bakery Cafe,C,Known,no,Known chain: Corner Bakery Cafe
+Chicago IL,Corner Bakery Cafe,41.87979,-87.62968,Cafe,poi:Cafe,corner-bakery,Corner Bakery Cafe,C,Known,no,Known chain: Corner Bakery Cafe
+Chicago IL,Crave Cookies - Michigan Avenue,41.88288,-87.62469,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,DANKE,41.87995,-87.63054,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Dairy Venture,41.87798,-87.63215,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Dave Candy Store,41.87795,-87.62573,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,DePaul Dining Services: Loop Campus,41.87799,-87.62745,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Decadent,41.87811,-87.62980,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Delhi Woks,41.87636,-87.63103,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Depot,41.87838,-87.63495,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Devil Dawgs,41.87219,-87.62734,Restaurant,q:fast_food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Do-Rite Donuts & Chicken,41.87832,-87.63580,Cafe,poi:Cafe,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Dog Haus,41.88591,-87.63412,Restaurant,q:burger,dog-haus,Dog Haus,N/A,Category,yes,Chain: Dog Haus. Grade estimated from its category.
+Chicago IL,Dollop Coffee ,41.88062,-87.62984,Cafe,app poi:Cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Dollop Coffee Co.,41.88480,-87.62496,Cafe,q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Dough Bros,41.88960,-87.62813,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Downtown Mini Mart,41.87675,-87.63329,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Dream-Theme,41.87774,-87.63227,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Dunkin',41.87671,-87.63320,Cafe,app poi:Cafe,dunkin,Dunkin',N/A,Known,no,Known chain: Dunkin'
+Chicago IL,Dunkin',41.87374,-87.63079,Cafe,poi:Cafe,dunkin,Dunkin',N/A,Known,no,Known chain: Dunkin'
+Chicago IL,Dunkin',41.87801,-87.63479,Cafe,app poi:Cafe,dunkin,Dunkin',N/A,Known,no,Known chain: Dunkin'
+Chicago IL,Dunkin',41.87942,-87.62641,Cafe,app poi:Cafe,dunkin,Dunkin',N/A,Known,no,Known chain: Dunkin'
+Chicago IL,Dunkin',41.88182,-87.63435,Cafe,poi:Cafe,dunkin,Dunkin',N/A,Known,no,Known chain: Dunkin'
+Chicago IL,Dunkin',41.87708,-87.62747,Cafe,app poi:Cafe,dunkin,Dunkin',N/A,Known,no,Known chain: Dunkin'
+Chicago IL,Dunkin',41.87929,-87.63393,Cafe,app poi:Cafe,dunkin,Dunkin',N/A,Known,no,Known chain: Dunkin'
+Chicago IL,Dunkin',41.87805,-87.62910,Cafe,app poi:Cafe,dunkin,Dunkin',N/A,Known,no,Known chain: Dunkin'
+Chicago IL,Dunkin',41.87674,-87.62454,Cafe,poi:Cafe,dunkin,Dunkin',N/A,Known,no,Known chain: Dunkin'
+Chicago IL,Dv Trading,41.87837,-87.63441,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Eagle Market Makers,41.87774,-87.63227,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,Eaves,41.88239,-87.63745,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Ecd Market,41.87746,-87.63568,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,Egg Bunni,41.87996,-87.63054,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,El Greco's Burritos,41.87960,-87.62676,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Elephant & Castle,41.87932,-87.63131,Nightlife,poi:Nightlife q:food,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Elevate,41.87652,-87.63404,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Ella Mia,41.87795,-87.62573,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Epic Burger,41.87512,-87.62741,Restaurant,q:burger q:fast_food,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Era Social Club,41.87642,-87.63094,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Exchequer Restaurant & Pub,41.87877,-87.62627,Nightlife,poi:Nightlife q:pizza q:restaurant,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,FARE,41.87996,-87.63054,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Fairgrounds Coffee and Tea,41.88176,-87.62466,Cafe,app q:cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Federal Reserve Bank Of Chicago Cafeteria,41.87862,-87.63258,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Federated Alliance of Illinois Independent Retailers,41.87753,-87.62951,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,First Draft,41.87345,-87.63050,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Florian,41.88238,-87.63734,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Flying Concessions,41.87734,-87.62477,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Fontano's Subs & Pizzeria,41.87727,-87.62456,Restaurant,q:fast_food q:pizza,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,Forum 55,41.88066,-87.62570,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Foxtrot,41.87876,-87.63541,Cafe,poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Frecakes Craft Donuts,41.87926,-87.63244,Restaurant,app poi:Restaurant,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Funl,41.87661,-87.63331,Bakery,app poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Funnel,41.87661,-87.63331,Bakery,app poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Game Room,41.88165,-87.62502,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Garrett Popcorn Shops,41.87809,-87.62895,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Gateway Newstand,41.87727,-87.63320,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Gateway Newstands,41.87745,-87.63573,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Gateway Newstands,41.88035,-87.63476,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Gemma Foods,41.87904,-87.63027,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Gene's Snacks & Sundries,41.87843,-87.62987,FoodMarket,poi:FoodMarket,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Gino’s East,41.89586,-87.62313,Restaurant,q:pizza,ginos-east,Gino's East,C,Category,yes,Chain: Gino's East. Grade estimated from its category.
+Chicago IL,Gino’s East,41.87524,-87.62906,Restaurant,q:pizza,ginos-east,Gino's East,C,Category,yes,Chain: Gino's East. Grade estimated from its category.
+Chicago IL,Giordano's,41.88525,-87.62382,Restaurant,q:pizza,giordanos,Giordano's,B,Known,no,Known chain: Giordano's
+Chicago IL,Giordano's,41.87801,-87.63471,Restaurant,app q:food q:pizza,giordanos,Giordano's,B,Known,no,Known chain: Giordano's
+Chicago IL,Glanbia Ingredients,41.88035,-87.63476,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Goddess And The Baker,41.88176,-87.63311,Cafe,app poi:Cafe q:cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Goddess and the Baker,41.88138,-87.62602,Cafe,app poi:Cafe q:cafe q:coffee q:food,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Gordon Ramsay Burger,41.89340,-87.62794,,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Gotham Bagels,41.87524,-87.62895,Restaurant,app q:fast_food q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Grill on 21,41.87901,-87.63246,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Ground Up,41.87967,-87.62973,Cafe,app poi:Cafe q:cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Groundswell Coffee Roasters,41.87658,-87.62472,Cafe,app q:cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Gunpowder Cafe,41.87636,-87.63103,Restaurant,app poi:Restaurant,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Halaleez,41.87661,-87.63331,Restaurant,q:fast_food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Half Sour,41.87240,-87.63048,Restaurant,app q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Halsted Street International,41.87964,-87.63563,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Hanabusa Cafe,41.88190,-87.62675,Restaurant,app q:cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Happy Monday Coffee Roasters,41.87978,-87.62661,Cafe,app poi:Cafe q:cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Harry's Hamburgs & Wings,41.87991,-87.63052,Restaurant,app poi:Restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Harry's Sandwich Shop,41.87713,-87.62941,Restaurant,app poi:Restaurant,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Healthy Meals,41.87936,-87.62714,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Hero Coffee Bar,41.87847,-87.62680,Cafe,app poi:Cafe q:cafe q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,HighGround Dairy,41.87593,-87.63262,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Holy Bagels,41.88467,-87.62697,Restaurant,q:fast_food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,House of Blues Restaurant & Bar,41.88836,-87.62940,Restaurant,q:burger,house-of-blues,House of Blues,C,Category,yes,Chain: House of Blues. Grade estimated from its category.
+Chicago IL,Imee’s Mediterranean Kitchen,41.87774,-87.63227,Restaurant,app poi:Restaurant,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Industry Ales,41.87864,-87.62627,Brewery,app poi:Brewery,,,B,Guess,yes,Brewery — food quality varies
+Chicago IL,Insomnia Cookies,41.87333,-87.62647,Bakery,poi:Bakery,insomnia-cookies,Insomnia Cookies,N/A,Category,yes,Chain: Insomnia Cookies. Grade estimated from its category.
+Chicago IL,Intelligentsia,41.87805,-87.62964,Cafe,app poi:Cafe q:coffee,intelligentsia-coffee-and-tea,Intelligentsia Coffee & Tea,N/A,Category,yes,Chain: Intelligentsia Coffee & Tea. Grade estimated from its category.
+Chicago IL,Intelligentsia,41.88440,-87.62580,Cafe,app q:cafe q:coffee,intelligentsia-coffee-and-tea,Intelligentsia Coffee & Tea,N/A,Category,yes,Chain: Intelligentsia Coffee & Tea. Grade estimated from its category.
+Chicago IL,International Sandwich Shop,41.88173,-87.63504,Restaurant,q:fast_food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Internet Prophets Live,41.87958,-87.63300,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Jimmy John's,41.87845,-87.62753,Restaurant,app poi:Restaurant,jimmy-johns,Jimmy John's,N/A,Known,no,Known chain: Jimmy John's
+Chicago IL,Jimmy’s Gyros & Grill,41.87969,-87.62689,Restaurant,app q:burger q:fast_food q:food,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,John Marshall Law School - Boiler Plate Cafe,41.87778,-87.62847,Restaurant,app poi:Restaurant,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,John Marshall Law School - Cafeteria,41.87793,-87.62804,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Jollibee,41.88024,-87.62465,Restaurant,q:burger q:fast_food,jollibee,Jollibee,N/A,Category,yes,Chain: Jollibee. Grade estimated from its category.
+Chicago IL,Julia Coffee & Brioche,41.87741,-87.62567,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Just Salad,41.87950,-87.63143,Restaurant,app poi:Restaurant,just-salad,Just Salad,A,Known,no,Known chain: Just Salad
+Chicago IL,Kasey's Tavern,41.87333,-87.62900,Nightlife,poi:Nightlife,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,Kinsley - Fairgrounds Coffee and Tea,41.88232,-87.63593,Cafe,q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Kong Dog,41.87943,-87.62497,Restaurant,q:fast_food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,La Bella Trattoria,41.88085,-87.63157,Restaurant,app q:food q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,Lockwood Lobby Bar,41.88060,-87.62711,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Lockwood Restaurant,41.88027,-87.62681,Restaurant,app q:cafe q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Loop Capital Markets,41.87832,-87.63402,FoodMarket,poi:FoodMarket,,,C,Guess,yes,Upscale — could be real or expensive slop
+Chicago IL,Loop Data,41.87774,-87.63227,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Loop Mini Mart,41.87841,-87.62827,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Los Milagros,41.87996,-87.63054,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Lou Malnati's Pizzeria,41.87156,-87.62734,Restaurant,q:pizza,lou-malnatis,Lou Malnati's Pizzeria,A,Known,no,Known chain: Lou Malnati's Pizzeria
+Chicago IL,Lou Malnati's Pizzeria,41.88996,-87.62480,Restaurant,q:pizza,lou-malnatis,Lou Malnati's Pizzeria,A,Known,no,Known chain: Lou Malnati's Pizzeria
+Chicago IL,Lou Malnati's Pizzeria,41.89036,-87.63388,Restaurant,q:pizza,lou-malnatis,Lou Malnati's Pizzeria,A,Known,no,Known chain: Lou Malnati's Pizzeria
+Chicago IL,Lucky Cross - The Sterling Food Hall,41.87958,-87.63059,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Luke's Italian Beef,41.87802,-87.63431,Restaurant,q:pizza,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Luna Cafe Restaurant,41.87432,-87.62541,Restaurant,app q:burger q:cafe q:fast_food,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Luxe Barber Shave Lounge,41.88060,-87.62711,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Maharaj The Indian Grill,41.87705,-87.62706,Restaurant,app q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Mangia.TV,41.87774,-87.63227,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Maracame,41.87774,-87.63227,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Mariela,41.88307,-87.62813,Restaurant,app q:fast_food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Market Maker Four,41.87705,-87.63402,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,Marriott Crossroads Cuisine,41.87866,-87.63203,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,McDonald's,41.87801,-87.63167,Restaurant,app poi:Restaurant,mcdonalds,McDonald's,N/A,Known,no,Known chain: McDonald's
+Chicago IL,McDonald's,41.87948,-87.63346,Restaurant,q:fast_food,mcdonalds,McDonald's,N/A,Known,no,Known chain: McDonald's
+Chicago IL,Meli Cafe,41.87534,-87.62936,Cafe,app poi:Cafe q:cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Metcalf Federal Building Food Court,41.87762,-87.63041,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Miller's Pub,41.87984,-87.62632,Restaurant,app q:food q:restaurant,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Mojo Coffee,41.87974,-87.63252,Cafe,app poi:Cafe q:cafe q:coffee q:food,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Mojo Coffee,41.88232,-87.63014,Cafe,poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Mojo Coffee ,41.87891,-87.63707,Cafe,q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Momento Cantina,41.88096,-87.62651,Restaurant,app q:food q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,Monk's Pub,41.88562,-87.63430,Nightlife,q:burger,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Mr. Quiles Mexican Food,41.88036,-87.63082,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,MrBeast Burger,41.88466,-87.62906,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Mrs. Fields,41.88182,-87.63109,Bakery,app poi:Bakery,mrs-fields,Mrs. Fields,N/A,Category,yes,Chain: Mrs. Fields. Grade estimated from its category.
+Chicago IL,Ms. Peewee's Cookies,41.87995,-87.63053,Bakery,app poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,NADC Burger,41.88965,-87.64483,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Naf Naf Grill,41.87824,-87.63142,Restaurant,app poi:Restaurant,naf-naf-grill,Naf Naf Grill,C,Category,yes,Chain: Naf Naf Grill. Grade estimated from its category.
+Chicago IL,Necessary & Sufficient Coffee,41.87279,-87.62941,Cafe,q:coffee,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,New Line Tavern,41.88590,-87.64116,Nightlife,q:burger,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,O'Malley's Bar and Grill,41.88173,-87.63159,Nightlife,poi:Nightlife,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,O'Neil's on Wells,41.87638,-87.63318,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Oasis Cafe,41.88271,-87.62600,Restaurant,app q:cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Old Town Pour House,41.88370,-87.63293,Nightlife,poi:Nightlife q:burger,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,Olivia Cupcake Shop,41.87687,-87.62485,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,OutFIT Events,41.87792,-87.62951,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Palmer House,41.88061,-87.62711,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Panchos Rooftop & Cantina,41.87747,-87.62848,Restaurant,app poi:Restaurant q:food q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,Parks Pantry Deli,41.87715,-87.62477,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,Parlor Pizza Bar,41.88950,-87.62937,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Pat's Pizza,41.87393,-87.63080,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Pazzo's,41.87747,-87.63611,Restaurant,q:fast_food,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Peet's Coffee,41.87167,-87.62612,Cafe,q:coffee,peets-coffee,Peet's Coffee,N/A,Known,no,Known chain: Peet's Coffee
+Chicago IL,Pizano's Pizza & Pasta,41.88199,-87.62569,Restaurant,app q:pizza q:restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Pizza Dada,41.87996,-87.63054,Restaurant,app poi:Restaurant q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Pizza Lobo,41.88492,-87.65177,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Pizzeria Portofino,41.88784,-87.63084,Restaurant,q:pizza,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,Portillo's,41.88701,-87.62483,Restaurant,q:burger,portillos,Portillo's,B,Known,no,Known chain: Portillo's
+Chicago IL,Potbelly Sandwich Shop,41.87932,-87.63160,Restaurant,app poi:Restaurant,potbelly,Potbelly Sandwich Shop,B,Known,no,Known chain: Potbelly Sandwich Shop
+Chicago IL,Prince St. Pizza,41.88405,-87.65133,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Printers Row Wine Shop Beer & Wine Bar,41.87291,-87.62898,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Quaker Food,41.88035,-87.63476,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,R & R Stores,41.88171,-87.63330,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Rbel Bee Sweets,41.87734,-87.62477,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,ReBrewed Cafe,41.87799,-87.62722,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Remington's,41.88274,-87.62466,Restaurant,app q:food q:restaurant,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Revolution Companies Inc.,41.87723,-87.62480,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Roanoke,41.88180,-87.63182,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Robert’s,41.89096,-87.61709,Restaurant,q:pizza,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Rosati's Pizza,41.87937,-87.62669,Restaurant,q:pizza,rosatis,Rosati's,N/A,Category,yes,Chain: Rosati's. Grade estimated from its category.
+Chicago IL,Rosati's Pizza,41.88517,-87.63406,Restaurant,q:pizza,rosatis,Rosati's,N/A,Category,yes,Chain: Rosati's. Grade estimated from its category.
+Chicago IL,S2 Express Grill,41.87636,-87.63103,Restaurant,app poi:Restaurant q:restaurant,,,N/A,Likely,yes,Fast food / quick service
+Chicago IL,SALT burgers + fries,41.87841,-87.62571,Restaurant,app q:burger q:fast_food q:food,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Sanity 17th NIV-AZURE test,41.87798,-87.62989,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Seedo’s Levantine Bakery,41.87996,-87.63053,Bakery,app poi:Bakery,,,A,Guess,yes,Appears to be independently owned
+Chicago IL,Shake Shack,41.88144,-87.62488,Restaurant,q:burger q:fast_food,shake-shack,Shake Shack,A,Known,no,Known chain: Shake Shack
+Chicago IL,Siena Tavern,41.88912,-87.62990,Restaurant,q:pizza,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,Sky-Ride Tap,41.87679,-87.63108,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Small Cheval- Riverside,41.88495,-87.63850,Restaurant,q:burger,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Smallcakes Cupcakery and Creamery,41.88332,-87.63472,Bakery,poi:Bakery,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,Sofi Restaurant,41.87383,-87.62932,Restaurant,app q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Sopraffina,41.87991,-87.63510,Restaurant,q:fast_food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Sopraffina,41.87735,-87.63283,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,South Loop Farmers Market,41.87372,-87.62945,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,South Loop Market,41.87674,-87.63476,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,Starbucks Coffee Company,41.87809,-87.62593,Cafe,app poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Chicago IL,Starbucks Coffee Company,41.88077,-87.63195,Cafe,app poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Chicago IL,Starbucks Coffee Company,41.87837,-87.63093,Cafe,app poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Chicago IL,Starbucks Coffee Company,41.88178,-87.62742,Cafe,app poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Chicago IL,Starbucks Coffee Company,41.88010,-87.62687,Cafe,app poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Chicago IL,Starbucks Coffee Company,41.88007,-87.63500,Cafe,app poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Chicago IL,Sterling Cafe And Bar,41.87996,-87.63054,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Stocks & Blondes,41.88287,-87.63400,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Stop Everyday,41.87836,-87.62532,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Sugar Bliss,41.88025,-87.62634,Bakery,app poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Sugar Bliss LLC,41.88031,-87.62646,Bakery,app poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Sugar Studio,41.87658,-87.62472,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Sugary Chicago,41.88045,-87.62475,Bakery,app poi:Bakery q:cafe,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Sushi + Rotary Sushi Bar,41.87431,-87.63345,Restaurant,app q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,Sweet Mamas,41.88346,-87.62593,Bakery,poi:Bakery,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,TNS Pop-Chicago,41.88236,-87.63724,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Taco Bell Cantina,41.87647,-87.62909,Restaurant,q:fast_food,taco-bell,Taco Bell,N/A,Known,no,Known chain: Taco Bell
+Chicago IL,Taco Maya,41.87117,-87.62733,Restaurant,q:fast_food,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,Taher Fresh Season Cafe,41.87854,-87.62879,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,The Art Of Pizza,41.87240,-87.62732,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Chicago IL,The Bagel Spot,41.88181,-87.63124,Restaurant,q:fast_food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,The Berghoff,41.87936,-87.62853,Restaurant,app poi:Restaurant q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,The Drawing Room,41.88166,-87.62477,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,The Exchange,41.87859,-87.62458,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,The Fat Shallot,41.87984,-87.63064,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,The Gage,41.88134,-87.62464,Nightlife,poi:Nightlife q:food q:restaurant,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,The Marq,41.87953,-87.62991,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,The Marshall Field's Walnut Room,41.88388,-87.62748,Restaurant,q:burger q:fast_food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,The Sprouted Kitchen,41.87978,-87.62900,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,The Village,41.88062,-87.63015,Restaurant,app poi:Restaurant q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,The Wigwam Room,41.87789,-87.62990,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Tilly Bagel Shop,41.87326,-87.62633,Restaurant,q:fast_food,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Tropicake Chicago Bakery,41.87279,-87.62941,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,UIC John Marshall Law School - Cafeteria,41.87782,-87.62862,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Umamicue,41.87996,-87.63054,Restaurant,app poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,Umi Sushi,41.87837,-87.62571,Restaurant,app q:food q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Chicago IL,Valaji Lobby Shop,41.87975,-87.62474,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Verve Coffee Roasters,41.88052,-87.62813,Cafe,app poi:Cafe,,,N/A,Likely,yes,Coffee / drinks
+Chicago IL,Vitalogy on Dearborn,41.87267,-87.62885,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Vol. 39,41.88082,-87.63213,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Chicago IL,Wellness Veggie,41.87975,-87.62474,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Whole Earth Brands,41.87977,-87.63643,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Chicago IL,Willis Tower Plaza Farmer's Market,41.87866,-87.63587,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Chicago IL,Zoup! Eatery,41.87952,-87.63005,Restaurant,app poi:Restaurant,z-eats,Z!Eats,N/A,Category,yes,Chain: Z!Eats. Grade estimated from its category.
+Chicago IL,Zoup! Eatery,41.87962,-87.63009,Restaurant,poi:Restaurant,z-eats,Z!Eats,N/A,Category,yes,Chain: Z!Eats. Grade estimated from its category.
+Chicago IL,etc.,41.87664,-87.63399,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Chicago IL,prasino,41.88116,-87.62566,Restaurant,app q:cafe q:coffee q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified

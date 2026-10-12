@@ -80,7 +80,7 @@ struct PlaceVerificationTests {
             request.region = region
             request.resultTypes = .pointOfInterest
             if let response = try? await MKLocalSearch(request: request).start() {
-                add(response.mapItems, source: "q:\(query)")
+                add(response.mapItems, source: "q:\(query.replacingOccurrences(of: " ", with: "_"))")
             }
         }
 
@@ -101,7 +101,8 @@ struct PlaceVerificationTests {
         let input = dir.appending(path: "rescore-input.csv")
         guard let text = try? String(contentsOf: input, encoding: .utf8) else { return }
         var rows = [Self.header]
-        for line in text.split(separator: "\n").dropFirst() {
+        // `isNewline`, not "\n": a CSV written with "\r\n" is one Character per line break.
+        for line in text.split(whereSeparator: \.isNewline).dropFirst() {
             let fields = Self.parseCSVLine(String(line))
             guard fields.count >= 5, let lat = Double(fields[2]), let lon = Double(fields[3]) else { continue }
             let category = fields[4].isEmpty ? nil : MKPointOfInterestCategory(rawValue: "MKPOICategory" + fields[4])

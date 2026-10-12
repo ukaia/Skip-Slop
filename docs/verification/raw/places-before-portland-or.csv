@@ -1,0 +1,333 @@
+city,name,lat,lon,category,sources,chain_slug,chain_name,grade,confidence,estimated,reason
+Portland OR,00 Wines,45.52682,-122.68076,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,200 Market Food Kart,45.51180,-122.67843,Restaurant,q:fast food,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,21st Century Pizza,45.51674,-122.68669,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,2NW5,45.52335,-122.67526,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,2NW5,45.52352,-122.67460,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,40 LBS Coffee Bar,45.52051,-122.67757,Cafe,poi:Cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,4th & Oak Market,45.52102,-122.67487,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,5 Star Food,45.52286,-122.67367,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Abba Coffee Roasters,45.52691,-122.68244,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Ablis Experience,45.52145,-122.67234,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Abu Omar Gyros & Shawarma,45.52001,-122.67440,Restaurant,q:fast food,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Alberta Organic,45.52371,-122.67295,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Farm-to-table / chef-driven indicators
+Portland OR,All Your Heart Coffee,45.51663,-122.68589,Cafe,q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Armory Cafe,45.52406,-122.68175,Bakery,poi:Bakery,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Artbar Catering,45.52287,-122.67771,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,August Moon Chinese Restaurant,45.51245,-122.67696,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Baby Doll Pizza,45.51940,-122.63659,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Bacchus Bar,45.52089,-122.67851,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Backwoods Brewing,45.52497,-122.68232,Brewery,poi:Brewery,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Badlands Portland,45.52393,-122.67723,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Barrel Room,45.52370,-122.67174,Nightlife,q:burger,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Bashas Mediterranean Cuisine,45.52232,-122.67661,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Beer Jerky,45.52124,-122.67461,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Behind the Museum Café,45.51647,-122.68436,Cafe,q:cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Bellagios Pizza,45.51778,-122.69230,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Bing Mi,45.52086,-122.67609,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Bing Mi,45.52030,-122.68114,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Birrieria La Plaza 2 - Downtown,45.52074,-122.68097,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Bizu,45.52368,-122.67364,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Black Cat Frozen Custard,45.52161,-122.67294,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Blue Hill Robot Coffee @ MUJI Portland,45.51927,-122.67784,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Blue Hill Robot Coffee Swee2o,45.52255,-122.68166,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Bold Coffee And Books,45.51805,-122.69244,Cafe,q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Break Bread Sandwich Shop,45.51546,-122.67536,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Brew,45.52273,-122.68036,Nightlife,poi:Nightlife,bjs-restaurant,BJ's Restaurant & Brewhouse,F,Known,no,Known chain: BJ's Restaurant & Brewhouse
+Portland OR,Broadway Cannabis Social Lounge,45.52248,-122.67831,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Bruce Carey Restaurants,45.52238,-122.67730,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Burger Syndicate,45.52264,-122.67291,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Burgerville,45.53089,-122.66185,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,CK Market and Smoke,45.52037,-122.67414,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Cadejo Coffee,45.52361,-122.67928,Cafe,poi:Cafe q:food,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Caffè Umbria,45.51188,-122.67822,Cafe,q:cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Caffè Umbria,45.51603,-122.68179,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Café UNITED Old Town PDX,45.52375,-122.67172,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Calle6pdx,45.52646,-122.67634,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Capital One Café,45.51949,-122.67971,Cafe,poi:Cafe q:cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Case Study Coffee Roasters,45.51918,-122.68238,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Champs Burgers,45.49191,-122.65239,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Charlie's Deli & Delivery,45.52366,-122.67521,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Chevron Food Mart,45.52279,-122.67485,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Chez Joly Catering,45.52434,-122.67767,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,China Town Convenience Store,45.52482,-122.67359,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Club Detour PDX,45.52332,-122.67270,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Courier Coffee Roasters,45.52274,-122.68056,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Craft PDX,45.52029,-122.67504,Restaurant,q:burger q:fast food q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Creepy's,45.51734,-122.65902,Restaurant,q:burger,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Cultura Portland,45.52357,-122.68033,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Cuốn - Vietnamese Street Food,45.51896,-122.67615,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Deadstock Coffee,45.52340,-122.67461,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Deschutes Brewery,45.52461,-122.68207,Brewery,poi:Brewery q:burger q:food,,,B,Guess,yes,Brewery — food quality varies
+Portland OR,Dimo's Apizza,45.52341,-122.65839,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,District,45.52247,-122.67269,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Dixie Tavern,45.52376,-122.67326,Nightlife,poi:Nightlife q:food,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Dough Zone,45.50816,-122.67247,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Downtown Freddie Browns,45.52196,-122.67636,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Downtown Grocery,45.52094,-122.67490,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Drip Drop Coffee,45.51665,-122.67723,Cafe,q:cafe q:coffee q:fast food,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Duck House Chinese Restaurant,45.50914,-122.68263,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Eatsimply By Dora,45.52267,-122.66978,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Ebar,45.51915,-122.68031,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Edan Pizza,45.51723,-122.67511,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Eden Bar,45.52352,-122.67309,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Edible Complex,45.52189,-122.67652,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Eggs & Co,45.51930,-122.67472,Cafe,poi:Cafe q:cafe q:coffee q:fast food,,,N/A,Likely,no,Coffee / drinks
+Portland OR,El Gaucho,45.52156,-122.67858,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,El Pilon Portland,45.52089,-122.67549,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,El Ñaño Parrilladas,45.52280,-122.67876,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Elevate Night Club,45.52427,-122.67566,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Espresso Bar,45.51920,-122.67987,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Etus Coffee,45.52035,-122.67259,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Express Market,45.52265,-122.68295,FoodMarket,poi:FoodMarket,,,N/A,Likely,no,Fast food / quick service
+Portland OR,Farrah Farms,45.52137,-122.67084,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Fast Times,45.52270,-122.65897,Restaurant,q:pizza,,,N/A,Likely,no,Fast food / quick service
+Portland OR,Finch on Fifth,45.51995,-122.67731,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Flock,45.52062,-122.68097,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Flor Wines,45.52674,-122.67985,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,"Forte Coffee, Wine, Beer",45.52064,-122.67729,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Forte Portland,45.51700,-122.67800,Cafe,q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Fracture Brewing,45.52086,-122.67609,Brewery,poi:Brewery,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Freedom Cafe,45.52080,-122.67452,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Fried Egg I'm In Love,45.51874,-122.67965,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Full Belly Fare,45.52571,-122.67799,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Gay Awakening Coffee,45.52036,-122.67131,FoodMarket,poi:FoodMarket,,,N/A,Likely,no,Coffee / drinks
+Portland OR,GeekEasy Anime Cafe,45.52439,-122.67366,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Ginza,45.52532,-122.67988,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Good Coffee,45.52357,-122.68252,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Goodies,45.52441,-122.67264,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Grill Station,45.52086,-122.67609,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Grits N' Gravy,45.52216,-122.67717,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Ground Kontrol Classic Arcade - Food & Beverage,45.52407,-122.67569,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Guilder Cafe,45.52320,-122.68142,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Guilder West,45.52317,-122.68177,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,HOTLIPS Pizza Pearl,45.52835,-122.68040,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,HallwayPDX,45.52358,-122.67312,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Hana Sushi and Izakaya,45.52424,-122.68096,Restaurant,q:food,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Helen's Market,45.52322,-122.67730,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Henry Handwork,45.52696,-122.68195,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Heroes Cafe,45.51439,-122.68323,Restaurant,q:burger,,,N/A,Likely,no,Coffee / drinks
+Portland OR,High Horse,45.52039,-122.67869,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Honorable Mention,45.52187,-122.67844,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Hua Li House,45.52282,-122.67909,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Hui Lau Shan,45.52071,-122.68107,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,HunnyBeez,45.51449,-122.68311,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Ikimono Ramen,45.52236,-122.68161,Restaurant,q:food,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Ikon Lounge,45.52236,-122.67772,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Il Terrazzo,45.51018,-122.67387,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Indian Curry House,45.52086,-122.67609,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Insomnia Cookies,45.50953,-122.68474,Bakery,app q:restaurant,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Iron Strike Smash Burgers,45.52087,-122.67609,Restaurant,poi:Restaurant q:burger q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,J'Abe's,45.52464,-122.67427,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Ja Das Desserts,45.52274,-122.66977,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Jade Cow Creamery,45.52071,-122.68107,Restaurant,q:food,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,James Sloss Pottery,45.52288,-122.66976,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Java Man Coffee,45.52052,-122.67874,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Java Rising,45.52086,-122.67609,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Junior's II Grocery,45.52270,-122.67794,FoodMarket,poi:FoodMarket,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Kabob Kabob Persian Food,45.51967,-122.67454,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Kafta House,45.52324,-122.67804,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Karam Bar and Restaurant,45.51643,-122.68548,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Kasa,45.52006,-122.67537,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Kelly's Olympian,45.51993,-122.67662,Nightlife,poi:Nightlife,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Killer Burger,45.51940,-122.67450,Restaurant,q:burger q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Kilo D’Cofi,45.52233,-122.67713,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,King Tide Fish & Shell,45.51145,-122.67415,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Kingsland Kitchen,45.52173,-122.67380,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Kinnamōns,45.52232,-122.67309,Bakery,poi:Bakery,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Kit Kat Club,45.52258,-122.67299,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Korean Twist,45.52136,-122.67657,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Krishn Dhara,45.52114,-122.68184,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,La Real Restaurant,45.52432,-122.68073,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Lavoratti Cioccolato,45.51977,-122.67974,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Less And More Coffee,45.51814,-122.67927,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Less and More Coffee,45.51665,-122.67912,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Lichen + Leaf,45.52266,-122.67597,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Life of Riley,45.52521,-122.68106,Nightlife,q:burger,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Lil' Funky Donuts,45.52142,-122.67235,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Little Big Burger,45.49631,-122.67072,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Little River Café,45.51043,-122.67396,Cafe,q:cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Lola’s Bussdown,45.52370,-122.67414,Cafe,poi:Cafe q:food,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Lotus & Bean,45.51897,-122.67497,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Lovely Rita,45.52352,-122.67460,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Lucky Cat Coffee,45.52029,-122.67426,Cafe,poi:Cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Luna Bar,45.52243,-122.67291,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,M Club Lounge,45.52037,-122.67861,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,MA & PA Market,45.52189,-122.68366,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Madrina Taqueria Lunch side and Market,45.51681,-122.68682,Restaurant,app q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,MaggieBell Naturals / Crazy Good Snacks,45.52573,-122.67797,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Mako Matcha Mill,45.52259,-122.68399,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Mando's,45.52283,-122.67875,Restaurant,poi:Restaurant q:burger,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Marco Polo Garden,45.52351,-122.67565,Restaurant,poi:Restaurant,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Market Decisions Corp,45.52493,-122.67193,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Marketplace Cafe,45.51913,-122.68034,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Master Chef Mac and Wings,45.52086,-122.67609,Restaurant,poi:Restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Mayrose Coffee Bar,45.51786,-122.67871,Cafe,q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,McDonald's,45.52312,-122.69001,Restaurant,q:fast food,mcdonalds,McDonald's,N/A,Known,no,Known chain: McDonald's
+Portland OR,Medo Fresh Food,45.52104,-122.67617,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Mega Grill PDX,45.52285,-122.67874,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,MidCity SmashBurger,45.52415,-122.65078,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Midtown Beer Garden,45.52106,-122.67600,Nightlife,poi:Nightlife,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Migration Brewing,45.52260,-122.66977,Brewery,poi:Brewery,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Momiji Sushi Restaurant,45.49778,-122.68905,Restaurant,app q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Monster Maz Mac & Wings,45.50969,-122.68406,Restaurant,app q:restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Monte Rossa Cafe,45.52573,-122.67473,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Moonlight Mediterranean Food,45.52018,-122.67476,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Morton's The Steakhouse,45.51288,-122.67787,Restaurant,app q:restaurant,mortons,Morton's The Steakhouse,F−,Known,no,Known chain: Morton's The Steakhouse
+Portland OR,Mother’s Bistro & Bar,45.52195,-122.67368,Restaurant,q:food,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Mr Taco,45.52086,-122.67609,Restaurant,poi:Restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Mucca Pizzeria,45.52004,-122.68280,Restaurant,q:pizza,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Murata Japanese Restaurant,45.51181,-122.67850,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Never Coffee,45.52143,-122.68390,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Nineteen27 Smores,45.52101,-122.68345,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Novel Book Bar,45.52511,-122.67404,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Number 1 Bento,45.52283,-122.67921,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Nuvrei,45.52226,-122.68269,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,OG Poke,45.51036,-122.68184,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Oak Street Coffee,45.52172,-122.67799,Cafe,poi:Cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Old Town Grocery,45.52394,-122.67328,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Old Town Pizza & Brewing,45.52447,-122.67309,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Old Town Saloon,45.52325,-122.67579,Nightlife,poi:Nightlife,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Oregon Paintball,45.52715,-122.67525,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Our Spot PDX,45.50881,-122.67327,Cafe,q:cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Ovation Coffee & Tea,45.51114,-122.68112,Cafe,app q:restaurant,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Oven and Shaker,45.52500,-122.68280,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,PDX Coffee Club,45.52012,-122.67202,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,PDX Coffee Club,45.52013,-122.67198,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,PDX Sliders,45.50486,-122.63340,Restaurant,q:burger,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,PDX Sliders,45.55444,-122.66643,Restaurant,q:burger,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,PLS on Sixth,45.51379,-122.68069,Restaurant,q:burger,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Pamana,45.52352,-122.67460,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Park Avenue Cafe,45.51388,-122.68440,Cafe,q:cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Part and Parcel,45.52041,-122.67864,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Pepito,45.52086,-122.67609,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Pete's Market,45.51970,-122.67622,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Peterson's Fourth Avenue,45.51967,-122.67610,FoodMarket,poi:FoodMarket,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Petunia's Pies & Pastries,45.52096,-122.68374,Bakery,poi:Bakery,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Piattino,45.52499,-122.68307,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Piazza Italia,45.52873,-122.68301,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Pizza Jerk,45.51217,-122.68184,Restaurant,app q:pizza q:restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Pizza Kat,45.52316,-122.69587,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Pizza Schmizza,45.51134,-122.68068,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Pizza Thief,45.50449,-122.65399,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Pizzaslut,45.52294,-122.67359,Restaurant,poi:Restaurant q:food q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Pizzicato,45.53194,-122.68152,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Pleasure Burger,45.51977,-122.67908,Restaurant,q:burger q:fast food q:food,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Poplandia Popcorn,45.52036,-122.68396,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Portland Burger,45.52044,-122.67309,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Portland City Grill,45.52266,-122.67597,Restaurant,poi:Restaurant q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Portland Food Hall,45.51698,-122.67538,Restaurant,q:cafe,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Portland International Beerfest,45.52506,-122.67806,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Portland Sports Bar & Grill,45.50912,-122.67359,Nightlife,app q:restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Portland's Original Elephant Ears,45.52262,-122.66979,Bakery,poi:Bakery,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Positively Sweet,45.52573,-122.67797,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Press Release Coffee + Food,45.51274,-122.67614,Cafe,app q:restaurant,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Proof•Reader,45.51249,-122.67564,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Puddletown Bagels,45.50997,-122.67375,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,QD's Bar,45.52592,-122.68496,Nightlife,q:pizza,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Quality Bar,45.52277,-122.68069,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Que Dicee,45.52428,-122.67568,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Rabbits Cafe,45.52189,-122.67652,Restaurant,poi:Restaurant,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Rachel & Rose,45.52285,-122.67874,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Raising Cane's Chicken Fingers,45.51750,-122.67785,Restaurant,q:fast food,raising-canes,Raising Cane's,B,Known,no,Known chain: Raising Cane's
+Portland OR,Ranch Pizza,45.52943,-122.69442,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Recess Restaurant and Bar,45.52408,-122.67943,Restaurant,q:burger,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Rialto Poolroom,45.51943,-122.67623,Nightlife,q:burger q:pizza,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Riot Coffeehouse,45.52319,-122.69142,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,River Pool and Sports Bar,45.52355,-122.67565,Nightlife,poi:Nightlife,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Rocket Fizz,45.51989,-122.67833,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Roseland Theater & Grill,45.52360,-122.67622,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Roseline Coffee,45.52042,-122.68036,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Saint Cupcake,45.52042,-122.68405,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Sanctuary,45.52356,-122.68040,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Sconey Balogna,45.52697,-122.68257,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Scottie's Pizza Parlor NW,45.52762,-122.69468,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Sealand Fish & Chips,45.52086,-122.67609,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Shake Bar PDX,45.52365,-122.67429,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Shake Shack West End Portland,45.52271,-122.68147,Restaurant,q:burger q:fast food,shake-shack,Shake Shack,A,Known,no,Known chain: Shake Shack
+Portland OR,Shanghai Tunnel Bar,45.52261,-122.67247,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Shawarma House PDX,45.52086,-122.67609,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Shawarma spot,45.50914,-122.68189,Restaurant,app q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Shirley Temple Soda Pop,45.52266,-122.67597,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Shogun Burger & Rice,45.52284,-122.67940,Restaurant,poi:Restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Shop Halo Halo,45.52277,-122.68169,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Silverado,45.52362,-122.67657,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Simple Local Coffee,45.52192,-122.67181,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Sinister Coffee and Creamery,45.51845,-122.67577,Cafe,q:cafe q:coffee,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Sisters of The Road Cafe,45.52437,-122.67680,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Sizzle Pie,45.52283,-122.68090,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Skidmore Saturday Market,45.52221,-122.67175,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Slice and Spice Pizza,45.52086,-122.67609,Restaurant,poi:Restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Society Cafe,45.52470,-122.67371,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,SomTum Thai Kitchen,45.51026,-122.68413,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Souvlaki Queen,45.52224,-122.67713,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Spark Lounge,45.52372,-122.67364,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Spella Caffe,45.51969,-122.67865,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Spella Caffè,45.51969,-122.67867,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Spencer Café,45.52217,-122.68248,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Spin Room at Dirty,45.52358,-122.67387,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,St Honoré Boulangerie,45.52059,-122.67910,Cafe,poi:Cafe q:food,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Stag PDX,45.52551,-122.67768,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Starbucks Coffee Company,45.52380,-122.68199,Cafe,poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Portland OR,Starbucks Coffee Company,45.51913,-122.67957,Cafe,poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Portland OR,Starlight Lounge & Patio,45.52338,-122.67675,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Stella's Sandwiches & Bowls,45.52086,-122.67609,Restaurant,poi:Restaurant,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Stone Cottage,45.52221,-122.67175,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Stratus Pdx,45.52332,-122.67270,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Stumptown Coffee Roasters,45.52178,-122.67345,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Stumptown Coffee Roasters,45.52151,-122.68285,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Sugarfina Candy Boutique,45.51915,-122.68031,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Sushi Ichiban,45.52351,-122.67731,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,TACOQUETO,45.52285,-122.67875,Restaurant,poi:Restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Taco Bell,45.52332,-122.69406,Restaurant,q:fast food,taco-bell,Taco Bell,N/A,Known,no,Known chain: Taco Bell
+Portland OR,Tacos Fita,45.51864,-122.67922,Restaurant,q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Taffy Tycoon International,45.52334,-122.67205,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Tanaka,45.52069,-122.68378,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Taqueria Luna,45.52288,-122.67380,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Tasty Corner,45.51039,-122.68382,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Tequila Go Go,45.52315,-122.67439,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Thai Peacock,45.52270,-122.68020,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Thai Sky,45.52111,-122.67609,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Thai Vendor,45.49934,-122.68980,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,The Baker's Mark,45.52524,-122.68134,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,The Cart Blocks,45.52277,-122.67864,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,The Cod Father,45.52086,-122.67609,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,The Conspirator’s Coffee Lounge,45.52161,-122.67294,Cafe,poi:Cafe q:food,,,N/A,Likely,no,Coffee / drinks
+Portland OR,The Downbeat Bar,45.52651,-122.67483,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,The Dusted Cup,45.51712,-122.67313,Cafe,q:cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,The Hive,45.52325,-122.67680,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,The Independent Sports Bar & Grill,45.52223,-122.67823,Nightlife,poi:Nightlife,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,The Kafta House,45.52286,-122.67928,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,The Market,45.52107,-122.68361,FoodMarket,poi:FoodMarket,boston-market,Boston Market,F,Known,no,Known chain: Boston Market
+Portland OR,The Palm Court,45.52187,-122.67844,Nightlife,poi:Nightlife,the-palm,The Palm,F−,Known,no,Known chain: The Palm
+Portland OR,The Social Spoon,45.52153,-122.67695,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,The Spice & Tea Exchange,45.52018,-122.67902,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,The Star,45.52728,-122.68459,Restaurant,q:pizza,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Portland OR,The Vault Bookstore,45.52266,-122.67597,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Tiny Little Cuppa,45.51978,-122.67673,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Tito's Burritos #2,45.52274,-122.67825,Restaurant,poi:Restaurant,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Toasted S'mores Bar,45.52101,-122.68345,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Tokyo Sando,45.52080,-122.67635,Restaurant,q:fast food q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Tope,45.52352,-122.67460,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,Tous Les Jours,45.52097,-122.68083,Bakery,poi:Bakery q:cafe q:coffee,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,University Station Food Carts,45.50961,-122.68412,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Unlisted PDX,45.52187,-122.67844,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Portland OR,VT Group,45.52361,-122.67928,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Velden Botanicals,45.52114,-122.68184,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Verdun Fine Chocolate,45.52614,-122.68135,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Vista Spring Cafe,45.50935,-122.69891,Restaurant,app q:restaurant,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Voodoo Doughnut,45.52265,-122.67314,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Wanderlust Kitchen,45.52083,-122.68317,Restaurant,q:burger q:cafe q:coffee q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Water Avenue Coffee,45.52206,-122.68176,Cafe,poi:Cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Whole Foods Market,45.52352,-122.68327,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Wild Child Pizza,45.52596,-122.68496,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Portland OR,Wild Rose Coffee,45.51037,-122.68368,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Portland OR,Willy's Wiener Wagon,45.52212,-122.67671,Restaurant,poi:Restaurant,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Winner Winner,45.52247,-122.67868,Restaurant,poi:Restaurant,,,A,Estimated,yes,Independent restaurant indicators
+Portland OR,Wolfs Head,45.50961,-122.68464,Restaurant,q:burger,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,Wolfs Head Portland,45.51274,-122.66510,Restaurant,q:burger q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Portland OR,World Foods,45.52488,-122.68002,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Xin Ding Dumpling House,45.52227,-122.67250,Restaurant,q:food,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Portland OR,Xiong's Flower Farm,45.52249,-122.67105,FoodMarket,poi:FoodMarket,,,A,Guess,yes,Appears to be independently owned
+Portland OR,Your Store,45.52189,-122.67652,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Portland OR,Zaalook,45.52292,-122.67382,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified

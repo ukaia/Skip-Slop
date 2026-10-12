@@ -1,0 +1,278 @@
+city,name,lat,lon,category,sources,chain_slug,chain_name,grade,confidence,estimated,reason
+Austin TX,1886 Cafe & Bakery,30.26801,-97.74164,Cafe,poi:Cafe q:cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,2nd & Roast,30.26548,-97.74671,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,512 Broadway Cafe,30.27101,-97.74721,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,7-Eleven,30.26850,-97.74245,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,7-Eleven,30.27055,-97.74169,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,8 Brazos,30.26772,-97.74236,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,A Well Dressed Home,30.26805,-97.74804,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,A1 Bakery,30.26787,-97.74418,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,ATX Nitelife Tours,30.26561,-97.74204,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Aiolith,30.27026,-97.74024,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Alfred Coffee,30.26268,-97.74362,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Alibi Social Bar,30.26634,-97.74465,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Allday,30.31325,-97.76688,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Ana's Mart,30.26982,-97.74133,FoodMarket,poi:FoodMarket,,,A,Guess,yes,Appears to be independently owned
+Austin TX,Angry Mojo's,30.26750,-97.74448,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Arriba Abajo,30.26679,-97.74099,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Aussie's Grill & Beach Bar,30.25893,-97.74814,Nightlife,q:burger,,,A,Guess,yes,Appears to be independently owned
+Austin TX,Austhentico,30.26572,-97.74400,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Austin Polo Lounge,30.26722,-97.74086,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Austin Sports Club,30.26468,-97.74236,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Azul Rooftop,30.26663,-97.74036,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,BOA Steakhouse,30.26910,-97.74554,Restaurant,app q:food q:restaurant,,,C,Guess,yes,Upscale — could be real or expensive slop
+Austin TX,BOXT,30.27240,-97.74957,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Bennu Coffee,30.25612,-97.74629,Cafe,q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Big Dan's Hemporium,30.26596,-97.73831,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Bill’s Oyster,30.26559,-97.74552,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Bitezar,30.26900,-97.74039,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Black Fox Coffee,30.26871,-97.74620,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Black Sheep Coffee,30.26928,-97.74642,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Blackland Prarie Family Farm,30.26726,-97.74714,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Austin TX,Blindside Lounge,30.26731,-97.74105,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Blue Ribbon BBQ,30.26655,-97.74317,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,Break Time,30.26829,-97.74297,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Breakthrough Botanicals,30.26603,-97.74921,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Bufalina,30.25514,-97.71965,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Burger Bar Congress,30.26478,-97.74383,Restaurant,q:burger q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Burpy,30.26684,-97.74372,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,CAVA,30.26780,-97.74259,Restaurant,poi:Restaurant,cava,CAVA,A,Known,no,Known chain: CAVA
+Austin TX,Cafe Divine,30.26854,-97.73933,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Café Crème,30.26615,-97.75147,Cafe,q:cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Candy Sense,30.26860,-97.74309,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Capital One Café,30.26820,-97.74257,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Capitol Cafe,30.27186,-97.74116,Cafe,poi:Cafe q:cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Caroline,30.26877,-97.74237,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Carter Bros’ Pizza,30.26129,-97.73870,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Casino El Camino,30.26651,-97.73766,Nightlife,q:food,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Catering By Mopsie,30.26649,-97.74276,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Cci B Perry Brooks LP Str,30.26944,-97.74106,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Cedar Door Patio Bar Grill,30.26414,-97.74266,Nightlife,app q:burger q:food q:restaurant,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Central District Brewing,30.26511,-97.73746,Brewery,poi:Brewery,,,B,Guess,yes,Brewery — food quality varies
+Austin TX,Cheesesteak Factory,30.26702,-97.74441,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Chef Philip Speer,30.26770,-97.74425,Restaurant,poi:Restaurant,,,A,Estimated,yes,Farm-to-table / chef-driven indicators
+Austin TX,Chi'Lantro,30.26603,-97.74491,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Chick-fil-A,30.26841,-97.74363,Restaurant,poi:Restaurant q:fast food,chick-fil-a,Chick-fil-A,N/A,Known,no,Known chain: Chick-fil-A
+Austin TX,Chow Chocolat,30.27200,-97.74088,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Chupitos,30.26700,-97.74008,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Ciccio Bomba,30.26352,-97.74361,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Cielito Lindo,30.26633,-97.74177,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Clarsale,30.27026,-97.74024,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Club Eternal,30.26655,-97.74524,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Clubroom,30.26985,-97.74626,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Coconut Club,30.26639,-97.74506,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Comedor,30.26769,-97.74414,Restaurant,poi:Restaurant q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Company Kitchen,30.26498,-97.74841,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Corner Restaurant,30.26460,-97.74390,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Cuatro Gato,30.26620,-97.74511,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,DEHY,30.26981,-97.74984,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,DFG Noodles,30.26546,-97.74289,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Darwin's Piano Bar,30.26734,-97.74070,Nightlife,poi:Nightlife,,,A,Guess,yes,Appears to be independently owned
+Austin TX,Daydreamer Coffee,30.25921,-97.73890,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,De Smash Burger,30.26982,-97.75014,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,DeSano Pizzeria Napoletana,30.26630,-97.74599,Restaurant,q:pizza,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,Design Your Dine,30.26640,-97.74278,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Desnudo Coffee,30.26410,-97.74396,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Desnudo Coffee,30.27346,-97.75859,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,DittyDog,30.26720,-97.73721,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Dolce Terra,30.26811,-97.74745,Bakery,poi:Bakery,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Downtown Burgers,30.26201,-97.74010,Restaurant,q:burger,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Downtown Burgers,30.26549,-97.74422,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Duck Boat Tour On Lake Austin,30.26749,-97.74137,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Dumont's Down Low,30.26685,-97.74544,Nightlife,poi:Nightlife,,,A,Guess,yes,Appears to be independently owned
+Austin TX,Edge Rooftop,30.26455,-97.74343,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,El Cockfight,30.26657,-97.74217,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Elephant Room,30.26563,-97.74337,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Emojis Grilled Cheese Bar,30.26555,-97.74401,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Eureka!,30.26780,-97.74131,Restaurant,app q:burger q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Evil Wiener,30.26681,-97.74278,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Fareground,30.26322,-97.74341,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Favorite Pizza,30.27019,-97.75082,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Fifth Street Diner,30.26678,-97.74099,Restaurant,app q:cafe q:coffee q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Fifty Percent Off,30.26729,-97.74261,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Fleet Coffee,30.25977,-97.73856,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Fleet Coffee,30.27022,-97.74223,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Fogo de Chão,30.26462,-97.74430,Restaurant,q:food,fogo-de-chao,Fogo de Chão,B,Known,no,Known chain: Fogo de Chão
+Austin TX,Food Club,30.26555,-97.74441,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Food Mart & Souvenirs,30.26737,-97.74096,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Four Blue Palms,30.26399,-97.74478,FoodMarket,poi:FoodMarket,the-palm,The Palm,F−,Known,no,Known chain: The Palm
+Austin TX,Frosty's Christmas Bar,30.26684,-97.74502,Nightlife,poi:Nightlife,,,A,Guess,yes,Appears to be independently owned
+Austin TX,GOOD THINGS,30.26222,-97.73821,Cafe,poi:Cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Garage,30.26787,-97.74418,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Gnar Bar,30.26736,-97.74075,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Grá Mór,30.26783,-97.74106,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Halcyon,30.26690,-97.74569,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Halo,30.26860,-97.74309,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Hanghart,30.26683,-97.74535,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Healthy Food Near Me,30.26601,-97.74025,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Hearsay Gastro Lounge,30.26686,-97.74433,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Here Nor There,30.26835,-97.74139,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Highland Lounge,30.26695,-97.74485,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Hoboken Pie,30.26819,-97.73671,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Hoek's Death Metal Pizza,30.26696,-97.73994,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,HokkaiSan,30.26836,-97.74237,FoodMarket,app poi:FoodMarket q:food q:restaurant,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Holey Moley,30.26348,-97.73470,MiniGolf,q:burger q:fast food,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Home Slice Pizza,30.24923,-97.74963,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Hopdoddy Burger Bar,30.24960,-97.74988,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Hopdoddy Burger Bar,30.26383,-97.73222,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Hotspot,30.26660,-97.74175,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Houndstooth,30.26616,-97.74297,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,In Plain Sight,30.26848,-97.74139,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Intelligentsia,30.26672,-97.74997,Cafe,poi:Cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,J-Prime Steakhouse,30.26477,-97.74156,Restaurant,app q:restaurant,,,C,Guess,yes,Upscale — could be real or expensive slop
+Austin TX,JABS,30.26352,-97.74361,Restaurant,q:burger q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Jack's Pizza,30.26724,-97.73901,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Jewboy Sliders,30.26434,-97.73069,Restaurant,q:burger,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Jimmy John's,30.26777,-97.74235,Restaurant,poi:Restaurant,jimmy-johns,Jimmy John's,N/A,Known,no,Known chain: Jimmy John's
+Austin TX,Jo's Hot Coffee Good Food,30.26498,-97.74612,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Jo's Hot Coffee Good Food,30.27106,-97.73449,Cafe,q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Joe's Slice of Sicily,30.26186,-97.77510,Restaurant,q:pizza,,,A,Guess,yes,Appears to be independently owned
+Austin TX,JuiceLand,30.26601,-97.74243,Restaurant,poi:Restaurant,,,N/A,Likely,no,Coffee / drinks
+Austin TX,LUNA Rooftop,30.26755,-97.74394,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,La Condesa,30.26556,-97.74773,Restaurant,q:food,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,La Sangucheria,30.26649,-97.74003,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,La Volta Pizza Club,30.27495,-97.75173,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Lavaca Street Bar,30.26712,-97.74568,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Loaf + Vine,30.26275,-97.74158,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Local Walk-Up Window,30.26584,-97.74854,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Lonesome Dove,30.26829,-97.74401,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Los Pollos Hermanos,30.26751,-97.74390,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Lost Flamingo Gardens,30.26813,-97.74746,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Austin TX,Loudmouth,30.26832,-97.72637,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Luxx,30.26653,-97.74534,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Là Vì,30.26649,-97.73996,Cafe,poi:Cafe q:cafe q:coffee q:fast food q:food,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Manny's,30.26760,-97.74595,Restaurant,app q:fast food q:food q:restaurant,,,A,Guess,yes,Appears to be independently owned
+Austin TX,Manuka New Zealand,30.26729,-97.74261,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Mattina,30.26722,-97.75445,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Merit Coffee Co.,30.26758,-97.75208,Cafe,q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Mexico Lindo and Delicious,30.26503,-97.74358,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,Mexta,30.26814,-97.74225,Restaurant,app poi:Restaurant q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Micheladas Cafe y Cantina,30.26659,-97.73968,Nightlife,q:fast food,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,Midnight Cowboy,30.26707,-97.73999,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Miranda's Café,30.26533,-97.74297,Restaurant,poi:Restaurant,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Modern Market Eatery,30.26660,-97.74317,Restaurant,poi:Restaurant,,,A,Estimated,yes,Independent restaurant indicators
+Austin TX,Momo Food Truck,30.26649,-97.74014,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Moonlight,30.26720,-97.74008,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Morsel's,30.26905,-97.74034,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Mort Subite,30.26568,-97.74389,Nightlife,poi:Nightlife,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Mother’s Ruin,30.26318,-97.72802,Nightlife,q:burger,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Mudhouse Cafe,30.26549,-97.74422,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,NADC Burger,30.26952,-97.74873,Restaurant,q:burger q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,NADC Burger,30.26477,-97.73225,Restaurant,q:burger q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Neighbors Café and Wine Bar,30.26115,-97.73931,Restaurant,q:cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Neon Grotto,30.26649,-97.74503,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Next Level Burger,30.27069,-97.75312,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Nica Jazz Bar,30.26635,-97.74463,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Nica on 4th,30.26634,-97.74465,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Nobody's Business,30.26698,-97.74567,Restaurant,q:burger,,,A,Guess,yes,Appears to be independently owned
+Austin TX,North Italia,30.26582,-97.74905,Restaurant,q:pizza,north-italia,North Italia,B,Known,no,Known chain: North Italia
+Austin TX,Numero28,30.26561,-97.74847,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Oilcan Harry's,30.26660,-97.74539,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,One Birria,30.26535,-97.73402,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,OneTaco,30.26603,-97.74227,Restaurant,poi:Restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,P. Terry's Burger Stand,30.26782,-97.74241,Restaurant,poi:Restaurant q:burger q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,P. Terry's Burger Stand,30.26155,-97.75857,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Parker Jazz Club,30.26634,-97.74465,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Patek's Grocery,30.26234,-97.73656,FoodMarket,poi:FoodMarket,,,A,Guess,yes,Appears to be independently owned
+Austin TX,Patika,30.26399,-97.74478,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Patika Luncheonette,30.26399,-97.74478,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Pedroso's Pizza,30.28994,-97.70775,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,PickAChili,30.26705,-97.74357,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,President's House Coffee,30.26885,-97.74028,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Pretty Cute Coffee,30.26158,-97.74917,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Péché,30.26677,-97.74526,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Quattro Gatti Ristorante e Pizzeria,30.27128,-97.74181,Restaurant,q:pizza,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,RA Sushi Bar Restaurant,30.26636,-97.74447,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,Rain on 4th,30.26665,-97.74558,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Red Ash,30.26562,-97.74481,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Red Dragon ATX,30.26755,-97.74394,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Red Headed Stepchild,30.26667,-97.74214,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Restaurant Francois,30.26610,-97.74753,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Retail Therapy,30.26884,-97.74129,Nightlife,app q:restaurant,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Revolucion Coffee + Juice,30.26439,-97.74141,Cafe,poi:Cafe q:cafe q:coffee,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Roaring Fork,30.26912,-97.74224,Restaurant,app q:food q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Rogue Radish,30.26563,-97.74337,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Roppolo's Pizzeria,30.26731,-97.73975,Restaurant,q:pizza,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,Royal Blue Grocery,30.26503,-97.74194,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Royal Blue Grocery,30.26775,-97.74945,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Royal Blue Grocery,30.26106,-97.73892,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Royal Blue Grocery,30.26570,-97.74585,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Ruth's Chris Steak House,30.26809,-97.74344,Restaurant,poi:Restaurant,ruth-chris,Ruth's Chris Steak House,F−,Known,no,Known chain: Ruth's Chris Steak House
+Austin TX,Salvation Pizza,30.25679,-97.73942,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Sandy’s,30.25847,-97.75098,Restaurant,q:burger q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Sapori Italian Roots,30.26986,-97.74124,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Secret Society,30.26799,-97.74315,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Shiner's Saloon,30.26705,-97.74352,Nightlife,poi:Nightlife,,,A,Guess,yes,Appears to be independently owned
+Austin TX,Shop 24,30.26742,-97.74096,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Skipjack Oyster,30.26657,-97.74051,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Skyhouse Lounge,30.26669,-97.74378,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,South African Food Affair,30.26766,-97.74272,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Speakeasy,30.26678,-97.74345,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Starbucks Coffee Company,30.26589,-97.74652,Cafe,poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Austin TX,Starbucks Coffee Company,30.26546,-97.74047,Cafe,poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Austin TX,Starbucks Coffee Company,30.26566,-97.73851,Cafe,poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Austin TX,Starbucks Coffee Company,30.26472,-97.74386,Cafe,poi:Cafe,starbucks,Starbucks,N/A,Known,no,Known chain: Starbucks
+Austin TX,Stony's Pizza,30.26084,-97.73829,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Sugarwolf Bakery,30.26653,-97.74748,Bakery,app poi:Bakery q:cafe q:coffee q:fast food q:restaurant,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Sushi Junai Omakase,30.26564,-97.74352,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,Sushi Roku,30.26673,-97.74442,Restaurant,app poi:Restaurant q:food q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,Svante's Stuffed Burger,30.26787,-97.74418,Restaurant,poi:Restaurant,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Swank,30.26634,-97.74465,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Swedish Hill,30.26717,-97.74419,Cafe,poi:Cafe q:cafe q:coffee q:food,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Swift's Attic,30.26568,-97.74337,Restaurant,poi:Restaurant,,,A,Guess,yes,Appears to be independently owned
+Austin TX,Swivel Soft Serve,30.26113,-97.74148,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Taco Haus,30.26596,-97.73841,Restaurant,q:burger q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Tacodeli,30.26529,-97.74353,Restaurant,poi:Restaurant q:fast food,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,Tamiya’s Tasty Treats,30.26549,-97.74421,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Taqueria 10/10,30.26399,-97.74067,Restaurant,app q:fast food q:food q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,Tasteeee Me Jell-O shots and more,30.26814,-97.74752,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Taverna,30.26505,-97.74637,Restaurant,q:pizza,,,A,Estimated,yes,Independent restaurant indicators
+Austin TX,Texas Tavern Bar & Southern Table,30.26697,-97.74530,Nightlife,poi:Nightlife,,,A,Estimated,yes,Independent restaurant indicators
+Austin TX,That Little BBQ Stand,30.26734,-97.73703,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,The Austin Wine Merchant,30.26963,-97.74795,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,The Austinite Market,30.26489,-97.74684,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Independent restaurant indicators
+Austin TX,The Backspace,30.26699,-97.74046,Restaurant,q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,The Capital Grille,30.26633,-97.74435,Restaurant,poi:Restaurant,capital-grille,The Capital Grille,F−,Known,no,Known chain: The Capital Grille
+Austin TX,The Coffee Bar,30.26688,-97.74092,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,The Dead Rabbit,30.26778,-97.74112,Nightlife,q:cafe q:coffee,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,The Driskill Bar,30.26843,-97.74161,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,The Driskill Grill,30.26850,-97.74146,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,The Flower Shop,30.26513,-97.72860,Nightlife,q:burger,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,The Heart Of Texas Smokehouse,30.26556,-97.74441,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,The Jackalope,30.26712,-97.73901,Nightlife,q:burger,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,The Kimberly,30.26919,-97.74424,Restaurant,app q:restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,The Onion,30.26648,-97.74207,Restaurant,poi:Restaurant q:pizza,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,The Pub,30.26687,-97.74550,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,The Royale Room,30.26688,-97.74092,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,The Scarbrough by Ze Crêpes,30.26800,-97.74318,Restaurant,poi:Restaurant,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,The Soho Lounge,30.26738,-97.74082,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,The Tavern,30.27700,-97.75117,Nightlife,q:burger,,,A,Estimated,yes,Independent restaurant indicators
+Austin TX,The Victorian,30.26806,-97.74163,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,The Well,30.26676,-97.74108,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,The Wild Corgi Pub,30.26816,-97.74256,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Thistle,30.26828,-97.74463,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Toats,30.26649,-97.74554,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Town Lake Deli,30.26399,-97.74478,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,TraphouseATX,30.26624,-97.74517,Restaurant,app q:food q:restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
+Austin TX,Trippy Buck Coffee,30.26944,-97.74106,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Twins Nightclub,30.26664,-97.74581,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Uncle Chris's Hot Dog,30.26734,-97.74258,Restaurant,poi:Restaurant,,,A,Estimated,yes,Independent restaurant indicators
+Austin TX,Urban Wine + Liquor,30.26487,-97.74421,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,VanHorn's,30.26502,-97.74594,Restaurant,app q:food q:restaurant,,,A,Guess,yes,Appears to be independently owned
+Austin TX,Vault 55,30.27008,-97.74370,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Velvet Taco,30.26800,-97.74312,Restaurant,poi:Restaurant q:fast food q:food,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Veracruz All Natural,30.26298,-97.74452,Restaurant,q:fast food,,,B,Guess,yes,Sit-down restaurant — unverified
+Austin TX,Via 313 Pizza,30.27014,-97.74846,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Victory Lap,30.25952,-97.73820,Nightlife,q:pizza,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Vine Vault Austin,30.26723,-97.74273,Winery,poi:Winery,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Voodoo Doughnut,30.26766,-97.74089,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Wanderlust Coffee Truck,30.26861,-97.74782,Cafe,poi:Cafe,,,N/A,Likely,no,Coffee / drinks
+Austin TX,Wendy's,30.26621,-97.73370,Restaurant,q:fast food,wendys,Wendy's,N/A,Known,no,Known chain: Wendy's
+Austin TX,Whataburger,30.25812,-97.75066,Restaurant,q:fast food,whataburger,Whataburger,B,Known,no,Known chain: Whataburger
+Austin TX,Wholesale Beer Distributors of Texas,30.27061,-97.74140,FoodMarket,poi:FoodMarket,,,A,Estimated,yes,Bakery / food market — likely real food
+Austin TX,Yalla Burgers & Wings halal,30.26756,-97.73894,Restaurant,q:burger,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Yummy Burgers & More,30.26835,-97.73906,Restaurant,q:burger q:fast food,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Zalat Pizza,30.28710,-97.74493,Restaurant,q:pizza,,,C,Guess,yes,Chain-style name pattern — unverified
+Austin TX,Zanzibar,30.26270,-97.74158,Nightlife,q:food,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,Zie Haus,30.26634,-97.74465,Nightlife,poi:Nightlife,,,B,Guess,yes,Not enough information — needs community input
+Austin TX,kebabalicious,30.26526,-97.74385,Restaurant,poi:Restaurant,,,A,Estimated,yes,Specialty restaurant — likely cooks in-house
