@@ -1,22 +1,27 @@
 #!/usr/bin/env python3
-"""Builds Skip Slop/Data/SeedChains.json from curated grades plus public chain lists.
+"""Builds Skip Slop/Data/SeedChains.json: chain names and aliases plus
+evidence-backed grades.
 
-Sources (pinned for reproducibility; override with flags):
-  1. scripts/data/curated_chains.json - hand-graded chains. Their grades are
-     copied unchanged and always win.
-  2. OpenStreetMap name-suggestion-index (NSI), brands/amenity/* and brands/shop/*
-     food files, filtered to brands whose locationSet covers the United States.
-     Gives names, matchNames (aliases), Wikidata IDs, and amenity/cuisine tags.
-  3. Wikipedia, "List of restaurant chains in the United States" - cross-check
-     for chains NSI lacks. The section a chain is listed under gives its format.
+Inputs:
+  1. docs/data/chain_evidence.json - researched prep evidence with citations.
+     The ONLY source of grades. A chain without evidence is "Not graded yet".
+  2. scripts/data/curated_chains.json - the original hand-picked list. Used for
+     names, aliases and parent companies. Its old grades are only read to log
+     how the evidence changed them (docs/data/curated_grade_changes.md).
+  3. OpenStreetMap name-suggestion-index (NSI), US food brands - names,
+     aliases and Wikidata IDs.
+  4. Wikipedia, "List of restaurant chains in the United States" - chains NSI
+     lacks.
+  5. docs/data/top_chains.json - the ~150 largest US chains, to report
+     research coverage.
 
-Chains not in the curated list get a grade only from the category rules in
-docs/data/RATING_METHOD.md (`category_grade` below) and are marked
-"ratingBasis": "category" so the app shows the grade as estimated.
+The grading formula is documented in docs/data/RATING_METHOD.md and
+implemented in `grade_chain` below.
 
 Usage:  python3 scripts/build_chains.py [--nsi-ref SHA] [--wiki-oldid REVID]
-Writes: Skip Slop/Data/SeedChains.json and docs/data/chains_build_report.md
-Needs:  Python 3.9+, network access. No third-party packages.
+Writes: Skip Slop/Data/SeedChains.json, docs/data/chains_build_report.md,
+        docs/data/curated_grade_changes.md
+Needs:  Python 3.9+, network access (NSI and Wikipedia). No third-party packages.
 """
 
 import argparse
@@ -32,8 +37,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CURATED = ROOT / "scripts" / "data" / "curated_chains.json"
+EVIDENCE = ROOT / "docs" / "data" / "chain_evidence.json"
+TOP_CHAINS = ROOT / "docs" / "data" / "top_chains.json"
 OUTPUT = ROOT / "Skip Slop" / "Data" / "SeedChains.json"
 REPORT = ROOT / "docs" / "data" / "chains_build_report.md"
+CHANGES = ROOT / "docs" / "data" / "curated_grade_changes.md"
 
 NSI_REF = "721a3b9b4d375e637a0b50d7ee9eab800078dcd9"  # name-suggestion-index main, 2026-10-11
 WIKI_PAGE = "List of restaurant chains in the United States"
@@ -78,25 +86,102 @@ WIKI_QUICK_SERVICE = {
 WIKI_SIT_DOWN = {"Casual dining", "Arcade and game centers"}
 WIKI_SKIP = {"Defunct", "Notes", "See also", "References", "External links"}
 
-USER_AGENT = "SkipSlop-chain-builder/1.0 (https://github.com/ukaia/Skip-Slop)"
+USER_AGENT = "SkipSlop-chain-builder/2.0 (https://github.com/ukaia/Skip-Slop)"
 
 
-# MARK: - Rating rules (documented in docs/data/RATING_METHOD.md)
+# MARK: - Grading (documented in docs/data/RATING_METHOD.md)
 
-def category_grade(category):
-    """Grade for a chain we have not graded by hand, from its format alone.
+# Signal values -> score out of 100.
+ENTREE = {
+    "scratch": 100,                     # raw/fresh ingredients cooked on site
+    "fresh_cooked_premade_parts": 75,   # cooked on site, key parts arrive made
+    "assembled": 50,                    # mix of on-site cooking and pre-made parts
+    "reheated": 15,                     # mostly pre-cooked/frozen, reheated or fried
+    "broadline_meals": 0,               # complete meals from a broadline distributor
+}
+SIDES = {"scratch": 100, "mixed": 55, "premade": 15}
+PRODUCE = {"fresh_onsite": 100, "mixed": 55, "precut": 15}
+SOURCING = {"local", "direct", "mixed", "broadline"}
+WEIGHTS = {"entree": 0.7, "sides": 0.2, "produce": 0.1}
 
-    - Quick service (fast food, coffee, bakery, dessert): "grey" (N/A). Every
-      curated fast-food and coffee chain is grey; the app does not grade fast food.
-    - Sit-down (casual dining, bar): "orange" (C). This is the grade the app's
-      RatingInferenceEngine gives an unverified chain-style restaurant. We never
-      assign F/F- by rule, because those assert a specific distributor.
+# SlopRating raw values in the app.
+GRADE_RAW = {"A+": "green_plus", "A": "green", "B": "yellow", "C": "orange", "F": "red", "F-": "red_minus"}
+
+
+def prep_score(signals):
+    """Weighted mean of the known prep signals (entree, sides, produce)."""
+    parts = [(WEIGHTS["entree"], ENTREE[signals["entree"]])]
+    if signals.get("sides") in SIDES:
+        parts.append((WEIGHTS["sides"], SIDES[signals["sides"]]))
+    if signals.get("produce") in PRODUCE:
+        parts.append((WEIGHTS["produce"], PRODUCE[signals["produce"]]))
+    return sum(w * v for w, v in parts) / sum(w for w, _ in parts)
+
+
+def sources_for(entry, signal):
+    return [s for s in entry["sources"] if signal in s.get("supports", [])]
+
+
+def confidence_for(entry):
+    """high / medium / low from the sources behind the entree signal."""
+    srcs = sources_for(entry, "entree")
+    tiers = [s["tier"] for s in srcs]
+    independent = [t for t in tiers if t in (2, 3)]
+    strong = [t for t in tiers if t in (1, 2)]
+    if len(srcs) >= 2 and strong and independent:
+        return "high"
+    if len(srcs) >= 2 or strong:
+        return "medium"
+    return "low"
+
+
+def company_only(entry):
+    """True when every source for the entree signal is the company itself."""
+    return all(s["tier"] == 1 for s in sources_for(entry, "entree"))
+
+
+def grade_chain(entry):
+    """Returns (letter, confidence, score) or None when there is no evidence.
+
+    - F-: entrées arrive as complete meals from a broadline distributor.
+    - A+: scratch entrées and sides (or none), score >= 85, and local sourcing
+          backed by an independent source.
+    - A:  scratch entrées and sides (or none), score >= 80.
+    - B:  score >= 60.   C: score >= 38.   F: below 38.
+    A and A+ need at least one independent source; company claims alone cap a
+    chain at B and at medium confidence.
     """
-    if category in ("fast_food", "coffee", "bakery", "dessert"):
-        return "grey"
-    if category in ("casual_dining", "bar"):
-        return "orange"
-    raise ValueError(f"unknown category {category}")
+    signals = entry.get("signals") or {}
+    if signals.get("entree") not in ENTREE:
+        return None
+    for key, table in (("sides", SIDES), ("produce", PRODUCE)):
+        value = signals.get(key)
+        assert value is None or value in table or (key == "sides" and value == "na"), f"{entry['slug']}: bad {key} {value}"
+    assert signals.get("sourcing") in (None, *SOURCING), f"{entry['slug']}: bad sourcing"
+    if not sources_for(entry, "entree"):
+        raise ValueError(f"{entry['slug']}: entree signal has no source")
+
+    score = prep_score(signals)
+    confidence = confidence_for(entry)
+    scratch_core = signals["entree"] == "scratch" and signals.get("sides") in ("scratch", "na")
+    independent = not company_only(entry)
+    local = signals.get("sourcing") == "local" and any(s["tier"] in (2, 3) for s in sources_for(entry, "sourcing"))
+
+    if signals["entree"] == "broadline_meals":
+        letter = "F-"
+    elif scratch_core and independent and score >= 85 and local:
+        letter = "A+"
+    elif scratch_core and independent and score >= 80:
+        letter = "A"
+    elif score >= 60:
+        letter = "B"
+    elif score >= 38:
+        letter = "C"
+    else:
+        letter = "F"
+    if not independent and confidence == "high":
+        confidence = "medium"
+    return letter, confidence, round(score, 1)
 
 
 def nsi_category(tags):
@@ -292,14 +377,16 @@ def build(nsi_ref, wiki_oldid):
             slug = f"{slug}-{(qid or str(len(chains))).lower()}"
         return slug
 
+    def new_entry(slug, name, category, provenance, aliases, qid, parent=None):
+        return OrderedDict([
+            ("slug", slug), ("name", name), ("category", category), ("parentCompany", parent),
+            ("aliases", aliases), ("provenance", provenance), ("wikidata", qid),
+        ])
+
     for c in curated:
-        entry = OrderedDict(c)
-        entry["aliases"] = list(c.get("aliases", []))
-        entry["provenance"] = "curated"
-        entry["ratingBasis"] = "curated"
-        entry["wikidata"] = None
-        chains[c["slug"]] = entry
-        index(c["slug"], [c["name"]] + entry["aliases"], None)
+        chains[c["slug"]] = new_entry(c["slug"], c["name"], c["category"], "curated",
+                                      list(c.get("aliases", [])), None, c.get("parentCompany"))
+        index(c["slug"], [c["name"]] + list(c.get("aliases", [])), None)
     curated_names = dict(by_name)
 
     # NSI: attach Wikidata/aliases to curated chains, add the rest.
@@ -325,21 +412,8 @@ def build(nsi_ref, wiki_oldid):
             stats["nsi_generic_skipped"] += 1
             continue
         slug = unique_slug(brand["name"], brand["wikidata"])
-        chains[slug] = OrderedDict([
-            ("slug", slug),
-            ("name", brand["name"]),
-            ("rating", category_grade(brand["category"])),
-            ("category", brand["category"]),
-            ("distributor", None),
-            ("parentCompany", None),
-            ("source", "OpenStreetMap name-suggestion-index (" + brand["file"] + ")"),
-            ("aliases", [a for a in names if compact(a) != compact(brand["name"])]),
-            ("provenance", "nsi"),
-            ("ratingBasis", "category"),
-            ("wikidata", brand["wikidata"]),
-        ])
-        if brand["cuisine"]:
-            chains[slug]["cuisine"] = brand["cuisine"]
+        chains[slug] = new_entry(slug, brand["name"], brand["category"], "nsi",
+                                 [a for a in names if compact(a) != compact(brand["name"])], brand["wikidata"])
         index(slug, names, brand["wikidata"])
         stats["nsi_added"] += 1
 
@@ -357,19 +431,7 @@ def build(nsi_ref, wiki_oldid):
             stats["wiki_generic_skipped"] += 1
             continue
         slug = unique_slug(w["name"], w["wikidata"])
-        chains[slug] = OrderedDict([
-            ("slug", slug),
-            ("name", w["name"]),
-            ("rating", category_grade(w["category"])),
-            ("category", w["category"]),
-            ("distributor", None),
-            ("parentCompany", None),
-            ("source", f"Wikipedia: {WIKI_PAGE} ({w['section']})"),
-            ("aliases", []),
-            ("provenance", "wikipedia"),
-            ("ratingBasis", "category"),
-            ("wikidata", w["wikidata"]),
-        ])
+        chains[slug] = new_entry(slug, w["name"], w["category"], "wikipedia", [], w["wikidata"])
         index(slug, [w["name"]], w["wikidata"])
         stats["wiki_added"] += 1
 
@@ -393,36 +455,131 @@ def build(nsi_ref, wiki_oldid):
             kept.append(a)
         entry["aliases"] = kept
 
-    return list(chains.values()), stats, len(nsi), len(wiki)
+    # Evidence: the only source of grades.
+    evidence = json.loads(EVIDENCE.read_text())
+    researched = set()
+    for ev in evidence:
+        slug = ev["slug"] if ev["slug"] in chains else find([ev["name"]], None)
+        if slug is None:
+            slug = unique_slug(ev["name"], None)
+            chains[slug] = new_entry(slug, ev["name"], "casual_dining", "evidence", [], None)
+            index(slug, [ev["name"]], None)
+            stats["evidence_added_chain"] += 1
+        if slug in researched:
+            raise ValueError(f"two evidence entries for {slug}")
+        researched.add(slug)
+        entry = chains[slug]
+        entry["researched"] = True
+        result = grade_chain(ev)
+        if result is None:
+            stats["evidence_insufficient"] += 1
+            continue
+        letter, confidence, score = result
+        entry["grade"] = GRADE_RAW[letter]
+        entry["confidence"] = confidence
+        entry["basis"] = ev["basis"]
+        entry["score"] = score
+        entry["sources"] = [OrderedDict([("title", s["title"]), ("url", s["url"]), ("tier", s["tier"])])
+                            for s in ev["sources"]]
+        stats["evidence_graded"] += 1
+
+    return list(chains.values()), stats, len(nsi), len(wiki), curated
 
 
-def write(chains, stats, nsi_count, wiki_count, nsi_ref, wiki_oldid, output):
+APP_KEYS = ("slug", "name", "category", "parentCompany", "aliases", "provenance", "wikidata",
+            "grade", "confidence", "basis", "sources")
+
+
+def write(chains, stats, nsi_count, wiki_count, nsi_ref, wiki_oldid, output, curated):
     def clean(entry):
-        return OrderedDict((k, v) for k, v in entry.items() if v not in (None, []))
+        return OrderedDict((k, entry[k]) for k in APP_KEYS if entry.get(k) not in (None, []))
 
-    output.write_text("[\n" + ",\n".join("  " + json.dumps(clean(e), ensure_ascii=False) for e in chains) + "\n]\n")
+    # Graded chains first, so they win any name collision in the app.
+    ordered = sorted(chains, key=lambda e: 0 if e.get("grade") else 1)
+    output.write_text("[\n" + ",\n".join("  " + json.dumps(clean(e), ensure_ascii=False) for e in ordered) + "\n]\n")
 
-    prov = Counter(e["provenance"] for e in chains)
-    ratings = Counter((e["ratingBasis"], e["rating"]) for e in chains)
-    cats = Counter((e["provenance"], e["category"]) for e in chains)
+    letters = {v: k for k, v in GRADE_RAW.items()}
+    graded = [e for e in chains if e.get("grade")]
+    by_conf = Counter(e["confidence"] for e in graded)
+    by_grade = Counter(letters[e["grade"]] for e in graded)
+    by_slug = {e["slug"]: e for e in chains}
+
+    # Top chains coverage.
+    top = json.loads(TOP_CHAINS.read_text())["chains"]
+    name_index = {}
+    for e in chains:
+        for n in [e["name"]] + e["aliases"]:
+            name_index.setdefault(compact(n), e)
+    top_rows, top_graded, top_researched, top_missing = [], 0, 0, []
+    for rank, name in enumerate(top, 1):
+        e = name_index.get(compact(name))
+        if e is None:
+            top_missing.append(name)
+            top_rows.append(f"| {rank} | {name} | – | not in database |")
+            continue
+        if e.get("grade"):
+            top_graded += 1
+            status = f"**{letters[e['grade']]}** ({e['confidence']})"
+        elif e.get("researched"):
+            status = "researched, not enough evidence"
+        else:
+            status = "not researched"
+        if e.get("researched"):
+            top_researched += 1
+        top_rows.append(f"| {rank} | {name} | `{e['slug']}` | {status} |")
+
     lines = [
-        "# Chain database build report",
-        "",
-        "Generated by `scripts/build_chains.py`. Do not edit by hand.",
-        "",
+        "# Chain database build report", "",
+        "Generated by `scripts/build_chains.py`. Do not edit by hand.", "",
         f"- NSI ref: `{nsi_ref}` ({nsi_count} US food brands read)",
         f"- Wikipedia: [{WIKI_PAGE}](https://en.wikipedia.org/w/index.php?oldid={wiki_oldid}) oldid {wiki_oldid} ({wiki_count} rows read)",
         f"- Total chains: **{len(chains)}**",
+        f"- Researched: **{sum(1 for e in chains if e.get('researched'))}**; graded from evidence: **{len(graded)}**; everything else shows \"Not graded yet\"",
+        f"- Largest ~150 chains (`docs/data/top_chains.json`): {top_researched} of {len(top)} researched, {top_graded} graded",
         "",
-        "| Provenance | Chains |", "|---|---|",
-    ] + [f"| {k} | {v} |" for k, v in sorted(prov.items())] + [
-        "", "| Rating basis | Rating | Chains |", "|---|---|---|",
-    ] + [f"| {b} | {r} | {n} |" for (b, r), n in sorted(ratings.items())] + [
-        "", "| Provenance | Category | Chains |", "|---|---|---|",
-    ] + [f"| {p} | {c} | {n} |" for (p, c), n in sorted(cats.items())] + [
+        "| Confidence | Chains |", "|---|---|",
+    ] + [f"| {k} | {by_conf.get(k, 0)} |" for k in ("high", "medium", "low")] + [
+        "", "| Grade | Chains |", "|---|---|",
+    ] + [f"| {k} | {by_grade.get(k, 0)} |" for k in GRADE_RAW] + [
+        "", "| Provenance | Chains |", "|---|---|",
+    ] + [f"| {k} | {v} |" for k, v in sorted(Counter(e["provenance"] for e in chains).items())] + [
         "", "| Merge step | Count |", "|---|---|",
-    ] + [f"| {k} | {v} |" for k, v in sorted(stats.items())] + [""]
+    ] + [f"| {k} | {v} |" for k, v in sorted(stats.items())] + [
+        "", "## Largest chains", "",
+        "| Rank | Chain | Slug | Status |", "|---|---|---|---|",
+    ] + top_rows + [""]
     REPORT.write_text("\n".join(lines))
+
+    # Curated grade changes.
+    old_letter = {"green_plus": "A+", "green": "A", "yellow": "B", "orange": "C", "red": "F",
+                  "red_minus": "F−", "grey": "N/A"}
+    rows, counts = [], Counter()
+    for c in curated:
+        e = by_slug[c["slug"]]
+        old = old_letter[c["rating"]]
+        new = letters[e["grade"]].replace("-", "−") if e.get("grade") else "Not graded yet"
+        if old == new:
+            counts["unchanged"] += 1
+            continue
+        if not e.get("grade"):
+            counts["now not graded"] += 1
+            reason = "No citable evidence on how the food is prepared; the old grade had none either."
+            if e.get("researched"):
+                reason = "Researched; not enough evidence to grade."
+        else:
+            counts["changed"] += 1
+            reason = e["basis"]
+        rows.append(f"| {c['name']} | {old} | {new} | {e.get('confidence', '–')} | {reason} |")
+    CHANGES.write_text("\n".join([
+        "# Changes to the original curated grades", "",
+        "Generated by `scripts/build_chains.py`. The original 186 grades (`scripts/data/curated_chains.json`) were mostly",
+        "inferred from distributor relationships (\"uses Sysco\"), which says nothing about whether a kitchen cooks or reheats.",
+        "Every one was re-checked against prep evidence. Grades below come only from `docs/data/chain_evidence.json`.", "",
+        f"- Unchanged: {counts['unchanged']}",
+        f"- Changed to a different grade: {counts['changed']}",
+        f"- Now \"Not graded yet\" (no prep evidence): {counts['now not graded']}", "",
+        "| Chain | Old | New | Confidence | Why |", "|---|---|---|---|---|",
+    ] + rows + [""]))
 
 
 def main():
@@ -431,13 +588,13 @@ def main():
     parser.add_argument("--wiki-oldid", type=int, default=WIKI_OLDID)
     parser.add_argument("--output", type=Path, default=OUTPUT)
     args = parser.parse_args()
-    chains, stats, nsi_count, wiki_count = build(args.nsi_ref, args.wiki_oldid)
-    curated = json.loads(CURATED.read_text())
-    by_slug = {c["slug"]: c for c in chains}
-    for c in curated:
-        assert by_slug[c["slug"]]["rating"] == c["rating"], f"curated grade changed: {c['slug']}"
-    write(chains, stats, nsi_count, wiki_count, args.nsi_ref, args.wiki_oldid, args.output)
-    print(f"{len(chains)} chains ({len(curated)} curated) -> {args.output}")
+    chains, stats, nsi_count, wiki_count, curated = build(args.nsi_ref, args.wiki_oldid)
+    for e in chains:
+        if e.get("grade"):
+            assert e["sources"] and e["confidence"] in ("high", "medium", "low") and e["basis"], e["slug"]
+    write(chains, stats, nsi_count, wiki_count, args.nsi_ref, args.wiki_oldid, args.output, curated)
+    graded = sum(1 for e in chains if e.get("grade"))
+    print(f"{len(chains)} chains, {graded} graded -> {args.output}")
     for k, v in sorted(stats.items()):
         print(f"  {k}: {v}")
 

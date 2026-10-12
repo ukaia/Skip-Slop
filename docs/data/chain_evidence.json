@@ -1,0 +1,1045 @@
+[
+{"slug": "mcdonalds", "name": "McDonald's", "sizeRank": 1,
+ "signals": {"entree": "reheated", "sides": "premade"},
+ "basis": "Most beef patties are frozen and griddled in store (only the Quarter Pounder uses fresh beef cooked to order). McNuggets arrive par-fried and frozen; fries arrive par-fried and frozen.",
+ "sources": [
+  {"url": "https://www.fox13seattle.com/news/fresh-beef-coming-to-mcdonalds-for-first-time-in-more-than-40-years", "title": "Fresh beef coming to McDonald's for first time in more than 40 years (FOX 13)", "tier": 2, "supports": ["entree"]},
+  {"url": "https://www.chowhound.com/2165958/mcdonalds-mcnuggets-frozen/", "title": "Why McDonald's McNuggets Are Always Frozen, Never Fresh (Chowhound)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.thedailymeal.com/1760147/mcdonalds-fries-fresh-frozen-info", "title": "Does McDonald's Make Its Fries Fresh Or Do They Come Frozen? (The Daily Meal)", "tier": 3, "supports": ["sides"]}
+ ]},
+{"slug": "starbucks", "name": "Starbucks", "sizeRank": 2,
+ "signals": {"entree": "reheated", "sides": "premade"},
+ "basis": "Sandwiches arrive pre-made and are heated in the store oven. Pastries are shipped frozen and thawed overnight.",
+ "sources": [
+  {"url": "https://www.tastingtable.com/1613156/starbucks-breakfast-sandwiches-premade", "title": "Are All Of Starbucks' Breakfast Sandwiches Really Premade? (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/2172290/starbucks-employees-prepare-food-explained/", "title": "What Starbucks Employees Actually Do To Prepare Your Food (Tasting Table)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.tastingtable.com/1694410/are-starbucks-muffins-frozen-vs-fresh", "title": "The Sad Frozen Truth About Starbucks Muffins (Tasting Table)", "tier": 3, "supports": ["sides"]}
+ ]},
+{"slug": "chick-fil-a", "name": "Chick-fil-A", "sizeRank": 3,
+ "signals": {"entree": "fresh_cooked_premade_parts", "produce": "fresh_onsite"},
+ "basis": "Whole-breast chicken is hand-breaded and cooked in each restaurant, and lemonade is squeezed from whole lemons in store. Nuggets and strips are reported to arrive frozen.",
+ "sources": [
+  {"url": "https://www.chick-fil-a.com.sg/customer-support/our-menu/how-is-chick-fil-as-food-prepared/", "title": "How is Chick-fil-A's food prepared? (Chick-fil-A)", "tier": 1, "supports": ["entree", "produce"]},
+  {"url": "https://www.salisbury.edu/administration/student-affairs/dining-services/dining-locations/chick-fil-a.aspx", "title": "Chick-fil-A (Salisbury University Dining, licensed unit description)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "taco-bell", "name": "Taco Bell", "sizeRank": 4,
+ "signals": {"entree": "reheated", "sides": "premade"},
+ "basis": "Seasoned beef is cooked and seasoned by a supplier, shipped in bags, and reheated in hot water in the restaurant. A former CEO described the stores as assembling and delivering rather than preparing.",
+ "sources": [
+  {"url": "https://www.tacobell.com/newsroom/taco-bell-seasoned-beef-voluntarily-recalled", "title": "Taco Bell seasoned beef voluntarily recalled (Taco Bell newsroom)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.restaurantbusinessonline.com/operations/taco-bell-pulls-23m-lbs-ground-beef", "title": "Taco Bell pulls 2.3M lbs of ground beef (Restaurant Business)", "tier": 2, "supports": ["entree"]},
+  {"url": "https://chowhound.com/2125975/taco-bell-employee-moments-on-reddit", "title": "7 Times Taco Bell Employees Spilled The Tea On Reddit (Chowhound)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "wendys", "name": "Wendy's", "sizeRank": 6,
+ "signals": {"entree": "assembled", "sides": "mixed", "produce": "mixed"},
+ "basis": "Burgers are fresh, never-frozen beef cooked on the grill, and chili is made in store from cooked patties. Breaded chicken and fries arrive frozen.",
+ "sources": [
+  {"url": "https://www.wendys.com/blog/chili-recipe-isnt-your-family-recipe-but-its-pretty-darn-close", "title": "The History of Wendy's Chili Recipe (Wendy's)", "tier": 1, "supports": ["entree", "sides"]},
+  {"url": "https://www.mashed.com/1588562/everything-you-need-to-know-about-wendys-fresh-never-frozen-beef/", "title": "Everything You Need To Know About Wendy's Fresh Never Frozen Beef (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://thetakeout.com/1677268/wendys-leftover-burgers-chili-explained", "title": "Does Wendy's Really Use Leftover Burgers In Its Chili? (The Takeout)", "tier": 3, "supports": ["sides"]}
+ ]},
+{"slug": "dunkin", "name": "Dunkin'", "sizeRank": 5,
+ "signals": {"entree": "reheated", "sides": "premade"},
+ "basis": "Donuts are made overnight in regional central kitchens and finished in store. Breakfast sandwich eggs arrive frozen and are reheated in the oven.",
+ "sources": [
+  {"url": "https://www.thedailymeal.com/1503008/where-dunkin-sources-donuts", "title": "We Finally Know Where Dunkin' Gets Its Donuts From (The Daily Meal)", "tier": 3, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "burger-king", "name": "Burger King", "sizeRank": 8,
+ "signals": {"entree": "reheated"},
+ "basis": "Whopper patties arrive frozen and go through the conveyor broiler in batches, then wait in a warmer until ordered.",
+ "sources": [
+  {"url": "https://www.tastingtable.com/1833740/burger-king-patties-flame-grilled", "title": "How Burger King's Famous Flame-Grilling Method Really Works (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.foodrepublic.com/2124300/how-burger-king-cooks-dozen-patties", "title": "How Burger King Cooks Dozens Of Flame-Broiled Patties At Once (Food Republic)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://thetakeout.com/1740491/restaurant-chains-use-frozen-meat", "title": "6 Restaurant Chains That Only Use Frozen Meat (The Takeout)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "chipotle", "name": "Chipotle Mexican Grill", "sizeRank": 7,
+ "signals": {"entree": "fresh_cooked_premade_parts", "sides": "scratch", "produce": "fresh_onsite"},
+ "basis": "Chicken is marinated and grilled in each restaurant, and guacamole and salsas are made in store. Barbacoa, carnitas and steak are cooked sous vide in central kitchens, then finished on the restaurant grill.",
+ "sources": [
+  {"url": "https://abcnews.go.com/news/story/chipotle-now-cook-steak-gourmet-french-technique-37696967", "title": "Chipotle Will Now Cook Steak Using Gourmet French Technique (ABC News)", "tier": 2, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/1775235/how-chipotle-cooks-beef-barbacoa-sous-vide", "title": "Here's How Chipotle Prepares Its Barbacoa Beef (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://archive.seattletimes.com/archive/20040702/deal02/holy-guacamole-really-good-mexican-fast-food", "title": "Holy guacamole: really good Mexican fast food (Seattle Times)", "tier": 2, "supports": ["sides", "produce"]}
+ ]},
+{"slug": "subway", "name": "Subway", "sizeRank": 10,
+ "signals": {"entree": "reheated"},
+ "basis": "Bread is baked in store from frozen dough. Chicken is roasted in factories and shipped frozen. Deli meats arrive cooked; since 2023 most are sliced in store.",
+ "sources": [
+  {"url": "https://www.mashed.com/1441153/is-subway-food-sandwiches-fresh/", "title": "Can You Really 'Eat Fresh' At Subway? (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.verdictfoodservice.com/news/subway-debuts-freshly-sliced-meats", "title": "Subway debuts freshly sliced meats (Verdict Foodservice)", "tier": 2, "supports": ["entree"]}
+ ]},
+{"slug": "dominos", "name": "Domino's", "sizeRank": 9,
+ "signals": {"entree": "assembled", "produce": "precut"},
+ "basis": "Dough is made fresh (never frozen) at regional supply chain centers and pizzas are assembled and baked in store. Vegetables come from a central processing center.",
+ "sources": [
+  {"url": "https://www.sec.gov/Archives/edgar/data/1286681/000095017025025223/dpz-20241229.htm", "title": "Domino's Pizza Inc. Form 10-K, FY2024 (SEC)", "tier": 1, "supports": ["entree", "produce"]},
+  {"url": "https://www.chowhound.com/2240886/where-dominos-pizza-dough-comes-from/", "title": "Here's Where Domino's Pizza Dough Actually Comes From (Chowhound)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "papa-johns", "name": "Papa John's", "sizeRank": 25,
+ "signals": {"entree": "assembled"},
+ "basis": "Fresh (never frozen) dough is made at regional Quality Control Centers and delivered twice a week; pizzas are assembled and baked in store.",
+ "sources": [
+  {"url": "https://www.pmq.com/consumers-taste-the-difference-of-papa-johns-award-winning-hand-tossed-pizza/", "title": "Fresh versus frozen dough makes it no toss-up (PMQ Pizza Magazine)", "tier": 2, "supports": ["entree"]},
+  {"url": "https://www.scmr.com/article/papa_johns_demand_driven_supply_chain", "title": "Papa John's demand-driven supply chain (Supply Chain Management Review)", "tier": 2, "supports": ["entree"]}
+ ]},
+{"slug": "five-guys", "name": "Five Guys", "sizeRank": 40,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "Fries are cut in every restaurant from fresh potatoes, and burgers are fresh beef cooked to order.",
+ "sources": [
+  {"url": "https://tastingtable.com/1228936/restaurant-chains-with-fries-cut-from-fresh-potatoes", "title": "14 Restaurant Chains With Fries Cut From Fresh Potatoes (Tasting Table)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.eatthis.com/fast-food-chains-hand-cut-fries/", "title": "Fast food chains with hand-cut fries (Eat This, Not That)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.chowhound.com/1860363/five-guys-freshness-explained/", "title": "Is Anything At Five Guys Frozen Or Is It All Actually Fresh? (Chowhound)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.tastingtable.com/1883215/five-guys-food-all-fresh-not-frozen", "title": "Is All Of Five Guys' Food Seriously Made Fresh And Not Frozen? (Tasting Table)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "in-n-out", "name": "In-N-Out Burger", "sizeRank": 32,
+ "signals": {"entree": "scratch", "sides": "scratch", "produce": "fresh_onsite"},
+ "basis": "No freezers or microwaves: potatoes are cut in store, beef patties are fresh and made at the company's own facilities, and produce is prepped in each restaurant.",
+ "sources": [
+  {"url": "https://www.eatthis.com/fast-food-chains-serving-fresh-cut-potato-fries", "title": "Fast food chains serving fresh-cut potato fries (Eat This, Not That)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.aol.com/articles/wont-single-microwave-fast-food-211100732.html", "title": "You Won't Find A Single Microwave In Any Of This Fast Food Chain's Locations", "tier": 3, "supports": ["entree", "produce"]},
+  {"url": "https://www.foodrepublic.com/1869125/in-out-burger-beef-supplier/", "title": "Where Does In-N-Out Burger Get Its Iconic Beef Patties? (Food Republic)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.thedailymeal.com/1943460/in-n-out-no-microwave-freezer", "title": "Why You'll Never See These 2 Common Appliances At In-N-Out (The Daily Meal)", "tier": 3, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "applebees", "name": "Applebee's", "sizeRank": 20,
+ "signals": {"entree": "reheated", "sides": "premade"},
+ "basis": "Former staff describe most dishes and sides arriving frozen in bags and being microwaved; only grilled and fried items (steaks, burgers, chicken, wings) are cooked on the line. Some produce is chopped in house.",
+ "sources": [
+  {"url": "https://www.thetakeout.com/2137700/how-much-applebees-food-microwaved/", "title": "The Shocking Amount Of Applebee's Food That's (Allegedly) Cooked In A Microwave (The Takeout)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://financebuzz.com/news/worst-restaurant-heat-and-serve-food-3", "title": "8 Restaurant Chains That Are the Worst Offenders for Heat-and-Serve Food (FinanceBuzz)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "chilis", "name": "Chili's", "sizeRank": 16,
+ "signals": {"entree": "reheated", "sides": "mixed"},
+ "basis": "Insiders say most items arrive frozen or pre-made and are microwaved or heated in bags; chicken breasts, burgers and vegetables come fresh, and salsa, guacamole and ranch are made in house.",
+ "sources": [
+  {"url": "https://www.tastingtable.com/1949832/facts-about-chilis/", "title": "16 Facts About Chili's Only Insiders Know (Tasting Table)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://financebuzz.com/news/worst-restaurant-heat-and-serve-food-3", "title": "8 Restaurant Chains That Are the Worst Offenders for Heat-and-Serve Food (FinanceBuzz)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "olive-garden", "name": "Olive Garden", "sizeRank": 17,
+ "signals": {"entree": "assembled", "sides": "mixed"},
+ "basis": "Soups and most sauces are made in each restaurant every morning, and pasta is cooked in house. Proteins, stuffed pastas, fried appetizers and desserts reportedly arrive frozen.",
+ "sources": [
+  {"url": "https://www.thedailymeal.com/1469161/olive-garden-soup-made-from-scratch", "title": "Are Olive Garden's Soups Really Made From Scratch? (The Daily Meal)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.tastingtable.com/2220448/olive-garden-myths-stop-believing/", "title": "7 Olive Garden Myths To Stop Believing (Tasting Table)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.thetakeout.com/1768453/olive-garden-desserts-fresh-frozen-explained/", "title": "Are Olive Garden Desserts Made Fresh? (The Takeout)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.chowhound.com/1945490/olive-garden-pasta-fresh-vs-frozen", "title": "Is Olive Garden's Pasta Made From Frozen Or Fresh? (Chowhound)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "texas-roadhouse", "name": "Texas Roadhouse", "sizeRank": 15,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "Every restaurant has an in-house meat cutter who hand-cuts fresh steaks. Rolls are baked all day, and sides, dressings, croutons and bacon bits are made from scratch.",
+ "sources": [
+  {"url": "https://www.texasroadhouse.com/made-from-scratch", "title": "Made from scratch (Texas Roadhouse)", "tier": 1, "supports": ["entree", "sides"]},
+  {"url": "https://www.thedailymeal.com/1819133/texas-roadhouse-handcut-steaks", "title": "The Extra Step That Sets Texas Roadhouse Steaks Apart (The Daily Meal)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/2197471/texas-roadhouse-hand-cut-steaks-process-explained/", "title": "Does Texas Roadhouse Actually Hand-Cut All Of Its Steaks? (Tasting Table)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "panera-bread", "name": "Panera Bread", "sizeRank": 12,
+ "signals": {"entree": "assembled", "sides": "premade"},
+ "basis": "Soups are made in a factory, shipped frozen in pre-portioned bags and reheated in a water bath (confirmed by a Panera spokesperson). Since 2024 bread arrives par-baked and frozen for a final bake in store. Sandwiches and salads are assembled to order.",
+ "sources": [
+  {"url": "https://www.thetakeout.com/2275330/is-panera-bread-soup-fresh/", "title": "Why Panera Bread Soup Never Really Tastes All That Fresh (The Takeout)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.chowhound.com/1679761/panera-bread-soup-not-made-to-order", "title": "What You Need To Know Before Ordering Soup At Panera Bread (Chowhound)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.yahoo.com/news/articles/panera-bread-shutting-down-fresh-181900792.html", "title": "Panera Bread Is Shutting Down Fresh Bread Production (Yahoo News)", "tier": 2, "supports": ["sides"]},
+  {"url": "https://www.chowhound.com/1864001/panera-bread-sandwiches-freshness", "title": "Are Panera Bread Sandwiches Fresh Or Premade? (Chowhound)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "popeyes", "name": "Popeyes", "sizeRank": 14,
+ "signals": {"entree": "scratch", "sides": "mixed"},
+ "basis": "Fresh, never-frozen chicken is marinated for 12 hours and hand-battered and breaded in each restaurant. Mashed potatoes appear to be instant.",
+ "sources": [
+  {"url": "https://www.foodrepublic.com/2052744/why-popeyes-marinates-fried-chicken-so-long", "title": "Here's Why Popeyes Marinates Its Fried Chicken For 12 Hours (Food Republic)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/2083075/popeyes-fried-chicken-prep-before-fryer", "title": "How Popeyes' Fried Chicken Is Prepared Before It Hits The Fryer (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/1719604/popeyes-side-dishes-ranked/", "title": "Every Popeye's Side Dish, Ranked (Tasting Table)", "tier": 3, "supports": ["sides"]}
+ ]},
+{"slug": "arbys", "name": "Arby's", "sizeRank": 18,
+ "signals": {"entree": "reheated"},
+ "basis": "Roast beef arrives pre-cooked in sealed bags of basting liquid; stores roast it for three to four hours, then slice it to order.",
+ "sources": [
+  {"url": "https://tastingtable.com/1781687/how-arbys-makes-roast-beef", "title": "The Unconventional Way Arby's Prepares Its Roast Beef (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.thedailymeal.com/1807203/fast-food-arbys-beef-plastic-bag", "title": "The Fast Food Restaurant That Cooks Its Beef In A Plastic Bag (The Daily Meal)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.chowhound.com/1787528/does-arbys-serve-fake-roast-beef", "title": "Does Arby's Really Serve Fake Roast Beef? (Chowhound)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "pizza-hut", "name": "Pizza Hut", "sizeRank": 13,
+ "signals": {"entree": "assembled"},
+ "basis": "Former employees say dough no longer is made in store: it arrives as frozen, pre-shaped pucks. Pizzas are assembled and baked in store.",
+ "sources": [
+  {"url": "https://www.mashed.com/1549322/shady-things-pizza-hut-menu/", "title": "Shady Things About Pizza Hut's Menu (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.aol.com/articles/best-selling-pizza-chain-uses-113900233.html", "title": "This Best-Selling Pizza Chain Uses Fresh Dough, But Frozen Toppings", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "raising-canes", "name": "Raising Cane's", "sizeRank": 19,
+ "signals": {"entree": "scratch", "sides": "mixed"},
+ "basis": "Fresh, never-frozen chicken is marinated for 24 hours, hand-battered in store and cooked to order. Coleslaw and Cane's Sauce are made fresh in each kitchen daily.",
+ "sources": [
+  {"url": "https://www.thedailymeal.com/2230941/fast-food-chicken-chain-never-use-frozen-meat/", "title": "This Rapidly Growing Fast Food Chicken Chain Never Uses Frozen Meat (The Daily Meal)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.tastingtable.com/1925444/raising-canes-24-hour-chicken-marinade", "title": "Raising Cane's 24-Hour Method For Perfect Fried Chicken (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.qsrmagazine.com/news/raising-canes-offer-free-sauce-throughout-december", "title": "Raising Cane's to offer free sauce throughout December (QSR Magazine)", "tier": 2, "supports": ["sides"]}
+ ]},
+{"slug": "jersey-mikes", "name": "Jersey Mike's", "sizeRank": 21,
+ "signals": {"entree": "assembled"},
+ "basis": "Bread is proofed and baked in store from dough shipped fresh from a New Jersey supplier. Cooked deli meats are sliced to order; cheesesteaks are grilled to order.",
+ "sources": [
+  {"url": "https://www.tastingtable.com/2270142/jersey-mikes-notable-features-customers-love/", "title": "14 Key Features Of Jersey Mike's (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.franchising.com/amp/news/20131011_jersey_mikes_subs_brings_back_rosemary_parmesan_br.html", "title": "Jersey Mike's Subs Brings Back Rosemary Parmesan Bread (company release via Franchising.com)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "panda-express", "name": "Panda Express", "sizeRank": 24,
+ "signals": {"entree": "fresh_cooked_premade_parts", "produce": "fresh_onsite"},
+ "basis": "Entrées are wok-cooked in each restaurant and vegetables are chopped in store, but signature sauces such as the orange sauce arrive pre-made.",
+ "sources": [
+  {"url": "https://www.foodrepublic.com/2177848/panda-express-orange-chicken-change-customers/", "title": "Why Panda Express Customers Think Its Orange Chicken Has Changed (Food Republic)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://kfyo.com/how-panda-express-orange-chicken-is-made-tiktok/", "title": "How Panda Express orange chicken is made (KFYO, employee TikTok)", "tier": 3, "supports": ["entree", "produce"]}
+ ]},
+{"slug": "whataburger", "name": "Whataburger", "sizeRank": 26,
+ "signals": {"entree": "scratch", "produce": "fresh_onsite"},
+ "basis": "Burgers use 100% fresh, never-frozen beef cooked to order, and vegetables are chopped in house daily.",
+ "sources": [
+  {"url": "https://stories.whataburger.com/whataburgers-commitment-to-freshness/", "title": "Whataburger's Commitment to Freshness (Whataburger)", "tier": 1, "supports": ["entree", "produce"]},
+  {"url": "https://www.chowhound.com/2118008/fast-food-burger-chain-fresh-not-frozen-beef-what-a-burger", "title": "You'll Never Eat Frozen Beef At This Burger Chain (Chowhound)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "kfc", "name": "KFC", "sizeRank": 27,
+ "signals": {"entree": "scratch", "sides": "premade"},
+ "basis": "Fresh chicken is breaded in the restaurant in the 11 herbs and spices. Mashed potatoes are made from an instant flake mix and gravy from a mix.",
+ "sources": [
+  {"url": "https://tastingtable.com/1699510/fast-food-chains-fresh-not-frozen", "title": "For Fresh, Not Frozen Fast Food, Try These 12 Popular Chains (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.thetakeout.com/1817694/what-kfc-mashed-potatoes-instant-made/", "title": "Here's What KFC Mashed Potatoes Are Really Made Of (The Takeout)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.tastingtable.com/2035312/what-are-kfc-mashed-potatoes-made-of", "title": "No, KFC's Mashed Potatoes Aren't Made From Fresh Spuds (Tasting Table)", "tier": 3, "supports": ["sides"]}
+ ]},
+{"slug": "culvers", "name": "Culver's", "sizeRank": 30,
+ "signals": {"entree": "scratch"},
+ "basis": "ButterBurgers are fresh, never-frozen beef seared after you order, and frozen custard is made in each restaurant throughout the day.",
+ "sources": [
+  {"url": "https://www.culvers.com/menu-and-nutrition/butterburgers", "title": "ButterBurgers (Culver's)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/2224536/culvers-facts-everybody-should-know/", "title": "10 Culver's Facts Everybody Should Know (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.foodrepublic.com/1812392/fast-food-burgers-fresh-not-frozen/", "title": "14 Fast Food Burgers That Are Always Fresh And Never Frozen (Food Republic)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "little-caesars", "name": "Little Caesars", "sizeRank": 23,
+ "signals": {"entree": "assembled"},
+ "basis": "Most stores mix dough daily (express units use frozen dough). Sauce arrives as a concentrate that staff dilute with water. Pizzas are assembled and baked in store.",
+ "sources": [
+  {"url": "https://www.mashed.com/1607493/shady-things-little-caesars-menu/", "title": "Shady Things About Little Caesars' Menu (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/190175/how-little-caesars-pizza-is-really-made/", "title": "How Little Caesars Pizza Is Really Made (Mashed)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "buffalo-wild-wings", "name": "Buffalo Wild Wings", "sizeRank": 28,
+ "signals": {"entree": "reheated"},
+ "basis": "Employees describe most cooking as deep-frying and microwaving foods stored frozen. Wings now arrive raw.",
+ "sources": [
+  {"url": "https://www.mashed.com/120631/untold-truth-buffalo-wild-wings/", "title": "Buffalo Wild Wings: Everything You Need To Know (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/buffalo-wild-wings-secrets/", "title": "8 Secrets About Buffalo Wild Wings You Never Knew (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "outback-steakhouse", "name": "Outback Steakhouse", "sizeRank": 31,
+ "signals": {"entree": "scratch"},
+ "basis": "Steaks are hand-trimmed, seasoned and seared in each restaurant, and the house salad uses homemade croutons. The Bloomin' Onion is now cut by machine in store.",
+ "sources": [
+  {"url": "https://www.outback.com/offers/steak", "title": "Steak (Outback Steakhouse)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/243392/heres-how-to-make-outbacks-bloomin-onion-at-home/", "title": "Here's How To Make Outback's Bloomin' Onion At Home (Mashed)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "ihop", "name": "IHOP", "sizeRank": 33,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Pancakes and other dishes are cooked to order from batter, but omelets and scrambled eggs use bagged liquid egg unless you ask for fresh-cracked eggs.",
+ "sources": [
+  {"url": "https://www.tastingtable.com/2147647/ihop-ordering-tip-fresh-eggs/", "title": "The Simple IHOP Ordering Tip For Guaranteed Fresh Eggs Every Time (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/1582051/things-should-know-ihop-menu/", "title": "Things You Should Know About IHOP's Menu (Mashed)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "cracker-barrel", "name": "Cracker Barrel", "sizeRank": 36,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "Biscuits are hand-rolled and baked through the day (after a 2025 frozen-biscuit experiment was reversed). Beef is slow-roasted in house, fried chicken is hand-breaded, and mashed potatoes and gravy are made from scratch.",
+ "sources": [
+  {"url": "https://www.crackerbarrel.com/about", "title": "About Us (Cracker Barrel)", "tier": 1, "supports": ["entree", "sides"]},
+  {"url": "https://www.tastingtable.com/2154541/chain-makes-biscuits-scratch-cracker-barrel/", "title": "This Country-Themed Chain Makes Its Famous Biscuits From Scratch Daily (Tasting Table)", "tier": 3, "supports": ["sides", "entree"]},
+  {"url": "https://www.chowhound.com/1972613/cracker-barrel-frozen-biscuits/", "title": "The Menu Item You'd Least Expect To Be Made From Frozen At Cracker Barrel (Chowhound)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.mashed.com/1965737/cracker-barrel-fresh-hand-made-biscuits-2025/", "title": "Cracker Barrel Revives Its Old Biscuit Recipe (Mashed)", "tier": 3, "supports": ["sides"]}
+ ]},
+{"slug": "cheesecake-factory", "name": "The Cheesecake Factory", "sizeRank": 35,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "The company says its 250-plus menu items are made from scratch every day, with about 100 sauces and dressings made fresh daily. The cheesecakes are the exception: they come frozen from the company's own bakeries.",
+ "sources": [
+  {"url": "https://www.tastingtable.com/1991930/chain-menu-made-from-scratch-cheesecake-factory/", "title": "This Chain's Massive Menu Offers Over 250 Items Made From Scratch (Tasting Table)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.chowhound.com/1965774/cheesecake-factory-cheesecake-not-made-fresh/", "title": "The One Menu Item That Isn't Made Fresh At The Cheesecake Factory (Chowhound)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.tastingtable.com/2186711/cheesecake-factory-secrets-employees-know/", "title": "10 Things Cheesecake Factory Employees Know That Diners Don't (Tasting Table)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.foodrepublic.com/2149926/restaurant-chains-food-from-scratch/", "title": "5 Well-Known Restaurant Chains That Make Their Food From Scratch (Food Republic)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "dennys", "name": "Denny's", "sizeRank": 37,
+ "signals": {"entree": "reheated", "sides": "premade"},
+ "basis": "A former employee says nearly everything, meats included, arrives frozen and some is thawed or heated in the microwave. Hash browns are dehydrated potatoes rehydrated in store.",
+ "sources": [
+  {"url": "https://www.mashed.com/1600652/shady-things-about-dennys-menu/", "title": "Shady Things About Denny's Menu (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/2061934/dennys-popular-side-dish-avoid-ordering-hash-browns/", "title": "The Popular Side Dish You Should Avoid Ordering From Denny's (Tasting Table)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.chowhound.com/1901089/are-dennys-pancakes-frozen/", "title": "Are Denny's Pancakes Frozen Or Made Fresh? (Chowhound)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "longhorn-steakhouse", "name": "LongHorn Steakhouse", "sizeRank": 38,
+ "signals": {"entree": "scratch"},
+ "basis": "Fresh, never-frozen steaks are hand-cut in each restaurant every morning.",
+ "sources": [
+  {"url": "https://www.eatthis.com/chain-restaurants-hand-cut-steak-in-house/", "title": "6 Chain Restaurants Where the Steak is Actually Hand-Cut In-House (Eat This, Not That)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/secrets-longhorn-steakhouse/", "title": "10 Things You Never Knew About LongHorn Steakhouse (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "zaxbys", "name": "Zaxby's", "sizeRank": 34,
+ "signals": {"entree": "scratch", "sides": "mixed"},
+ "basis": "Chicken fingers are hand-breaded in store and slaw is made in house daily.",
+ "sources": [
+  {"url": "https://www.chowhound.com/1720073/best-fast-food-chicken-tenders-zaxbys/", "title": "The Best Fast Food Chicken Tenders Are From A Southern Staple (Chowhound)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/2257196/absolute-best-southern-fast-food-chains/", "title": "12 Absolute Best Southern Fast Food Chains (Tasting Table)", "tier": 3, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "wingstop", "name": "Wingstop", "sizeRank": 29,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "Bone-in wings are never frozen, fries are hand-cut from whole potatoes in store each day, and ranch is made in house every morning.",
+ "sources": [
+  {"url": "https://locations.wingstop.com/wingstop-114-houston-tx-77055/ranch", "title": "House Made Ranch (Wingstop)", "tier": 1, "supports": ["sides"]},
+  {"url": "https://www.tastingtable.com/1942911/wingstop-facts-to-know/", "title": "15 Wingstop Facts Worth Learning (Tasting Table)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.eatthis.com/wingstop-review/", "title": "I Tried Wingstop for the First Time Ever (Eat This, Not That)", "tier": 3, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "shake-shack", "name": "Shake Shack", "sizeRank": 70,
+ "signals": {"entree": "scratch", "sides": "mixed", "sourcing": "direct"},
+ "basis": "Burgers are a freshly ground, never-frozen Angus blend cooked to order, and custard is made on site daily. Fries are frozen crinkle-cuts (a 2013 switch to fresh-cut was reversed).",
+ "sources": [
+  {"url": "https://www.thetakeout.com/1776640/shake-shack-frozen-fries-explained/", "title": "The Reason Shake Shack Chose To Stick With Frozen Fries (The Takeout)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.chowhound.com/1847714/fast-food-chains-never-use-frozen-burgers/", "title": "13 Fast Food Chains That Never Use Frozen Burger Patties (Chowhound)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/125305/secrets-shake-shack-doesnt-want-you-to-know/", "title": "Secrets Shake Shack Doesn't Want You To Know (Mashed)", "tier": 3, "supports": ["entree", "sides", "sourcing"]}
+ ]},
+{"slug": "cava", "name": "CAVA", "sizeRank": 60,
+ "signals": {"entree": "scratch", "sides": "mixed", "produce": "fresh_onsite"},
+ "basis": "Each restaurant makes its food fresh in its own kitchen, including grilled proteins, except the dips and spreads (tzatziki, harissa, Crazy Feta), which come from CAVA's central manufacturing facilities.",
+ "sources": [
+  {"url": "https://investor.cava.com/news/news-details/2024/CAVA-Opens-a-55000-Square-Foot-Manufacturing-Facility-in-Virginias-Shenandoah-Valley/default.aspx", "title": "CAVA Opens a 55,000-Square-Foot Manufacturing Facility (CAVA investor relations)", "tier": 1, "supports": ["sides"]},
+  {"url": "https://www.qsrmagazine.com/growth/emerging-concepts/ones-watch-cava-mezze-grill/", "title": "Ones To Watch: Cava Mezze Grill (QSR Magazine)", "tier": 2, "supports": ["entree", "sides"]},
+  {"url": "https://www.restaurantbusinessonline.com/operations/cava-investing-30m-food-processing-facility", "title": "Cava is investing $30M in a food processing facility (Restaurant Business)", "tier": 2, "supports": ["sides"]}
+ ]},
+{"slug": "sweetgreen", "name": "Sweetgreen", "sizeRank": 80,
+ "signals": {"entree": "scratch", "sides": "scratch", "produce": "fresh_onsite", "sourcing": "local"},
+ "basis": "Food is cooked from scratch in each restaurant every day from whole produce chopped in store. More than 200 named farm and food partners; up to 70% of ingredients come from local partners at peak season.",
+ "sources": [
+  {"url": "https://www.sweetgreen.com/mission", "title": "Mission (Sweetgreen)", "tier": 1, "supports": ["entree", "produce", "sourcing"]},
+  {"url": "https://www.restaurantbusinessonline.com/food/sweetgreens-summer-menu-reaffirms-its-commitment-farmer-partnerships", "title": "Sweetgreen's summer menu reaffirms its commitment to farmer partnerships (Restaurant Business)", "tier": 2, "supports": ["sourcing"]},
+  {"url": "https://www.qsrmagazine.com/fast-casual/secret-sweetgreen-s-success", "title": "The Secret to Sweetgreen's Success (QSR Magazine)", "tier": 2, "supports": ["entree", "sides", "sourcing"]},
+  {"url": "https://www.chowhound.com/1777993/farm-to-table-salad-chain-sweetgreen/", "title": "Sweetgreen Is The Local Chain Serving Up Farm-To-Table Salads (Chowhound)", "tier": 3, "supports": ["sourcing"]}
+ ]},
+{"slug": "jack-in-the-box", "name": "Jack in the Box", "sizeRank": 22,
+ "signals": {"entree": "reheated"},
+ "basis": "Employees say nearly everything starts frozen: burgers are frozen pre-seasoned patties, and tacos arrive as frozen shells already filled with a factory-made filling that is deep-fried to order.",
+ "sources": [
+  {"url": "https://www.mashed.com/1588261/shady-things-about-jack-in-the-box-menu/", "title": "Shady Things About The Jack In The Box Menu (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/227211/everything-you-dont-know-about-jack-in-the-boxs-tacos/", "title": "Everything You Don't Know About Jack In The Box's Tacos (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/2010338/what-meat-jack-in-the-box-tacos/", "title": "What's Really Inside Jack In The Box Tacos (Tasting Table)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "dairy-queen", "name": "Dairy Queen", "sizeRank": 22,
+ "signals": {"entree": "reheated"},
+ "basis": "Burger patties arrive frozen, go over a flame conveyor in batches and wait in a warmer. Standard chicken strips contain added soy protein and solution.",
+ "sources": [
+  {"url": "https://www.chowhound.com/1697844/chain-restaurants-use-frozen-burgers/", "title": "Chain Restaurants That Secretly Use Frozen Burgers (Chowhound)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/1205573/fast-food-chains-that-use-frozen-patties/", "title": "Fast Food Chains That Use Frozen Patties (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/1992860/fast-food-dont-use-real-chicken/", "title": "10 Fast Food Chains That Don't Use 100% Chicken (Tasting Table)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "hardees", "name": "Hardee's", "sizeRank": 45,
+ "signals": {"entree": "fresh_cooked_premade_parts", "sides": "mixed"},
+ "basis": "Biscuits are made from scratch in store, and chicken breast is marinated, buttermilk-dipped and hand-breaded at each location. Burgers are charbroiled; we found no evidence on how the patties arrive.",
+ "sources": [
+  {"url": "https://www.qsrmagazine.com/news/carls-jr-hardees-roll-out-new-hand-breaded-chicken-sandwich-platform/", "title": "Carl's Jr., Hardee's Roll Out New Hand-Breaded Chicken Sandwich Platform (QSR Magazine)", "tier": 2, "supports": ["entree"]},
+  {"url": "https://www.hardees.com/heart-shaped-biscuits-are-back", "title": "Heart Shaped Biscuits Are Back (Hardee's)", "tier": 1, "supports": ["sides"]}
+ ]},
+{"slug": "carls-jr", "name": "Carl's Jr.", "sizeRank": 50,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Chicken breast is hand-breaded at each location. Burgers are charbroiled; we found no evidence on how the patties arrive.",
+ "sources": [
+  {"url": "https://www.qsrmagazine.com/news/carls-jr-hardees-roll-out-new-hand-breaded-chicken-sandwich-platform/", "title": "Carl's Jr., Hardee's Roll Out New Hand-Breaded Chicken Sandwich Platform (QSR Magazine)", "tier": 2, "supports": ["entree"]},
+  {"url": "https://www.qsrmagazine.com/sponsored_content/story-behind-hardees-and-carls-jr-three-new-chicken-sandwiches/", "title": "The Story Behind Hardee's and Carl's Jr. Three New Chicken Sandwiches (QSR Magazine, sponsored by CKE)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "waffle-house", "name": "Waffle House", "sizeRank": 52,
+ "signals": {"entree": "fresh_cooked_premade_parts", "sides": "premade"},
+ "basis": "Everything is cooked to order on the griddle in front of you, but hash browns are dehydrated shredded potatoes rehydrated in store.",
+ "sources": [
+  {"url": "https://www.mashed.com/325942/what-you-should-know-before-ordering-hash-browns-from-waffle-house/", "title": "What You Should Know Before Ordering Hash Browns From Waffle House (Mashed)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.tastingtable.com/2079757/waffle-house-hash-browns-cooking-method/", "title": "For The Best Hash Browns, Cook Them Like Waffle House (Tasting Table)", "tier": 3, "supports": ["sides"]}
+ ]},
+{"slug": "bojangles", "name": "Bojangles", "sizeRank": 54,
+ "signals": {"entree": "scratch", "sides": "mixed"},
+ "basis": "Buttermilk biscuits are scratch-made all day by certified biscuit makers, and chicken is marinated and hand-breaded. Other sides are not documented.",
+ "sources": [
+  {"url": "https://www.bojangles.com/news-and-community/bojangles-turns-national-buttermilk-biscuit-day-into-a-monthlong-celebration-featuring-its-signature-menu-item/", "title": "Bojangles Turns National Buttermilk Biscuit Day into a Monthlong Celebration (Bojangles)", "tier": 1, "supports": ["sides"]},
+  {"url": "https://www.bojangles.com/welcome/", "title": "Welcome (Bojangles)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "red-lobster", "name": "Red Lobster", "sizeRank": 47,
+ "signals": {"entree": "reheated", "sides": "mixed"},
+ "basis": "Former employees say the bulk of the seafood arrives flash-frozen (live lobsters and a few fresh fish are the exception) and that pasta and sauces are microwaved in bags. Cheddar Bay Biscuits are made in the restaurant.",
+ "sources": [
+  {"url": "https://www.tastingtable.com/1884055/red-lobster-fish-fresh-or-frozen/", "title": "Does Red Lobster Serve Fresh Fish, Or Is It All Frozen? (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/1601864/shady-things-red-lobster-menu/", "title": "Shady Things About Red Lobster's Menu (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/controversial-red-lobster-secrets/", "title": "6 Controversial Red Lobster Secrets, According to Employees (Eat This, Not That)", "tier": 3, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "jimmy-johns", "name": "Jimmy John's", "sizeRank": 48,
+ "signals": {"entree": "assembled", "produce": "fresh_onsite"},
+ "basis": "Bread is baked in store, cooked deli meats are sliced in house daily, and vegetables are hand-sliced daily in every store. Sandwiches are assembled cold.",
+ "sources": [
+  {"url": "https://www.jimmyjohns.com/our-food", "title": "Our Food (Jimmy John's)", "tier": 1, "supports": ["entree", "produce"]}
+ ]},
+{"slug": "golden-corral", "name": "Golden Corral", "sizeRank": 62,
+ "signals": {"entree": "assembled", "sides": "mixed"},
+ "basis": "The buffet mixes made-from-scratch dishes with pre-made ones: mashed potatoes now arrive ready-made in pouches and tots and wedges are frozen, while some potato dishes are made from whole potatoes in the kitchen.",
+ "sources": [
+  {"url": "https://www.foodrepublic.com/2203470/how-golden-corral-makes-mashed-potatoes/", "title": "Does Golden Corral Make Instant Or Homemade Mashed Potatoes? (Food Republic)", "tier": 3, "supports": ["sides"]},
+  {"url": "https://www.thedailymeal.com/2109873/facts-to-know-golden-corral/", "title": "10 Facts You Should Know About Golden Corral (The Daily Meal)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "red-robin", "name": "Red Robin", "sizeRank": 66,
+ "signals": {"entree": "scratch", "sides": "mixed"},
+ "basis": "Burgers are never-frozen beef cooked to order, and the chain switched from frozen to fresh chicken. Fries are frozen.",
+ "sources": [
+  {"url": "https://www.chowhound.com/1847714/fast-food-chains-never-use-frozen-burgers/", "title": "13 Fast Food Chains That Never Use Frozen Burger Patties (Chowhound)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.foodrepublic.com/1438412/red-robin-switching-frozen-fresh-chicken/", "title": "Red Robin Is Making The Big Switch From Frozen To Fresh Chicken (Food Republic)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/809384/we-finally-know-why-red-robin-is-so-cheap/", "title": "We Finally Know Why Red Robin Is So Cheap (Mashed)", "tier": 3, "supports": ["sides"]}
+ ]},
+{"slug": "sonic", "name": "Sonic Drive-In", "sizeRank": 11,
+ "signals": {"entree": "reheated"},
+ "basis": "A Sonic employee said pretty much everything comes in frozen. Onion rings are the exception: most stores slice and batter them in house.",
+ "sources": [
+  {"url": "https://www.mashed.com/1830550/why-people-cant-stand-sonic/", "title": "Why So Many People Can't Stand Sonic (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/125843/the-untold-truth-of-sonic-drive-in/", "title": "The Untold Truth Of Sonic Drive-In (Mashed)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "crumbl-cookies", "name": "Crumbl", "sizeRank": 56,
+ "signals": {"entree": "scratch", "sides": "na"},
+ "basis": "Cookies are made from scratch at each location from butter, flour and sugar, mixed and baked in front of customers through the day.",
+ "sources": [
+  {"url": "https://www.thedailymeal.com/1220480/things-you-might-not-know-about-crumbl-cookies/", "title": "12 Things You Might Not Know About Crumbl Cookies (The Daily Meal)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/1677468/facts-to-know-crumbl-cookies/", "title": "10 Facts You Didn't Know About Crumbl Cookies (Tasting Table)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "el-pollo-loco", "name": "El Pollo Loco", "sizeRank": 58,
+ "signals": {"entree": "scratch", "sides": "mixed", "produce": "fresh_onsite"},
+ "basis": "Fresh, never-frozen chicken is marinated daily in each restaurant and fire-grilled. Salsas are hand-chopped daily and avocados are sliced and mashed in store.",
+ "sources": [
+  {"url": "https://www.elpolloloco.com/our-food/individual-chicken/fire-grilled-chicken-breast", "title": "Fire-Grilled Chicken Breast (El Pollo Loco)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.elpolloloco.com/", "title": "El Pollo Loco home page", "tier": 1, "supports": ["sides", "produce"]}
+ ]},
+{"slug": "qdoba", "name": "Qdoba Mexican Eats", "sizeRank": 72,
+ "signals": {"entree": "fresh_cooked_premade_parts", "sides": "mixed"},
+ "basis": "Adobo chicken is flame-grilled to order and guacamole is made in store from whole avocados. Other proteins such as brisket are not documented.",
+ "sources": [
+  {"url": "https://catering.qdoba.com/online/itemDetails/index/itemId/1445/categoryId/86/itemQuantity/1", "title": "Hand-Crafted Guacamole (Qdoba)", "tier": 1, "supports": ["sides"]},
+  {"url": "https://www.thedailymeal.com/1164069/moes-southwest-grill-vs-qdoba-who-has-the-better-food/", "title": "Moe's Southwest Grill Vs. Qdoba: Who Has The Better Food? (The Daily Meal)", "tier": 3, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "del-taco", "name": "Del Taco", "sizeRank": 64,
+ "signals": {"entree": "scratch", "sides": "scratch", "produce": "fresh_onsite"},
+ "basis": "Company filings describe cheddar grated in house from 40-lb blocks, hand-chopped pico de gallo, beans slow-cooked from scratch, and chicken and carne asada marinated and grilled fresh.",
+ "sources": [
+  {"url": "https://www.sec.gov/Archives/edgar/data/0001585583/000158558316000061/tacoex99120160720.htm", "title": "Del Taco Restaurants, Inc. Form 8-K exhibit, 2016 (SEC)", "tier": 1, "supports": ["entree", "sides", "produce"]},
+  {"url": "https://deltaco.com/menu_items&category=burritos.html", "title": "Burritos (Del Taco)", "tier": 1, "supports": ["sides"]}
+ ]},
+{"slug": "steak-n-shake", "name": "Steak 'n Shake", "sizeRank": 90,
+ "signals": {"entree": "scratch"},
+ "basis": "Steakburgers are fresh, never-frozen patties pressed on the griddle to order.",
+ "sources": [
+  {"url": "https://www.chowhound.com/1847714/fast-food-chains-never-use-frozen-burgers/", "title": "13 Fast Food Chains That Never Use Frozen Burger Patties (Chowhound)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.foodrepublic.com/1956440/fast-food-chain-invented-steakburger-steak-and-shake/", "title": "The Chain That Invented The Fast Food Steakburger (Food Republic)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "maggianos", "name": "Maggiano's Little Italy", "sizeRank": 85,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "Sauces and pasta dishes are made in house every day; diners and the company describe scratch-made Italian-American food prepared fresh daily.",
+ "sources": [
+  {"url": "https://www.eatthis.com/italian-restaurant-chains-sauce-from-scratch/", "title": "5 Italian Restaurant Chains That Still Make Their Sauce From Scratch (Eat This, Not That)", "tier": 3, "supports": ["sides", "entree"]},
+  {"url": "https://www.maggianos.com/menus", "title": "Menus (Maggiano's Little Italy)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "carrabbas", "name": "Carrabba's Italian Grill", "sizeRank": 95,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "Sauces are made from scratch every day and proteins are cooked on a wood-burning grill in each restaurant (company fact sheet).",
+ "sources": [
+  {"url": "https://www.carrabbas.com/press/fact-sheet", "title": "Fact Sheet (Carrabba's Italian Grill)", "tier": 1, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "bonefish-grill", "name": "Bonefish Grill", "sizeRank": 130,
+ "signals": {"entree": "scratch"},
+ "basis": "Fish is hand-cut in house every day and wood-grilled (company fact sheet).",
+ "sources": [
+  {"url": "https://www.bonefishgrill.com/press/bonefish-grill-fact-sheet", "title": "Fact Sheet (Bonefish Grill)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "pf-changs", "name": "P.F. Chang's", "sizeRank": 88,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "Food and drinks are made from scratch every day in each restaurant: dim sum is hand-folded, sauces are made in house and dishes are wok-cooked to order.",
+ "sources": [
+  {"url": "https://www.pfchangs.com/blog/pfcb/2021/01/07/25-things-you-didn't-know-about-p.f.-chang's", "title": "25 Things You Didn't Know About P.F. Chang's (P.F. Chang's)", "tier": 1, "supports": ["entree", "sides"]},
+  {"url": "https://www.tastingtable.com/1599010/pf-changs-facts/", "title": "15 Facts You Didn't Know About P.F. Chang's (Tasting Table)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.thedailymeal.com/eat/facts-about-pf-chang-s-would-surprise-you/", "title": "Facts About P.F. Chang's That Would Surprise You (The Daily Meal)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "cheddars", "name": "Cheddar's Scratch Kitchen", "sizeRank": 75,
+ "signals": {"entree": "scratch", "sides": "mixed"},
+ "basis": "The company says over 90% of the menu is made in house from scratch, and a former kitchen manager called it the closest to scratch cooking of the chains they worked at. Desserts use boxed cake mix and mashed potatoes include potato flakes.",
+ "sources": [
+  {"url": "https://www.mashed.com/277177/the-untold-truth-of-cheddars-scratch-kitchen/", "title": "The Untold Truth Of Cheddar's Scratch Kitchen (Mashed)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.tastingtable.com/2157289/olive-garden-darden-cheddars-scratch-kitchen/", "title": "The Olive Garden Sister Restaurant That's 'The Closest To Actual Scratch Cooking' (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.thetakeout.com/2182203/olive-garden-sister-restaurant-cheddars-food-from-scratch/", "title": "The Olive Garden Sister Restaurant That Actually Makes Food From Scratch (The Takeout)", "tier": 3, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "tgi-fridays", "name": "TGI Fridays", "sizeRank": 140,
+ "signals": {"entree": "reheated", "sides": "premade"},
+ "basis": "Former chefs say soups arrive frozen and are microwaved to order, and that steaks and lobster are microwaved too. A former employee says the chain once made fries, dressings and mixers from scratch but no longer does.",
+ "sources": [
+  {"url": "https://www.mashed.com/1612413/shady-things-tgi-fridays-menu/", "title": "Shady Things About TGI Fridays Menu (Mashed)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.mashed.com/261384/what-you-should-never-order-from-tgi-fridays/", "title": "What You Should Never Order From TGI Friday's (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/2215940/restaurant-chains-dont-serve-high-quality-food-anymore/", "title": "13 Restaurant Chains That Used To Serve High-Quality Food (Mashed)", "tier": 3, "supports": ["sides"]}
+ ]},
+{"slug": "bob-evans", "name": "Bob Evans", "sizeRank": 120,
+ "signals": {"entree": "reheated"},
+ "basis": "Former employees say meat arrives frozen and little besides the brioche is made in house. Eggs for breakfast platters are fresh-cracked to order.",
+ "sources": [
+  {"url": "https://www.mashed.com/845683/we-finally-know-why-bob-evans-is-so-cheap/", "title": "We Finally Know Why Bob Evans Is So Cheap (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/restaurant-chains-real-egg-morning-platters/", "title": "6 Restaurant Chains With the Best \"Real Egg\" Morning Platters (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "yard-house", "name": "Yard House", "sizeRank": 110,
+ "signals": {"entree": "scratch"},
+ "basis": "The company says more than 100 dishes, including pizzas, burgers and salads, are made from scratch in each kitchen daily.",
+ "sources": [
+  {"url": "https://www.yardhouse.com/our-kitchen", "title": "Our Kitchen (Yard House)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "seasons-52", "name": "Seasons 52", "sizeRank": null,
+ "signals": {"entree": "scratch", "produce": "fresh_onsite"},
+ "basis": "Whole produce arrives fresh and never goes in a freezer; dishes are oak-fire grilled or brick-oven roasted in each restaurant (company).",
+ "sources": [
+  {"url": "https://www.seasons52.com/our-story", "title": "Our Story (Seasons 52)", "tier": 1, "supports": ["entree", "produce"]}
+ ]},
+{"slug": "ruth-chris", "name": "Ruth's Chris Steak House", "sizeRank": 125,
+ "signals": {"entree": "scratch"},
+ "basis": "Wet-aged USDA Prime steaks are cut in house and broiled at 1,800°F to order.",
+ "sources": [
+  {"url": "https://www.thedailymeal.com/1405906/facts-ruths-chris-steakhouse-famous-ribeye-steak/", "title": "10 Facts About Ruth's Chris Steak House's Famous Ribeye Steak (The Daily Meal)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/1661685/ruths-chris-steakhouse-steak-flavor/", "title": "Why Steaks At Ruth's Chris Steakhouse Taste So Good (Tasting Table)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "capital-grille", "name": "The Capital Grille", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Steaks are dry-aged on the premises for 18 to 24 days and hand-carved by in-house butchers.",
+ "sources": [
+  {"url": "https://www.thecapitalgrille.com/butcher", "title": "The Capital Butcher (The Capital Grille)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/chain-steakhouses-that-dry-age-their-beef-in-house/", "title": "5 Chain Steakhouses That Dry-Age Their Beef In-House (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "mortons", "name": "Morton's The Steakhouse", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "USDA Prime beef aged 23 to 28 days; filets are hand-carved daily.",
+ "sources": [
+  {"url": "https://www.mashed.com/1616499/flemings-vs-mortons-which-is-better/", "title": "Fleming's Vs Morton's: Which Is Better? (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/steakhouses-hand-cut-filet-mignon/", "title": "5 Popular Steakhouses Where the Filet Mignon is Still Hand-Cut In-House (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "flemings", "name": "Fleming's Prime Steakhouse", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Steaks, including the prime filet, are hand-cut daily in the restaurant.",
+ "sources": [
+  {"url": "https://www.mashed.com/1616499/flemings-vs-mortons-which-is-better/", "title": "Fleming's Vs Morton's: Which Is Better? (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/best-hand-cut-steaks-restaurant-chains/", "title": "5 Best \"Hand-Cut\" Steaks at Leading Restaurant Chains (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "eddie-vs", "name": "Eddie V's Prime Seafood", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Filets and bone-in prime steaks are hand-carved in house and prepared to order.",
+ "sources": [
+  {"url": "https://www.eatthis.com/best-butcher-cut-filets-restaurant-chains/", "title": "5 Best \"Butcher-Cut\" Filets at Restaurant Chains (Eat This, Not That)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/steakhouses-hand-cut-filet-mignon/", "title": "5 Popular Steakhouses Where the Filet Mignon is Still Hand-Cut In-House (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "del-friscos", "name": "Del Frisco's", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "USDA Prime steaks are sliced to order and cooked from room temperature in a hot skillet.",
+ "sources": [
+  {"url": "https://www.eatthis.com/steakhouse-chains-with-highest-quality-meat/", "title": "9 Steakhouse Chains With the Highest-Quality Meat In America (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "fogo-de-chao", "name": "Fogo de Chão", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Gaucho chefs butcher, prepare and grill the meats over an open flame in each restaurant.",
+ "sources": [
+  {"url": "https://fogodechao.com/faq/", "title": "Brazilian Food, Dining & Culture FAQs (Fogo de Chão)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://fogodechao.com/menu/steak/", "title": "Brazilian Steak Grilled to Perfection (Fogo de Chão)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "krispy-kreme", "name": "Krispy Kreme", "sizeRank": 68,
+ "signals": {"entree": "fresh_cooked_premade_parts", "sides": "na"},
+ "basis": "Doughnuts are made in Hot Light Theater shops, which act as hubs; 'Delivered Fresh Daily' shops and grocery cases sell doughnuts trucked in from those hubs.",
+ "sources": [
+  {"url": "https://www.nrn.com/restaurant-executives/krispy-kreme-s-transformation-to-a-fresh-doughnuts-everywhere-brand", "title": "Krispy Kreme's transformation to a fresh doughnuts-everywhere brand (Nation's Restaurant News)", "tier": 2, "supports": ["entree"]},
+  {"url": "https://www.restaurantbusinessonline.com/financing/krispy-kreme-finds-success-fresh-doughnuts", "title": "Krispy Kreme finds success with fresh doughnuts (Restaurant Business)", "tier": 2, "supports": ["entree"]}
+ ]},
+{"slug": "tim-hortons", "name": "Tim Hortons", "sizeRank": 100,
+ "signals": {"entree": "reheated", "sides": "na"},
+ "basis": "Since 2003 doughnuts and pastries are par-baked in a factory, flash-frozen and finished in in-store ovens instead of being made from scratch in each shop.",
+ "sources": [
+  {"url": "https://www.theglobeandmail.com/report-on-business/tims-frozen-pastries-put-a-hole-in-profit/article4112448/", "title": "Tims' frozen pastries put a hole in profit (The Globe and Mail)", "tier": 2, "supports": ["entree"]},
+  {"url": "https://www.cbc.ca/news/business/2b-tim-hortons-franchisee-lawsuit-deemed-half-baked-1.1216811", "title": "$2B Tim Hortons franchisee lawsuit deemed half-baked (CBC News)", "tier": 2, "supports": ["entree"]}
+ ]},
+{"slug": "portillos", "name": "Portillo's", "sizeRank": 105,
+ "signals": {"entree": "assembled"},
+ "basis": "Italian beef, peppers and gravy are made in the company's commissary kitchens and finished in each restaurant; ribs are smoked in the central kitchen before delivery.",
+ "sources": [
+  {"url": "https://www.sec.gov/Archives/edgar/data/1871509/000187150925000016/ptlo-20241229.htm", "title": "Portillo's Inc. Form 10-K, FY2024 (SEC)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/1573937/what-makes-portillos-italian-beef-sandwich-best/", "title": "Here's Why Portillo's Italian Beef Sandwich Is One Of The Best Around (Mashed)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "blaze-pizza", "name": "Blaze Pizza", "sizeRank": 150,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Dough is made in house from scratch (no frozen dough balls) and fermented for 24 hours; pizzas are built and fire-baked to order.",
+ "sources": [
+  {"url": "https://www.mashed.com/237092/this-is-the-secret-to-why-blaze-pizza-dough-tastes-so-good-exclusive/", "title": "This Is The Secret To Why Blaze Pizza Dough Tastes So Good (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/pizza-dough-made-in-house-popular-spots/", "title": "5 Popular Spots Where the Pizza Dough Is Actually Made In-House (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "marcos-pizza", "name": "Marco's Pizza", "sizeRank": 76,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Dough is made from scratch in each store every day and cheese is never frozen.",
+ "sources": [
+  {"url": "https://www.marcos.com/the-italian-way/", "title": "The Italian Way (Marco's Pizza)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/pizza-chains-use-fresh-dough/", "title": "7 Pizza Chains That Use Fresh, Never-Frozen Dough (Eat This, Not That)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.thetakeout.com/1741862/pizza-chains-never-use-frozen-dough/", "title": "Pizza Chains That Never Use Frozen Dough (The Takeout)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "hungry-howies", "name": "Hungry Howie's", "sizeRank": 145,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Pizzas are made to order on dough made in house daily.",
+ "sources": [
+  {"url": "https://www.eatthis.com/pizza-chains-use-fresh-dough/", "title": "7 Pizza Chains That Use Fresh, Never-Frozen Dough (Eat This, Not That)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.thetakeout.com/1741862/pizza-chains-never-use-frozen-dough/", "title": "Pizza Chains That Never Use Frozen Dough (The Takeout)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "jets-pizza", "name": "Jet's Pizza", "sizeRank": 135,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Dough is made in house daily from a proprietary flour blend.",
+ "sources": [
+  {"url": "https://www.jetspizza.com/jets-detroit-style-101/", "title": "Jet's Detroit-Style 101 (Jet's Pizza)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.thetakeout.com/1741862/pizza-chains-never-use-frozen-dough/", "title": "Pizza Chains That Never Use Frozen Dough (The Takeout)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "papa-murphys", "name": "Papa Murphy's", "sizeRank": 110,
+ "signals": {"entree": "fresh_cooked_premade_parts", "produce": "fresh_onsite"},
+ "basis": "Take-and-bake pizzas are built on dough made in store daily, with vegetables sliced in store.",
+ "sources": [
+  {"url": "https://www.papamurphys.com/take-n-bake/", "title": "Take 'N' Bake (Papa Murphy's)", "tier": 1, "supports": ["entree", "produce"]}
+ ]},
+{"slug": "round-table-pizza", "name": "Round Table Pizza", "sizeRank": null,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Dough is made from scratch in house and rolled fresh daily.",
+ "sources": [
+  {"url": "https://www.roundtablepizza.com/faqs/", "title": "FAQs (Round Table Pizza)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/712984/the-untold-truth-of-round-table-pizza/", "title": "The Untold Truth Of Round Table Pizza (Mashed)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "cici-s-pizza", "name": "CiCi's Pizza", "sizeRank": null,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Buffet pizzas are made with dough made fresh every day.",
+ "sources": [
+  {"url": "https://www.mashed.com/161577/the-untold-truth-of-cicis/", "title": "The Untold Truth Of CiCis (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.thetakeout.com/1741862/pizza-chains-never-use-frozen-dough/", "title": "Pizza Chains That Never Use Frozen Dough (The Takeout)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "churchs-chicken", "name": "Church's Texas Chicken", "sizeRank": 98,
+ "signals": {"entree": "scratch", "sides": "mixed"},
+ "basis": "Chicken is hand-battered and double-breaded in small batches through the day, and Honey-Butter Biscuits are scratch-made in store.",
+ "sources": [
+  {"url": "https://www.churchs.com/news/churchs-texas-chicken-unveils-the-return-of-its-legendary-chicken-recipe", "title": "Church's Texas Chicken Unveils the Return of Its Legendary Chicken Recipe (Church's)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.qsrmagazine.com/news/churchs-honey-butter-biscuits-ranked-no-1-in-usa-today-10best-awards/", "title": "Church's Honey-Butter Biscuits Ranked No. 1 in USA TODAY 10Best Awards (QSR Magazine)", "tier": 2, "supports": ["sides"]}
+ ]},
+{"slug": "california-pizza-kitchen", "name": "California Pizza Kitchen", "sizeRank": 140,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "About 90% of the menu is made from scratch in each kitchen, and pizza dough is hand-tossed again.",
+ "sources": [
+  {"url": "https://www.thetakeout.com/2166297/pizza-chains-with-high-quality-ingredients/", "title": "13 Pizza Chains That Prioritize High Quality Ingredients (The Takeout)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.nrn.com/casual-dining/california-pizza-kitchen-ceo-discusses-next-chapter-", "title": "California Pizza Kitchen CEO discusses 'next chapter' (Nation's Restaurant News)", "tier": 2, "supports": ["entree"]}
+ ]},
+{"slug": "sbarro", "name": "Sbarro", "sizeRank": null,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Every pizza starts with dough made in house daily and hand-stretched.",
+ "sources": [
+  {"url": "https://sbarro.com/in-the-news/sbarro-celebrates-roots-new-mamas-meatball-ny-style-pizza/", "title": "Sbarro Celebrates its Roots with its new Mama's Meatball NY Style Pizza (Sbarro)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "chuck-e-cheese", "name": "Chuck E. Cheese", "sizeRank": 115,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Pizza dough is prepared fresh every day at each location and pizzas are assembled by hand and baked to order.",
+ "sources": [
+  {"url": "https://www.chuckecheese.com/food/pizza/", "title": "Chuck E. Cheese Pizza — Real Recipes, Made Fresh (Chuck E. Cheese)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "habit-burger-and-grill","name": "The Habit Burger Grill", "sizeRank": 108,
+ "signals": {"entree": "scratch"},
+ "basis": "Burgers are fresh, never-frozen ground beef chargrilled over an open flame to order.",
+ "sources": [
+  {"url": "https://www.eatthis.com/restaurant-chains-cook-burgers-fresh-to-order/", "title": "7 Restaurant Chains That Cook Burgers Fresh to Order (Eat This, Not That)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/1132993/fast-food-chains-that-never-use-frozen-patties/", "title": "Fast Food Chains That Never Use Frozen Patties (Mashed)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "smashburger", "name": "Smashburger", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Fresh, never-frozen Certified Angus Beef is smashed on the griddle to order.",
+ "sources": [
+  {"url": "https://smashburger.com/news/what-is-a-smash-burger", "title": "What Is A Smash Burger? (Smashburger)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/5-burger-chains-that-never-use-frozen-beef/", "title": "5 Burger Chains That Never Use Frozen Beef (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "slim-chickens", "name": "Slim Chickens", "sizeRank": 128,
+ "signals": {"entree": "scratch", "sides": "mixed"},
+ "basis": "Fresh, never-frozen chicken is buttermilk-marinated and hand-breaded to order; sauces are made in house.",
+ "sources": [
+  {"url": "https://www.slimchickens.com/about", "title": "About Us (Slim Chickens)", "tier": 1, "supports": ["entree", "sides"]},
+  {"url": "https://www.eatthis.com/best-chain-restaurants-fresh-made-chicken-tenders/", "title": "5 Chain Restaurants With Chicken Tenders Made Fresh, Not Frozen (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "chuys", "name": "Chuy's", "sizeRank": 130,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "Every dish is made from scratch daily in each kitchen; tortillas are made by hand all day and the nine signature sauces are made in house. Freezers are about the size of a home freezer.",
+ "sources": [
+  {"url": "https://www.chuys.com/our-story/difference", "title": "Chuy's Difference (Chuy's)", "tier": 1, "supports": ["entree", "sides"]},
+  {"url": "https://www.chowhound.com/2073807/chuys-tex-mex-chain-food-made-from-scratch/", "title": "The Austin Tex-Mex Chain That Makes Its Food From Scratch Every Day (Chowhound)", "tier": 3, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "twin-peaks", "name": "Twin Peaks", "sizeRank": 120,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "The company describes a scratch kitchen with hand-smashed burgers, hand-cut steaks and made-from-scratch appetizers, soups and desserts.",
+ "sources": [
+  {"url": "https://twinpeaksrestaurant.com/", "title": "Twin Peaks Restaurants: Scratch American Food (Twin Peaks)", "tier": 1, "supports": ["entree", "sides"]},
+  {"url": "https://twinpeaksrestaurant.com/menu", "title": "Menu (Twin Peaks)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "hard-rock-cafe", "name": "Hard Rock Cafe", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Cafes added 'grind rooms' where premium Angus beef is ground fresh through the day for burgers.",
+ "sources": [
+  {"url": "https://www.nrn.com/casual-dining/hard-rock-cafe-adds-design-menu-updates", "title": "Hard Rock Cafe adds design, menu updates (Nation's Restaurant News)", "tier": 2, "supports": ["entree"]}
+ ]},
+{"slug": "first-watch", "name": "First Watch", "sizeRank": 78,
+ "signals": {"entree": "scratch", "sides": "scratch", "produce": "fresh_onsite"},
+ "basis": "Crews arrive at dawn to slice and juice fresh produce, bake muffins and make French toast batter from scratch. Everything is made to order and kitchens have no microwaves, heat lamps or deep fryers.",
+ "sources": [
+  {"url": "https://www.sec.gov/Archives/edgar/data/1789940/000178994025000010/fwrg-20241229.htm", "title": "First Watch Restaurant Group Form 10-K, FY2024 (SEC)", "tier": 1, "supports": ["entree", "sides", "produce"]}
+ ]},
+{"slug": "true-food-kitchen", "name": "True Food Kitchen", "sizeRank": null,
+ "signals": {"entree": "scratch", "sourcing": "direct"},
+ "basis": "The company says it cooks in scratch kitchens with fresh, seasonal ingredients from growers it partners with.",
+ "sources": [
+  {"url": "https://www.truefoodkitchen.com/truestory/", "title": "True Story (True Food Kitchen)", "tier": 1, "supports": ["entree", "sourcing"]}
+ ]},
+{"slug": "north-italia", "name": "North Italia", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Pasta is made in house daily and pizzas are hand-tossed (company).",
+ "sources": [
+  {"url": "https://www.northitalia.com/", "title": "Handmade Pasta (North Italia)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "flower-child", "name": "Flower Child", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "The company says meals are made from scratch daily.",
+ "sources": [
+  {"url": "https://www.foxrc.com/restaurants/", "title": "Restaurants (Fox Restaurant Concepts)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "tender-greens", "name": "Tender Greens", "sizeRank": null,
+ "signals": {"entree": "scratch", "sourcing": "local"},
+ "basis": "Each location is run by an executive chef, and the founders built relationships with local farms, including giving Scarborough Farms equity in the company.",
+ "sources": [
+  {"url": "https://www.nrn.com/emerging-chains/tender-greens-plots-expansion", "title": "Tender Greens plots expansion (Nation's Restaurant News)", "tier": 2, "supports": ["entree", "sourcing"]},
+  {"url": "https://www.restaurantbusinessonline.com/financing/sourcing-produce-fall-menus", "title": "Sourcing produce for fall menus (Restaurant Business)", "tier": 2, "supports": ["sourcing"]}
+ ]},
+{"slug": "urban-plates", "name": "Urban Plates", "sizeRank": null,
+ "signals": {"entree": "scratch", "produce": "fresh_onsite"},
+ "basis": "The company says it cooks from scratch: meats are marinated and cooked in house and vegetables are washed and hand-chopped.",
+ "sources": [
+  {"url": "https://urbanplates.com/made-from-scratch/", "title": "Made From Scratch (Urban Plates)", "tier": 1, "supports": ["entree", "produce"]}
+ ]},
+{"slug": "veggie-grill", "name": "Veggie Grill", "sizeRank": null,
+ "signals": {"entree": "fresh_cooked_premade_parts", "sides": "mixed"},
+ "basis": "Menu components such as the walnut taco meat, ranchero beans, queso and sauces are made in house (company menu).",
+ "sources": [
+  {"url": "https://www.veggiegrill.com/menu/burritos/", "title": "Burritos (Veggie Grill)", "tier": 1, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "auntie-annes", "name": "Auntie Anne's", "sizeRank": 120,
+ "signals": {"entree": "fresh_cooked_premade_parts", "sides": "na"},
+ "basis": "Stores mix the company's signature flour blend with yeast and water, then hand-roll and bake pretzels through the day.",
+ "sources": [
+  {"url": "https://www.mashed.com/38474/didnt-know-auntie-annes-pretzels/", "title": "What You Didn't Know About Auntie Anne's Pretzels (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.chowhound.com/1855134/auntie-annes-frozen-pretzels-vs-fresh-baked/", "title": "Auntie Anne's Frozen Pretzels: Are They The Same As The Fresh-Baked Ones? (Chowhound)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "brueggers-bagels", "name": "Bruegger's Bagels", "sizeRank": null,
+ "signals": {"entree": "fresh_cooked_premade_parts", "sides": "na"},
+ "basis": "Bagels are kettle-boiled and baked in small batches at each location and are never frozen.",
+ "sources": [
+  {"url": "https://www.mashed.com/280402/the-untold-truth-of-brueggers-bagels/", "title": "The Untold Truth Of Bruegger's Bagels (Mashed)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "boston-market", "name": "Boston Market", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Fresh, never-frozen whole chickens are marinated and slow-roasted in rotisserie ovens in each store.",
+ "sources": [
+  {"url": "https://www.chowhound.com/2229232/boston-market-rotisserie-chicken-fact/", "title": "The Boston Market Rotisserie Chicken Fact Customers Should Know (Chowhound)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/best-restaurant-rotisserie-chicken-dinners/", "title": "6 Leading Restaurant Chains Serving the Best \"Rotisserie\" Chicken Dinners (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "pollo-tropical", "name": "Pollo Tropical", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Fresh chicken is marinated for 24 hours in citrus and spices and fire-grilled in each kitchen daily.",
+ "sources": [
+  {"url": "https://www.pollotropical.com/about-us", "title": "About Us (Pollo Tropical)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "cafe-rio", "name": "Cafe Rio", "sizeRank": null,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "Tortillas are made from scratch and cooked on a comal in view, and all sauces, dressings, salsas and guacamole are made fresh daily. Locations have no freezers or microwaves.",
+ "sources": [
+  {"url": "https://www.caferio.com/our-food", "title": "Our Food (Cafe Rio)", "tier": 1, "supports": ["entree", "sides"]},
+  {"url": "https://www.mashed.com/1053629/cafe-rio-13-facts-about-the-mexican-grill/", "title": "Cafe Rio: 13 Facts About The Mexican Grill (Mashed)", "tier": 3, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "pappadeaux", "name": "Pappadeaux Seafood Kitchen", "sizeRank": null,
+ "signals": {"entree": "scratch", "sides": "scratch", "sourcing": "direct"},
+ "basis": "Food is scratch-made daily, with in-house butchers filleting whole fish and sauces and marinades made by hand. Pappas runs its own fleet that delivers meat, seafood and produce to its restaurants daily.",
+ "sources": [
+  {"url": "https://www.restaurantbusinessonline.com/operations/after-nearly-50-years-pappas-restaurants-still-keeping-it-family", "title": "After nearly 50 years, Pappas Restaurants is still keeping it in the family (Restaurant Business)", "tier": 2, "supports": ["entree", "sides", "sourcing"]},
+  {"url": "https://pappadeaux.com/about/", "title": "About Us (Pappadeaux Seafood Kitchen)", "tier": 1, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "legal-sea-foods", "name": "Legal Sea Foods", "sizeRank": null,
+ "signals": {"entree": "fresh_cooked_premade_parts", "sides": "premade"},
+ "basis": "Fish is cut and lab-tested at the company's central facility, which also makes the chowder, sauces, dressings, marinades and pasta that are shipped to restaurants.",
+ "sources": [
+  {"url": "https://www.tastingtable.com/2037785/east-coast-seafood-chain-legal-sea-foods/", "title": "The Seafood Chain That Tests Its Fish In A Lab Before It Hits Your Plate (Tasting Table)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.restaurantbusinessonline.com/operations/legal-sea-foods-build-innovation-center-outside-boston", "title": "Legal Sea Foods to open innovation center outside Boston (Restaurant Business)", "tier": 2, "supports": ["sides"]}
+ ]},
+{"slug": "cold-stone-creamery", "name": "Cold Stone Creamery", "sizeRank": null,
+ "signals": {"entree": "scratch", "sides": "na"},
+ "basis": "Ice cream is made fresh daily in each store, then mixed to order on the frozen stone.",
+ "sources": [
+  {"url": "https://www.coldstonecreamery.com/menu/ice-cream/", "title": "Ice Cream (Cold Stone Creamery)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://tastingtable.com/2281121/top-rated-ice-cream-shop-2026-cold-stone", "title": "This Is America's Top-Rated Ice Cream Shop In 2026 (Tasting Table)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "ritas-italian-ice", "name": "Rita's Italian Ice", "sizeRank": null,
+ "signals": {"entree": "scratch", "sides": "na"},
+ "basis": "Italian ice is made fresh on site at each location every day, and unused ice is thrown out after 36 hours.",
+ "sources": [
+  {"url": "https://www.ritasice.com/ritas-promise/", "title": "Rita's Promise (Rita's Ice)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/374176/the-untold-truth-of-ritas-italian-ice/", "title": "The Untold Truth Of Rita's Italian Ice (Mashed)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "nothing-bundt-cakes", "name": "Nothing Bundt Cakes", "sizeRank": 102,
+ "signals": {"entree": "scratch", "sides": "na"},
+ "basis": "Cakes are baked fresh daily at each bakery location (company).",
+ "sources": [
+  {"url": "https://www.nothingbundtcakes.com/find-a-bakery/il/chicago/bakery-147.html", "title": "Chicago Cake Shop & Bakery (Nothing Bundt Cakes)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "penn-station", "name": "Penn Station East Coast Subs", "sizeRank": null,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "Fries are cut fresh in house, lemonade is squeezed in store, bread is baked in house daily, and cheesesteaks are grilled to order.",
+ "sources": [
+  {"url": "https://penn-station.com/about_our_product.php", "title": "Penn Station Product Quality (Penn Station)", "tier": 1, "supports": ["entree", "sides"]},
+  {"url": "https://www.qsrmagazine.com/news/penn-station-east-coast-subs-offers-free-fresh-cut-fries", "title": "Penn Station East Coast Subs Offers Free Fresh-Cut Fries (QSR Magazine)", "tier": 2, "supports": ["sides"]},
+  {"url": "https://www.mashed.com/1023551/the-untold-truth-of-penn-station-east-coast-subs/", "title": "The Untold Truth Of Penn Station East Coast Subs (Mashed)", "tier": 3, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "charleys-philly-steaks","name": "Charleys Philly Steaks", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Cheesesteaks are grilled to order with USDA Choice steak and grilled vegetables (company).",
+ "sources": [
+  {"url": "https://www.charleys.com/menu/cheesesteaks/", "title": "Cheesesteaks (Charleys)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "daves-hot-chicken", "name": "Dave's Hot Chicken", "sizeRank": 115,
+ "signals": {"entree": "scratch", "sides": "mixed"},
+ "basis": "Chicken tenders are hand-breaded and fried to order; kale slaw is made in house (company).",
+ "sources": [
+  {"url": "https://restaurants.daveshotchicken.com/il/chicago/hot-chicken-n-western-ave", "title": "Dave's Hot Chicken in Chicago (Dave's Hot Chicken)", "tier": 1, "supports": ["entree", "sides"]},
+  {"url": "https://www.tastingtable.com/2030789/daves-hot-chicken-menu-order-skip/", "title": "8 Dave's Hot Chicken Menu Items To Order And 6 To Skip (Tasting Table)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "jollibee", "name": "Jollibee", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Chickenjoy is marinated and hand-breaded (company).",
+ "sources": [
+  {"url": "https://www.jollibeefoods.com/spicy-chicken", "title": "Spicy Chicken (Jollibee)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "ruby-tuesday", "name": "Ruby Tuesday", "sizeRank": null,
+ "signals": {"entree": "reheated", "sides": "premade"},
+ "basis": "Former employees describe frozen soups and sauces, pre-cut salad mix, chicken and burgers pre-grilled and reheated to order, frozen steaks, and heavy microwave use.",
+ "sources": [
+  {"url": "https://www.mashed.com/2215940/restaurant-chains-dont-serve-high-quality-food-anymore/", "title": "13 Restaurant Chains That Used To Serve High-Quality Food, But Don't Anymore (Mashed)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.foodrepublic.com/2092893/restaurant-chains-use-frozen-steaks/", "title": "8 Restaurant Chains That Use Frozen Steaks, According To Former Employees (Food Republic)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "logans-roadhouse", "name": "Logan's Roadhouse", "sizeRank": null,
+ "signals": {"entree": "scratch", "sides": "mixed"},
+ "basis": "USDA Choice steaks are wet-aged and hand-cut on premises before being grilled over mesquite, and loaded potato skins are made from scratch.",
+ "sources": [
+  {"url": "https://www.eatthis.com/best-restaurant-potato-skins/", "title": "7 Restaurant Chains That Serve the Best Potato Skins (Eat This, Not That)", "tier": 3, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "original-pancake-house", "name": "The Original Pancake House", "sizeRank": null,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "All batters and sauces are made from scratch on site, including pancakes from the chain's sourdough starter, with fresh grade AA eggs and real cream.",
+ "sources": [
+  {"url": "https://www.mashed.com/2103170/breakfast-chains-use-highest-quality-ingredients/", "title": "Breakfast Chains That Use The Highest Quality Ingredients (Mashed)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.thetakeout.com/1968461/best-pancakes-at-breakfast-chains/", "title": "14 Breakfast Chain Pancakes Ranked (The Takeout)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "black-bear-diner", "name": "Black Bear Diner", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Comfort food is cooked to order and pancakes are made from scratch.",
+ "sources": [
+  {"url": "https://www.eatthis.com/best-cooked-to-order-breakfast-chains/", "title": "5 Restaurant Chains Where Breakfast Is Still Cooked to Order (Eat This, Not That)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/breakfast-chains-best-pancakes-according-to-fans/", "title": "5 Breakfast Chains That Serve the Best Pancakes (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "moes-southwest", "name": "Moe's Southwest Grill", "sizeRank": 125,
+ "signals": {"entree": "fresh_cooked_premade_parts", "sides": "mixed"},
+ "basis": "The company says food is made fresh daily, with house-made salsa and sauces and fresh guacamole.",
+ "sources": [
+  {"url": "https://locations.moes.com/nc/raleigh/10760-wakefield-commons-dr", "title": "Moe's Southwest Grill Wakefield Commons (Moe's)", "tier": 1, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "firehouse-subs", "name": "Firehouse Subs", "sizeRank": 47,
+ "signals": {"entree": "reheated"},
+ "basis": "Cooked meats and cheese are heated in a steamer box and served on rolls bought from an outside bakery.",
+ "sources": [
+  {"url": "https://www.mashed.com/124699/things-didnt-know-firehouse-subs/", "title": "Things You Didn't Know About Firehouse Subs (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.tastingtable.com/1984799/firehouse-subs-sandwiches-ranked/", "title": "14 Popular Sandwiches At Firehouse Subs, Ranked (Tasting Table)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "kura-sushi", "name": "Kura Sushi", "sizeRank": 145,
+ "signals": {"entree": "scratch"},
+ "basis": "Sushi rice is cooked and seasoned in each restaurant, and fish is cut in house by trained fish cutters.",
+ "sources": [
+  {"url": "https://www.restaurantbusinessonline.com/emerging-brands/all-aboard-kuras-high-tech-sushi-train-picks-speed", "title": "All aboard: Kura's high-tech sushi train picks up speed (Restaurant Business)", "tier": 2, "supports": ["entree"]},
+  {"url": "https://www.nrn.com/restaurant-technology/how-do-you-combine-automated-technology-with-hospitality-just-ask-kura-sushi", "title": "How do you combine automated technology with hospitality? Just ask Kura Sushi (Nation's Restaurant News)", "tier": 2, "supports": ["entree"]}
+ ]},
+{"slug": "captain-ds", "name": "Captain D's", "sizeRank": 105,
+ "signals": {"entree": "reheated"},
+ "basis": "Reviewers describe frozen fish that is battered and fried.",
+ "sources": [
+  {"url": "https://www.tastingtable.com/2121455/seafood-chain-worst-quality-fish-reviews/", "title": "8 Seafood Chains With The Worst Quality Fish, According To Reviews (Tasting Table)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "giordanos", "name": "Giordano's", "sizeRank": null,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Dough is made in house from the company recipe and every stuffed pizza is built on freshly made dough (company).",
+ "sources": [
+  {"url": "https://ship.giordanos.com/products/giordanos-deep-dish-pizza-packs", "title": "Giordano's Deep Dish Pizza (Giordano's)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "taco-cabana", "name": "Taco Cabana", "sizeRank": null,
+ "signals": {"entree": "scratch", "sides": "mixed"},
+ "basis": "Flour tortillas are made in each restaurant every 15 minutes, and steak and chicken fajitas are marinated and grilled (company).",
+ "sources": [
+  {"url": "https://www.tacocabana.com/about/", "title": "About (Taco Cabana)", "tier": 1, "supports": ["entree", "sides"]},
+  {"url": "https://www.tacocabana.com/menu/", "title": "Menu (Taco Cabana)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "taco-johns", "name": "Taco John's", "sizeRank": null,
+ "signals": {"entree": "assembled"},
+ "basis": "Employees say a lot of food is assembled from scratch in store, though some components start frozen and items like Mexi Rolls arrive pre-made.",
+ "sources": [
+  {"url": "https://www.mashed.com/1158707/workers-reveal-what-its-really-like-to-work-at-taco-johns/", "title": "Workers Reveal What It's Really Like To Work At Taco John's (Mashed)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "pei-wei", "name": "Pei Wei Asian Kitchen", "sizeRank": null,
+ "signals": {"entree": "scratch", "produce": "fresh_onsite"},
+ "basis": "Every dish is wok-cooked after you order, with vegetables chopped in house (company).",
+ "sources": [
+  {"url": "https://www.peiwei.com/", "title": "Pei Wei Asian Kitchen (Pei Wei)", "tier": 1, "supports": ["entree", "produce"]}
+ ]},
+{"slug": "schlotzskys", "name": "Schlotzsky's", "sizeRank": null,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Staff mix, proof and bake the sourdough buns from scratch in every restaurant daily; sandwiches are built on them to order.",
+ "sources": [
+  {"url": "https://www.tastingtable.com/2234966/sandwich-chains-fresh-bread-in-house/", "title": "9 Sandwich Chains That Make Or Bake Their Bread In-House (Tasting Table)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.schlotzskys.com/news/november-9-2020-update", "title": "Thank You For Your Support (Schlotzsky's)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "insomnia-cookies", "name": "Insomnia Cookies", "sizeRank": null,
+ "signals": {"entree": "fresh_cooked_premade_parts", "sides": "na"},
+ "basis": "Cookies are baked fresh in each store and delivered warm (company).",
+ "sources": [
+  {"url": "https://insomniacookies.com/", "title": "Insomnia Cookies", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "saltgrass", "name": "Saltgrass Steak House", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Certified Angus Beef steaks are cooked over an open flame in a scratch kitchen (company).",
+ "sources": [
+  {"url": "https://www.saltgrass.com/", "title": "Saltgrass Steak House", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "rubios", "name": "Rubio's Coastal Grill", "sizeRank": null,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Wild-caught Alaska pollock is beer-battered by hand in the restaurant; salsas are made from toasted chiles (company).",
+ "sources": [
+  {"url": "https://rubios.com/menu/", "title": "Menu (Rubio's Coastal Grill)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://rubios.com/about-us/", "title": "About Us (Rubio's Coastal Grill)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "lukes-lobster", "name": "Luke's Lobster", "sizeRank": null,
+ "signals": {"entree": "assembled", "sourcing": "direct"},
+ "basis": "Lobster is bought directly from Maine and Canadian fishermen, then steamed and picked at the company's own seafood plant and shipped to the shacks, where rolls are assembled.",
+ "sources": [
+  {"url": "https://lukeslobster.com/pages/our-seafood-company", "title": "Our Seafood Supply Company (Luke's Lobster)", "tier": 1, "supports": ["entree", "sourcing"]},
+  {"url": "https://lukeslobster.com/pages/sourcing-1", "title": "Sourcing (Luke's Lobster)", "tier": 1, "supports": ["sourcing"]}
+ ]},
+{"slug": "smith-wollensky", "name": "Smith & Wollensky", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "USDA Prime steaks are butchered, dry-aged for about four weeks and hand-carved on premises.",
+ "sources": [
+  {"url": "https://www.smithandwollensky.com/our-story/", "title": "Our Story (Smith & Wollensky)", "tier": 1, "supports": ["entree"]},
+  {"url": "https://www.mashed.com/602713/the-untold-truth-of-smith-wollensky/", "title": "The Untold Truth Of Smith & Wollensky (Mashed)", "tier": 3, "supports": ["entree"]},
+  {"url": "https://www.eatthis.com/chain-steakhouses-that-dry-age-their-beef-in-house/", "title": "5 Chain Steakhouses That Dry-Age Their Beef In-House (Eat This, Not That)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "stk", "name": "STK Steakhouse", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Wet-aged Midwest Angus steaks are hand-cut.",
+ "sources": [
+  {"url": "https://www.tastingtable.com/2086571/overrated-stk-steakhouse-chain-diners-avoid/", "title": "The Overrated Steakhouse Chain Diners Warn Against (Tasting Table)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "grimaldis", "name": "Grimaldi's Pizzeria", "sizeRank": null,
+ "signals": {"entree": "fresh_cooked_premade_parts"},
+ "basis": "Dough is made fresh in house daily and pizzas are baked in a coal-fired oven (company).",
+ "sources": [
+  {"url": "https://www.grimaldispizzeria.com/location/hoover/", "title": "Grimaldi's Coal-Fired Pizza - Hoover, AL (Grimaldi's)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "buca-di-beppo", "name": "Buca di Beppo", "sizeRank": null,
+ "signals": {"entree": "reheated", "sides": "mixed"},
+ "basis": "Former employees say a large part of the menu is frozen product from Sysco; the red sauce and breads are made in house.",
+ "sources": [
+  {"url": "https://www.mashed.com/1164695/we-finally-know-why-buca-di-beppo-is-so-cheap/", "title": "We Finally Know Why Buca Di Beppo Is So Cheap (Mashed)", "tier": 3, "supports": ["entree", "sides"]},
+  {"url": "https://www.mashed.com/482557/the-untold-truth-of-buca-di-beppo/", "title": "The Untold Truth Of Buca Di Beppo (Mashed)", "tier": 3, "supports": ["entree"]}
+ ]},
+{"slug": "macaroni-grill", "name": "Romano's Macaroni Grill", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "The menu says 'scratch made every day', with handmade pasta (company).",
+ "sources": [
+  {"url": "https://www.macaronigrill.com/Assets/macaroni-grill-main-menu-11-24-B.pdf", "title": "Main menu, Nov 2024 (Romano's Macaroni Grill)", "tier": 1, "supports": ["entree"]}
+ ]},
+{"slug": "native-foods", "name": "Native Foods Cafe", "sizeRank": null,
+ "signals": {"entree": "scratch"},
+ "basis": "Seitan, chickpeas, cauliflower and other whole ingredients go into chef-developed, scratch-made dishes.",
+ "sources": [
+  {"url": "https://www.restaurantbusinessonline.com/food/closer-look-menu-trends-spotted-national-restaurant-association-show", "title": "A closer look at menu trends spotted at the National Restaurant Association Show (Restaurant Business)", "tier": 2, "supports": ["entree"]}
+ ]},
+{"slug": "baja-fresh", "name": "Baja Fresh", "sizeRank": null,
+ "signals": {"entree": "scratch", "sides": "scratch"},
+ "basis": "Restaurants have no can openers, microwaves or freezers; food is prepared by hand from fresh ingredients (company).",
+ "sources": [
+  {"url": "https://www.bajafresh.com/about-us/index.php", "title": "About Baja Fresh", "tier": 1, "supports": ["entree", "sides"]}
+ ]},
+{"slug": "friendlys", "name": "Friendly's", "signals": {}, "basis": "", "sources": [], "notes": "Group search found no prep evidence."},
+{"slug": "sullivans", "name": "Sullivan's Steakhouse", "signals": {}, "basis": "", "sources": [], "notes": "Menu says hand-cut steaks; no independent source."},
+{"slug": "the-palm", "name": "The Palm", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "old-chicago", "name": "Old Chicago Pizza & Taproom", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "bareburger", "name": "Bareburger", "signals": {}, "basis": "", "sources": [], "notes": "Organic sourcing claims only; nothing on prep."},
+{"slug": "just-salad", "name": "Just Salad", "signals": {}, "basis": "", "sources": [], "notes": "Fresh-prepped produce and house dressings (company); nothing on proteins."},
+{"slug": "chopt", "name": "Chopt Creative Salad", "signals": {}, "basis": "", "sources": [], "notes": "Salads are chopped to order; nothing on how components arrive."},
+{"slug": "honeygrow", "name": "Honeygrow", "signals": {}, "basis": "", "sources": [], "notes": "Fresh noodles and local sourcing claims; nothing citable on in-store prep."},
+{"slug": "tocaya", "name": "Tocaya Organica", "signals": {}, "basis": "", "sources": [], "notes": "Local produce claims only."},
+{"slug": "elevation-burger", "name": "Elevation Burger", "signals": {}, "basis": "", "sources": [], "notes": "Organic grass-fed beef; nothing on prep."},
+{"slug": "boiling-crab", "name": "The Boiling Crab", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "nobu", "name": "Nobu", "signals": {}, "basis": "", "sources": [], "notes": "Founder interviews about fish markets; nothing on the restaurants' prep."},
+{"slug": "jamba", "name": "Jamba", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "corner-bakery", "name": "Corner Bakery Cafe", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "au-bon-pain", "name": "Au Bon Pain", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "newks", "name": "Newk's Eatery", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "waba-grill", "name": "WaBa Grill", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "el-torito", "name": "El Torito", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "sizzler", "name": "Sizzler", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "eat-n-park", "name": "Eat'n Park", "signals": {}, "basis": "", "sources": [], "notes": "Smiley cookies come from a central bakery; nothing on restaurant prep."},
+{"slug": "marie-callenders", "name": "Marie Callender's", "signals": {}, "basis": "", "sources": [], "notes": "Only that cream pies are baked in the kitchen."},
+{"slug": "johnny-rockets", "name": "Johnny Rockets", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "planet-hollywood", "name": "Planet Hollywood", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "claim-jumper", "name": "Claim Jumper", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "black-angus", "name": "Black Angus Steakhouse", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "hometown-buffet", "name": "HomeTown Buffet", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "smokey-bones", "name": "Smokey Bones", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found; chain is shutting down."},
+{"slug": "bar-louie", "name": "Bar Louie", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "bennigans", "name": "Bennigan's", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "houlihans", "name": "Houlihan's", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "ninety-nine", "name": "99 Restaurants", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "a-and-w","name": "A&W Restaurants", "signals": {}, "basis": "", "sources": [], "notes": "Only that root beer is made in store."},
+{"slug": "ocharleys", "name": "O'Charley's", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "another-broken-egg", "name": "Another Broken Egg Cafe", "signals": {}, "basis": "", "sources": [], "notes": "Marketing copy only ('chef-inspired')."},
+{"slug": "main-event", "name": "Main Event", "signals": {}, "basis": "", "sources": [], "notes": "Menu descriptions only."},
+{"slug": "wienerschnitzel", "name": "Wienerschnitzel", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "dutch-bros","name": "Dutch Bros", "signals": {}, "basis": "", "sources": [], "notes": "Drinks-only menu with a few snacks; no evidence found on how food is prepared."},
+{"slug": "tropical-smoothie", "name": "Tropical Smoothie Cafe", "signals": {}, "basis": "", "sources": [], "notes": "Only found that smoothies use frozen fruit and the kitchen makes food to order; nothing citable on how the food components arrive."},
+{"slug": "7-brew", "name": "7 Brew", "signals": {}, "basis": "", "sources": [], "notes": "Drinks only."},
+{"slug": "baskin-robbins", "name": "Baskin-Robbins", "signals": {}, "basis": "", "sources": [], "notes": "Ice cream is factory-made, but we found no citable source beyond company history."},
+{"slug": "freddys", "name": "Freddy's", "signals": {}, "basis": "", "sources": [], "notes": "Company says steakburgers are cooked to order; nothing on whether the beef arrives fresh or frozen."},
+{"slug": "scooters-coffee", "name": "Scooter's Coffee", "signals": {}, "basis": "", "sources": [], "notes": "Drinks-focused; no evidence on food prep."},
+{"slug": "smoothie-king", "name": "Smoothie King", "signals": {}, "basis": "", "sources": [], "notes": "Smoothies blended in store; no food prep evidence."},
+{"slug": "mcalisters-deli", "name": "McAlister's Deli", "signals": {}, "basis": "", "sources": [], "notes": "Only found that tea is brewed in store."},
+{"slug": "jasons-deli", "name": "Jason's Deli", "signals": {}, "basis": "", "sources": [], "notes": "Only found ingredient policies (no artificial additives), not prep methods."},
+{"slug": "dave-busters", "name": "Dave & Buster's", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found on food prep."},
+{"slug": "hooters", "name": "Hooters", "signals": {}, "basis": "", "sources": [], "notes": "Wings were historically frozen; new owners announced a switch to fresh, hand-breaded wings in 2025. Not graded until the change is confirmed."},
+{"slug": "bjs-restaurant", "name": "BJ's Restaurant & Brewhouse", "signals": {}, "basis": "", "sources": [], "notes": "Found only that pizza sauce now uses fresh tomatoes and sausage is roasted in house; not enough to grade the menu."},
+{"slug": "topgolf", "name": "Topgolf", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found on food prep."},
+{"slug": "huddle-house", "name": "Huddle House", "signals": {}, "basis": "", "sources": [], "notes": "Only marketing copy ('made to order')."},
+{"slug": "benihana", "name": "Benihana", "signals": {}, "basis": "", "sources": [], "notes": "Teppanyaki is cooked at the table, but we found nothing on how proteins and sauces arrive."},
+{"slug": "mastros", "name": "Mastro's Steakhouse", "signals": {}, "basis": "", "sources": [], "notes": "Found only that steaks are wet-aged prime cooked in a broiler; not where they are cut."},
+{"slug": "torchys-tacos", "name": "Torchy's Tacos", "signals": {}, "basis": "", "sources": [], "notes": "Tortillas, queso and churros are made in house, but nothing on how proteins are prepared."},
+{"slug": "on-the-border", "name": "On The Border", "signals": {}, "basis": "", "sources": [], "notes": "Tortillas, chips, salsa and guacamole are made daily; nothing on entrées."},
+{"slug": "mendocino-farms", "name": "Mendocino Farms", "signals": {}, "basis": "", "sources": [], "notes": "Named farm partners, but nothing citable on in-store prep."},
+{"slug": "dig", "name": "Dig", "signals": {}, "basis": "", "sources": [], "notes": "Farm-to-counter sourcing claims only."},
+{"slug": "snooze", "name": "Snooze an A.M. Eatery", "signals": {}, "basis": "", "sources": [], "notes": "Ingredient sourcing claims only."},
+{"slug": "bubba-gumps", "name": "Bubba Gump Shrimp Co.", "signals": {}, "basis": "", "sources": [], "notes": "Customer complaints only."},
+{"slug": "joes-crab-shack", "name": "Joe's Crab Shack", "signals": {}, "basis": "", "sources": [], "notes": "Customer complaints only."},
+{"slug": "rainforest-cafe", "name": "Rainforest Cafe", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found on food prep."},
+{"slug": "texas-de-brazil", "name": "Texas de Brazil", "signals": {}, "basis": "", "sources": [], "notes": "Meats are carved tableside; nothing on prep."},
+{"slug": "white-castle", "name": "White Castle", "signals": {}, "basis": "", "sources": [], "notes": "Steam-grilled on rehydrated onions; nothing on how patties arrive."},
+{"slug": "krystal", "name": "Krystal", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found on how patties arrive."},
+{"slug": "cook-out", "name": "Cook Out", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "checkers-rallys", "name": "Checkers/Rally's", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "long-john-silvers", "name": "Long John Silver's", "signals": {}, "basis": "", "sources": [], "notes": "Fish is described as hand-battered, but nothing on whether it arrives frozen."},
+{"slug": "noodles-company", "name": "Noodles & Company", "signals": {}, "basis": "", "sources": [], "notes": "Only the 10-K's 'cooked to order'; nothing on sauces or proteins."},
+{"slug": "potbelly", "name": "Potbelly Sandwich Shop", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found on prep."},
+{"slug": "mod-pizza", "name": "MOD Pizza", "signals": {}, "basis": "", "sources": [], "notes": "Dough is pressed daily; not clear where it is made."},
+{"slug": "bahama-breeze", "name": "Bahama Breeze", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "einstein-bros", "name": "Einstein Bros. Bagels", "signals": {}, "basis": "", "sources": [], "notes": "Bagels are baked through the day; not clear whether from scratch dough or frozen."},
+{"slug": "cinnabon", "name": "Cinnabon", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found on in-store dough."},
+{"slug": "millers-ale-house", "name": "Miller's Ale House", "signals": {}, "basis": "", "sources": [], "notes": "Only that Zingers are hand-breaded."},
+{"slug": "perkins", "name": "Perkins Restaurant & Bakery", "signals": {}, "basis": "", "sources": [], "notes": "Only that pies are baked in house."},
+{"slug": "village-inn", "name": "Village Inn", "signals": {}, "basis": "", "sources": [], "notes": "Only that pies are scratch-baked."},
+{"slug": "lou-malnatis", "name": "Lou Malnati's Pizzeria", "signals": {}, "basis": "", "sources": [], "notes": "Nothing citable on in-restaurant prep (frozen shipping pizzas only)."},
+{"slug": "uno-pizzeria", "name": "Uno Pizzeria & Grill", "signals": {}, "basis": "", "sources": [], "notes": "No evidence found."},
+{"slug": "peets-coffee", "name": "Peet's Coffee", "signals": {}, "basis": "", "sources": [], "notes": "Not researched in depth: coffee-first menu."},
+{"slug": "caribou-coffee", "name": "Caribou Coffee", "signals": {}, "basis": "", "sources": [], "notes": "Not researched in depth: coffee-first menu."}
+]

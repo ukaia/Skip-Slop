@@ -1,0 +1,27 @@
+{
+  "about": "The ~150 largest US restaurant chains by 2025 US systemwide sales, used to measure research coverage. Order follows the Technomic Top 500 as reported by Nation's Restaurant News and Restaurant Business (2025-2026 coverage); the full Technomic list is paywalled, so ranks below the top 10 are approximate. Convenience stores and pure retail brands are excluded.",
+  "sources": [
+    "https://nrn.com/top-500-restaurants/2026-top-500-the-50-biggest-restaurant-chains-in-america",
+    "https://www.nrn.com/top-500-restaurants/2026-top-500-countdown-restaurant-chains-no-51-no-100",
+    "https://www.nrn.com/top-500-restaurants/2026-top-500-countdown-restaurant-chains-no-101-no-150",
+    "https://www.qsrmagazine.com/story/qsr-50-2026-top-50-fast-food-chains-ranked-by-sales/"
+  ],
+  "chains": [
+    "McDonald's", "Starbucks", "Chick-fil-A", "Taco Bell", "Dunkin'", "Wendy's", "Chipotle Mexican Grill", "Burger King", "Domino's", "Subway",
+    "Sonic Drive-In", "Panera Bread", "Pizza Hut", "Popeyes", "Texas Roadhouse", "Chili's", "Olive Garden", "Arby's", "Raising Cane's", "Applebee's",
+    "Jersey Mike's", "Dairy Queen", "Jack in the Box", "Panda Express", "Whataburger", "Little Caesars", "KFC", "Papa John's", "Buffalo Wild Wings", "Culver's",
+    "Outback Steakhouse", "In-N-Out Burger", "IHOP", "Zaxby's", "Wingstop", "The Cheesecake Factory", "Cracker Barrel", "Denny's", "LongHorn Steakhouse", "Five Guys",
+    "Dutch Bros", "Crumbl", "Tropical Smoothie Cafe", "Red Lobster", "Hardee's", "Jimmy John's", "Firehouse Subs", "Bojangles", "Shake Shack", "Carl's Jr.",
+    "7 Brew", "Waffle House", "CAVA", "Golden Corral", "El Pollo Loco", "Red Robin", "Del Taco", "Sweetgreen", "Krispy Kreme", "Qdoba Mexican Eats",
+    "Marco's Pizza", "First Watch", "Cheddar's Scratch Kitchen", "Tim Hortons", "Baskin-Robbins", "Freddy's", "Steak 'n Shake", "Church's Texas Chicken", "Scooter's Coffee", "Smoothie King",
+    "Moe's Southwest Grill", "McAlister's Deli", "Jason's Deli", "Bob Evans", "Dave & Buster's", "Hooters", "BJ's Restaurant & Brewhouse", "P.F. Chang's", "Maggiano's Little Italy", "Yard House",
+    "Carrabba's Italian Grill", "Topgolf", "TGI Fridays", "Twin Peaks", "Portillo's", "Auntie Anne's", "Nothing Bundt Cakes", "Dave's Hot Chicken", "Habit Burger & Grill", "Papa Murphy's",
+    "Peet's Coffee", "Caribou Coffee", "Potbelly Sandwich Shop", "Noodles & Company", "Ruth's Chris Steak House", "Perkins Restaurant & Bakery", "Huddle House", "Hungry Howie's", "Jet's Pizza", "Slim Chickens",
+    "Bonefish Grill", "Chuck E. Cheese", "Insomnia Cookies", "Cinnabon", "Captain D's", "Long John Silver's", "White Castle", "Krystal", "Cook Out", "Checkers/Rally's",
+    "A&W Restaurants", "Taco John's", "Taco Cabana", "Pollo Tropical", "Einstein Bros. Bagels", "Bruegger's Bagels", "Schlotzsky's", "Charleys Philly Steaks", "Fogo de Chão", "The Capital Grille",
+    "Seasons 52", "Bahama Breeze", "Ruby Tuesday", "O'Charley's", "Logan's Roadhouse", "Saltgrass Steak House", "Miller's Ale House", "Chuy's", "On The Border", "Torchy's Tacos",
+    "Cafe Rio", "Rubio's", "Pei Wei Asian Kitchen", "MOD Pizza", "Blaze Pizza", "Round Table Pizza", "Sbarro", "California Pizza Kitchen", "Uno Pizzeria & Grill", "Lou Malnati's Pizzeria",
+    "Black Bear Diner", "The Original Pancake House", "Another Broken Egg Cafe", "Snooze an A.M. Eatery", "Kura Sushi", "Main Event", "Jollibee", "Smashburger", "Wienerschnitzel", "Cold Stone Creamery",
+    "Boston Market", "Benihana", "Morton's The Steakhouse", "Fleming's Prime Steakhouse", "Mastro's Steakhouse"
+  ]
+}
