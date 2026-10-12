@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		BB10000000000000000000A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE7D56112F8C543A0023475C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE7D56182F8C543A0023475C;
+			remoteInfo = "Skip Slop";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		AE7D56192F8C543A0023475C /* Skip Slop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skip Slop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB10000000000000000000A2 /* Skip SlopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Skip SlopTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = "Skip Slop";
 			sourceTree = "<group>";
 		};
+		BB10000000000000000000A3 /* Skip SlopTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Skip SlopTests";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AE7D56162F8C543A0023475C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB10000000000000000000A5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				AE7D561B2F8C543A0023475C /* Skip Slop */,
+				BB10000000000000000000A3 /* Skip SlopTests */,
 				AE7D561A2F8C543A0023475C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				AE7D56192F8C543A0023475C /* Skip Slop.app */,
+				BB10000000000000000000A2 /* Skip SlopTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = AE7D56192F8C543A0023475C /* Skip Slop.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BB10000000000000000000A1 /* Skip SlopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB10000000000000000000A9 /* Build configuration list for PBXNativeTarget "Skip SlopTests" */;
+			buildPhases = (
+				BB10000000000000000000A4 /* Sources */,
+				BB10000000000000000000A5 /* Frameworks */,
+				BB10000000000000000000A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB10000000000000000000A7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BB10000000000000000000A3 /* Skip SlopTests */,
+			);
+			name = "Skip SlopTests";
+			packageProductDependencies = (
+			);
+			productName = "Skip SlopTests";
+			productReference = BB10000000000000000000A2 /* Skip SlopTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +130,10 @@
 				TargetAttributes = {
 					AE7D56182F8C543A0023475C = {
 						CreatedOnToolsVersion = 26.4;
+					};
+					BB10000000000000000000A1 = {
+						CreatedOnToolsVersion = 27.1;
+						TestTargetID = AE7D56182F8C543A0023475C;
 					};
 				};
 			};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				AE7D56182F8C543A0023475C /* Skip Slop */,
+				BB10000000000000000000A1 /* Skip SlopTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AE7D56172F8C543A0023475C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB10000000000000000000A6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB10000000000000000000A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB10000000000000000000A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE7D56182F8C543A0023475C /* Skip Slop */;
+			targetProxy = BB10000000000000000000A8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AE7D56222F8C543B0023475C /* Debug */ = {
@@ -316,6 +391,54 @@
 			};
 			name = Release;
 		};
+		BB10000000000000000000AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XK665P3866;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "alpha.Skip-SlopTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skip Slop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Skip Slop";
+			};
+			name = Debug;
+		};
+		BB10000000000000000000AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XK665P3866;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "alpha.Skip-SlopTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skip Slop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Skip Slop";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -333,6 +456,15 @@
 			buildConfigurations = (
 				AE7D56252F8C543B0023475C /* Debug */,
 				AE7D56262F8C543B0023475C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB10000000000000000000A9 /* Build configuration list for PBXNativeTarget "Skip SlopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB10000000000000000000AA /* Debug */,
+				BB10000000000000000000AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
