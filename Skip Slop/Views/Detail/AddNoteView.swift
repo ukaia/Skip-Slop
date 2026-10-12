@@ -2,8 +2,9 @@ import SwiftUI
 import SwiftData
 
 struct AddNoteView: View {
-    let restaurant: Restaurant
     let chainSlug: String?
+    /// Fetches or creates the restaurant record; only called when a note is submitted.
+    let resolveRestaurant: () -> Restaurant
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
@@ -93,7 +94,7 @@ struct AddNoteView: View {
         let note = CommunityNote(
             noteType: selectedType,
             body: body,
-            restaurant: restaurant,
+            restaurant: resolveRestaurant(),
             chainSlug: chainSlug
         )
         modelContext.insert(note)

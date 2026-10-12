@@ -41,7 +41,7 @@ struct RestaurantDetailView: View {
             }
             .padding()
         }
-        .task { loadOrCreateRestaurant() }
+        .task { loadRestaurant() }
     }
 
     // MARK: - Sections
@@ -154,51 +154,52 @@ struct RestaurantDetailView: View {
         }
     }
 
+    private var restaurantID: String {
+        ChainMatcher.restaurantID(for: mapItem, chainSlug: chainMatch?.chainSlug)
+    }
+
     private var communityNotesSection: some View {
         CommunityNotesSection(
-            restaurant: restaurant,
+            restaurantID: restaurantID,
             chainSlug: chainMatch?.chainSlug
         )
     }
 
     private var addNoteButton: some View {
-        Group {
-            if let restaurant {
-                Button {
-                    showAddNote = true
-                } label: {
-                    Label("Add Community Note", systemImage: "square.and.pencil")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 12))
-                }
-                .sheet(isPresented: $showAddNote) {
-                    AddNoteView(restaurant: restaurant, chainSlug: chainMatch?.chainSlug)
-                        .presentationDetents([.medium])
-                }
-            }
+        Button {
+            showAddNote = true
+        } label: {
+            Label("Add Community Note", systemImage: "square.and.pencil")
+                .font(.headline)
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 14)
+                .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 12))
+        }
+        .sheet(isPresented: $showAddNote) {
+            AddNoteView(chainSlug: chainMatch?.chainSlug, resolveRestaurant: persistRestaurant)
+                .presentationDetents([.medium])
         }
     }
 
     // MARK: - Data
 
-    private func loadOrCreateRestaurant() {
-        let id = ChainMatcher.restaurantID(for: mapItem, chainSlug: chainMatch?.chainSlug)
+    /// Loads a previously saved record, if any. Inferred ratings stay transient
+    /// until the user contributes (see `persistRestaurant`).
+    private func loadRestaurant() {
+        let id = restaurantID
+        let descriptor = FetchDescriptor(predicate: #Predicate<Restaurant> { $0.id == id })
+        restaurant = try? modelContext.fetch(descriptor).first
+        didLoad = true
+    }
 
-        let predicate = #Predicate<Restaurant> { $0.id == id }
-        let descriptor = FetchDescriptor(predicate: predicate)
-
-        if let existing = try? modelContext.fetch(descriptor).first {
-            restaurant = existing
-            didLoad = true
-            return
-        }
+    /// Returns the saved record for this place, inserting it on first contribution.
+    private func persistRestaurant() -> Restaurant {
+        if let restaurant { return restaurant }
 
         let coord = ChainMatcher.coordinate(for: mapItem)
         let newRestaurant = Restaurant(
-            id: id,
+            id: restaurantID,
             name: restaurantName,
             chainSlug: chainMatch?.chainSlug,
             latitude: coord.latitude,
@@ -209,8 +210,7 @@ struct RestaurantDetailView: View {
         )
 
         modelContext.insert(newRestaurant)
-        try? modelContext.save()
         restaurant = newRestaurant
-        didLoad = true
+        return newRestaurant
     }
 }

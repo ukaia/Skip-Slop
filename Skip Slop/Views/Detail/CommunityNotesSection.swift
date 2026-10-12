@@ -2,17 +2,16 @@ import SwiftUI
 import SwiftData
 
 struct CommunityNotesSection: View {
-    let restaurant: Restaurant?
+    let restaurantID: String
     let chainSlug: String?
 
     @Query private var allNotes: [CommunityNote]
     @State private var cloudNotes: [CloudNote] = []
     @State private var isLoadingCloud = false
-    @State private var hasLoadedCloud = false
 
     private var localNotes: [CommunityNote] {
         allNotes.filter { note in
-            if let restaurant, note.restaurant?.id == restaurant.id {
+            if note.restaurant?.id == restaurantID {
                 return true
             }
             if let chainSlug, note.chainSlug == chainSlug {
@@ -90,28 +89,12 @@ struct CommunityNotesSection: View {
                 }
             }
         }
-        .onChange(of: restaurant?.id) { _, _ in
-            if !hasLoadedCloud {
-                Task { await loadCloudNotes() }
-            }
-        }
-        .onChange(of: chainSlug) { _, _ in
-            if !hasLoadedCloud {
-                Task { await loadCloudNotes() }
-            }
-        }
-        .task { await loadCloudNotes() }
+        .task(id: restaurantID) { await loadCloudNotes() }
     }
 
     private func loadCloudNotes() async {
-        // Need at least one identifier to query
-        guard restaurant != nil || chainSlug != nil else { return }
-
         isLoadingCloud = true
-        defer {
-            isLoadingCloud = false
-            hasLoadedCloud = true
-        }
+        defer { isLoadingCloud = false }
 
         let service = CloudKitService.shared
         var notes: [CloudNote] = []
@@ -120,8 +103,8 @@ struct CommunityNotesSection: View {
             notes = await service.fetchNotes(forChainSlug: chainSlug)
         }
 
-        if notes.isEmpty, let restaurant {
-            let restaurantNotes = await service.fetchNotes(forRestaurantID: restaurant.id)
+        if notes.isEmpty {
+            let restaurantNotes = await service.fetchNotes(forRestaurantID: restaurantID)
             notes.append(contentsOf: restaurantNotes)
         }
 
