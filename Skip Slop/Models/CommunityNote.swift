@@ -38,7 +38,7 @@ final class CommunityNote {
         self.body = body
         self.restaurant = restaurant
         self.chainSlug = chainSlug
-        self.upvotes = 1
+        self.upvotes = 0
         self.downvotes = 0
         self.createdAt = .now
     }

@@ -23,12 +23,25 @@ struct CommunityNotesSection: View {
         .sorted { $0.netVotes > $1.netVotes }
     }
 
+    private var voteStore: VoteStore { .shared }
+
+    /// Local notes not yet visible in CloudKit. Once synced, the cloud copy (which
+    /// carries everyone's votes) replaces the author's local copy.
+    private var unsyncedLocalNotes: [CommunityNote] {
+        let cloudIDs = Set(cloudNotes.map(\.id))
+        return localNotes.filter { !cloudIDs.contains($0.id.uuidString) }
+    }
+
+    private func isPublic(_ note: CloudNote) -> Bool {
+        note.tally(with: voteStore.vote(for: note.id)).isPublic(for: note.noteType)
+    }
+
     private var publicCloudNotes: [CloudNote] {
-        cloudNotes.filter(\.isPublic)
+        cloudNotes.filter(isPublic)
     }
 
     private var pendingCloudNotes: [CloudNote] {
-        cloudNotes.filter { !$0.isPublic }
+        cloudNotes.filter { !isPublic($0) }
     }
 
     private var hasAnyNotes: Bool {
@@ -60,7 +73,7 @@ struct CommunityNotesSection: View {
                 }
 
                 // Local notes
-                ForEach(localNotes) { note in
+                ForEach(unsyncedLocalNotes) { note in
                     NoteCardView(note: note, isPending: !note.isPublic)
                 }
 
@@ -139,8 +152,10 @@ struct NoteCardView: View {
     let isPending: Bool
 
     @Environment(\.modelContext) private var modelContext
+    private var voteStore: VoteStore { .shared }
 
     var body: some View {
+        let noteID = note.id.uuidString
         NoteCardLayout(
             icon: note.noteType.icon,
             color: note.noteType.color,
@@ -151,13 +166,18 @@ struct NoteCardView: View {
             downvotes: note.downvotes,
             votesNeeded: note.votesNeeded,
             isPending: isPending,
-            onUpvote: {
-                note.upvotes += 1
-                try? modelContext.save()
-            },
-            onDownvote: {
-                note.downvotes += 1
-                try? modelContext.save()
+            myVote: voteStore.vote(for: noteID),
+            isVoting: voteStore.inFlight.contains(noteID),
+            onVote: { direction in
+                Task {
+                    await voteStore.toggle(direction, noteID: noteID) { old, new in
+                        let tally = VoteTally(upvotes: note.upvotes, downvotes: note.downvotes)
+                            .replacing(old, with: new)
+                        note.upvotes = tally.upvotes
+                        note.downvotes = tally.downvotes
+                        try? modelContext.save()
+                    }
+                }
             }
         )
     }
@@ -168,24 +188,26 @@ struct NoteCardView: View {
 struct CloudNoteCardView: View {
     let note: CloudNote
     var isPending: Bool = false
+    private var voteStore: VoteStore { .shared }
 
     var body: some View {
+        let myVote = voteStore.vote(for: note.id)
+        let tally = note.tally(with: myVote)
         NoteCardLayout(
             icon: note.noteType.icon,
             color: note.noteType.color,
             displayName: note.noteType.displayName,
             noteBody: note.body,
             createdAt: note.createdAt,
-            upvotes: note.upvotes,
-            downvotes: note.downvotes,
-            votesNeeded: note.votesNeeded,
+            upvotes: tally.upvotes,
+            downvotes: tally.downvotes,
+            votesNeeded: tally.votesNeeded(for: note.noteType),
             isPending: isPending,
             isCloud: true,
-            onUpvote: {
-                Task { await CloudKitService.shared.vote(noteRecordID: note.recordID, isUpvote: true) }
-            },
-            onDownvote: {
-                Task { await CloudKitService.shared.vote(noteRecordID: note.recordID, isUpvote: false) }
+            myVote: myVote,
+            isVoting: voteStore.inFlight.contains(note.id),
+            onVote: { direction in
+                Task { await voteStore.toggle(direction, noteID: note.id) }
             }
         )
     }
@@ -204,8 +226,9 @@ struct NoteCardLayout: View {
     let votesNeeded: Int
     let isPending: Bool
     var isCloud: Bool = false
-    let onUpvote: () -> Void
-    let onDownvote: () -> Void
+    let myVote: VoteDirection?
+    let isVoting: Bool
+    let onVote: (VoteDirection) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -250,21 +273,26 @@ struct NoteCardLayout: View {
 
                 HStack(spacing: 12) {
                     Button {
-                        onUpvote()
+                        onVote(.up)
                     } label: {
-                        Label("\(upvotes)", systemImage: "arrow.up")
+                        Label("\(upvotes)", systemImage: myVote == .up ? "arrow.up.circle.fill" : "arrow.up")
                             .font(.caption)
+                            .foregroundStyle(myVote == .up ? AnyShapeStyle(Color.slopGreen) : AnyShapeStyle(.secondary))
                     }
+                    .accessibilityLabel(myVote == .up ? "Remove upvote" : "Upvote")
 
                     Button {
-                        onDownvote()
+                        onVote(.down)
                     } label: {
-                        Label("\(downvotes)", systemImage: "arrow.down")
+                        Label("\(downvotes)", systemImage: myVote == .down ? "arrow.down.circle.fill" : "arrow.down")
                             .font(.caption)
+                            .foregroundStyle(myVote == .down ? AnyShapeStyle(Color.slopRed) : AnyShapeStyle(.secondary))
                     }
+                    .accessibilityLabel(myVote == .down ? "Remove downvote" : "Downvote")
                 }
                 .buttonStyle(.plain)
-                .foregroundStyle(.secondary)
+                .disabled(isVoting)
+                .sensoryFeedback(.selection, trigger: myVote)
             }
         }
         .padding(12)
