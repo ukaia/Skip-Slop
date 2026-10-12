@@ -238,12 +238,14 @@ final class CloudKitService {
     }
 
     // MARK: - Initialize Schema
+    // (Prep report storage is in the PrepReportBackend extension below.)
 
-    /// Seeds dummy records then deletes them to auto-create the CommunityNote and
-    /// NoteVote record types in the development CloudKit environment. Only needed once.
+    /// Seeds dummy records then deletes them to auto-create the CommunityNote,
+    /// NoteVote, PrepReport, and PrepReportFlag record types in the development
+    /// CloudKit environment. Only needed once.
     func initializeSchemaIfNeeded() async {
         guard !isOffline else { return }
-        let key = "cloudkit_schema_initialized_v2"
+        let key = "cloudkit_schema_initialized_v3"
         guard !UserDefaults.standard.bool(forKey: key) else { return }
 
         let record = CKRecord(recordType: "CommunityNote")
@@ -258,12 +260,22 @@ final class CloudKitService {
         vote["noteID"] = "__schema_seed__" as CKRecordValue
         vote["direction"] = VoteDirection.up.rawValue as CKRecordValue
 
+        let seedReport = PrepReport(
+            id: "__schema_seed__", placeKey: "__schema_seed__", reporterID: "__schema_seed__",
+            chainSlug: "", verdict: .unsure, evidence: .impression, note: "",
+            createdAt: .now, updatedAt: .now, dayStamp: PrepReport.dayStamp(for: .now), dailyCount: 0, reporterSince: .now
+        )
+        let report = CKRecord(recordType: Self.prepReportType)
+        Self.apply(seedReport, to: report)
+        let flag = CKRecord(recordType: Self.prepFlagType)
+        flag["reportID"] = "__schema_seed__" as CKRecordValue
+
         do {
-            let saved = try await publicDB.save(record)
-            let savedVote = try await publicDB.save(vote)
-            // Delete the seed records immediately
-            try await publicDB.deleteRecord(withID: saved.recordID)
-            try await publicDB.deleteRecord(withID: savedVote.recordID)
+            // Delete the seed records immediately.
+            for seed in [record, vote, report, flag] {
+                let saved = try await publicDB.save(seed)
+                try await publicDB.deleteRecord(withID: saved.recordID)
+            }
             UserDefaults.standard.set(true, forKey: key)
             logger.info("CloudKit schema initialized successfully")
         } catch {
@@ -272,6 +284,119 @@ final class CloudKitService {
         }
     }
 
+}
+
+// MARK: - Prep reports
+
+extension CloudKitService: PrepReportBackend {
+    nonisolated static let prepReportType = "PrepReport"
+    nonisolated static let prepFlagType = "PrepReportFlag"
+    /// Created only by the developer in the CloudKit Dashboard; one record per
+    /// flagged user, with their user record name in `reporterID`.
+    nonisolated static let flaggedReporterType = "FlaggedReporter"
+
+    func reporterID() async throws -> String {
+        guard !isOffline else { throw CKError(.notAuthenticated) }
+        return try await currentUserRecordName()
+    }
+
+    func fetchReports(placeKey: String) async throws -> [PrepReport] {
+        guard !isOffline else { return [] }
+        let query = CKQuery(recordType: Self.prepReportType, predicate: NSPredicate(format: "placeKey == %@", placeKey))
+        let (results, _) = try await publicDB.records(matching: query, resultsLimit: 200)
+        let records = results.compactMap { _, result in try? result.get() }
+        let myName = try? await currentUserRecordName()
+        var reports = records.compactMap { Self.report(from: $0, currentUser: myName) }
+
+        // Flags from users other than the report's author.
+        let ids = reports.map(\.id)
+        if !ids.isEmpty {
+            let flagQuery = CKQuery(recordType: Self.prepFlagType, predicate: NSPredicate(format: "reportID IN %@", ids))
+            if let (flagResults, _) = try? await publicDB.records(matching: flagQuery, resultsLimit: 500) {
+                var flaggers: [String: Set<String>] = [:]
+                for (_, result) in flagResults {
+                    guard let record = try? result.get(), let reportID = record["reportID"] as? String else { continue }
+                    let flagger = record.creatorUserRecordID?.recordName ?? record.recordID.recordName
+                    flaggers[reportID, default: []].insert(flagger)
+                }
+                reports = reports.map { report in
+                    var report = report
+                    report.flagCount = flaggers[report.id, default: []].subtracting([report.reporterID]).count
+                    return report
+                }
+            }
+        }
+        return reports
+    }
+
+    func save(_ report: PrepReport) async throws {
+        guard !isOffline else { return }
+        let record = CKRecord(recordType: Self.prepReportType, recordID: CKRecord.ID(recordName: report.id))
+        // The record belongs to this user alone, so the last write wins.
+        try await save(record, savePolicy: .changedKeys) { record in
+            Self.apply(report, to: record)
+        }
+    }
+
+    func flag(reportID: String, reporterID: String) async throws {
+        guard !isOffline else { return }
+        let name = "flag_\(PrepReport.sanitized(reportID))_\(PrepReport.sanitized(reporterID))"
+        let record = CKRecord(recordType: Self.prepFlagType, recordID: CKRecord.ID(recordName: name))
+        try await save(record, savePolicy: .changedKeys) { record in
+            record["reportID"] = reportID as CKRecordValue
+        }
+    }
+
+    func flaggedReporters() async -> Set<String> {
+        guard !isOffline else { return [] }
+        let query = CKQuery(recordType: Self.flaggedReporterType, predicate: NSPredicate(value: true))
+        guard let (results, _) = try? await publicDB.records(matching: query, resultsLimit: 500) else { return [] }
+        return Set(results.compactMap { _, result in (try? result.get())?["reporterID"] as? String })
+    }
+
+    nonisolated static func apply(_ report: PrepReport, to record: CKRecord) {
+        record["placeKey"] = report.placeKey as CKRecordValue
+        record["reporterID"] = report.reporterID as CKRecordValue
+        record["chainSlug"] = (report.chainSlug ?? "") as CKRecordValue
+        record["verdict"] = report.verdict.rawValue as CKRecordValue
+        record["evidence"] = (report.evidence?.rawValue ?? "") as CKRecordValue
+        record["note"] = report.note as CKRecordValue
+        record["createdAt"] = report.createdAt as CKRecordValue
+        record["updatedAt"] = report.updatedAt as CKRecordValue
+        record["dayStamp"] = report.dayStamp as CKRecordValue
+        record["dailyCount"] = report.dailyCount as CKRecordValue
+        if let since = report.reporterSince {
+            record["reporterSince"] = since as CKRecordValue
+        }
+    }
+
+    /// Reads a report. The reporter is the record's creator as recorded by the
+    /// server, which a client can't forge; the stored field is only a fallback.
+    nonisolated static func report(from record: CKRecord, currentUser: String?) -> PrepReport? {
+        guard let placeKey = record["placeKey"] as? String,
+              let verdictRaw = record["verdict"] as? String,
+              let verdict = PrepVerdict(rawValue: verdictRaw) else { return nil }
+        var reporter = record.creatorUserRecordID?.recordName ?? (record["reporterID"] as? String ?? "")
+        if reporter == CKCurrentUserDefaultName, let currentUser {
+            reporter = currentUser
+        }
+        let created = record["createdAt"] as? Date ?? record.creationDate ?? .now
+        let chainSlug = record["chainSlug"] as? String
+        return PrepReport(
+            id: record.recordID.recordName,
+            placeKey: placeKey,
+            reporterID: reporter,
+            chainSlug: chainSlug?.isEmpty == false ? chainSlug : nil,
+            verdict: verdict,
+            evidence: (record["evidence"] as? String).flatMap(PrepEvidence.init(rawValue:)),
+            note: record["note"] as? String ?? "",
+            createdAt: created,
+            updatedAt: record["updatedAt"] as? Date ?? record.modificationDate ?? created,
+            dayStamp: record["dayStamp"] as? String ?? PrepReport.dayStamp(for: created),
+            dailyCount: record["dailyCount"] as? Int ?? 1,
+            reporterSince: record["reporterSince"] as? Date
+        )
+    }
 }
 
 // MARK: - CloudNote (lightweight struct for cloud data)
