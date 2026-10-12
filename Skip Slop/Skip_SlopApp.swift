@@ -24,10 +24,15 @@ struct Skip_SlopApp: App {
         WindowGroup {
             ContentView()
                 .environment(chainDatabase)
+                #if DEBUG
+                // Development environment only: production record types are deployed
+                // from the CloudKit Dashboard, and every install writing seed records
+                // to the production public database would be needless user writes.
                 .task {
                     guard !Self.isHostingTests, !LaunchOptions.mockData else { return }
                     await CloudKitService.shared.initializeSchemaIfNeeded()
                 }
+                #endif
         }
         .modelContainer(for: [Restaurant.self, CommunityNote.self])
     }
