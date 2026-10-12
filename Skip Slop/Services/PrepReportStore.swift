@@ -71,7 +71,20 @@ nonisolated struct ReportRateLimiter {
 /// Community prep reports per place, their roll-ups, and the current user's own reports.
 @Observable
 final class PrepReportStore {
-    static let shared = PrepReportStore(backend: PrepReportStore.defaultBackend())
+    static let shared = PrepReportStore(backend: PrepReportStore.defaultBackend(), defaults: PrepReportStore.defaultDefaults())
+
+    /// Sample-data mode starts clean every launch, so screenshots and UI tests
+    /// don't inherit flags or rate-limit counts from earlier runs.
+    private static func defaultDefaults() -> UserDefaults {
+        #if DEBUG
+        if LaunchOptions.mockData {
+            let suite = "alpha.Skip-Slop.sample-reports"
+            UserDefaults.standard.removePersistentDomain(forName: suite)
+            return UserDefaults(suiteName: suite) ?? .standard
+        }
+        #endif
+        return .standard
+    }
 
     private(set) var reports: [String: [PrepReport]] = [:]
     private(set) var rollups: [String: CommunityRollup] = [:]

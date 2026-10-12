@@ -41,6 +41,10 @@ struct OnboardingView: View {
                 .padding(.bottom, DS.Spacing.l)
         }
         .sensoryFeedback(.selection, trigger: page)
+        .onChange(of: page) { _, page in
+            // Learn the current authorization before offering "Allow Location".
+            if page == .location { locationManager.activate() }
+        }
         .onChange(of: locationManager.authorizationStatus) { _, status in
             // The system prompt was answered; move on either way.
             if askedForLocation, status != .notDetermined, page == .location {

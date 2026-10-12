@@ -15,7 +15,11 @@ struct MapContainerView: View {
         // No rotation: the compass would collide with the floating controls, and
         // north-up is what you want when hunting for dinner.
         Map(position: $model.position, interactionModes: [.pan, .zoom], selection: $model.selectedItem) {
-            UserAnnotation()
+            // Sample data has no real location; skipping the annotation also keeps
+            // MapKit from querying location authorization on the main thread.
+            if !model.isMock {
+                UserAnnotation()
+            }
 
             ForEach(model.displayedResults) { entry in
                 let isSelected = model.selectedItem == entry.item

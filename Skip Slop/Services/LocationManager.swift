@@ -12,15 +12,25 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         authorizationStatus == .authorizedWhenInUse || authorizationStatus == .authorizedAlways
     }
 
-    private let manager = CLLocationManager()
+    /// Created on first use, so screens that never need location (sample data,
+    /// screenshots) never touch Core Location.
+    @ObservationIgnored private var _manager: CLLocationManager?
 
-    override init() {
-        super.init()
+    private var manager: CLLocationManager {
+        if let _manager { return _manager }
+        let manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         // The current status arrives in `locationManagerDidChangeAuthorization`,
         // which fires right after the delegate is set. Reading
         // `manager.authorizationStatus` here would block the main thread.
+        _manager = manager
+        return manager
+    }
+
+    /// Creates the manager so its authorization callback reports the current status.
+    func activate() {
+        _ = manager
     }
 
     /// Starts updates if already authorized; otherwise prompts while the status is
@@ -28,6 +38,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     /// as undetermined, and asking again is harmless: the system only prompts once,
     /// and the callback starts updates when access is granted.
     func requestPermission() {
+        activate()
         switch authorizationStatus {
         case .authorizedWhenInUse, .authorizedAlways:
             manager.startUpdatingLocation()
@@ -43,7 +54,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
 
     func stopUpdating() {
-        manager.stopUpdatingLocation()
+        _manager?.stopUpdatingLocation()
     }
 
     // MARK: - CLLocationManagerDelegate

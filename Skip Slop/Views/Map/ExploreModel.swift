@@ -8,7 +8,16 @@ import os
 final class ExploreModel {
     let locationManager = LocationManager()
 
-    var position: MapCameraPosition = .userLocation(fallback: .automatic)
+    var position: MapCameraPosition = ExploreModel.initialPosition
+
+    /// Follows the user, except in sample-data mode, where asking MapKit for the
+    /// user's location would query location authorization for nothing.
+    private static var initialPosition: MapCameraPosition {
+        #if DEBUG
+        if LaunchOptions.mockData { return .region(MockData.region) }
+        #endif
+        return .userLocation(fallback: .automatic)
+    }
     var detent: PresentationDetent = .peek
     /// Drives both map selection and the detail push in the sheet.
     var selectedItem: MKMapItem? {
